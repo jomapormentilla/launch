@@ -7,7 +7,8 @@ class ProjectSerializer
         @project.to_json(
             :include => [
                 :tasks => {only: [:name, :description, :deadline]},
-                :users => {except: [:password]}
+                :users => {only: [:id]},
+                :creator => {only: [:id]}
             ]
         )
     end

@@ -1,10 +1,13 @@
 class Project {
     static all = []
 
-    constructor({id, name, creator_id}) {
+    constructor({id, name, description, creator_id, users}) {
         this.id = id
         this.name = name
+        this.description = description
         this.creatorId = creator_id
+        this.usersIds = users
+
         Project.all.push(this)
     }
 
@@ -13,9 +16,7 @@ class Project {
         card.classList.add("card")
         card.innerHTML = `
             <i class="bi-star" style="font-size: 2rem; color: gold; align-self: flex-end; justify-self: flex-end;"></i>
-            <h3>${ this.name }</h3>
-            <p>${ this.users }</p>
-            
+            <h3>${ this.name }</h3>   
         `
         card.addEventListener("click", this.handleCardClick)
         return card
@@ -35,7 +36,9 @@ class Project {
                         <div><i class="bi-gear-fill"></i></div>
                     </div>
                     <div class="flex" style="width: 100%; flex-direction: column;">
-                        <h1>${ this.name }</h1>
+                        <h1 style="text-align: center;">${ this.name }</h1>
+                        <p style="text-align: justify; padding: 0px 15px;">${ this.description }</p>
+                        <hr />
                         <div class="flex" style="width: 100%; flex-direction: row; flex-wrap: wrap;">
                             <div class="flex box"><h3>Team Members</h3></div>
                             <div class="flex box"><h3>Progress</h3></div>
@@ -65,8 +68,17 @@ class Project {
         }
     }
 
+    get creator() {
+        return User.all.find((u) => u.id == this.creatorId)
+    }
+
     get users() {
-        return User.all.filter((u) => u.id == this.id)
+        let projectUsers = []
+        for (let user of this.usersIds) {
+            let find = User.all.find(u => u.id == user.id)
+            projectUsers.push(find)
+        }
+        return projectUsers
     }
 
     static render() {

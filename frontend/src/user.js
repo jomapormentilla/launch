@@ -7,19 +7,24 @@ class User {
         this.lastName = last_name
         this.email = email
         this.department_id = department_id
-        
+
         User.all.push(this)
     }
 
     static render() {
         content.innerHTML = ``
-        for (let u of User.all) {
+        let sorted = User.all.sort()
+        for (let u of sorted) {
             content.append(u.card())
         }
     }
 
     get tasks() {
         return Task.all.filter((t) => t.userId == this.id)
+    }
+
+    get projects() {
+        // Project.all.filter((p) => p.users.con)
     }
 
     get department() {

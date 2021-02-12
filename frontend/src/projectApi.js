@@ -15,7 +15,7 @@ class ProjectApi {
         debugger
         let projectInfo = {
             name: data[0].value,
-            creator_id: User.all[0].id
+            creator_id: current_user.id
         }
 
         let configObj = {

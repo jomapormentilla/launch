@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
     def index
-        projects = Project.all
+        projects = Project.all.includes(:users, :tasks, :creator)
         render json: ProjectSerializer.new(projects).to_serialized_json
     end
 

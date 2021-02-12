@@ -14,7 +14,8 @@ class Nav {
             { title: "Dashboard", src: "dashboard" },
             { title: "Users", src: "users" },
             { title: "Projects", src: "projects" },
-            { title: "Your Tasks", src: "tasks" }
+            { title: "Your Tasks", src: "tasks" },
+            { title: "About", src: "about" },
         ]
 
         for (let item of navItems) {
@@ -61,6 +62,9 @@ class Nav {
                     break
                 case 'tasks':
                     Task.render()
+                    break
+                case 'about':
+                    About.render()
                     break
             }
         }, 250)
