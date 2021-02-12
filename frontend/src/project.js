@@ -11,11 +11,23 @@ class Project {
         let card = document.createElement("div")
         card.classList.add("card")
         card.innerHTML = `
+            <i class="bi-star" style="font-size: 2rem; color: gold; align-self: flex-end; justify-self: flex-end;"></i>
             <h3>${ this.name }</h3>
             <p>${ this.users() }</p>
+            
         `
-
+        card.addEventListener("click", this.handleCardClick)
         return card
+    }
+
+    handleCardClick = e => {
+        if (e.target.classList.contains("bi-star")) {
+            e.target.classList.remove("bi-star")
+            e.target.classList.add("bi-star-fill")
+        } else if (e.target.classList.contains("bi-star-fill")) {
+            e.target.classList.remove("bi-star-fill")
+            e.target.classList.add("bi-star")
+        }
     }
 
     users() {
@@ -60,8 +72,6 @@ class Project {
         e.preventDefault()
         ProjectApi.createProject(e.target)
         
-        debugger
-        // Modal.hideModal(e)
         document.querySelector(".backdrop").style.opacity = 0
         setTimeout(()=>{ document.querySelector(".backdrop").remove() }, 1000)
     }

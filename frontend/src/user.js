@@ -32,6 +32,7 @@ class User {
         card.innerHTML = `
             <h3>${ this.firstName }</h3>
             <p>${ this.department }</p>
+            <p>Tasks: ${ this.tasks.length }</p>
         `
         return card
     }
