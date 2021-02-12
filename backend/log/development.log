@@ -253,3 +253,14 @@ Started GET "/favicon.ico" for ::1 at 2021-02-11 21:10:57 -0500
   
 ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
   
+Started GET "/users" for ::1 at 2021-02-11 22:14:07 -0500
+Processing by UsersController#index as */*
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 53ms (Views: 0.8ms | ActiveRecord: 3.1ms | Allocations: 1942)
+
+

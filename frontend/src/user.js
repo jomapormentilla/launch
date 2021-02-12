@@ -8,4 +8,15 @@ class User {
         
         User.all.push(this)
     }
+
+    static render() {
+        content.innerHTML = `USERS!`
+    }
+
+    static list() {
+        let list = User.all.map((u) => {
+            return `<li>${ u.firstName }</li>`
+        })
+        return list
+    }
 }

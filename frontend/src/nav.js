@@ -48,22 +48,18 @@ class Nav {
     render_content(data) {
         content.style.opacity = 0
         setTimeout(()=>{ 
+            content.style.opacity = 1 
             switch (data) {
                 case 'dashboard':
                     Dashboard.render()
                     break
                 case 'users':
-                    this.users()
+                    User.render()
                     break
                 case 'projects':
                     Project.render()
                     break
             }
         }, 500)
-    }
-    
-    users() {
-            content.style.opacity = 1 
-            content.innerHTML = 'USERS!'
     }
 }
