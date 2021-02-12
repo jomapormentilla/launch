@@ -121,6 +121,7 @@ button {
     padding: 0px 10px;
     cursor: pointer;
     background-color: #fbf6e9;
+    transition: 0.5s;
 }
 
 .card:hover {
@@ -133,7 +134,6 @@ button {
     position: absolute;
     top: 0;
     left: 0;
-    justify-content: center;
     align-items: flex-start;
     width: 100vw;
     height: 100vh;
@@ -148,7 +148,7 @@ button {
 
 }
 
-#new-project input, #new-project button {
+#new-project-form input {
     height: 30px;
-    width: 100%;
+    width: 300px;
 }

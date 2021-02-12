@@ -7,9 +7,12 @@ class Dashboard {
     }
 
     static handleProfileClick = e => {
-        let data = `
-            <h1>Your Profile</h1>
-        `
+        let data = {
+            innerHTML: `
+                <h1>Profile Settings</h1>   
+            `,
+            justifyContent: `flex-end`
+        }
         Modal.render(data)
     }
 }

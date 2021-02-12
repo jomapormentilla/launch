@@ -9,6 +9,7 @@ class Login {
                 <input type="password" placeholder="Password"><br>
                 <button type="submit">Login</button>
             </form>
+            <div class="buffer" style="height: 300px;"></div>
         `
         this.login.addEventListener("submit", this.handleLogin)
     }

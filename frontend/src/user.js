@@ -31,7 +31,7 @@ class User {
         card.classList.add("card")
         card.innerHTML = `
             <i class="bi-person-plus" style="font-size: 2rem; color: #3b5ab1; align-self: flex-end; justify-self: flex-end;"></i>
-            <h3>${ this.firstName }</h3>
+            <h3>${ this.firstName } ${ this.lastName }</h3>
             <p>${ this.department }</p>
             <p>Tasks: ${ this.tasks.length }</p>
         `
