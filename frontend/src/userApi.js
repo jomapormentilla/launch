@@ -5,7 +5,9 @@ class UserApi {
         fetch(this.url)
           .then(res => res.json())
           .then(data => {
-              console.log(data)
+              for (let user of data) {
+                  let u = new User(user)
+              }
           })
     }
 }

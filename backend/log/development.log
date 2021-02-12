@@ -264,3 +264,182 @@ Processing by UsersController#index as */*
 Completed 200 OK in 53ms (Views: 0.8ms | ActiveRecord: 3.1ms | Allocations: 1942)
 
 
+Started GET "/users" for ::1 at 2021-02-11 22:15:16 -0500
+  [1m[35m (3.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (11.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (0.8ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 71ms (Views: 0.3ms | ActiveRecord: 2.7ms | Allocations: 17632)
+
+
+Started GET "/users" for ::1 at 2021-02-11 22:15:45 -0500
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 7ms (Views: 0.1ms | ActiveRecord: 0.4ms | Allocations: 1422)
+
+
+Started GET "/users" for ::1 at 2021-02-11 22:17:02 -0500
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 4ms (Views: 0.1ms | ActiveRecord: 0.4ms | Allocations: 1416)
+
+
+Started GET "/users" for ::1 at 2021-02-11 22:18:48 -0500
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 5ms (Views: 0.1ms | ActiveRecord: 0.3ms | Allocations: 1416)
+
+
+Started GET "/users" for ::1 at 2021-02-11 22:19:11 -0500
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 5ms (Views: 0.2ms | ActiveRecord: 0.4ms | Allocations: 1400)
+
+
+Started GET "/users" for ::1 at 2021-02-11 22:19:38 -0500
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 9ms (Views: 0.2ms | ActiveRecord: 0.4ms | Allocations: 1400)
+
+
+Started GET "/projects" for ::1 at 2021-02-11 22:28:37 -0500
+  
+AbstractController::ActionNotFound (The action 'index' could not be found for ProjectsController):
+  
+actionpack (6.1.2.1) lib/abstract_controller/base.rb:160:in `process'
+actionpack (6.1.2.1) lib/action_controller/metal.rb:190:in `dispatch'
+actionpack (6.1.2.1) lib/action_controller/metal.rb:254:in `dispatch'
+actionpack (6.1.2.1) lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+actionpack (6.1.2.1) lib/action_dispatch/routing/route_set.rb:33:in `serve'
+actionpack (6.1.2.1) lib/action_dispatch/journey/router.rb:50:in `block in serve'
+actionpack (6.1.2.1) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (6.1.2.1) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (6.1.2.1) lib/action_dispatch/routing/route_set.rb:842:in `call'
+rack (2.2.3) lib/rack/etag.rb:27:in `call'
+rack (2.2.3) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.3) lib/rack/head.rb:12:in `call'
+activerecord (6.1.2.1) lib/active_record/migration.rb:601:in `call'
+actionpack (6.1.2.1) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.1.2.1) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (6.1.2.1) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.1.2.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.1.2.1) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (6.1.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:29:in `call'
+actionpack (6.1.2.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.1.2.1) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.1.2.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.1.2.1) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (6.1.2.1) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (6.1.2.1) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (6.1.2.1) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.1.2.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.1.2.1) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.1.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.1.2.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.1.2.1) lib/action_dispatch/middleware/static.rb:24:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.1.2.1) lib/action_dispatch/middleware/host_authorization.rb:98:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.1.2.1) lib/rails/engine.rb:539:in `call'
+puma (5.2.1) lib/puma/configuration.rb:247:in `call'
+puma (5.2.1) lib/puma/request.rb:76:in `block in handle_request'
+puma (5.2.1) lib/puma/thread_pool.rb:337:in `with_force_shutdown'
+puma (5.2.1) lib/puma/request.rb:75:in `handle_request'
+puma (5.2.1) lib/puma/server.rb:431:in `process_client'
+puma (5.2.1) lib/puma/thread_pool.rb:145:in `block in spawn_thread'
+Started GET "/projects" for ::1 at 2021-02-11 22:30:23 -0500
+Processing by ProjectsController#index as HTML
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mProject Load (5.3ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = ?[0m  [["project_id", 1]]
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "tasks" ON "users"."id" = "tasks"."user_id" WHERE "tasks"."project_id" = ?[0m  [["project_id", 1]]
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 143ms (Views: 0.2ms | ActiveRecord: 7.8ms | Allocations: 17898)
+
+
+Started GET "/projects" for ::1 at 2021-02-11 22:30:44 -0500
+Processing by ProjectsController#index as HTML
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mProject Load (0.7ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (0.6ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = ?[0m  [["project_id", 1]]
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "tasks" ON "users"."id" = "tasks"."user_id" WHERE "tasks"."project_id" = ?[0m  [["project_id", 1]]
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+Completed 500 Internal Server Error in 97ms (ActiveRecord: 6.3ms | Allocations: 19165)
+
+
+  
+NoMethodError (undefined method `except' for #<Project id: 1, name: "FlatBook", created_at: "2021-02-12 00:48:41.657009000 +0000", updated_at: "2021-02-12 00:48:41.657009000 +0000">
+Did you mean?  exec):
+  
+app/services/project_serializer.rb:7:in `to_serialized_json'
+app/controllers/projects_controller.rb:4:in `index'
+Started GET "/projects" for ::1 at 2021-02-11 22:31:21 -0500
+Processing by ProjectsController#index as HTML
+Completed 500 Internal Server Error in 5ms (Allocations: 1604)
+
+
+  
+SyntaxError (/Users/jomapormentilla/Flatiron/code/Phase4/My Playground/launch/backend/app/services/project_serializer.rb:11: syntax error, unexpected ':', expecting '}'
+...              :users => except: [:password]
+...                              ^
+/Users/jomapormentilla/Flatiron/code/Phase4/My Playground/launch/backend/app/services/project_serializer.rb:12: syntax error, unexpected '}', expecting `end'
+                }
+                ^
+):
+  
+app/services/project_serializer.rb:11: syntax error, unexpected ':', expecting '}'
+app/services/project_serializer.rb:12: syntax error, unexpected '}', expecting `end'
+app/services/project_serializer.rb:11: syntax error, unexpected ':', expecting '}'
+app/services/project_serializer.rb:12: syntax error, unexpected '}', expecting `end'
+app/controllers/projects_controller.rb:4:in `index'
+Started GET "/projects" for ::1 at 2021-02-11 22:31:52 -0500
+Processing by ProjectsController#index as HTML
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mProject Load (0.5ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (3.5ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = ?[0m  [["project_id", 1]]
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "tasks" ON "users"."id" = "tasks"."user_id" WHERE "tasks"."project_id" = ?[0m  [["project_id", 1]]
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 88ms (Views: 0.2ms | ActiveRecord: 9.4ms | Allocations: 16515)
+
+
+Started GET "/projects" for ::1 at 2021-02-11 22:32:50 -0500
+Processing by ProjectsController#index as HTML
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mProject Load (0.4ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (1.6ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = ?[0m  [["project_id", 1]]
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "tasks" ON "users"."id" = "tasks"."user_id" WHERE "tasks"."project_id" = ?[0m  [["project_id", 1]]
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 140ms (Views: 0.2ms | ActiveRecord: 6.3ms | Allocations: 16399)
+
+

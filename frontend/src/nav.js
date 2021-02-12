@@ -60,6 +60,6 @@ class Nav {
                     Project.render()
                     break
             }
-        }, 500)
+        }, 250)
     }
 }

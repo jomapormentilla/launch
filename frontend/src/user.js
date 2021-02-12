@@ -10,12 +10,12 @@ class User {
     }
 
     static render() {
-        content.innerHTML = `USERS!`
+        content.innerHTML = this.list()
     }
 
     static list() {
         let list = User.all.map((u) => {
-            return `<li>${ u.firstName }</li>`
+            return `<li>${ u.firstName } ${ u.lastName }</li>`
         })
         return list
     }

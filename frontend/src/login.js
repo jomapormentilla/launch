@@ -17,11 +17,11 @@ class Login {
         e.preventDefault()
         this.hide()
         container.style.display = "flex"
-        setTimeout(()=>{ container.style.opacity = 1 }, 1000)
+        setTimeout(()=>{ container.style.opacity = 1 }, 250)
     }
 
     static hide() {
         this.login.style.opacity = 0
-        setTimeout(()=>{ this.login.remove() }, 1000)
+        setTimeout(()=>{ this.login.remove() }, 250)
     }
 }
