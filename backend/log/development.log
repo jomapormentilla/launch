@@ -1239,3 +1239,1280 @@ Completed 200 OK in 45ms (Views: 12.6ms | ActiveRecord: 1.2ms | Allocations: 401
 Completed 200 OK in 65ms (Views: 1.6ms | ActiveRecord: 15.2ms | Allocations: 5865)
 
 
+Started GET "/projects" for ::1 at 2021-02-11 23:24:40 -0500
+Started GET "/tasks" for ::1 at 2021-02-11 23:24:40 -0500
+Processing by ProjectsController#index as */*
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mProject Load (0.5ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = ?[0m  [["project_id", 1]]
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "tasks" ON "users"."id" = "tasks"."user_id" WHERE "tasks"."project_id" = ?[0m  [["project_id", 1]]
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 14ms (Views: 0.2ms | ActiveRecord: 2.0ms | Allocations: 2798)
+
+
+Processing by TasksController#index as */*
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+Started GET "/users" for ::1 at 2021-02-11 23:24:40 -0500
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mProject Load (0.5ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 25ms (Views: 0.1ms | ActiveRecord: 1.8ms | Allocations: 3523)
+
+
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 21ms (Views: 0.3ms | ActiveRecord: 0.7ms | Allocations: 2511)
+
+
+Started GET "/projects" for ::1 at 2021-02-11 23:24:53 -0500
+Processing by ProjectsController#index as */*
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+Started GET "/users" for ::1 at 2021-02-11 23:24:53 -0500
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 7ms (Views: 0.3ms | ActiveRecord: 0.7ms | Allocations: 1442)
+
+
+Started GET "/tasks" for ::1 at 2021-02-11 23:24:53 -0500
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = ?[0m  [["project_id", 1]]
+Processing by TasksController#index as */*
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "tasks" ON "users"."id" = "tasks"."user_id" WHERE "tasks"."project_id" = ?[0m  [["project_id", 1]]
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 32ms (Views: 0.2ms | ActiveRecord: 0.9ms | Allocations: 3143)
+
+
+Completed 200 OK in 70ms (Views: 0.2ms | ActiveRecord: 1.0ms | Allocations: 6676)
+
+
+Started GET "/projects" for ::1 at 2021-02-11 23:25:46 -0500
+Processing by ProjectsController#index as */*
+  [1m[36mProject Load (0.3ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = ?[0m  [["project_id", 1]]
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "tasks" ON "users"."id" = "tasks"."user_id" WHERE "tasks"."project_id" = ?[0m  [["project_id", 1]]
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 22ms (Views: 0.3ms | ActiveRecord: 0.7ms | Allocations: 2420)
+
+
+Started GET "/users" for ::1 at 2021-02-11 23:25:46 -0500
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ?[0m  [["user_id", 1]]
+Started GET "/tasks" for ::1 at 2021-02-11 23:25:46 -0500
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 15ms (Views: 0.3ms | ActiveRecord: 0.5ms | Allocations: 1727)
+
+
+Processing by TasksController#index as */*
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mProject Load (0.3ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 12ms (Views: 0.2ms | ActiveRecord: 1.0ms | Allocations: 2269)
+
+
+Started GET "/projects" for ::1 at 2021-02-11 23:26:08 -0500
+Started GET "/tasks" for ::1 at 2021-02-11 23:26:08 -0500
+Processing by TasksController#index as */*
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 6ms (Views: 0.1ms | ActiveRecord: 0.5ms | Allocations: 2040)
+
+
+Started GET "/users" for ::1 at 2021-02-11 23:26:08 -0500
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+Processing by ProjectsController#index as */*
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (2.0ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = ?[0m  [["project_id", 1]]
+Completed 200 OK in 11ms (Views: 6.0ms | ActiveRecord: 0.3ms | Allocations: 2281)
+
+
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "tasks" ON "users"."id" = "tasks"."user_id" WHERE "tasks"."project_id" = ?[0m  [["project_id", 1]]
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 15ms (Views: 0.2ms | ActiveRecord: 2.5ms | Allocations: 2587)
+
+
+Started GET "/projects" for ::1 at 2021-02-11 23:26:27 -0500
+Processing by ProjectsController#index as */*
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (2.9ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = ?[0m  [["project_id", 1]]
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "tasks" ON "users"."id" = "tasks"."user_id" WHERE "tasks"."project_id" = ?[0m  [["project_id", 1]]
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 31ms (Views: 0.2ms | ActiveRecord: 3.4ms | Allocations: 3041)
+
+
+Started GET "/tasks" for ::1 at 2021-02-11 23:26:27 -0500
+Processing by TasksController#index as */*
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+Started GET "/users" for ::1 at 2021-02-11 23:26:27 -0500
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mProject Load (10.1ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 16ms (Views: 0.1ms | ActiveRecord: 0.5ms | Allocations: 2183)
+
+
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 35ms (Views: 0.3ms | ActiveRecord: 10.6ms | Allocations: 3908)
+
+
+Started GET "/tasks" for ::1 at 2021-02-11 23:27:11 -0500
+Processing by TasksController#index as */*
+Started GET "/projects" for ::1 at 2021-02-11 23:27:11 -0500
+Started GET "/users" for ::1 at 2021-02-11 23:27:11 -0500
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 5ms (Views: 0.3ms | ActiveRecord: 0.3ms | Allocations: 1400)
+
+
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mProject Load (0.4ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+Processing by ProjectsController#index as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 33ms (Views: 1.0ms | ActiveRecord: 0.9ms | Allocations: 4165)
+
+
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mProject Load (0.3ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = ?[0m  [["project_id", 1]]
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "tasks" ON "users"."id" = "tasks"."user_id" WHERE "tasks"."project_id" = ?[0m  [["project_id", 1]]
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 30ms (Views: 0.2ms | ActiveRecord: 8.0ms | Allocations: 3783)
+
+
+Started GET "/tasks" for ::1 at 2021-02-11 23:28:44 -0500
+Processing by TasksController#index as */*
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+Started GET "/users" for ::1 at 2021-02-11 23:28:44 -0500
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+Started GET "/projects" for ::1 at 2021-02-11 23:28:44 -0500
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+Processing by ProjectsController#index as */*
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[36mProject Load (0.1ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+Completed 200 OK in 27ms (Views: 0.2ms | ActiveRecord: 1.1ms | Allocations: 3773)
+
+
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 25ms (Views: 0.3ms | ActiveRecord: 0.5ms | Allocations: 4016)
+
+
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = ?[0m  [["project_id", 1]]
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "tasks" ON "users"."id" = "tasks"."user_id" WHERE "tasks"."project_id" = ?[0m  [["project_id", 1]]
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 25ms (Views: 0.5ms | ActiveRecord: 0.6ms | Allocations: 3439)
+
+
+Started GET "/tasks" for ::1 at 2021-02-11 23:28:55 -0500
+Started GET "/projects" for ::1 at 2021-02-11 23:28:55 -0500
+Processing by TasksController#index as */*
+  [1m[36mTask Load (0.7ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+Processing by ProjectsController#index as */*
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (0.7ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = ?[0m  [["project_id", 1]]
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "tasks" ON "users"."id" = "tasks"."user_id" WHERE "tasks"."project_id" = ?[0m  [["project_id", 1]]
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 14ms (Views: 0.2ms | ActiveRecord: 1.1ms | Allocations: 2258)
+
+
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+Started GET "/users" for ::1 at 2021-02-11 23:28:55 -0500
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+Processing by UsersController#index as */*
+Completed 200 OK in 63ms (Views: 0.2ms | ActiveRecord: 1.8ms | Allocations: 5179)
+
+
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 11ms (Views: 0.1ms | ActiveRecord: 0.4ms | Allocations: 1650)
+
+
+Started GET "/projects" for ::1 at 2021-02-11 23:29:05 -0500
+Processing by ProjectsController#index as */*
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+Started GET "/users" for ::1 at 2021-02-11 23:29:05 -0500
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 11ms (Views: 0.1ms | ActiveRecord: 0.4ms | Allocations: 1400)
+
+
+Started GET "/tasks" for ::1 at 2021-02-11 23:29:05 -0500
+Processing by TasksController#index as */*
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 17ms (Views: 1.0ms | ActiveRecord: 1.4ms | Allocations: 2262)
+
+
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = ?[0m  [["project_id", 1]]
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "tasks" ON "users"."id" = "tasks"."user_id" WHERE "tasks"."project_id" = ?[0m  [["project_id", 1]]
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 59ms (Views: 0.2ms | ActiveRecord: 0.7ms | Allocations: 7144)
+
+
+Started GET "/projects" for ::1 at 2021-02-11 23:29:16 -0500
+Processing by ProjectsController#index as */*
+  [1m[36mProject Load (0.3ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+Started GET "/tasks" for ::1 at 2021-02-11 23:29:16 -0500
+Processing by TasksController#index as */*
+  [1m[36mTask Load (1.8ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mProject Load (0.3ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+Started GET "/users" for ::1 at 2021-02-11 23:29:16 -0500
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = ?[0m  [["project_id", 1]]
+Completed 200 OK in 42ms (Views: 3.8ms | ActiveRecord: 2.3ms | Allocations: 2467)
+
+
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "tasks" ON "users"."id" = "tasks"."user_id" WHERE "tasks"."project_id" = ?[0m  [["project_id", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 123ms (Views: 0.1ms | ActiveRecord: 0.8ms | Allocations: 5817)
+
+
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 9ms (Views: 0.2ms | ActiveRecord: 0.4ms | Allocations: 2295)
+
+
+Started GET "/projects" for ::1 at 2021-02-11 23:29:37 -0500
+Processing by ProjectsController#index as */*
+Started GET "/users" for ::1 at 2021-02-11 23:29:37 -0500
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 25ms (Views: 18.6ms | ActiveRecord: 0.5ms | Allocations: 1400)
+
+
+Started GET "/tasks" for ::1 at 2021-02-11 23:29:37 -0500
+Processing by TasksController#index as */*
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mProject Load (0.4ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = ?[0m  [["project_id", 1]]
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 29ms (Views: 0.3ms | ActiveRecord: 0.8ms | Allocations: 3166)
+
+
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "tasks" ON "users"."id" = "tasks"."user_id" WHERE "tasks"."project_id" = ?[0m  [["project_id", 1]]
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 92ms (Views: 0.1ms | ActiveRecord: 2.7ms | Allocations: 7133)
+
+
+Started GET "/users" for ::1 at 2021-02-11 23:29:41 -0500
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Started GET "/projects" for ::1 at 2021-02-11 23:29:41 -0500
+Started GET "/tasks" for ::1 at 2021-02-11 23:29:41 -0500
+Processing by TasksController#index as */*
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 21ms (Views: 0.2ms | ActiveRecord: 0.5ms | Allocations: 2805)
+
+
+  [1m[36mProject Load (0.3ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+Processing by ProjectsController#index as */*
+  [1m[36mUser Load (3.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 29ms (Views: 0.3ms | ActiveRecord: 4.4ms | Allocations: 3712)
+
+
+  [1m[36mProject Load (4.5ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = ?[0m  [["project_id", 1]]
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "tasks" ON "users"."id" = "tasks"."user_id" WHERE "tasks"."project_id" = ?[0m  [["project_id", 1]]
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 21ms (Views: 0.2ms | ActiveRecord: 5.0ms | Allocations: 3246)
+
+
+Started GET "/projects" for ::1 at 2021-02-11 23:29:58 -0500
+Started GET "/tasks" for ::1 at 2021-02-11 23:29:58 -0500
+Processing by TasksController#index as */*
+  [1m[36mTask Load (1.6ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 12ms (Views: 0.2ms | ActiveRecord: 2.0ms | Allocations: 2040)
+
+
+Started GET "/users" for ::1 at 2021-02-11 23:29:58 -0500
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (2.0ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 8ms (Views: 0.3ms | ActiveRecord: 2.2ms | Allocations: 1400)
+
+
+Processing by ProjectsController#index as */*
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = ?[0m  [["project_id", 1]]
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "tasks" ON "users"."id" = "tasks"."user_id" WHERE "tasks"."project_id" = ?[0m  [["project_id", 1]]
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 38ms (Views: 0.1ms | ActiveRecord: 0.7ms | Allocations: 2258)
+
+
+Started GET "/projects" for ::1 at 2021-02-11 23:30:34 -0500
+Processing by ProjectsController#index as */*
+  [1m[36mProject Load (0.5ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = ?[0m  [["project_id", 1]]
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "tasks" ON "users"."id" = "tasks"."user_id" WHERE "tasks"."project_id" = ?[0m  [["project_id", 1]]
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+Started GET "/tasks" for ::1 at 2021-02-11 23:30:34 -0500
+Processing by TasksController#index as */*
+  [1m[36mTask Load (1.0ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 66ms (Views: 0.2ms | ActiveRecord: 0.9ms | Allocations: 4623)
+
+
+Started GET "/users" for ::1 at 2021-02-11 23:30:34 -0500
+Processing by UsersController#index as */*
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 10ms (Views: 1.2ms | ActiveRecord: 1.4ms | Allocations: 1400)
+
+
+Completed 200 OK in 70ms (Views: 1.0ms | ActiveRecord: 1.5ms | Allocations: 2701)
+
+
+Started GET "/tasks" for ::1 at 2021-02-11 23:31:10 -0500
+Started GET "/projects" for ::1 at 2021-02-11 23:31:10 -0500
+Started GET "/users" for ::1 at 2021-02-11 23:31:10 -0500
+Processing by TasksController#index as */*
+Processing by UsersController#index as */*
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+Processing by ProjectsController#index as */*
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 15ms (Views: 0.2ms | ActiveRecord: 0.4ms | Allocations: 3027)
+
+
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = ?[0m  [["project_id", 1]]
+Completed 200 OK in 24ms (Views: 0.2ms | ActiveRecord: 0.6ms | Allocations: 4633)
+
+
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "tasks" ON "users"."id" = "tasks"."user_id" WHERE "tasks"."project_id" = ?[0m  [["project_id", 1]]
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 26ms (Views: 0.2ms | ActiveRecord: 0.7ms | Allocations: 4440)
+
+
+Started GET "/tasks" for ::1 at 2021-02-11 23:31:58 -0500
+Processing by TasksController#index as */*
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+Started GET "/projects" for ::1 at 2021-02-11 23:31:58 -0500
+Completed 200 OK in 38ms (Views: 12.5ms | ActiveRecord: 0.6ms | Allocations: 2613)
+
+
+Processing by ProjectsController#index as */*
+Started GET "/users" for ::1 at 2021-02-11 23:31:58 -0500
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+  [1m[36mProject Load (0.4ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (3.6ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = ?[0m  [["project_id", 1]]
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "tasks" ON "users"."id" = "tasks"."user_id" WHERE "tasks"."project_id" = ?[0m  [["project_id", 1]]
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 28ms (Views: 0.2ms | ActiveRecord: 0.8ms | Allocations: 3351)
+
+
+Completed 200 OK in 36ms (Views: 0.2ms | ActiveRecord: 4.6ms | Allocations: 4125)
+
+
+Started GET "/users" for ::1 at 2021-02-11 23:32:02 -0500
+Started GET "/tasks" for ::1 at 2021-02-11 23:32:02 -0500
+Processing by TasksController#index as */*
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 6ms (Views: 0.2ms | ActiveRecord: 0.5ms | Allocations: 2040)
+
+
+Started GET "/projects" for ::1 at 2021-02-11 23:32:02 -0500
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+Processing by ProjectsController#index as */*
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = ?[0m  [["project_id", 1]]
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 15ms (Views: 0.2ms | ActiveRecord: 0.6ms | Allocations: 2745)
+
+
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "tasks" ON "users"."id" = "tasks"."user_id" WHERE "tasks"."project_id" = ?[0m  [["project_id", 1]]
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 19ms (Views: 0.5ms | ActiveRecord: 0.6ms | Allocations: 3325)
+
+
+Started GET "/projects" for ::1 at 2021-02-11 23:32:48 -0500
+Started GET "/tasks" for ::1 at 2021-02-11 23:32:48 -0500
+Processing by TasksController#index as */*
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mProject Load (0.3ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 16ms (Views: 0.2ms | ActiveRecord: 1.5ms | Allocations: 2040)
+
+
+Processing by ProjectsController#index as */*
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = ?[0m  [["project_id", 1]]
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+Started GET "/users" for ::1 at 2021-02-11 23:32:48 -0500
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "tasks" ON "users"."id" = "tasks"."user_id" WHERE "tasks"."project_id" = ?[0m  [["project_id", 1]]
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 18ms (Views: 0.2ms | ActiveRecord: 0.7ms | Allocations: 3153)
+
+
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 16ms (Views: 0.9ms | ActiveRecord: 0.6ms | Allocations: 2416)
+
+
+Started GET "/projects" for ::1 at 2021-02-11 23:33:19 -0500
+Processing by ProjectsController#index as */*
+  [1m[36mProject Load (0.3ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+Started GET "/tasks" for ::1 at 2021-02-11 23:33:19 -0500
+Processing by TasksController#index as */*
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 15ms (Views: 0.2ms | ActiveRecord: 0.7ms | Allocations: 2039)
+
+
+Started GET "/users" for ::1 at 2021-02-11 23:33:19 -0500
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 3ms (Views: 0.1ms | ActiveRecord: 0.3ms | Allocations: 1400)
+
+
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = ?[0m  [["project_id", 1]]
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "tasks" ON "users"."id" = "tasks"."user_id" WHERE "tasks"."project_id" = ?[0m  [["project_id", 1]]
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 52ms (Views: 0.2ms | ActiveRecord: 0.9ms | Allocations: 7422)
+
+
+Started GET "/projects" for ::1 at 2021-02-11 23:34:03 -0500
+Processing by ProjectsController#index as */*
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+Started GET "/tasks" for ::1 at 2021-02-11 23:34:03 -0500
+Processing by TasksController#index as */*
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mProject Load (0.1ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 26ms (Views: 1.2ms | ActiveRecord: 0.5ms | Allocations: 2040)
+
+
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+Started GET "/users" for ::1 at 2021-02-11 23:34:03 -0500
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = ?[0m  [["project_id", 1]]
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "tasks" ON "users"."id" = "tasks"."user_id" WHERE "tasks"."project_id" = ?[0m  [["project_id", 1]]
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 59ms (Views: 0.3ms | ActiveRecord: 0.6ms | Allocations: 6256)
+
+
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 14ms (Views: 0.2ms | ActiveRecord: 0.5ms | Allocations: 1938)
+
+
+Started GET "/tasks" for ::1 at 2021-02-11 23:34:29 -0500
+Started GET "/projects" for ::1 at 2021-02-11 23:34:29 -0500
+Processing by ProjectsController#index as */*
+  [1m[36mProject Load (0.1ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+Processing by TasksController#index as */*
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mProject Load (0.1ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 5ms (Views: 0.2ms | ActiveRecord: 0.4ms | Allocations: 2040)
+
+
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = ?[0m  [["project_id", 1]]
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "tasks" ON "users"."id" = "tasks"."user_id" WHERE "tasks"."project_id" = ?[0m  [["project_id", 1]]
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 21ms (Views: 0.2ms | ActiveRecord: 0.6ms | Allocations: 4838)
+
+
+Started GET "/users" for ::1 at 2021-02-11 23:34:29 -0500
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 16ms (Views: 8.1ms | ActiveRecord: 0.7ms | Allocations: 1401)
+
+
+Started GET "/projects" for ::1 at 2021-02-11 23:34:58 -0500
+Processing by ProjectsController#index as */*
+Started GET "/tasks" for ::1 at 2021-02-11 23:34:58 -0500
+Processing by TasksController#index as */*
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mProject Load (47.9ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+Started GET "/users" for ::1 at 2021-02-11 23:34:58 -0500
+Completed 200 OK in 44ms (Views: 0.2ms | ActiveRecord: 0.6ms | Allocations: 2470)
+
+
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = ?[0m  [["project_id", 1]]
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "tasks" ON "users"."id" = "tasks"."user_id" WHERE "tasks"."project_id" = ?[0m  [["project_id", 1]]
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 14ms (Views: 1.5ms | ActiveRecord: 0.6ms | Allocations: 2166)
+
+
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 122ms (Views: 3.1ms | ActiveRecord: 48.4ms | Allocations: 7435)
+
+
+Started GET "/projects" for ::1 at 2021-02-11 23:35:31 -0500
+Processing by ProjectsController#index as */*
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (3.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = ?[0m  [["project_id", 1]]
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "tasks" ON "users"."id" = "tasks"."user_id" WHERE "tasks"."project_id" = ?[0m  [["project_id", 1]]
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 18ms (Views: 0.2ms | ActiveRecord: 3.7ms | Allocations: 2653)
+
+
+Started GET "/tasks" for ::1 at 2021-02-11 23:35:31 -0500
+Processing by TasksController#index as */*
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mProject Load (0.6ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+Started GET "/users" for ::1 at 2021-02-11 23:35:31 -0500
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 21ms (Views: 0.2ms | ActiveRecord: 1.6ms | Allocations: 2286)
+
+
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 8ms (Views: 0.2ms | ActiveRecord: 0.6ms | Allocations: 1442)
+
+
+Started GET "/tasks" for ::1 at 2021-02-11 23:35:51 -0500
+Processing by TasksController#index as */*
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 10ms (Views: 0.2ms | ActiveRecord: 0.6ms | Allocations: 2040)
+
+
+Started GET "/users" for ::1 at 2021-02-11 23:35:51 -0500
+Started GET "/projects" for ::1 at 2021-02-11 23:35:51 -0500
+Processing by ProjectsController#index as */*
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mProject Load (8.7ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = ?[0m  [["project_id", 1]]
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "tasks" ON "users"."id" = "tasks"."user_id" WHERE "tasks"."project_id" = ?[0m  [["project_id", 1]]
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 41ms (Views: 0.4ms | ActiveRecord: 9.2ms | Allocations: 3877)
+
+
+Completed 200 OK in 31ms (Views: 0.2ms | ActiveRecord: 0.5ms | Allocations: 3269)
+
+
+Started GET "/users" for ::1 at 2021-02-11 23:37:46 -0500
+Started GET "/tasks" for ::1 at 2021-02-11 23:37:46 -0500
+Started GET "/projects" for ::1 at 2021-02-11 23:37:46 -0500
+Processing by ProjectsController#index as */*
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = ?[0m  [["project_id", 1]]
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "tasks" ON "users"."id" = "tasks"."user_id" WHERE "tasks"."project_id" = ?[0m  [["project_id", 1]]
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 3ms (Views: 0.1ms | ActiveRecord: 0.3ms | Allocations: 1400)
+
+
+Completed 200 OK in 8ms (Views: 0.2ms | ActiveRecord: 0.6ms | Allocations: 2258)
+
+
+Processing by TasksController#index as */*
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mProject Load (0.3ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 27ms (Views: 0.2ms | ActiveRecord: 0.7ms | Allocations: 2040)
+
+
+Started GET "/projects" for ::1 at 2021-02-11 23:38:33 -0500
+Started GET "/tasks" for ::1 at 2021-02-11 23:38:33 -0500
+Processing by TasksController#index as */*
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Processing by ProjectsController#index as */*
+Started GET "/users" for ::1 at 2021-02-11 23:38:33 -0500
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 59ms (Views: 0.2ms | ActiveRecord: 0.8ms | Allocations: 2944)
+
+
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+  [1m[36mProject Load (0.3ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = ?[0m  [["project_id", 1]]
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (1.1ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 22ms (Views: 0.2ms | ActiveRecord: 1.4ms | Allocations: 2751)
+
+
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "tasks" ON "users"."id" = "tasks"."user_id" WHERE "tasks"."project_id" = ?[0m  [["project_id", 1]]
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 43ms (Views: 0.3ms | ActiveRecord: 2.0ms | Allocations: 4640)
+
+
+Started GET "/projects" for ::1 at 2021-02-11 23:40:11 -0500
+Started GET "/users" for ::1 at 2021-02-11 23:40:11 -0500
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 4ms (Views: 0.1ms | ActiveRecord: 0.3ms | Allocations: 1400)
+
+
+Started GET "/tasks" for ::1 at 2021-02-11 23:40:11 -0500
+Processing by TasksController#index as */*
+Processing by ProjectsController#index as */*
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = ?[0m  [["project_id", 1]]
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "tasks" ON "users"."id" = "tasks"."user_id" WHERE "tasks"."project_id" = ?[0m  [["project_id", 1]]
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 17ms (Views: 0.2ms | ActiveRecord: 0.5ms | Allocations: 4122)
+
+
+Completed 200 OK in 21ms (Views: 0.2ms | ActiveRecord: 0.5ms | Allocations: 4529)
+
+
+Started GET "/projects" for ::1 at 2021-02-11 23:41:13 -0500
+Processing by ProjectsController#index as */*
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (4.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = ?[0m  [["project_id", 1]]
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+Started GET "/users" for ::1 at 2021-02-11 23:41:13 -0500
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 5ms (Views: 0.1ms | ActiveRecord: 0.3ms | Allocations: 1400)
+
+
+Started GET "/tasks" for ::1 at 2021-02-11 23:41:13 -0500
+Processing by TasksController#index as */*
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "tasks" ON "users"."id" = "tasks"."user_id" WHERE "tasks"."project_id" = ?[0m  [["project_id", 1]]
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 51ms (Views: 0.2ms | ActiveRecord: 4.8ms | Allocations: 6060)
+
+
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 25ms (Views: 0.2ms | ActiveRecord: 0.7ms | Allocations: 3044)
+
+
+Started GET "/projects" for ::1 at 2021-02-11 23:41:31 -0500
+Processing by ProjectsController#index as */*
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (7.4ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = ?[0m  [["project_id", 1]]
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "tasks" ON "users"."id" = "tasks"."user_id" WHERE "tasks"."project_id" = ?[0m  [["project_id", 1]]
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 17ms (Views: 0.1ms | ActiveRecord: 7.8ms | Allocations: 2313)
+
+
+Started GET "/tasks" for ::1 at 2021-02-11 23:41:31 -0500
+Started GET "/users" for ::1 at 2021-02-11 23:41:31 -0500
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+Processing by TasksController#index as */*
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mProject Load (0.3ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 22ms (Views: 0.2ms | ActiveRecord: 0.4ms | Allocations: 2921)
+
+
+  [1m[36mUser Load (2.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 14ms (Views: 0.2ms | ActiveRecord: 3.1ms | Allocations: 2417)
+
+
+Started GET "/tasks" for ::1 at 2021-02-11 23:41:48 -0500
+Processing by TasksController#index as */*
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Started GET "/projects" for ::1 at 2021-02-11 23:41:48 -0500
+Started GET "/users" for ::1 at 2021-02-11 23:41:48 -0500
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+Processing by ProjectsController#index as */*
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (0.8ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = ?[0m  [["project_id", 1]]
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "tasks" ON "users"."id" = "tasks"."user_id" WHERE "tasks"."project_id" = ?[0m  [["project_id", 1]]
+Completed 200 OK in 22ms (Views: 0.1ms | ActiveRecord: 0.4ms | Allocations: 2804)
+
+
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 33ms (Views: 0.4ms | ActiveRecord: 1.4ms | Allocations: 3932)
+
+
+Completed 200 OK in 65ms (Views: 0.3ms | ActiveRecord: 2.3ms | Allocations: 3012)
+
+
+Started GET "/projects" for ::1 at 2021-02-11 23:42:30 -0500
+Processing by ProjectsController#index as */*
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = ?[0m  [["project_id", 1]]
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "tasks" ON "users"."id" = "tasks"."user_id" WHERE "tasks"."project_id" = ?[0m  [["project_id", 1]]
+Started GET "/users" for ::1 at 2021-02-11 23:42:30 -0500
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 3ms (Views: 0.1ms | ActiveRecord: 0.3ms | Allocations: 1400)
+
+
+Started GET "/tasks" for ::1 at 2021-02-11 23:42:30 -0500
+Processing by TasksController#index as */*
+  [1m[36mTask Load (0.6ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 17ms (Views: 0.2ms | ActiveRecord: 1.7ms | Allocations: 2322)
+
+
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 49ms (Views: 0.2ms | ActiveRecord: 0.6ms | Allocations: 7237)
+
+
+Started GET "/projects" for ::1 at 2021-02-11 23:43:16 -0500
+Processing by ProjectsController#index as */*
+  [1m[36mProject Load (0.6ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = ?[0m  [["project_id", 1]]
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "tasks" ON "users"."id" = "tasks"."user_id" WHERE "tasks"."project_id" = ?[0m  [["project_id", 1]]
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+Started GET "/tasks" for ::1 at 2021-02-11 23:43:16 -0500
+Processing by TasksController#index as */*
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mProject Load (0.3ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Started GET "/users" for ::1 at 2021-02-11 23:43:16 -0500
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 27ms (Views: 0.2ms | ActiveRecord: 1.1ms | Allocations: 3957)
+
+
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+Processing by UsersController#index as */*
+Completed 200 OK in 20ms (Views: 0.1ms | ActiveRecord: 0.6ms | Allocations: 3143)
+
+
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 8ms (Views: 0.1ms | ActiveRecord: 0.5ms | Allocations: 1877)
+
+
+Started GET "/projects" for ::1 at 2021-02-11 23:46:11 -0500
+Started GET "/users" for ::1 at 2021-02-11 23:46:11 -0500
+Started GET "/tasks" for ::1 at 2021-02-11 23:46:11 -0500
+Processing by TasksController#index as */*
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mProject Load (0.4ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+Processing by ProjectsController#index as */*
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 9ms (Views: 0.1ms | ActiveRecord: 0.4ms | Allocations: 1401)
+
+
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = ?[0m  [["project_id", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 86ms (Views: 0.4ms | ActiveRecord: 0.8ms | Allocations: 5205)
+
+
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "tasks" ON "users"."id" = "tasks"."user_id" WHERE "tasks"."project_id" = ?[0m  [["project_id", 1]]
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 55ms (Views: 0.7ms | ActiveRecord: 0.7ms | Allocations: 5119)
+
+
+Started GET "/projects" for ::1 at 2021-02-11 23:46:38 -0500
+Started GET "/tasks" for ::1 at 2021-02-11 23:46:38 -0500
+Processing by TasksController#index as */*
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+Started GET "/users" for ::1 at 2021-02-11 23:46:38 -0500
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 7ms (Views: 0.2ms | ActiveRecord: 0.4ms | Allocations: 1400)
+
+
+Processing by ProjectsController#index as */*
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = ?[0m  [["project_id", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 49ms (Views: 0.2ms | ActiveRecord: 1.0ms | Allocations: 5194)
+
+
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "tasks" ON "users"."id" = "tasks"."user_id" WHERE "tasks"."project_id" = ?[0m  [["project_id", 1]]
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 23ms (Views: 0.4ms | ActiveRecord: 0.7ms | Allocations: 3315)
+
+
+Started GET "/tasks" for ::1 at 2021-02-11 23:46:59 -0500
+Processing by TasksController#index as */*
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 11ms (Views: 0.1ms | ActiveRecord: 0.6ms | Allocations: 2040)
+
+
+Started GET "/projects" for ::1 at 2021-02-11 23:46:59 -0500
+Processing by ProjectsController#index as */*
+  [1m[36mProject Load (0.3ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = ?[0m  [["project_id", 1]]
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+Started GET "/users" for ::1 at 2021-02-11 23:46:59 -0500
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "tasks" ON "users"."id" = "tasks"."user_id" WHERE "tasks"."project_id" = ?[0m  [["project_id", 1]]
+Processing by UsersController#index as */*
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 23ms (Views: 0.2ms | ActiveRecord: 0.7ms | Allocations: 2932)
+
+
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 15ms (Views: 0.7ms | ActiveRecord: 0.4ms | Allocations: 2095)
+
+
+Started GET "/projects" for ::1 at 2021-02-11 23:47:15 -0500
+Processing by ProjectsController#index as */*
+  [1m[36mProject Load (0.4ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = ?[0m  [["project_id", 1]]
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "tasks" ON "users"."id" = "tasks"."user_id" WHERE "tasks"."project_id" = ?[0m  [["project_id", 1]]
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+Started GET "/tasks" for ::1 at 2021-02-11 23:47:15 -0500
+Completed 200 OK in 30ms (Views: 0.2ms | ActiveRecord: 1.4ms | Allocations: 2739)
+
+
+Processing by TasksController#index as */*
+Started GET "/users" for ::1 at 2021-02-11 23:47:15 -0500
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 7ms (Views: 0.1ms | ActiveRecord: 0.4ms | Allocations: 1414)
+
+
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mProject Load (0.3ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 27ms (Views: 0.2ms | ActiveRecord: 1.2ms | Allocations: 4170)
+
+
+Started GET "/projects" for ::1 at 2021-02-11 23:48:01 -0500
+Processing by ProjectsController#index as */*
+  [1m[36mProject Load (0.3ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+Started GET "/users" for ::1 at 2021-02-11 23:48:01 -0500
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 10ms (Views: 0.1ms | ActiveRecord: 0.5ms | Allocations: 1400)
+
+
+  [1m[36mTask Load (0.7ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = ?[0m  [["project_id", 1]]
+Started GET "/tasks" for ::1 at 2021-02-11 23:48:01 -0500
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "tasks" ON "users"."id" = "tasks"."user_id" WHERE "tasks"."project_id" = ?[0m  [["project_id", 1]]
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+Processing by TasksController#index as */*
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+Completed 200 OK in 128ms (Views: 0.2ms | ActiveRecord: 1.3ms | Allocations: 5445)
+
+
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mProject Load (0.6ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 15ms (Views: 0.2ms | ActiveRecord: 1.0ms | Allocations: 2362)
+
+
+Started GET "/tasks" for ::1 at 2021-02-11 23:49:17 -0500
+Processing by TasksController#index as */*
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mProject Load (0.3ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+Started GET "/projects" for ::1 at 2021-02-11 23:49:17 -0500
+Completed 200 OK in 22ms (Views: 0.1ms | ActiveRecord: 0.9ms | Allocations: 2216)
+
+
+Started GET "/users" for ::1 at 2021-02-11 23:49:17 -0500
+Processing by UsersController#index as */*
+Processing by ProjectsController#index as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (0.7ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (2.1ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = ?[0m  [["project_id", 1]]
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "tasks" ON "users"."id" = "tasks"."user_id" WHERE "tasks"."project_id" = ?[0m  [["project_id", 1]]
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 27ms (Views: 0.2ms | ActiveRecord: 4.2ms | Allocations: 3562)
+
+
+Completed 200 OK in 21ms (Views: 0.2ms | ActiveRecord: 1.0ms | Allocations: 2526)
+
+
+Started GET "/tasks" for ::1 at 2021-02-11 23:51:02 -0500
+Started GET "/users" for ::1 at 2021-02-11 23:51:02 -0500
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 10ms (Views: 0.2ms | ActiveRecord: 0.4ms | Allocations: 1400)
+
+
+Started GET "/projects" for ::1 at 2021-02-11 23:51:02 -0500
+Processing by ProjectsController#index as */*
+  [1m[36mProject Load (0.7ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (0.7ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = ?[0m  [["project_id", 1]]
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "tasks" ON "users"."id" = "tasks"."user_id" WHERE "tasks"."project_id" = ?[0m  [["project_id", 1]]
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 22ms (Views: 0.2ms | ActiveRecord: 1.6ms | Allocations: 2343)
+
+
+Processing by TasksController#index as */*
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 10ms (Views: 0.2ms | ActiveRecord: 0.8ms | Allocations: 2040)
+
+
+Started GET "/tasks" for ::1 at 2021-02-11 23:51:21 -0500
+Processing by TasksController#index as */*
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mProject Load (0.3ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+Started GET "/users" for ::1 at 2021-02-11 23:51:21 -0500
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (1.0ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 11ms (Views: 0.2ms | ActiveRecord: 1.2ms | Allocations: 1400)
+
+
+Started GET "/projects" for ::1 at 2021-02-11 23:51:21 -0500
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Processing by ProjectsController#index as */*
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 47ms (Views: 0.2ms | ActiveRecord: 0.6ms | Allocations: 5243)
+
+
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = ?[0m  [["project_id", 1]]
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "tasks" ON "users"."id" = "tasks"."user_id" WHERE "tasks"."project_id" = ?[0m  [["project_id", 1]]
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 16ms (Views: 0.3ms | ActiveRecord: 0.7ms | Allocations: 2870)
+
+
+Started GET "/projects" for ::1 at 2021-02-11 23:51:45 -0500
+Started GET "/tasks" for ::1 at 2021-02-11 23:51:45 -0500
+Processing by TasksController#index as */*
+  [1m[36mTask Load (0.6ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+Started GET "/users" for ::1 at 2021-02-11 23:51:45 -0500
+  [1m[36mProject Load (5.9ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Processing by ProjectsController#index as */*
+  [1m[36mProject Load (0.3ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = ?[0m  [["project_id", 1]]
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "tasks" ON "users"."id" = "tasks"."user_id" WHERE "tasks"."project_id" = ?[0m  [["project_id", 1]]
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 14ms (Views: 0.2ms | ActiveRecord: 1.0ms | Allocations: 2258)
+
+
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 55ms (Views: 0.2ms | ActiveRecord: 7.3ms | Allocations: 4727)
+
+
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 7ms (Views: 0.2ms | ActiveRecord: 0.7ms | Allocations: 1400)
+
+

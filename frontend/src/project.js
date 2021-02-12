@@ -42,6 +42,16 @@ class Project {
     }
 
     static handleNewProject = e => {
-        alert("New Project!")
+        let data = `
+            <div id="new-project">
+                <h1>Create a New Project</h1>
+                <input type="text" placeholder="Project Name">
+            </div>
+        `
+        Modal.render(data)
+    }
+
+    static newProject() {
+
     }
 }
