@@ -1,11 +1,12 @@
 class User {
     static all = []
 
-    constructor({id, first_name, last_name, email}) {
+    constructor({id, first_name, last_name, email, department_id}) {
         this.id = id
         this.firstName = first_name
         this.lastName = last_name
         this.email = email
+        this.department_id = department_id
         
         User.all.push(this)
     }
@@ -23,5 +24,9 @@ class User {
 
     tasks() {
         return Task.all.filter((t) => t.userId == this.id)
+    }
+
+    department() {
+        return Department.all.filter((d) => d.id == this.department_id)
     }
 }

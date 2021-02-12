@@ -30,7 +30,6 @@ class Project {
         newProject.style.justifyContent = "center"
         newProject.style.alignItems = "center"
         newProject.style.flexDirection = "column"
-        newProject.innerHTML = `New Project`
         newProject.innerHTML += `<span style="font-size: 150px;">+</span>`
         newProject.addEventListener("click", this.handleNewProject)
         
