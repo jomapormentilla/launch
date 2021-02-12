@@ -17372,3 +17372,1254 @@ Processing by UsersController#index as */*
 Completed 200 OK in 3ms (Views: 0.1ms | ActiveRecord: 0.3ms | Allocations: 1267)
 
 
+Started GET "/departments" for ::1 at 2021-02-12 11:40:21 -0500
+Started GET "/projects" for ::1 at 2021-02-12 11:40:21 -0500
+Processing by ProjectsController#index as */*
+  [1m[36mProject Load (0.3ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = ?[0m  [["project_id", 1]]
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "tasks" ON "users"."id" = "tasks"."user_id" WHERE "tasks"."project_id" = ?[0m  [["project_id", 1]]
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 21ms (Views: 0.2ms | ActiveRecord: 1.0ms | Allocations: 2098)
+
+
+Processing by DepartmentsController#index as */*
+Started GET "/tasks" for ::1 at 2021-02-12 11:40:21 -0500
+Processing by TasksController#index as */*
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 4ms (Views: 0.2ms | ActiveRecord: 0.5ms | Allocations: 523)
+
+
+Started GET "/users" for ::1 at 2021-02-12 11:40:21 -0500
+  [1m[36mDepartment Load (0.3ms)[0m  [1m[34mSELECT "departments".* FROM "departments"[0m
+  ↳ app/services/department_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."department_id" = ?[0m  [["department_id", 1]]
+  ↳ app/services/department_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 21ms (Views: 0.2ms | ActiveRecord: 0.4ms | Allocations: 3098)
+
+
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 21ms (Views: 0.2ms | ActiveRecord: 0.5ms | Allocations: 1271)
+
+
+Started GET "/departments" for ::1 at 2021-02-12 11:48:06 -0500
+Processing by DepartmentsController#index as */*
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/services/department_serializer.rb:7:in `to_serialized_json'
+  [1m[36mDepartment Load (0.5ms)[0m  [1m[34mSELECT "departments".* FROM "departments"[0m
+  ↳ app/services/department_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."department_id" = ?[0m  [["department_id", 1]]
+  ↳ app/services/department_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 9ms (Views: 0.1ms | ActiveRecord: 1.6ms | Allocations: 1889)
+
+
+Started GET "/projects" for ::1 at 2021-02-12 11:48:06 -0500
+Processing by ProjectsController#index as */*
+Started GET "/tasks" for ::1 at 2021-02-12 11:48:06 -0500
+Processing by TasksController#index as */*
+  [1m[36mTask Load (4.7ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 7ms (Views: 0.2ms | ActiveRecord: 4.7ms | Allocations: 544)
+
+
+Started GET "/users" for ::1 at 2021-02-12 11:48:06 -0500
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mProject Load (3.7ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (4.9ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (0.6ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = ?[0m  [["project_id", 1]]
+Completed 200 OK in 33ms (Views: 0.2ms | ActiveRecord: 5.2ms | Allocations: 2667)
+
+
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "tasks" ON "users"."id" = "tasks"."user_id" WHERE "tasks"."project_id" = ?[0m  [["project_id", 1]]
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 45ms (Views: 0.8ms | ActiveRecord: 6.2ms | Allocations: 3826)
+
+
+Started GET "/tasks" for ::1 at 2021-02-12 11:49:06 -0500
+Started GET "/projects" for ::1 at 2021-02-12 11:49:06 -0500
+Started GET "/users" for ::1 at 2021-02-12 11:49:06 -0500
+Started GET "/departments" for ::1 at 2021-02-12 11:49:06 -0500
+Processing by UsersController#index as */*
+Processing by TasksController#index as */*
+Processing by ProjectsController#index as */*
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (1.1ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ?[0m  [["user_id", 1]]
+Processing by DepartmentsController#index as */*
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+  ↳ app/services/department_serializer.rb:7:in `to_serialized_json'
+  [1m[36mProject Load (7.0ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (2.9ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 30ms (Views: 0.2ms | ActiveRecord: 3.7ms | Allocations: 3319)
+
+
+  [1m[36mDepartment Load (0.6ms)[0m  [1m[34mSELECT "departments".* FROM "departments"[0m
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (0.6ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = ?[0m  [["project_id", 1]]
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  ↳ app/services/department_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "tasks" ON "users"."id" = "tasks"."user_id" WHERE "tasks"."project_id" = ?[0m  [["project_id", 1]]
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 19ms (Views: 0.2ms | ActiveRecord: 1.7ms | Allocations: 2693)
+
+
+Completed 200 OK in 62ms (Views: 0.6ms | ActiveRecord: 9.4ms | Allocations: 5853)
+
+
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."department_id" = ?[0m  [["department_id", 1]]
+  ↳ app/services/department_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 58ms (Views: 0.2ms | ActiveRecord: 1.9ms | Allocations: 5665)
+
+
+Started GET "/tasks" for ::1 at 2021-02-12 11:50:59 -0500
+Started GET "/users" for ::1 at 2021-02-12 11:50:59 -0500
+Started GET "/projects" for ::1 at 2021-02-12 11:50:59 -0500
+Started GET "/departments" for ::1 at 2021-02-12 11:50:59 -0500
+Processing by ProjectsController#index as */*
+  [1m[36mProject Load (1.9ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+Processing by DepartmentsController#index as */*
+  [1m[36mDepartment Load (0.1ms)[0m  [1m[34mSELECT "departments".* FROM "departments"[0m
+  ↳ app/services/department_serializer.rb:7:in `to_serialized_json'
+Processing by TasksController#index as */*
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."department_id" = ?[0m  [["department_id", 1]]
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = ?[0m  [["project_id", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+  ↳ app/services/department_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 23ms (Views: 0.2ms | ActiveRecord: 0.4ms | Allocations: 2995)
+
+
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (0.6ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 24ms (Views: 0.2ms | ActiveRecord: 1.1ms | Allocations: 2545)
+
+
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "tasks" ON "users"."id" = "tasks"."user_id" WHERE "tasks"."project_id" = ?[0m  [["project_id", 1]]
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 34ms (Views: 0.2ms | ActiveRecord: 0.5ms | Allocations: 4238)
+
+
+Completed 200 OK in 53ms (Views: 0.1ms | ActiveRecord: 2.9ms | Allocations: 6326)
+
+
+Started GET "/departments" for ::1 at 2021-02-12 11:51:23 -0500
+Processing by DepartmentsController#index as */*
+  [1m[36mDepartment Load (0.3ms)[0m  [1m[34mSELECT "departments".* FROM "departments"[0m
+  ↳ app/services/department_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."department_id" = ?[0m  [["department_id", 1]]
+  ↳ app/services/department_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 8ms (Views: 0.2ms | ActiveRecord: 0.5ms | Allocations: 1370)
+
+
+Started GET "/projects" for ::1 at 2021-02-12 11:51:23 -0500
+Processing by ProjectsController#index as */*
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = ?[0m  [["project_id", 1]]
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "tasks" ON "users"."id" = "tasks"."user_id" WHERE "tasks"."project_id" = ?[0m  [["project_id", 1]]
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 9ms (Views: 0.2ms | ActiveRecord: 0.6ms | Allocations: 2039)
+
+
+Started GET "/tasks" for ::1 at 2021-02-12 11:51:23 -0500
+Processing by TasksController#index as */*
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 5ms (Views: 0.3ms | ActiveRecord: 0.4ms | Allocations: 544)
+
+
+Started GET "/users" for ::1 at 2021-02-12 11:51:23 -0500
+Processing by UsersController#index as */*
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 15ms (Views: 0.2ms | ActiveRecord: 1.6ms | Allocations: 1309)
+
+
+Started GET "/projects" for ::1 at 2021-02-12 12:03:14 -0500
+  [1m[35m (2.8ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ProjectsController#index as HTML
+  [1m[36mProject Load (0.6ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (0.8ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = ?[0m  [["project_id", 1]]
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "tasks" ON "users"."id" = "tasks"."user_id" WHERE "tasks"."project_id" = ?[0m  [["project_id", 1]]
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 228ms (Views: 11.1ms | ActiveRecord: 4.8ms | Allocations: 17757)
+
+
+Started GET "/tasks" for ::1 at 2021-02-12 12:05:50 -0500
+Processing by TasksController#index as HTML
+  [1m[36mTask Load (0.9ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 4ms (Views: 0.2ms | ActiveRecord: 0.9ms | Allocations: 707)
+
+
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUsers (20210212002443)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "first_name" varchar, "last_name" varchar, "email" varchar, "password" varchar, "department_id" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE INDEX "index_users_on_department_id" ON "users" ("department_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210212002443"]]
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateProjects (20210212002455)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "projects" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "description" varchar, "creator_id" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE INDEX "index_projects_on_creator_id" ON "projects" ("creator_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210212002455"]]
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateTasks (20210212002510)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "tasks" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "description" varchar, "deadline" datetime, "user_id" integer, "project_id" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_tasks_on_user_id" ON "tasks" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_tasks_on_project_id" ON "tasks" ("project_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210212002510"]]
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateDepartments (20210212002756)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "departments" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210212002756"]]
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (1.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2021-02-12 17:11:25.038986"], ["updated_at", "2021-02-12 17:11:25.038986"]]
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDepartment Create (0.5ms)[0m  [1m[32mINSERT INTO "departments" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Software Engineering"], ["created_at", "2021-02-12 17:11:30.970607"], ["updated_at", "2021-02-12 17:11:30.970607"]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDepartment Create (0.4ms)[0m  [1m[32mINSERT INTO "departments" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Design"], ["created_at", "2021-02-12 17:11:30.977408"], ["updated_at", "2021-02-12 17:11:30.977408"]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDepartment Create (0.4ms)[0m  [1m[32mINSERT INTO "departments" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Marketing"], ["created_at", "2021-02-12 17:11:30.982336"], ["updated_at", "2021-02-12 17:11:30.982336"]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDepartment Create (0.4ms)[0m  [1m[32mINSERT INTO "departments" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Accounting"], ["created_at", "2021-02-12 17:11:30.987408"], ["updated_at", "2021-02-12 17:11:30.987408"]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDepartment Create (0.5ms)[0m  [1m[32mINSERT INTO "departments" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Human Resources"], ["created_at", "2021-02-12 17:11:30.993370"], ["updated_at", "2021-02-12 17:11:30.993370"]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDepartment Create (0.6ms)[0m  [1m[32mINSERT INTO "departments" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Legal"], ["created_at", "2021-02-12 17:11:31.001082"], ["updated_at", "2021-02-12 17:11:31.001082"]]
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mDepartment Load (0.2ms)[0m  [1m[34mSELECT "departments".* FROM "departments" WHERE "departments"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUsers (20210212002443)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "first_name" varchar, "last_name" varchar, "email" varchar, "password" varchar, "department_id" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE INDEX "index_users_on_department_id" ON "users" ("department_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210212002443"]]
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateProjects (20210212002455)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "projects" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "description" varchar, "creator_id" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_projects_on_creator_id" ON "projects" ("creator_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210212002455"]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateTasks (20210212002510)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE TABLE "tasks" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "description" varchar, "deadline" datetime, "user_id" integer, "project_id" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE INDEX "index_tasks_on_user_id" ON "tasks" ("user_id")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE INDEX "index_tasks_on_project_id" ON "tasks" ("project_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210212002510"]]
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateDepartments (20210212002756)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (3.3ms)[0m  [1m[35mCREATE TABLE "departments" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210212002756"]]
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2021-02-12 17:12:05.344729"], ["updated_at", "2021-02-12 17:12:05.344729"]]
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDepartment Create (0.6ms)[0m  [1m[32mINSERT INTO "departments" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Software Engineering"], ["created_at", "2021-02-12 17:12:30.200960"], ["updated_at", "2021-02-12 17:12:30.200960"]]
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDepartment Create (0.3ms)[0m  [1m[32mINSERT INTO "departments" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Design"], ["created_at", "2021-02-12 17:12:30.206800"], ["updated_at", "2021-02-12 17:12:30.206800"]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDepartment Create (0.3ms)[0m  [1m[32mINSERT INTO "departments" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Marketing"], ["created_at", "2021-02-12 17:12:30.211676"], ["updated_at", "2021-02-12 17:12:30.211676"]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDepartment Create (0.3ms)[0m  [1m[32mINSERT INTO "departments" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Accounting"], ["created_at", "2021-02-12 17:12:30.216816"], ["updated_at", "2021-02-12 17:12:30.216816"]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDepartment Create (0.3ms)[0m  [1m[32mINSERT INTO "departments" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Human Resources"], ["created_at", "2021-02-12 17:12:30.221748"], ["updated_at", "2021-02-12 17:12:30.221748"]]
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDepartment Create (0.4ms)[0m  [1m[32mINSERT INTO "departments" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Legal"], ["created_at", "2021-02-12 17:12:30.226815"], ["updated_at", "2021-02-12 17:12:30.226815"]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mDepartment Load (0.3ms)[0m  [1m[34mSELECT "departments".* FROM "departments" ORDER BY "departments"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mDepartment Load (0.2ms)[0m  [1m[34mSELECT "departments".* FROM "departments" WHERE "departments"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+  [1m[36mDepartment Load (0.3ms)[0m  [1m[34mSELECT "departments".* FROM "departments" WHERE "departments"."name" = ? LIMIT ?[0m  [["name", "Software Engineering"], ["LIMIT", 1]]
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mDepartment Load (0.3ms)[0m  [1m[34mSELECT "departments".* FROM "departments" WHERE "departments"."name" = ? LIMIT ?[0m  [["name", "Software Engineering"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDepartment Load (0.2ms)[0m  [1m[34mSELECT "departments".* FROM "departments" WHERE "departments"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "password", "department_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["first_name", "Joma"], ["last_name", "Pormentilla"], ["email", "jomapormentilla@gmail.com"], ["password", "password"], ["department_id", 1], ["created_at", "2021-02-12 17:13:49.095974"], ["updated_at", "2021-02-12 17:13:49.095974"]]
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mDepartment Load (0.2ms)[0m  [1m[34mSELECT "departments".* FROM "departments"[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDepartment Load (0.1ms)[0m  [1m[34mSELECT "departments".* FROM "departments" WHERE "departments"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "password", "department_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["first_name", "Lorenzo"], ["last_name", "Raynor"], ["email", "lorenzoraynor@gmail.com"], ["password", "password"], ["department_id", 5], ["created_at", "2021-02-12 17:13:51.004486"], ["updated_at", "2021-02-12 17:13:51.004486"]]
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mDepartment Load (0.2ms)[0m  [1m[34mSELECT "departments".* FROM "departments"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDepartment Load (0.1ms)[0m  [1m[34mSELECT "departments".* FROM "departments" WHERE "departments"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "password", "department_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["first_name", "Sabine"], ["last_name", "Block"], ["email", "sabineblock@gmail.com"], ["password", "password"], ["department_id", 6], ["created_at", "2021-02-12 17:13:51.015363"], ["updated_at", "2021-02-12 17:13:51.015363"]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mDepartment Load (0.1ms)[0m  [1m[34mSELECT "departments".* FROM "departments"[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDepartment Load (0.1ms)[0m  [1m[34mSELECT "departments".* FROM "departments" WHERE "departments"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "password", "department_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["first_name", "Lowell"], ["last_name", "Murphy"], ["email", "lowellmurphy@gmail.com"], ["password", "password"], ["department_id", 3], ["created_at", "2021-02-12 17:13:51.022870"], ["updated_at", "2021-02-12 17:13:51.022870"]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mDepartment Load (0.2ms)[0m  [1m[34mSELECT "departments".* FROM "departments"[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDepartment Load (0.1ms)[0m  [1m[34mSELECT "departments".* FROM "departments" WHERE "departments"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "password", "department_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["first_name", "Lilla"], ["last_name", "Zieme"], ["email", "lillazieme@gmail.com"], ["password", "password"], ["department_id", 4], ["created_at", "2021-02-12 17:13:51.031075"], ["updated_at", "2021-02-12 17:13:51.031075"]]
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mDepartment Load (0.5ms)[0m  [1m[34mSELECT "departments".* FROM "departments"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDepartment Load (0.1ms)[0m  [1m[34mSELECT "departments".* FROM "departments" WHERE "departments"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "password", "department_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["first_name", "Samual"], ["last_name", "Hintz"], ["email", "samualhintz@gmail.com"], ["password", "password"], ["department_id", 2], ["created_at", "2021-02-12 17:13:51.040581"], ["updated_at", "2021-02-12 17:13:51.040581"]]
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mDepartment Load (0.1ms)[0m  [1m[34mSELECT "departments".* FROM "departments"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDepartment Load (0.1ms)[0m  [1m[34mSELECT "departments".* FROM "departments" WHERE "departments"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "password", "department_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["first_name", "Iva"], ["last_name", "Lowe"], ["email", "ivalowe@gmail.com"], ["password", "password"], ["department_id", 6], ["created_at", "2021-02-12 17:13:51.048767"], ["updated_at", "2021-02-12 17:13:51.048767"]]
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mDepartment Load (0.2ms)[0m  [1m[34mSELECT "departments".* FROM "departments"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDepartment Load (0.2ms)[0m  [1m[34mSELECT "departments".* FROM "departments" WHERE "departments"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "password", "department_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["first_name", "Jewel"], ["last_name", "Dicki"], ["email", "jeweldicki@gmail.com"], ["password", "password"], ["department_id", 6], ["created_at", "2021-02-12 17:13:51.097615"], ["updated_at", "2021-02-12 17:13:51.097615"]]
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mDepartment Load (0.2ms)[0m  [1m[34mSELECT "departments".* FROM "departments"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDepartment Load (0.1ms)[0m  [1m[34mSELECT "departments".* FROM "departments" WHERE "departments"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "password", "department_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["first_name", "Clayton"], ["last_name", "Hettinger"], ["email", "claytonhettinger@gmail.com"], ["password", "password"], ["department_id", 1], ["created_at", "2021-02-12 17:13:51.133448"], ["updated_at", "2021-02-12 17:13:51.133448"]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mDepartment Load (0.2ms)[0m  [1m[34mSELECT "departments".* FROM "departments"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDepartment Load (0.1ms)[0m  [1m[34mSELECT "departments".* FROM "departments" WHERE "departments"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "password", "department_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["first_name", "Wally"], ["last_name", "Stamm"], ["email", "wallystamm@gmail.com"], ["password", "password"], ["department_id", 6], ["created_at", "2021-02-12 17:13:51.141843"], ["updated_at", "2021-02-12 17:13:51.141843"]]
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mDepartment Load (0.1ms)[0m  [1m[34mSELECT "departments".* FROM "departments"[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDepartment Load (0.1ms)[0m  [1m[34mSELECT "departments".* FROM "departments" WHERE "departments"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "password", "department_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["first_name", "Brook"], ["last_name", "Thompson"], ["email", "brookthompson@gmail.com"], ["password", "password"], ["department_id", 3], ["created_at", "2021-02-12 17:13:51.151800"], ["updated_at", "2021-02-12 17:13:51.151800"]]
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mDepartment Load (0.2ms)[0m  [1m[34mSELECT "departments".* FROM "departments"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDepartment Load (0.1ms)[0m  [1m[34mSELECT "departments".* FROM "departments" WHERE "departments"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "password", "department_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["first_name", "Teodoro"], ["last_name", "Funk"], ["email", "teodorofunk@gmail.com"], ["password", "password"], ["department_id", 4], ["created_at", "2021-02-12 17:13:51.165947"], ["updated_at", "2021-02-12 17:13:51.165947"]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mDepartment Load (0.1ms)[0m  [1m[34mSELECT "departments".* FROM "departments"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDepartment Load (0.2ms)[0m  [1m[34mSELECT "departments".* FROM "departments" WHERE "departments"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "password", "department_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["first_name", "Branden"], ["last_name", "Dietrich"], ["email", "brandendietrich@gmail.com"], ["password", "password"], ["department_id", 6], ["created_at", "2021-02-12 17:13:51.175520"], ["updated_at", "2021-02-12 17:13:51.175520"]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mDepartment Load (0.1ms)[0m  [1m[34mSELECT "departments".* FROM "departments"[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDepartment Load (0.1ms)[0m  [1m[34mSELECT "departments".* FROM "departments" WHERE "departments"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "password", "department_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["first_name", "Zackary"], ["last_name", "Dare"], ["email", "zackarydare@gmail.com"], ["password", "password"], ["department_id", 3], ["created_at", "2021-02-12 17:13:51.185754"], ["updated_at", "2021-02-12 17:13:51.185754"]]
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mDepartment Load (0.2ms)[0m  [1m[34mSELECT "departments".* FROM "departments"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDepartment Load (0.1ms)[0m  [1m[34mSELECT "departments".* FROM "departments" WHERE "departments"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "password", "department_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["first_name", "Theodora"], ["last_name", "Buckridge"], ["email", "theodorabuckridge@gmail.com"], ["password", "password"], ["department_id", 1], ["created_at", "2021-02-12 17:13:51.199756"], ["updated_at", "2021-02-12 17:13:51.199756"]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mDepartment Load (0.1ms)[0m  [1m[34mSELECT "departments".* FROM "departments"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDepartment Load (0.2ms)[0m  [1m[34mSELECT "departments".* FROM "departments" WHERE "departments"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mUser Create (0.8ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "password", "department_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["first_name", "Ara"], ["last_name", "Schroeder"], ["email", "araschroeder@gmail.com"], ["password", "password"], ["department_id", 6], ["created_at", "2021-02-12 17:13:51.213644"], ["updated_at", "2021-02-12 17:13:51.213644"]]
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mDepartment Load (0.3ms)[0m  [1m[34mSELECT "departments".* FROM "departments"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDepartment Load (0.1ms)[0m  [1m[34mSELECT "departments".* FROM "departments" WHERE "departments"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mUser Create (5.2ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "password", "department_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["first_name", "Shemika"], ["last_name", "Spencer"], ["email", "shemikaspencer@gmail.com"], ["password", "password"], ["department_id", 5], ["created_at", "2021-02-12 17:13:51.227972"], ["updated_at", "2021-02-12 17:13:51.227972"]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mDepartment Load (0.2ms)[0m  [1m[34mSELECT "departments".* FROM "departments"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDepartment Load (0.2ms)[0m  [1m[34mSELECT "departments".* FROM "departments" WHERE "departments"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "password", "department_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["first_name", "Sierra"], ["last_name", "Pfannerstill"], ["email", "sierrapfannerstill@gmail.com"], ["password", "password"], ["department_id", 1], ["created_at", "2021-02-12 17:13:51.246920"], ["updated_at", "2021-02-12 17:13:51.246920"]]
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mDepartment Load (0.2ms)[0m  [1m[34mSELECT "departments".* FROM "departments"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDepartment Load (0.2ms)[0m  [1m[34mSELECT "departments".* FROM "departments" WHERE "departments"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "password", "department_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["first_name", "Janna"], ["last_name", "Bosco"], ["email", "jannabosco@gmail.com"], ["password", "password"], ["department_id", 6], ["created_at", "2021-02-12 17:13:51.271300"], ["updated_at", "2021-02-12 17:13:51.271300"]]
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mDepartment Load (0.2ms)[0m  [1m[34mSELECT "departments".* FROM "departments"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDepartment Load (0.2ms)[0m  [1m[34mSELECT "departments".* FROM "departments" WHERE "departments"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "password", "department_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["first_name", "Ka"], ["last_name", "Raynor"], ["email", "karaynor@gmail.com"], ["password", "password"], ["department_id", 2], ["created_at", "2021-02-12 17:13:51.321943"], ["updated_at", "2021-02-12 17:13:51.321943"]]
+  [1m[36mTRANSACTION (7.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mDepartment Load (0.2ms)[0m  [1m[34mSELECT "departments".* FROM "departments"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDepartment Load (0.6ms)[0m  [1m[34mSELECT "departments".* FROM "departments" WHERE "departments"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Create (0.8ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "password", "department_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["first_name", "Henriette"], ["last_name", "Nitzsche"], ["email", "henriettenitzsche@gmail.com"], ["password", "password"], ["department_id", 3], ["created_at", "2021-02-12 17:13:51.350363"], ["updated_at", "2021-02-12 17:13:51.350363"]]
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 19], ["LIMIT", 1]]
+  [1m[36mProject Create (0.5ms)[0m  [1m[32mINSERT INTO "projects" ("name", "description", "creator_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Y-Solowarm"], ["description", "Our story begins, as these stories often do, with a young up-and-coming politician. He's a deeply religious man and a member of the conservative party. He is completely single-minded convictions and has no regard for the political process. Eventually, his party launches a special project in the name of 'national security'. At first, it is believed to be a search for biological weapons and it is pursued regardless of its cost. However, the true goal of the project is power, complete and total hegemonic domination. The project, however, ends violently... but the efforts of those involved are not in vain, for a new ability to wage war is born from the blood of one of their victims. Imagine a virus - the most terrifying virus you can, and then imagine that you and you alone have the cure. But if your ultimate goal is power, how best to use such a weapon? It is at this point in our story that along comes a spider. He is a man seemingly without a conscience; for whom the ends always justify the means and it is he who suggests that their target should not be an enemy of the country but rather the country itself. Three targets are chosen to maximize the effect of the attack: a school, a tube station, and a water-treatment plant. Several hundred die within the first few weeks. Until at last the true goal comes into view. Before the St. Mary's crisis, no one would have predicted the outcome of the elections. No one. But after the election, lo and behold, a miracle. Some believed that it was the work of God himself, but it was a pharmaceutical company controlled by certain party members made them all obscenely rich. But the true genius of the plan was the fear. A year later, several extremists are tried, found guilty, and executed while a memorial is built to canonize their victims. Fear became the ultimate tool of this government. And through it our politician was ultimately appointed to the newly created position of High Chancellor. The rest, as they say, is history."], ["creator_id", 19], ["created_at", "2021-02-12 17:13:51.410700"], ["updated_at", "2021-02-12 17:13:51.410700"]]
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mProject Create (0.4ms)[0m  [1m[32mINSERT INTO "projects" ("name", "description", "creator_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Otcom"], ["description", "Our story begins, as these stories often do, with a young up-and-coming politician. He's a deeply religious man and a member of the conservative party. He is completely single-minded convictions and has no regard for the political process. Eventually, his party launches a special project in the name of 'national security'. At first, it is believed to be a search for biological weapons and it is pursued regardless of its cost. However, the true goal of the project is power, complete and total hegemonic domination. The project, however, ends violently... but the efforts of those involved are not in vain, for a new ability to wage war is born from the blood of one of their victims. Imagine a virus - the most terrifying virus you can, and then imagine that you and you alone have the cure. But if your ultimate goal is power, how best to use such a weapon? It is at this point in our story that along comes a spider. He is a man seemingly without a conscience; for whom the ends always justify the means and it is he who suggests that their target should not be an enemy of the country but rather the country itself. Three targets are chosen to maximize the effect of the attack: a school, a tube station, and a water-treatment plant. Several hundred die within the first few weeks. Until at last the true goal comes into view. Before the St. Mary's crisis, no one would have predicted the outcome of the elections. No one. But after the election, lo and behold, a miracle. Some believed that it was the work of God himself, but it was a pharmaceutical company controlled by certain party members made them all obscenely rich. But the true genius of the plan was the fear. A year later, several extremists are tried, found guilty, and executed while a memorial is built to canonize their victims. Fear became the ultimate tool of this government. And through it our politician was ultimately appointed to the newly created position of High Chancellor. The rest, as they say, is history."], ["creator_id", 8], ["created_at", "2021-02-12 17:13:51.420357"], ["updated_at", "2021-02-12 17:13:51.420357"]]
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 19], ["LIMIT", 1]]
+  [1m[36mProject Create (0.5ms)[0m  [1m[32mINSERT INTO "projects" ("name", "description", "creator_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Duobam"], ["description", "Our story begins, as these stories often do, with a young up-and-coming politician. He's a deeply religious man and a member of the conservative party. He is completely single-minded convictions and has no regard for the political process. Eventually, his party launches a special project in the name of 'national security'. At first, it is believed to be a search for biological weapons and it is pursued regardless of its cost. However, the true goal of the project is power, complete and total hegemonic domination. The project, however, ends violently... but the efforts of those involved are not in vain, for a new ability to wage war is born from the blood of one of their victims. Imagine a virus - the most terrifying virus you can, and then imagine that you and you alone have the cure. But if your ultimate goal is power, how best to use such a weapon? It is at this point in our story that along comes a spider. He is a man seemingly without a conscience; for whom the ends always justify the means and it is he who suggests that their target should not be an enemy of the country but rather the country itself. Three targets are chosen to maximize the effect of the attack: a school, a tube station, and a water-treatment plant. Several hundred die within the first few weeks. Until at last the true goal comes into view. Before the St. Mary's crisis, no one would have predicted the outcome of the elections. No one. But after the election, lo and behold, a miracle. Some believed that it was the work of God himself, but it was a pharmaceutical company controlled by certain party members made them all obscenely rich. But the true genius of the plan was the fear. A year later, several extremists are tried, found guilty, and executed while a memorial is built to canonize their victims. Fear became the ultimate tool of this government. And through it our politician was ultimately appointed to the newly created position of High Chancellor. The rest, as they say, is history."], ["creator_id", 19], ["created_at", "2021-02-12 17:13:51.430299"], ["updated_at", "2021-02-12 17:13:51.430299"]]
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mProject Create (0.4ms)[0m  [1m[32mINSERT INTO "projects" ("name", "description", "creator_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Redhold"], ["description", "Good evening, London. Allow me first to apologize for this interruption. I do, like many of you, appreciate the comforts of every day routine- the security of the familiar, the tranquility of repetition. I enjoy them as much as any bloke. But in the spirit of commemoration, whereby those important events of the past, usually associated with someone's death or the end of some awful bloody struggle, a celebration of a nice holiday, I thought we could mark this November the 5th, a day that is sadly no longer remembered, by taking some time out of our daily lives to sit down and have a little chat. There are of course those who do not want us to speak. I suspect even now, orders are being shouted into telephones, and men with guns will soon be on their way. Why? Because while the truncheon may be used in lieu of conversation, words will always retain their power. Words offer the means to meaning, and for those who will listen, the enunciation of truth. And the truth is, there is something terribly wrong with this country, isn't there? Cruelty and injustice, intolerance and oppression. And where once you had the freedom to object, to think and speak as you saw fit, you now have censors and systems of surveillance coercing your conformity and soliciting your submission. How did this happen? Who's to blame? Well certainly there are those more responsible than others, and they will be held accountable, but again truth be told, if you're looking for the guilty, you need only look into a mirror. I know why you did it. I know you were afraid. Who wouldn't be? War, terror, disease. There were a myriad of problems which conspired to corrupt your reason and rob you of your common sense. Fear got the best of you, and in your panic you turned to the now high chancellor, Adam Sutler. He promised you order, he promised you peace, and all he demanded in return was your silent, obedient consent. Last night I sought to end that silence. Last night I destroyed the Old Bailey, to remind this country of what it has forgotten. More than four hundred years ago a great citizen wished to embed the fifth of November forever in our memory. His hope was to remind the world that fairness, justice, and freedom are more than words, they are perspectives. So if you've seen nothing, if the crimes of this government remain unknown to you, then I would suggest you allow the fifth of November to pass unmarked. But if you see what I see, if you feel as I feel, and if you would seek as I seek, then I ask you to stand beside me one year from tonight, outside the gates of Parliament, and together we shall give them a fifth of November that shall never, ever be forgot."], ["creator_id", 5], ["created_at", "2021-02-12 17:13:51.439440"], ["updated_at", "2021-02-12 17:13:51.439440"]]
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 19], ["LIMIT", 1]]
+  [1m[36mProject Create (0.4ms)[0m  [1m[32mINSERT INTO "projects" ("name", "description", "creator_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Alpha"], ["description", "I know there's no way I can convince you this is not one of their tricks, but I don't care, I am me. My name is Valerie, I don't think I'll live much longer and I wanted to tell someone about my life. This is the only autobiography I'll ever write, and god, I'm writing it on toilet paper. I was born in Nottingham in 1985, I don't remember much of those early years, but I do remember the rain. My grandmother owned a farm in Tuttlebrook, and she use to tell me that god was in the rain. I passed my 11th lesson into girl's grammar; it was at school that I met my first girlfriend, her name was Sara. It was her wrists. They were beautiful. I thought we would love each other forever. I remember our teacher telling us that is was an adolescent phase people outgrew. Sara did, I didn't. In 2002, I fell in love with a girl named Christina. That year I came out to my parents. I couldn't have done it without Chris holding my hand. My father wouldn't look at me, he told me to go and never come back. My mother said nothing. But I had only told them the truth, was that so selfish? Our integrity sells for so little, but it is all we really have. It is the very last inch of us, but within that inch, we are free. I'd always known what I wanted to do with my life, and in 2015 I starred in my first film, 'The Salt Flats'. It was the most important role of my life, not because of my career, but because that was how I met Ruth. The first time we kissed, I knew I never wanted to kiss any other lips but hers again. We moved to a small flat in London together. She grew Scarlet Carsons for me in our window box, and our place always smelled of roses. Those were there best years of my life. But America's war grew worse, and worse. And eventually came to London. After that there were no roses anymore. Not for anyone. I remember how the meaning of words began to change. How unfamiliar words like 'collateral' and 'rendition' became frightening. While things like Norse Fire and The Articles of Allegiance became powerful, I remember how different became dangerous. I still don't understand it, why they hate us so much. They took Ruth while she was out buying food. I've never cried so hard in my life. It wasn't long till they came for me. It seems strange that my life should end in such a terrible place, but for three years, I had roses, and apologized to no one. I shall die here. Every inch of me shall perish. Every inch, but one. An Inch, it is small and it is fragile, but it is the only thing the world worth having. We must never lose it or give it away. We must never let them take it from us. I hope that whoever you are, you escape this place. I hope that the world turns and that things get better. But what I hope most of all is that you understand what I mean when I tell you that even though I do not know you, and even though I may never meet you, laugh with you, cry with you, or kiss you. I love you. With all my heart, I love you. -Valerie"], ["creator_id", 19], ["created_at", "2021-02-12 17:13:51.448636"], ["updated_at", "2021-02-12 17:13:51.448636"]]
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mProject Create (2.0ms)[0m  [1m[32mINSERT INTO "projects" ("name", "description", "creator_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Otcom"], ["description", "Remember, remember, the Fifth of November, the Gunpowder Treason and Plot. I know of no reason why the Gunpowder Treason should ever be forgot... But what of the man? I know his name was Guy Fawkes and I know, in 1605, he attempted to blow up the Houses of Parliament. But who was he really? What was he like? We are told to remember the idea, not the man, because a man can fail. He can be caught, he can be killed and forgotten, but 400 years later, an idea can still change the world. I've witnessed first hand the power of ideas, I've seen people kill in the name of them, and die defending them... but you cannot kiss an idea, cannot touch it, or hold it... ideas do not bleed, they do not feel pain, they do not love... And it is not an idea that I miss, it is a man... A man that made me remember the Fifth of November. A man that I will never forget."], ["creator_id", 15], ["created_at", "2021-02-12 17:13:51.458536"], ["updated_at", "2021-02-12 17:13:51.458536"]]
+  [1m[36mTRANSACTION (3.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mProject Create (0.4ms)[0m  [1m[32mINSERT INTO "projects" ("name", "description", "creator_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Mat Lam Tam"], ["description", "Voilà! In view, a humble vaudevillian veteran, cast vicariously as both victim and villain by the vicissitudes of Fate. This visage, no mere veneer of vanity, is a vestige of the vox populi, now vacant, vanished. However, this valorous visitation of a by-gone vexation, stands vivified and has vowed to vanquish these venal and virulent vermin vanguarding vice and vouchsafing the violently vicious and voracious violation of volition. The only verdict is vengeance; a vendetta, held as a votive, not in vain, for the value and veracity of such shall one day vindicate the vigilant and the virtuous. Verily, this vichyssoise of verbiage veers most verbose, so let me simply add that it's my very good honor to meet you and you may call me V."], ["creator_id", 4], ["created_at", "2021-02-12 17:13:51.474366"], ["updated_at", "2021-02-12 17:13:51.474366"]]
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mProject Create (0.5ms)[0m  [1m[32mINSERT INTO "projects" ("name", "description", "creator_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Mat Lam Tam"], ["description", "Listen to me, Evey. This may be the most important moment of your life. Commit to it. They took your parents from you. They took your brother from you. They put you in a cell and took everything they could take except your life. And you believed that was all there was, didn't you? The only thing you had left was your life, but it wasn't, was it? You found something else. In that cell you found something that mattered more to you than life. It was when they threatened to kill you unless you gave them what they wanted... you told them you'd rather die. You faced your death, Evey. You were calm. You were still. Try to feel now what you felt then."], ["creator_id", 6], ["created_at", "2021-02-12 17:13:51.484273"], ["updated_at", "2021-02-12 17:13:51.484273"]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mProject Create (0.7ms)[0m  [1m[32mINSERT INTO "projects" ("name", "description", "creator_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Mat Lam Tam"], ["description", "Remember, remember, the Fifth of November, the Gunpowder Treason and Plot. I know of no reason why the Gunpowder Treason should ever be forgot... But what of the man? I know his name was Guy Fawkes and I know, in 1605, he attempted to blow up the Houses of Parliament. But who was he really? What was he like? We are told to remember the idea, not the man, because a man can fail. He can be caught, he can be killed and forgotten, but 400 years later, an idea can still change the world. I've witnessed first hand the power of ideas, I've seen people kill in the name of them, and die defending them... but you cannot kiss an idea, cannot touch it, or hold it... ideas do not bleed, they do not feel pain, they do not love... And it is not an idea that I miss, it is a man... A man that made me remember the Fifth of November. A man that I will never forget."], ["creator_id", 4], ["created_at", "2021-02-12 17:13:51.493673"], ["updated_at", "2021-02-12 17:13:51.493673"]]
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  [1m[36mProject Create (0.4ms)[0m  [1m[32mINSERT INTO "projects" ("name", "description", "creator_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Ventosanzap"], ["description", "Good evening, London. Allow me first to apologize for this interruption. I do, like many of you, appreciate the comforts of every day routine- the security of the familiar, the tranquility of repetition. I enjoy them as much as any bloke. But in the spirit of commemoration, whereby those important events of the past, usually associated with someone's death or the end of some awful bloody struggle, a celebration of a nice holiday, I thought we could mark this November the 5th, a day that is sadly no longer remembered, by taking some time out of our daily lives to sit down and have a little chat. There are of course those who do not want us to speak. I suspect even now, orders are being shouted into telephones, and men with guns will soon be on their way. Why? Because while the truncheon may be used in lieu of conversation, words will always retain their power. Words offer the means to meaning, and for those who will listen, the enunciation of truth. And the truth is, there is something terribly wrong with this country, isn't there? Cruelty and injustice, intolerance and oppression. And where once you had the freedom to object, to think and speak as you saw fit, you now have censors and systems of surveillance coercing your conformity and soliciting your submission. How did this happen? Who's to blame? Well certainly there are those more responsible than others, and they will be held accountable, but again truth be told, if you're looking for the guilty, you need only look into a mirror. I know why you did it. I know you were afraid. Who wouldn't be? War, terror, disease. There were a myriad of problems which conspired to corrupt your reason and rob you of your common sense. Fear got the best of you, and in your panic you turned to the now high chancellor, Adam Sutler. He promised you order, he promised you peace, and all he demanded in return was your silent, obedient consent. Last night I sought to end that silence. Last night I destroyed the Old Bailey, to remind this country of what it has forgotten. More than four hundred years ago a great citizen wished to embed the fifth of November forever in our memory. His hope was to remind the world that fairness, justice, and freedom are more than words, they are perspectives. So if you've seen nothing, if the crimes of this government remain unknown to you, then I would suggest you allow the fifth of November to pass unmarked. But if you see what I see, if you feel as I feel, and if you would seek as I seek, then I ask you to stand beside me one year from tonight, outside the gates of Parliament, and together we shall give them a fifth of November that shall never, ever be forgot."], ["creator_id", 9], ["created_at", "2021-02-12 17:13:51.503762"], ["updated_at", "2021-02-12 17:13:51.503762"]]
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProject Create (0.4ms)[0m  [1m[32mINSERT INTO "projects" ("name", "description", "creator_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Y-find"], ["description", "Remember, remember, the Fifth of November, the Gunpowder Treason and Plot. I know of no reason why the Gunpowder Treason should ever be forgot... But what of the man? I know his name was Guy Fawkes and I know, in 1605, he attempted to blow up the Houses of Parliament. But who was he really? What was he like? We are told to remember the idea, not the man, because a man can fail. He can be caught, he can be killed and forgotten, but 400 years later, an idea can still change the world. I've witnessed first hand the power of ideas, I've seen people kill in the name of them, and die defending them... but you cannot kiss an idea, cannot touch it, or hold it... ideas do not bleed, they do not feel pain, they do not love... And it is not an idea that I miss, it is a man... A man that made me remember the Fifth of November. A man that I will never forget."], ["creator_id", 1], ["created_at", "2021-02-12 17:13:51.513770"], ["updated_at", "2021-02-12 17:13:51.513770"]]
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mProject Create (0.4ms)[0m  [1m[32mINSERT INTO "projects" ("name", "description", "creator_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Stronghold"], ["description", "Remember, remember, the Fifth of November, the Gunpowder Treason and Plot. I know of no reason why the Gunpowder Treason should ever be forgot... But what of the man? I know his name was Guy Fawkes and I know, in 1605, he attempted to blow up the Houses of Parliament. But who was he really? What was he like? We are told to remember the idea, not the man, because a man can fail. He can be caught, he can be killed and forgotten, but 400 years later, an idea can still change the world. I've witnessed first hand the power of ideas, I've seen people kill in the name of them, and die defending them... but you cannot kiss an idea, cannot touch it, or hold it... ideas do not bleed, they do not feel pain, they do not love... And it is not an idea that I miss, it is a man... A man that made me remember the Fifth of November. A man that I will never forget."], ["creator_id", 5], ["created_at", "2021-02-12 17:13:51.522676"], ["updated_at", "2021-02-12 17:13:51.522676"]]
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mProject Create (0.4ms)[0m  [1m[32mINSERT INTO "projects" ("name", "description", "creator_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Wrapsafe"], ["description", "Good evening, London. Allow me first to apologize for this interruption. I do, like many of you, appreciate the comforts of every day routine- the security of the familiar, the tranquility of repetition. I enjoy them as much as any bloke. But in the spirit of commemoration, whereby those important events of the past, usually associated with someone's death or the end of some awful bloody struggle, a celebration of a nice holiday, I thought we could mark this November the 5th, a day that is sadly no longer remembered, by taking some time out of our daily lives to sit down and have a little chat. There are of course those who do not want us to speak. I suspect even now, orders are being shouted into telephones, and men with guns will soon be on their way. Why? Because while the truncheon may be used in lieu of conversation, words will always retain their power. Words offer the means to meaning, and for those who will listen, the enunciation of truth. And the truth is, there is something terribly wrong with this country, isn't there? Cruelty and injustice, intolerance and oppression. And where once you had the freedom to object, to think and speak as you saw fit, you now have censors and systems of surveillance coercing your conformity and soliciting your submission. How did this happen? Who's to blame? Well certainly there are those more responsible than others, and they will be held accountable, but again truth be told, if you're looking for the guilty, you need only look into a mirror. I know why you did it. I know you were afraid. Who wouldn't be? War, terror, disease. There were a myriad of problems which conspired to corrupt your reason and rob you of your common sense. Fear got the best of you, and in your panic you turned to the now high chancellor, Adam Sutler. He promised you order, he promised you peace, and all he demanded in return was your silent, obedient consent. Last night I sought to end that silence. Last night I destroyed the Old Bailey, to remind this country of what it has forgotten. More than four hundred years ago a great citizen wished to embed the fifth of November forever in our memory. His hope was to remind the world that fairness, justice, and freedom are more than words, they are perspectives. So if you've seen nothing, if the crimes of this government remain unknown to you, then I would suggest you allow the fifth of November to pass unmarked. But if you see what I see, if you feel as I feel, and if you would seek as I seek, then I ask you to stand beside me one year from tonight, outside the gates of Parliament, and together we shall give them a fifth of November that shall never, ever be forgot."], ["creator_id", 11], ["created_at", "2021-02-12 17:13:51.532304"], ["updated_at", "2021-02-12 17:13:51.532304"]]
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mProject Create (0.5ms)[0m  [1m[32mINSERT INTO "projects" ("name", "description", "creator_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Konklab"], ["description", "Good evening, London. Allow me first to apologize for this interruption. I do, like many of you, appreciate the comforts of every day routine- the security of the familiar, the tranquility of repetition. I enjoy them as much as any bloke. But in the spirit of commemoration, whereby those important events of the past, usually associated with someone's death or the end of some awful bloody struggle, a celebration of a nice holiday, I thought we could mark this November the 5th, a day that is sadly no longer remembered, by taking some time out of our daily lives to sit down and have a little chat. There are of course those who do not want us to speak. I suspect even now, orders are being shouted into telephones, and men with guns will soon be on their way. Why? Because while the truncheon may be used in lieu of conversation, words will always retain their power. Words offer the means to meaning, and for those who will listen, the enunciation of truth. And the truth is, there is something terribly wrong with this country, isn't there? Cruelty and injustice, intolerance and oppression. And where once you had the freedom to object, to think and speak as you saw fit, you now have censors and systems of surveillance coercing your conformity and soliciting your submission. How did this happen? Who's to blame? Well certainly there are those more responsible than others, and they will be held accountable, but again truth be told, if you're looking for the guilty, you need only look into a mirror. I know why you did it. I know you were afraid. Who wouldn't be? War, terror, disease. There were a myriad of problems which conspired to corrupt your reason and rob you of your common sense. Fear got the best of you, and in your panic you turned to the now high chancellor, Adam Sutler. He promised you order, he promised you peace, and all he demanded in return was your silent, obedient consent. Last night I sought to end that silence. Last night I destroyed the Old Bailey, to remind this country of what it has forgotten. More than four hundred years ago a great citizen wished to embed the fifth of November forever in our memory. His hope was to remind the world that fairness, justice, and freedom are more than words, they are perspectives. So if you've seen nothing, if the crimes of this government remain unknown to you, then I would suggest you allow the fifth of November to pass unmarked. But if you see what I see, if you feel as I feel, and if you would seek as I seek, then I ask you to stand beside me one year from tonight, outside the gates of Parliament, and together we shall give them a fifth of November that shall never, ever be forgot."], ["creator_id", 4], ["created_at", "2021-02-12 17:13:51.541871"], ["updated_at", "2021-02-12 17:13:51.541871"]]
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mProject Create (0.4ms)[0m  [1m[32mINSERT INTO "projects" ("name", "description", "creator_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Home Ing"], ["description", "Our story begins, as these stories often do, with a young up-and-coming politician. He's a deeply religious man and a member of the conservative party. He is completely single-minded convictions and has no regard for the political process. Eventually, his party launches a special project in the name of 'national security'. At first, it is believed to be a search for biological weapons and it is pursued regardless of its cost. However, the true goal of the project is power, complete and total hegemonic domination. The project, however, ends violently... but the efforts of those involved are not in vain, for a new ability to wage war is born from the blood of one of their victims. Imagine a virus - the most terrifying virus you can, and then imagine that you and you alone have the cure. But if your ultimate goal is power, how best to use such a weapon? It is at this point in our story that along comes a spider. He is a man seemingly without a conscience; for whom the ends always justify the means and it is he who suggests that their target should not be an enemy of the country but rather the country itself. Three targets are chosen to maximize the effect of the attack: a school, a tube station, and a water-treatment plant. Several hundred die within the first few weeks. Until at last the true goal comes into view. Before the St. Mary's crisis, no one would have predicted the outcome of the elections. No one. But after the election, lo and behold, a miracle. Some believed that it was the work of God himself, but it was a pharmaceutical company controlled by certain party members made them all obscenely rich. But the true genius of the plan was the fear. A year later, several extremists are tried, found guilty, and executed while a memorial is built to canonize their victims. Fear became the ultimate tool of this government. And through it our politician was ultimately appointed to the newly created position of High Chancellor. The rest, as they say, is history."], ["creator_id", 15], ["created_at", "2021-02-12 17:13:51.551080"], ["updated_at", "2021-02-12 17:13:51.551080"]]
+  [1m[36mTRANSACTION (2.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 21], ["LIMIT", 1]]
+  [1m[36mProject Create (0.4ms)[0m  [1m[32mINSERT INTO "projects" ("name", "description", "creator_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Tin"], ["description", "Good evening, London. Allow me first to apologize for this interruption. I do, like many of you, appreciate the comforts of every day routine- the security of the familiar, the tranquility of repetition. I enjoy them as much as any bloke. But in the spirit of commemoration, whereby those important events of the past, usually associated with someone's death or the end of some awful bloody struggle, a celebration of a nice holiday, I thought we could mark this November the 5th, a day that is sadly no longer remembered, by taking some time out of our daily lives to sit down and have a little chat. There are of course those who do not want us to speak. I suspect even now, orders are being shouted into telephones, and men with guns will soon be on their way. Why? Because while the truncheon may be used in lieu of conversation, words will always retain their power. Words offer the means to meaning, and for those who will listen, the enunciation of truth. And the truth is, there is something terribly wrong with this country, isn't there? Cruelty and injustice, intolerance and oppression. And where once you had the freedom to object, to think and speak as you saw fit, you now have censors and systems of surveillance coercing your conformity and soliciting your submission. How did this happen? Who's to blame? Well certainly there are those more responsible than others, and they will be held accountable, but again truth be told, if you're looking for the guilty, you need only look into a mirror. I know why you did it. I know you were afraid. Who wouldn't be? War, terror, disease. There were a myriad of problems which conspired to corrupt your reason and rob you of your common sense. Fear got the best of you, and in your panic you turned to the now high chancellor, Adam Sutler. He promised you order, he promised you peace, and all he demanded in return was your silent, obedient consent. Last night I sought to end that silence. Last night I destroyed the Old Bailey, to remind this country of what it has forgotten. More than four hundred years ago a great citizen wished to embed the fifth of November forever in our memory. His hope was to remind the world that fairness, justice, and freedom are more than words, they are perspectives. So if you've seen nothing, if the crimes of this government remain unknown to you, then I would suggest you allow the fifth of November to pass unmarked. But if you see what I see, if you feel as I feel, and if you would seek as I seek, then I ask you to stand beside me one year from tonight, outside the gates of Parliament, and together we shall give them a fifth of November that shall never, ever be forgot."], ["creator_id", 21], ["created_at", "2021-02-12 17:13:51.566025"], ["updated_at", "2021-02-12 17:13:51.566025"]]
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 13], ["LIMIT", 1]]
+  [1m[36mProject Create (0.6ms)[0m  [1m[32mINSERT INTO "projects" ("name", "description", "creator_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Bamity"], ["description", "Remember, remember, the Fifth of November, the Gunpowder Treason and Plot. I know of no reason why the Gunpowder Treason should ever be forgot... But what of the man? I know his name was Guy Fawkes and I know, in 1605, he attempted to blow up the Houses of Parliament. But who was he really? What was he like? We are told to remember the idea, not the man, because a man can fail. He can be caught, he can be killed and forgotten, but 400 years later, an idea can still change the world. I've witnessed first hand the power of ideas, I've seen people kill in the name of them, and die defending them... but you cannot kiss an idea, cannot touch it, or hold it... ideas do not bleed, they do not feel pain, they do not love... And it is not an idea that I miss, it is a man... A man that made me remember the Fifth of November. A man that I will never forget."], ["creator_id", 13], ["created_at", "2021-02-12 17:13:51.578224"], ["updated_at", "2021-02-12 17:13:51.578224"]]
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mProject Create (0.5ms)[0m  [1m[32mINSERT INTO "projects" ("name", "description", "creator_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Asoka"], ["description", "Our story begins, as these stories often do, with a young up-and-coming politician. He's a deeply religious man and a member of the conservative party. He is completely single-minded convictions and has no regard for the political process. Eventually, his party launches a special project in the name of 'national security'. At first, it is believed to be a search for biological weapons and it is pursued regardless of its cost. However, the true goal of the project is power, complete and total hegemonic domination. The project, however, ends violently... but the efforts of those involved are not in vain, for a new ability to wage war is born from the blood of one of their victims. Imagine a virus - the most terrifying virus you can, and then imagine that you and you alone have the cure. But if your ultimate goal is power, how best to use such a weapon? It is at this point in our story that along comes a spider. He is a man seemingly without a conscience; for whom the ends always justify the means and it is he who suggests that their target should not be an enemy of the country but rather the country itself. Three targets are chosen to maximize the effect of the attack: a school, a tube station, and a water-treatment plant. Several hundred die within the first few weeks. Until at last the true goal comes into view. Before the St. Mary's crisis, no one would have predicted the outcome of the elections. No one. But after the election, lo and behold, a miracle. Some believed that it was the work of God himself, but it was a pharmaceutical company controlled by certain party members made them all obscenely rich. But the true genius of the plan was the fear. A year later, several extremists are tried, found guilty, and executed while a memorial is built to canonize their victims. Fear became the ultimate tool of this government. And through it our politician was ultimately appointed to the newly created position of High Chancellor. The rest, as they say, is history."], ["creator_id", 11], ["created_at", "2021-02-12 17:13:51.589857"], ["updated_at", "2021-02-12 17:13:51.589857"]]
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mProject Create (0.4ms)[0m  [1m[32mINSERT INTO "projects" ("name", "description", "creator_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Vagram"], ["description", "My fellow Englishmen: tonight our country, that which we stand for, and all we hold dear, faces a grave and terrible threat. This violent and unparalleled assault on our security will not go undefended... or unpunished. Our enemy is an insidious one, seeking to divide us and destroy the very foundation of our great nation. Tonight, we must remain steadfast. We must remain determined. But most of all, we must remain united. Those caught tonight in violation of curfew will be considered in league with our enemy and prosecuted as a terrorist without leniency or exception. Tonight, I give you my most solemn vow: that justice will be swift, it will be righteous, and it will be without mercy."], ["creator_id", 11], ["created_at", "2021-02-12 17:13:51.601982"], ["updated_at", "2021-02-12 17:13:51.601982"]]
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 18], ["LIMIT", 1]]
+  [1m[36mProject Create (0.4ms)[0m  [1m[32mINSERT INTO "projects" ("name", "description", "creator_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Sonsing"], ["description", "Listen to me, Evey. This may be the most important moment of your life. Commit to it. They took your parents from you. They took your brother from you. They put you in a cell and took everything they could take except your life. And you believed that was all there was, didn't you? The only thing you had left was your life, but it wasn't, was it? You found something else. In that cell you found something that mattered more to you than life. It was when they threatened to kill you unless you gave them what they wanted... you told them you'd rather die. You faced your death, Evey. You were calm. You were still. Try to feel now what you felt then."], ["creator_id", 18], ["created_at", "2021-02-12 17:13:51.613587"], ["updated_at", "2021-02-12 17:13:51.613587"]]
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  [1m[36mProject Load (0.1ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mTask Create (0.5ms)[0m  [1m[32mINSERT INTO "tasks" ("name", "description", "deadline", "user_id", "project_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Not Hotdog"], ["description", "Hitler actually played the bassoon. So technically Hitler was the Hitler of music."], ["deadline", "2021-02-05 00:00:00"], ["user_id", 10], ["project_id", 5], ["created_at", "2021-02-12 17:13:51.638957"], ["updated_at", "2021-02-12 17:13:51.638957"]]
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  [1m[36mProject Load (0.1ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mTask Create (0.5ms)[0m  [1m[32mINSERT INTO "tasks" ("name", "description", "deadline", "user_id", "project_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Panic-a-Tech"], ["description", "I simply imagine that my skeleton is me and my body is my house. That way I'm always home."], ["deadline", "2021-03-07 00:00:00"], ["user_id", 12], ["project_id", 6], ["created_at", "2021-02-12 17:13:51.651937"], ["updated_at", "2021-02-12 17:13:51.651937"]]
+  [1m[36mTRANSACTION (1.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mProject Load (0.3ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mProject Load (0.1ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mTask Create (0.6ms)[0m  [1m[32mINSERT INTO "tasks" ("name", "description", "deadline", "user_id", "project_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Astraphile"], ["description", "I firmly believe we can only achieve greatness if first, we achieve goodness"], ["deadline", "2021-02-16 00:00:00"], ["user_id", 5], ["project_id", 14], ["created_at", "2021-02-12 17:13:51.671263"], ["updated_at", "2021-02-12 17:13:51.671263"]]
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mProject Load (0.3ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 19], ["LIMIT", 1]]
+  [1m[36mProject Load (0.1ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mTask Create (0.5ms)[0m  [1m[32mINSERT INTO "tasks" ("name", "description", "deadline", "user_id", "project_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Not Hotdog"], ["description", "I firmly believe we can only achieve greatness if first, we achieve goodness"], ["deadline", "2021-11-07 00:00:00"], ["user_id", 19], ["project_id", 11], ["created_at", "2021-02-12 17:13:51.689870"], ["updated_at", "2021-02-12 17:13:51.689870"]]
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProject Load (0.1ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  [1m[36mTask Create (0.4ms)[0m  [1m[32mINSERT INTO "tasks" ("name", "description", "deadline", "user_id", "project_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Spinder"], ["description", "Hitler actually played the bassoon. So technically Hitler was the Hitler of music."], ["deadline", "2021-01-14 00:00:00"], ["user_id", 1], ["project_id", 12], ["created_at", "2021-02-12 17:13:51.703022"], ["updated_at", "2021-02-12 17:13:51.703022"]]
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mProject Load (0.3ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  [1m[36mProject Load (0.1ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  [1m[36mTask Create (0.5ms)[0m  [1m[32mINSERT INTO "tasks" ("name", "description", "deadline", "user_id", "project_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Astraphile"], ["description", "Compromise is the shared hypotenuse of the conjoined triangles of success."], ["deadline", "2021-12-20 00:00:00"], ["user_id", 10], ["project_id", 10], ["created_at", "2021-02-12 17:13:51.721070"], ["updated_at", "2021-02-12 17:13:51.721070"]]
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mProject Load (0.3ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mProject Load (0.1ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mTask Create (0.8ms)[0m  [1m[32mINSERT INTO "tasks" ("name", "description", "deadline", "user_id", "project_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Nip Alert"], ["description", "Gentlemen, I just paid the palapa contractor. The palapa piper, so to speak. The dream is a reality. We'll no longer be exposed... to the elements."], ["deadline", "2021-07-28 00:00:00"], ["user_id", 11], ["project_id", 5], ["created_at", "2021-02-12 17:13:51.744745"], ["updated_at", "2021-02-12 17:13:51.744745"]]
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (15.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mProject Load (0.3ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  [1m[36mProject Load (0.1ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 13], ["LIMIT", 1]]
+  [1m[36mTask Create (1.7ms)[0m  [1m[32mINSERT INTO "tasks" ("name", "description", "deadline", "user_id", "project_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Panic-a-Tech"], ["description", "I firmly believe we can only achieve greatness if first, we achieve goodness"], ["deadline", "2021-08-07 00:00:00"], ["user_id", 9], ["project_id", 13], ["created_at", "2021-02-12 17:13:51.798245"], ["updated_at", "2021-02-12 17:13:51.798245"]]
+  [1m[36mTRANSACTION (2.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mProject Load (0.4ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 21], ["LIMIT", 1]]
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mTask Create (0.5ms)[0m  [1m[32mINSERT INTO "tasks" ("name", "description", "deadline", "user_id", "project_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Astraphile"], ["description", "Let me ask you. How fast do you think you could jerk off every guy in this room? Because I know how long it would take me. And I can prove it"], ["deadline", "2021-07-06 00:00:00"], ["user_id", 21], ["project_id", 15], ["created_at", "2021-02-12 17:13:51.825123"], ["updated_at", "2021-02-12 17:13:51.825123"]]
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mProject Load (0.4ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mProject Load (0.4ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 19], ["LIMIT", 1]]
+  [1m[36mTask Create (0.4ms)[0m  [1m[32mINSERT INTO "tasks" ("name", "description", "deadline", "user_id", "project_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "PeaceFare"], ["description", "Compromise is the shared hypotenuse of the conjoined triangles of success."], ["deadline", "2021-08-11 00:00:00"], ["user_id", 15], ["project_id", 19], ["created_at", "2021-02-12 17:13:51.844474"], ["updated_at", "2021-02-12 17:13:51.844474"]]
+  [1m[36mTRANSACTION (3.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mProject Load (2.8ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mProject Load (0.1ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTask Create (0.6ms)[0m  [1m[32mINSERT INTO "tasks" ("name", "description", "deadline", "user_id", "project_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "HooliChat"], ["description", "I don't want to live in a world where someone else is making the world a better place better than we are."], ["deadline", "2021-12-17 00:00:00"], ["user_id", 11], ["project_id", 1], ["created_at", "2021-02-12 17:13:51.875682"], ["updated_at", "2021-02-12 17:13:51.875682"]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mProject Load (0.6ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mProject Load (0.1ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mTask Create (0.4ms)[0m  [1m[32mINSERT INTO "tasks" ("name", "description", "deadline", "user_id", "project_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Spinder"], ["description", "I was gonna sleep last night, but, uh... I thought I had this solve for this computational trust issue I've been working on, but it turns out, I didn't have a solve. But it was too late. I had already drank the whole pot of coffee."], ["deadline", "2021-03-30 00:00:00"], ["user_id", 5], ["project_id", 7], ["created_at", "2021-02-12 17:13:51.890557"], ["updated_at", "2021-02-12 17:13:51.890557"]]
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mProject Load (0.1ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mTask Create (0.4ms)[0m  [1m[32mINSERT INTO "tasks" ("name", "description", "deadline", "user_id", "project_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Pegg'd"], ["description", "And that, gentlemen, is scrum. Welcome to the next eight weeks of our lives."], ["deadline", "2021-08-06 00:00:00"], ["user_id", 2], ["project_id", 3], ["created_at", "2021-02-12 17:13:51.905797"], ["updated_at", "2021-02-12 17:13:51.905797"]]
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProject Load (0.1ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mTask Create (0.4ms)[0m  [1m[32mINSERT INTO "tasks" ("name", "description", "deadline", "user_id", "project_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Pegg'd"], ["description", "It's weird. They always travel in groups of five. These programmers, there's always a tall, skinny white guy; short, skinny Asian guy; fat guy with a ponytail; some guy with crazy facial hair; and then an East Indian guy. It's like they trade guys until they all have the right group."], ["deadline", "2021-08-22 00:00:00"], ["user_id", 1], ["project_id", 3], ["created_at", "2021-02-12 17:13:51.918206"], ["updated_at", "2021-02-12 17:13:51.918206"]]
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 13], ["LIMIT", 1]]
+  [1m[36mProject Load (0.1ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  [1m[36mTask Create (0.4ms)[0m  [1m[32mINSERT INTO "tasks" ("name", "description", "deadline", "user_id", "project_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Panic-a-Tech"], ["description", "Line ’em up, nuts to butts"], ["deadline", "2021-11-20 00:00:00"], ["user_id", 13], ["project_id", 9], ["created_at", "2021-02-12 17:13:51.931606"], ["updated_at", "2021-02-12 17:13:51.931606"]]
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mProject Load (0.4ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mProject Load (0.1ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mTask Create (0.5ms)[0m  [1m[32mINSERT INTO "tasks" ("name", "description", "deadline", "user_id", "project_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "PeaceFare"], ["description", "I was gonna sleep last night, but, uh... I thought I had this solve for this computational trust issue I've been working on, but it turns out, I didn't have a solve. But it was too late. I had already drank the whole pot of coffee."], ["deadline", "2021-06-07 00:00:00"], ["user_id", 4], ["project_id", 5], ["created_at", "2021-02-12 17:13:51.944957"], ["updated_at", "2021-02-12 17:13:51.944957"]]
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  [1m[36mProject Load (0.1ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 17], ["LIMIT", 1]]
+  [1m[36mTask Create (0.7ms)[0m  [1m[32mINSERT INTO "tasks" ("name", "description", "deadline", "user_id", "project_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Tables"], ["description", "I don't want to live in a world where someone else is making the world a better place better than we are."], ["deadline", "2021-11-22 00:00:00"], ["user_id", 12], ["project_id", 17], ["created_at", "2021-02-12 17:13:51.962318"], ["updated_at", "2021-02-12 17:13:51.962318"]]
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mProject Load (0.1ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mTask Create (0.4ms)[0m  [1m[32mINSERT INTO "tasks" ("name", "description", "deadline", "user_id", "project_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "HooliChat"], ["description", "I extended my compression algorithm to support... get this... 12-bit color. Okay, so our users will be able to experience a 10 percent increase in image quality with absolutely no increase in server load whatsoever. Just-Just-Just... Just watch this. Before. After. Before. After."], ["deadline", "2021-02-14 00:00:00"], ["user_id", 4], ["project_id", 5], ["created_at", "2021-02-12 17:13:51.977379"], ["updated_at", "2021-02-12 17:13:51.977379"]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mProject Load (0.1ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 18], ["LIMIT", 1]]
+  [1m[36mTask Create (0.5ms)[0m  [1m[32mINSERT INTO "tasks" ("name", "description", "deadline", "user_id", "project_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "HooliChat"], ["description", "It's weird. They always travel in groups of five. These programmers, there's always a tall, skinny white guy; short, skinny Asian guy; fat guy with a ponytail; some guy with crazy facial hair; and then an East Indian guy. It's like they trade guys until they all have the right group."], ["deadline", "2021-03-07 00:00:00"], ["user_id", 2], ["project_id", 18], ["created_at", "2021-02-12 17:13:51.989261"], ["updated_at", "2021-02-12 17:13:51.989261"]]
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 18], ["LIMIT", 1]]
+  [1m[36mProject Load (0.1ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mTask Create (0.6ms)[0m  [1m[32mINSERT INTO "tasks" ("name", "description", "deadline", "user_id", "project_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "PeaceFare"], ["description", "It's weird. They always travel in groups of five. These programmers, there's always a tall, skinny white guy; short, skinny Asian guy; fat guy with a ponytail; some guy with crazy facial hair; and then an East Indian guy. It's like they trade guys until they all have the right group."], ["deadline", "2021-05-21 00:00:00"], ["user_id", 18], ["project_id", 7], ["created_at", "2021-02-12 17:13:52.002246"], ["updated_at", "2021-02-12 17:13:52.002246"]]
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mProject Load (0.1ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 13], ["LIMIT", 1]]
+  [1m[36mTask Create (0.5ms)[0m  [1m[32mINSERT INTO "tasks" ("name", "description", "deadline", "user_id", "project_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Panic-a-Tech"], ["description", "Hitler actually played the bassoon. So technically Hitler was the Hitler of music."], ["deadline", "2021-01-10 00:00:00"], ["user_id", 3], ["project_id", 13], ["created_at", "2021-02-12 17:13:52.015998"], ["updated_at", "2021-02-12 17:13:52.015998"]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  [1m[36mProject Load (0.1ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mTask Create (0.4ms)[0m  [1m[32mINSERT INTO "tasks" ("name", "description", "deadline", "user_id", "project_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Nucleus"], ["description", "I simply imagine that my skeleton is me and my body is my house. That way I'm always home."], ["deadline", "2021-10-25 00:00:00"], ["user_id", 12], ["project_id", 5], ["created_at", "2021-02-12 17:13:52.028548"], ["updated_at", "2021-02-12 17:13:52.028548"]]
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 18], ["LIMIT", 1]]
+  [1m[36mTask Create (0.5ms)[0m  [1m[32mINSERT INTO "tasks" ("name", "description", "deadline", "user_id", "project_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "PeaceFare"], ["description", "You listen to me, you muscle-bound handsome Adonis: tech is reserved for people like me, okay? The freaks, the weirdos, the misfits, the geeks, the dweebs, the dorks! Not you!"], ["deadline", "2021-11-03 00:00:00"], ["user_id", 9], ["project_id", 18], ["created_at", "2021-02-12 17:13:52.044726"], ["updated_at", "2021-02-12 17:13:52.044726"]]
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mProject Load (0.1ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  [1m[36mTask Create (0.8ms)[0m  [1m[32mINSERT INTO "tasks" ("name", "description", "deadline", "user_id", "project_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Panic-a-Tech"], ["description", "Line ’em up, nuts to butts"], ["deadline", "2021-01-28 00:00:00"], ["user_id", 5], ["project_id", 12], ["created_at", "2021-02-12 17:13:52.062327"], ["updated_at", "2021-02-12 17:13:52.062327"]]
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 17], ["LIMIT", 1]]
+  [1m[36mProject Load (0.1ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 20], ["LIMIT", 1]]
+  [1m[36mTask Create (0.6ms)[0m  [1m[32mINSERT INTO "tasks" ("name", "description", "deadline", "user_id", "project_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "CodeRag"], ["description", "I extended my compression algorithm to support... get this... 12-bit color. Okay, so our users will be able to experience a 10 percent increase in image quality with absolutely no increase in server load whatsoever. Just-Just-Just... Just watch this. Before. After. Before. After."], ["deadline", "2021-02-08 00:00:00"], ["user_id", 17], ["project_id", 20], ["created_at", "2021-02-12 17:13:52.084113"], ["updated_at", "2021-02-12 17:13:52.084113"]]
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 13], ["LIMIT", 1]]
+  [1m[36mProject Load (0.1ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mTask Create (0.5ms)[0m  [1m[32mINSERT INTO "tasks" ("name", "description", "deadline", "user_id", "project_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "HooliChat"], ["description", "Well, you just brought piss to a shit fight, you little cunt!"], ["deadline", "2021-02-15 00:00:00"], ["user_id", 13], ["project_id", 14], ["created_at", "2021-02-12 17:13:52.099566"], ["updated_at", "2021-02-12 17:13:52.099566"]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 21], ["LIMIT", 1]]
+  [1m[36mProject Load (0.1ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 16], ["LIMIT", 1]]
+  [1m[36mTask Create (0.4ms)[0m  [1m[32mINSERT INTO "tasks" ("name", "description", "deadline", "user_id", "project_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Nip Alert"], ["description", "I extended my compression algorithm to support... get this... 12-bit color. Okay, so our users will be able to experience a 10 percent increase in image quality with absolutely no increase in server load whatsoever. Just-Just-Just... Just watch this. Before. After. Before. After."], ["deadline", "2021-04-05 00:00:00"], ["user_id", 21], ["project_id", 16], ["created_at", "2021-02-12 17:13:52.112399"], ["updated_at", "2021-02-12 17:13:52.112399"]]
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 16], ["LIMIT", 1]]
+  [1m[36mProject Load (0.1ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mTask Create (0.5ms)[0m  [1m[32mINSERT INTO "tasks" ("name", "description", "deadline", "user_id", "project_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Spinder"], ["description", "I simply imagine that my skeleton is me and my body is my house. That way I'm always home."], ["deadline", "2021-08-09 00:00:00"], ["user_id", 16], ["project_id", 6], ["created_at", "2021-02-12 17:13:52.125620"], ["updated_at", "2021-02-12 17:13:52.125620"]]
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mProject Load (0.1ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 19], ["LIMIT", 1]]
+  [1m[36mTask Create (0.4ms)[0m  [1m[32mINSERT INTO "tasks" ("name", "description", "deadline", "user_id", "project_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Tables"], ["description", "Let me ask you. How fast do you think you could jerk off every guy in this room? Because I know how long it would take me. And I can prove it"], ["deadline", "2021-08-21 00:00:00"], ["user_id", 11], ["project_id", 19], ["created_at", "2021-02-12 17:13:52.139369"], ["updated_at", "2021-02-12 17:13:52.139369"]]
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mProject Load (0.1ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mTask Create (0.5ms)[0m  [1m[32mINSERT INTO "tasks" ("name", "description", "deadline", "user_id", "project_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "HooliChat"], ["description", "It's weird. They always travel in groups of five. These programmers, there's always a tall, skinny white guy; short, skinny Asian guy; fat guy with a ponytail; some guy with crazy facial hair; and then an East Indian guy. It's like they trade guys until they all have the right group."], ["deadline", "2021-11-03 00:00:00"], ["user_id", 15], ["project_id", 8], ["created_at", "2021-02-12 17:13:52.154577"], ["updated_at", "2021-02-12 17:13:52.154577"]]
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  [1m[36mProject Load (0.1ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 18], ["LIMIT", 1]]
+  [1m[36mTask Create (0.6ms)[0m  [1m[32mINSERT INTO "tasks" ("name", "description", "deadline", "user_id", "project_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Nip Alert"], ["description", "It's weird. They always travel in groups of five. These programmers, there's always a tall, skinny white guy; short, skinny Asian guy; fat guy with a ponytail; some guy with crazy facial hair; and then an East Indian guy. It's like they trade guys until they all have the right group."], ["deadline", "2021-07-24 00:00:00"], ["user_id", 10], ["project_id", 18], ["created_at", "2021-02-12 17:13:52.171922"], ["updated_at", "2021-02-12 17:13:52.171922"]]
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mProject Load (0.1ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTask Create (0.7ms)[0m  [1m[32mINSERT INTO "tasks" ("name", "description", "deadline", "user_id", "project_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "CodeRag"], ["description", "I extended my compression algorithm to support... get this... 12-bit color. Okay, so our users will be able to experience a 10 percent increase in image quality with absolutely no increase in server load whatsoever. Just-Just-Just... Just watch this. Before. After. Before. After."], ["deadline", "2021-06-10 00:00:00"], ["user_id", 2], ["project_id", 4], ["created_at", "2021-02-12 17:13:52.192870"], ["updated_at", "2021-02-12 17:13:52.192870"]]
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mProject Load (0.1ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mTask Create (0.6ms)[0m  [1m[32mINSERT INTO "tasks" ("name", "description", "deadline", "user_id", "project_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Pegg'd"], ["description", "I firmly believe we can only achieve greatness if first, we achieve goodness"], ["deadline", "2021-08-31 00:00:00"], ["user_id", 14], ["project_id", 14], ["created_at", "2021-02-12 17:13:52.209313"], ["updated_at", "2021-02-12 17:13:52.209313"]]
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mProject Load (0.4ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProject Load (0.1ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mTask Create (0.5ms)[0m  [1m[32mINSERT INTO "tasks" ("name", "description", "deadline", "user_id", "project_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Panic-a-Tech"], ["description", "I firmly believe we can only achieve greatness if first, we achieve goodness"], ["deadline", "2021-11-08 00:00:00"], ["user_id", 1], ["project_id", 3], ["created_at", "2021-02-12 17:13:52.228398"], ["updated_at", "2021-02-12 17:13:52.228398"]]
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  [1m[36mProject Load (0.1ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mTask Create (0.7ms)[0m  [1m[32mINSERT INTO "tasks" ("name", "description", "deadline", "user_id", "project_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Clinkle"], ["description", "I was gonna sleep last night, but, uh... I thought I had this solve for this computational trust issue I've been working on, but it turns out, I didn't have a solve. But it was too late. I had already drank the whole pot of coffee."], ["deadline", "2021-03-25 00:00:00"], ["user_id", 10], ["project_id", 6], ["created_at", "2021-02-12 17:13:52.242116"], ["updated_at", "2021-02-12 17:13:52.242116"]]
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mProject Load (0.1ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  [1m[36mTask Create (0.4ms)[0m  [1m[32mINSERT INTO "tasks" ("name", "description", "deadline", "user_id", "project_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Panic-a-Tech"], ["description", "Line ’em up, nuts to butts"], ["deadline", "2021-11-01 00:00:00"], ["user_id", 14], ["project_id", 10], ["created_at", "2021-02-12 17:13:52.255100"], ["updated_at", "2021-02-12 17:13:52.255100"]]
+  [1m[36mTRANSACTION (2.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mProject Load (0.1ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTask Create (0.8ms)[0m  [1m[32mINSERT INTO "tasks" ("name", "description", "deadline", "user_id", "project_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Astraphile"], ["description", "Gavin Belson started out with lofty goals too, but he just kept excusing immoral behavior just like this, until one day all that was left was a sad man with funny shoes... Disgraced, friendless, and engorged with the blood of a youthful charlatan."], ["deadline", "2021-04-06 00:00:00"], ["user_id", 8], ["project_id", 1], ["created_at", "2021-02-12 17:13:52.275814"], ["updated_at", "2021-02-12 17:13:52.275814"]]
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mProject Load (0.1ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 18], ["LIMIT", 1]]
+  [1m[36mTask Create (0.4ms)[0m  [1m[32mINSERT INTO "tasks" ("name", "description", "deadline", "user_id", "project_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "HooliChat"], ["description", "It's weird. They always travel in groups of five. These programmers, there's always a tall, skinny white guy; short, skinny Asian guy; fat guy with a ponytail; some guy with crazy facial hair; and then an East Indian guy. It's like they trade guys until they all have the right group."], ["deadline", "2021-01-01 00:00:00"], ["user_id", 5], ["project_id", 18], ["created_at", "2021-02-12 17:13:52.289630"], ["updated_at", "2021-02-12 17:13:52.289630"]]
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mProject Load (0.1ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mTask Create (0.4ms)[0m  [1m[32mINSERT INTO "tasks" ("name", "description", "deadline", "user_id", "project_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "HooliChat"], ["description", "You listen to me, you muscle-bound handsome Adonis: tech is reserved for people like me, okay? The freaks, the weirdos, the misfits, the geeks, the dweebs, the dorks! Not you!"], ["deadline", "2021-02-25 00:00:00"], ["user_id", 4], ["project_id", 15], ["created_at", "2021-02-12 17:13:52.303752"], ["updated_at", "2021-02-12 17:13:52.303752"]]
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mProject Load (0.3ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mProject Load (0.1ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTask Create (0.5ms)[0m  [1m[32mINSERT INTO "tasks" ("name", "description", "deadline", "user_id", "project_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Pegg'd"], ["description", "You listen to me, you muscle-bound handsome Adonis: tech is reserved for people like me, okay? The freaks, the weirdos, the misfits, the geeks, the dweebs, the dorks! Not you!"], ["deadline", "2021-12-18 00:00:00"], ["user_id", 15], ["project_id", 4], ["created_at", "2021-02-12 17:13:52.320472"], ["updated_at", "2021-02-12 17:13:52.320472"]]
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mProject Load (0.1ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  [1m[36mTask Create (0.5ms)[0m  [1m[32mINSERT INTO "tasks" ("name", "description", "deadline", "user_id", "project_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "PiperChat"], ["description", "Well, you just brought piss to a shit fight, you little cunt!"], ["deadline", "2021-11-02 00:00:00"], ["user_id", 3], ["project_id", 9], ["created_at", "2021-02-12 17:13:52.339067"], ["updated_at", "2021-02-12 17:13:52.339067"]]
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mProject Load (1.1ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mProject Load (0.1ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTask Create (0.5ms)[0m  [1m[32mINSERT INTO "tasks" ("name", "description", "deadline", "user_id", "project_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Panic-a-Tech"], ["description", "Line ’em up, nuts to butts"], ["deadline", "2021-01-09 00:00:00"], ["user_id", 8], ["project_id", 4], ["created_at", "2021-02-12 17:13:52.355169"], ["updated_at", "2021-02-12 17:13:52.355169"]]
+  [1m[36mTRANSACTION (16.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 18], ["LIMIT", 1]]
+  [1m[36mProject Load (0.1ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 19], ["LIMIT", 1]]
+  [1m[36mTask Create (0.6ms)[0m  [1m[32mINSERT INTO "tasks" ("name", "description", "deadline", "user_id", "project_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Tables"], ["description", "Line ’em up, nuts to butts"], ["deadline", "2021-04-03 00:00:00"], ["user_id", 18], ["project_id", 19], ["created_at", "2021-02-12 17:13:52.396245"], ["updated_at", "2021-02-12 17:13:52.396245"]]
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mProject Load (0.5ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  [1m[36mProject Load (0.1ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 13], ["LIMIT", 1]]
+  [1m[36mTask Create (1.4ms)[0m  [1m[32mINSERT INTO "tasks" ("name", "description", "deadline", "user_id", "project_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Pegg'd"], ["description", "Hitler actually played the bassoon. So technically Hitler was the Hitler of music."], ["deadline", "2021-01-06 00:00:00"], ["user_id", 12], ["project_id", 13], ["created_at", "2021-02-12 17:13:52.412013"], ["updated_at", "2021-02-12 17:13:52.412013"]]
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProject Load (0.1ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mTask Create (0.5ms)[0m  [1m[32mINSERT INTO "tasks" ("name", "description", "deadline", "user_id", "project_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Tables"], ["description", "You listen to me, you muscle-bound handsome Adonis: tech is reserved for people like me, okay? The freaks, the weirdos, the misfits, the geeks, the dweebs, the dorks! Not you!"], ["deadline", "2021-07-12 00:00:00"], ["user_id", 1], ["project_id", 11], ["created_at", "2021-02-12 17:13:52.438705"], ["updated_at", "2021-02-12 17:13:52.438705"]]
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 20], ["LIMIT", 1]]
+  [1m[36mProject Load (0.1ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 20], ["LIMIT", 1]]
+  [1m[36mTask Create (0.7ms)[0m  [1m[32mINSERT INTO "tasks" ("name", "description", "deadline", "user_id", "project_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Not Hotdog"], ["description", "And that, gentlemen, is scrum. Welcome to the next eight weeks of our lives."], ["deadline", "2021-01-05 00:00:00"], ["user_id", 20], ["project_id", 20], ["created_at", "2021-02-12 17:13:52.460280"], ["updated_at", "2021-02-12 17:13:52.460280"]]
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 17], ["LIMIT", 1]]
+  [1m[36mProject Load (0.1ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 16], ["LIMIT", 1]]
+  [1m[36mTask Create (0.5ms)[0m  [1m[32mINSERT INTO "tasks" ("name", "description", "deadline", "user_id", "project_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Astraphile"], ["description", "I don't want to live in a world where someone else is making the world a better place better than we are."], ["deadline", "2021-09-15 00:00:00"], ["user_id", 17], ["project_id", 16], ["created_at", "2021-02-12 17:13:52.514230"], ["updated_at", "2021-02-12 17:13:52.514230"]]
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 20], ["LIMIT", 1]]
+  [1m[36mProject Load (0.1ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 20], ["LIMIT", 1]]
+  [1m[36mTask Create (0.5ms)[0m  [1m[32mINSERT INTO "tasks" ("name", "description", "deadline", "user_id", "project_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Tables"], ["description", "Hitler actually played the bassoon. So technically Hitler was the Hitler of music."], ["deadline", "2021-10-20 00:00:00"], ["user_id", 20], ["project_id", 20], ["created_at", "2021-02-12 17:13:52.529614"], ["updated_at", "2021-02-12 17:13:52.529614"]]
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 18], ["LIMIT", 1]]
+  [1m[36mProject Load (0.1ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTask Create (0.5ms)[0m  [1m[32mINSERT INTO "tasks" ("name", "description", "deadline", "user_id", "project_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "CodeRag"], ["description", "You listen to me, you muscle-bound handsome Adonis: tech is reserved for people like me, okay? The freaks, the weirdos, the misfits, the geeks, the dweebs, the dorks! Not you!"], ["deadline", "2021-09-25 00:00:00"], ["user_id", 18], ["project_id", 4], ["created_at", "2021-02-12 17:13:52.544897"], ["updated_at", "2021-02-12 17:13:52.544897"]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  [1m[36mProject Load (0.1ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 16], ["LIMIT", 1]]
+  [1m[36mTask Create (0.7ms)[0m  [1m[32mINSERT INTO "tasks" ("name", "description", "deadline", "user_id", "project_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "HooliChat"], ["description", "Gentlemen, I just paid the palapa contractor. The palapa piper, so to speak. The dream is a reality. We'll no longer be exposed... to the elements."], ["deadline", "2021-03-10 00:00:00"], ["user_id", 12], ["project_id", 16], ["created_at", "2021-02-12 17:13:52.561399"], ["updated_at", "2021-02-12 17:13:52.561399"]]
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/tasks" for ::1 at 2021-02-12 12:14:33 -0500
+Started GET "/departments" for ::1 at 2021-02-12 12:14:33 -0500
+Started GET "/projects" for ::1 at 2021-02-12 12:14:33 -0500
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Started GET "/users" for ::1 at 2021-02-12 12:14:33 -0500
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ProjectsController#index as */*
+  [1m[36mProject Load (2.5ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+Processing by DepartmentsController#index as */*
+  [1m[36mTask Load (0.9ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = ?[0m  [["project_id", 1]]
+Processing by UsersController#index as */*
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by TasksController#index as */*
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+  ↳ app/services/department_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "tasks" ON "users"."id" = "tasks"."user_id" WHERE "tasks"."project_id" = ?[0m  [["project_id", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  [1m[36mDepartment Load (0.4ms)[0m  [1m[34mSELECT "departments".* FROM "departments"[0m
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  ↳ app/services/department_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."department_id" = ?[0m  [["department_id", 1]]
+  ↳ app/services/department_serializer.rb:7:in `to_serialized_json'
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = ?[0m  [["project_id", 2]]
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."department_id" = ?[0m  [["department_id", 2]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (1.4ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/services/department_serializer.rb:7:in `to_serialized_json'
+  [1m[36mProject Load (0.3ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "tasks" ON "users"."id" = "tasks"."user_id" WHERE "tasks"."project_id" = ?[0m  [["project_id", 2]]
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."department_id" = ?[0m  [["department_id", 3]]
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ?[0m  [["user_id", 2]]
+  ↳ app/services/department_serializer.rb:7:in `to_serialized_json'
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."department_id" = ?[0m  [["department_id", 4]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/services/department_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = ?[0m  [["project_id", 3]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."department_id" = ?[0m  [["department_id", 5]]
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ?[0m  [["user_id", 3]]
+  ↳ app/services/department_serializer.rb:7:in `to_serialized_json'
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "tasks" ON "users"."id" = "tasks"."user_id" WHERE "tasks"."project_id" = ?[0m  [["project_id", 3]]
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ?[0m  [["user_id", 4]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."department_id" = ?[0m  [["department_id", 6]]
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (2.9ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = ?[0m  [["project_id", 4]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  ↳ app/services/department_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "tasks" ON "users"."id" = "tasks"."user_id" WHERE "tasks"."project_id" = ?[0m  [["project_id", 4]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ?[0m  [["user_id", 5]]
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mProject Load (0.3ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+Completed 200 OK in 186ms (Views: 0.4ms | ActiveRecord: 7.3ms | Allocations: 40348)
+
+
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 19], ["LIMIT", 1]]
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ?[0m  [["user_id", 6]]
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ?[0m  [["user_id", 7]]
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ?[0m  [["user_id", 8]]
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ?[0m  [["user_id", 9]]
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ?[0m  [["user_id", 10]]
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ?[0m  [["user_id", 11]]
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = ?[0m  [["project_id", 5]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ?[0m  [["user_id", 12]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "tasks" ON "users"."id" = "tasks"."user_id" WHERE "tasks"."project_id" = ?[0m  [["project_id", 5]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  [1m[36mTask Load (1.1ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ?[0m  [["user_id", 13]]
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ?[0m  [["user_id", 14]]
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = ?[0m  [["project_id", 6]]
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ?[0m  [["user_id", 15]]
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ?[0m  [["user_id", 16]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ?[0m  [["user_id", 17]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "tasks" ON "users"."id" = "tasks"."user_id" WHERE "tasks"."project_id" = ?[0m  [["project_id", 6]]
+  [1m[36mCACHE Project Load (0.0ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (0.1ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ?[0m  [["user_id", 18]]
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ?[0m  [["user_id", 19]]
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ?[0m  [["user_id", 20]]
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = ?[0m  [["user_id", 21]]
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = ?[0m  [["project_id", 7]]
+Completed 200 OK in 337ms (Views: 1.2ms | ActiveRecord: 8.1ms | Allocations: 69482)
+
+
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 13], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "tasks" ON "users"."id" = "tasks"."user_id" WHERE "tasks"."project_id" = ?[0m  [["project_id", 7]]
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = ?[0m  [["project_id", 8]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mProject Load (0.3ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "tasks" ON "users"."id" = "tasks"."user_id" WHERE "tasks"."project_id" = ?[0m  [["project_id", 8]]
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = ?[0m  [["project_id", 9]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 21], ["LIMIT", 1]]
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "tasks" ON "users"."id" = "tasks"."user_id" WHERE "tasks"."project_id" = ?[0m  [["project_id", 9]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (0.6ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = ?[0m  [["project_id", 10]]
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mProject Load (0.3ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 19], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (2.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "tasks" ON "users"."id" = "tasks"."user_id" WHERE "tasks"."project_id" = ?[0m  [["project_id", 10]]
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mProject Load (0.1ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = ?[0m  [["project_id", 11]]
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "tasks" ON "users"."id" = "tasks"."user_id" WHERE "tasks"."project_id" = ?[0m  [["project_id", 11]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = ?[0m  [["project_id", 12]]
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "tasks" ON "users"."id" = "tasks"."user_id" WHERE "tasks"."project_id" = ?[0m  [["project_id", 12]]
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = ?[0m  [["project_id", 13]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "tasks" ON "users"."id" = "tasks"."user_id" WHERE "tasks"."project_id" = ?[0m  [["project_id", 13]]
+  [1m[36mProject Load (0.3ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = ?[0m  [["project_id", 14]]
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "tasks" ON "users"."id" = "tasks"."user_id" WHERE "tasks"."project_id" = ?[0m  [["project_id", 14]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (0.6ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = ?[0m  [["project_id", 15]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mCACHE Project Load (0.0ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "tasks" ON "users"."id" = "tasks"."user_id" WHERE "tasks"."project_id" = ?[0m  [["project_id", 15]]
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = ?[0m  [["project_id", 16]]
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "tasks" ON "users"."id" = "tasks"."user_id" WHERE "tasks"."project_id" = ?[0m  [["project_id", 16]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mCACHE Project Load (0.0ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = ?[0m  [["project_id", 17]]
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 17], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "tasks" ON "users"."id" = "tasks"."user_id" WHERE "tasks"."project_id" = ?[0m  [["project_id", 17]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mCACHE Project Load (0.0ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = ?[0m  [["project_id", 18]]
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "tasks" ON "users"."id" = "tasks"."user_id" WHERE "tasks"."project_id" = ?[0m  [["project_id", 18]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mProject Load (0.3ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 18], ["LIMIT", 1]]
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = ?[0m  [["project_id", 19]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "tasks" ON "users"."id" = "tasks"."user_id" WHERE "tasks"."project_id" = ?[0m  [["project_id", 19]]
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" = ?[0m  [["project_id", 20]]
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mCACHE Project Load (0.0ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "tasks" ON "users"."id" = "tasks"."user_id" WHERE "tasks"."project_id" = ?[0m  [["project_id", 20]]
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 18], ["LIMIT", 1]]
+Completed 200 OK in 681ms (Views: 0.1ms | ActiveRecord: 21.3ms | Allocations: 133331)
+
+
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mCACHE Project Load (0.0ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mCACHE Project Load (0.0ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mCACHE Project Load (0.0ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 18], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mCACHE Project Load (0.0ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mProject Load (0.3ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 20], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 17], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mCACHE Project Load (0.0ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 16], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 21], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mCACHE Project Load (0.1ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 16], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mCACHE Project Load (0.0ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 19], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mCACHE Project Load (0.0ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 18], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mProject Load (0.3ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mCACHE Project Load (0.0ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mCACHE Project Load (0.0ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mCACHE Project Load (0.0ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mCACHE Project Load (0.0ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mCACHE Project Load (0.0ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mCACHE Project Load (0.0ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 18], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mCACHE Project Load (0.0ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mCACHE Project Load (0.0ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mCACHE Project Load (0.0ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mCACHE Project Load (0.0ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mCACHE Project Load (0.0ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 19], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 18], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mCACHE Project Load (0.0ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mCACHE Project Load (0.1ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mCACHE Project Load (0.1ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 20], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 20], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mCACHE Project Load (0.0ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 16], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 17], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mCACHE Project Load (0.0ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 20], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 20], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mCACHE Project Load (0.0ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 18], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mCACHE Project Load (0.0ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 16], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 880ms (Views: 0.3ms | ActiveRecord: 15.5ms | Allocations: 157274)
+
+

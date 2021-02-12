@@ -30,7 +30,7 @@ class Project {
         if (e.target.classList.contains("card")) {
             let data = {
                 innerHTML: `
-                    <div class="flex" style="align-items: center; justify-content: space-between; font-size: 15px; color: #777; flex: 1; padding: 0px 15px;">
+                    <div class="flex" style="align-items: center; justify-content: space-between; font-size: 15px; color: #777; flex: 1; padding-right: 15px;">
                         <div><i class="bi-arrow-bar-left"></i> Back to Projects</div>
                         <div><i class="bi-gear-fill"></i></div>
                     </div>
