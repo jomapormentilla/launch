@@ -4,6 +4,13 @@ class UserSerializer
     end
 
     def to_serialized_json
-        @user.to_json(:include => { :tasks => {:only => [:name] } })
+        @user.to_json(
+            :include => [
+                :tasks
+            ],
+            :except => [
+                :password
+            ]
+        )
     end
 end
