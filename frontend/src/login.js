@@ -3,7 +3,7 @@ class Login {
 
     static render() {
         this.login.innerHTML = `
-            <h1>LAUNCH</h1>
+            <h1 style="font-family: 'Amatic SC', cursive; font-size: 100px;">LAUNCH</h1>
             <form id="login-form">
                 <input type="text" placeholder="Username"><br>
                 <input type="password" placeholder="Password"><br>

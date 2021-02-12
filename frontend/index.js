@@ -9,4 +9,8 @@ document.addEventListener("DOMContentLoaded", (e) => {
     UserApi.getUsers()
     Login.render()
     Nav.seed()
+
+    setTimeout(()=>{
+        document.getElementById("login").querySelector("h1").display = "none"
+    }, 2000)
 })
