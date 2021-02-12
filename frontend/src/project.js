@@ -1,12 +1,13 @@
 class Project {
     static all = []
 
-    constructor({id, name, description, creator_id, users}) {
+    constructor({id, name, description, creator_id, users, tasks}) {
         this.id = id
         this.name = name
         this.description = description
         this.creatorId = creator_id
-        this.usersIds = users
+        this.userIds = users
+        this.taskIds = tasks
 
         Project.all.push(this)
     }
@@ -54,7 +55,13 @@ class Project {
                 justifyContent: `center`
             }
             content.innerHTML = data.innerHTML
-            content.querySelector("div").addEventListener("click", (e) => { Project.render() })
+            content.querySelector("div").addEventListener("click", (e) => { 
+                if (e.target.innerText.includes("Back to Projects")) {
+                    Project.render() 
+                } else if (e.target.classList.contains("bi-gear-fill")) {
+                    alert("Settings!")
+                }
+            })
         }
     }
 
@@ -69,26 +76,25 @@ class Project {
     }
 
     get creator() {
-        return User.all.find((u) => u.id == this.creatorId)
+        return User.all.find(u => u.id == this.creatorId)
     }
 
     get users() {
         let projectUsers = []
-        for (let user of this.usersIds) {
+        for (let user of this.userIds) {
             let find = User.all.find(u => u.id == user.id)
             projectUsers.push(find)
         }
         return projectUsers
     }
 
-    static render() {
-        let newProject = this.newProjectCard()
-        content.innerHTML = ``
-        content.append(newProject)
-        
-        for (let p of Project.all) {
-            content.append(p.card())
+    get tasks() {
+        let projectTasks = []
+        for (let task of this.taskIds) {
+            let find = Task.all.find(t => t.id == task.id)
+            projectTasks.push(find)
         }
+        return projectTasks
     }
 
     static newProjectCard = () => {
@@ -128,5 +134,15 @@ class Project {
         
         document.querySelector(".backdrop").style.opacity = 0
         setTimeout(()=>{ document.querySelector(".backdrop").remove() }, 1000)
+    }
+
+    static render() {
+        let newProject = this.newProjectCard()
+        content.innerHTML = ``
+        content.append(newProject)
+        
+        for (let p of Project.all) {
+            content.append(p.card())
+        }
     }
 }

@@ -11,24 +11,20 @@ class User {
         User.all.push(this)
     }
 
-    static render() {
-        content.innerHTML = ``
-        let sorted = User.all.sort()
-        for (let u of sorted) {
-            content.append(u.card())
-        }
-    }
-
     get tasks() {
-        return Task.all.filter((t) => t.userId == this.id)
+        return Task.all.filter(t => t.userId == this.id)
     }
 
     get projects() {
-        // Project.all.filter((p) => p.users.con)
+        return Project.all.filter(p => p.users.includes(current_user))
     }
 
     get department() {
-        return Department.all.filter((d) => d.id == this.department_id)[0].name
+        return Department.all.find(d => d.id == this.department_id).name
+    }
+
+    get project() {
+        return Project.all.find(p => p.creatorId == this.id)
     }
 
     card() {
@@ -48,5 +44,13 @@ class User {
             return `<li>${ u.firstName } ${ u.lastName }</li>`
         })
         return list
+    }
+
+    static render() {
+        content.innerHTML = ``
+        let sorted = User.all.sort()
+        for (let u of sorted) {
+            content.append(u.card())
+        }
     }
 }

@@ -6,7 +6,7 @@ class ProjectSerializer
     def to_serialized_json
         @project.to_json(
             :include => [
-                :tasks => {only: [:name, :description, :deadline]},
+                :tasks => {only: [:id]},
                 :users => {only: [:id]},
                 :creator => {only: [:id]}
             ]

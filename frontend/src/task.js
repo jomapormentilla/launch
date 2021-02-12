@@ -12,6 +12,14 @@ class Task {
         Task.all.push(this)
     }
 
+    get user() {
+        return User.all.find(u => u.id == this.userId)
+    }
+
+    get project() {
+        return Project.all.find(p => p.id == this.projectId)
+    }
+
     static render() {
         content.innerHTML = `TASKS!`
     }
