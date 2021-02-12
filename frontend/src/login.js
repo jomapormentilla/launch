@@ -21,6 +21,6 @@ class Login {
 
     static hide() {
         this.login.style.opacity = 0
-        setTimeout(()=>{ this.login.style.display = "none" }, 1000)
+        setTimeout(()=>{ this.login.remove() }, 1000)
     }
 }

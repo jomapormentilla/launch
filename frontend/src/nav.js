@@ -10,7 +10,7 @@ class Nav {
 
     static seed() {
         let navItems = [
-            { title: "Home", src: "home" },
+            { title: "Dashboard", src: "dashboard" },
             { title: "Users", src: "users" },
             { title: "Projects", src: "projects" }
         ]
@@ -39,7 +39,8 @@ class Nav {
         for (let i of this.navigation.querySelectorAll("div")) {
             i.classList.remove("active")
         }
-        
         this.div.classList.add("active")
+
+        Content.render(this.src)
     }
 }

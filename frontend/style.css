@@ -9,8 +9,8 @@ body, html {
 
 .flex {
     display: flex;
-    border: solid 1px #ddd;
-    transition: 0.5s;
+    /* border: solid 1px #ddd; */
+    transition: 0.25s;
 }
 
 #login {
@@ -18,6 +18,19 @@ body, html {
     align-items: center;
     height: 100%;
     background-color: #ddd;
+}
+
+    #login input {
+        width: 100%;
+        height: 30px;
+        margin-bottom: 10px;
+    }
+
+button {
+    width: 100%;
+    border: solid 1px #777;
+    border-radius: 0px;
+    height: 35px;
 }
 
 #container {
@@ -35,7 +48,8 @@ body, html {
     }
 
 #navigation {
-    justify-content: space-around;
+    justify-content: flex-start;
+    border: solid 1px #ddd;
 }
 
     #navigation > div {
