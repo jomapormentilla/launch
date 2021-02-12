@@ -9,7 +9,11 @@ class Dashboard {
     static handleProfileClick = e => {
         let data = {
             innerHTML: `
-                <h1>Profile Settings</h1>   
+                <h1>Profile Settings</h1>
+                <ul>Feature List
+                    <li>Your Projects</li>
+                    <li></li>
+                </ul>
             `,
             justifyContent: `flex-end`
         }

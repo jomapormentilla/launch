@@ -28,10 +28,21 @@ class Project {
     projectClick = (e) => {
         if (e.target.classList.contains("card")) {
             let data = {
-                innerHTML: `<h1>${ this.name }</h1>`,
+                innerHTML: `
+                    <div class="flex" style="align-items: center; cursor: pointer; font-size: 15px; color: #777;"><i class="bi-arrow-bar-left" style="font-size: 18px; color: #777;"></i> Back to Projects</div>
+                    <div class="flex" style="width: 100%; flex-direction: column;">
+                        <h1>${ this.name }</h1>
+                        <div class="flex" style="width: 100%; flex-direction: row; flex-wrap: wrap;">
+                            <div class="flex box"><h3>Team Members</h3></div>
+                            <div class="flex box"><h3>Progress</h3></div>
+                            <div class="flex box"><h3>Messages</h3></div>
+                        </div>
+                    </div>
+                `,
                 justifyContent: `center`
             }
-            Modal.render(data)
+            content.innerHTML = data.innerHTML
+            content.querySelector("div").addEventListener("click", (e) => { Project.render() })
         }
     }
 
@@ -78,7 +89,7 @@ class Project {
                 <div id="new-project">
                     <h1>Create a New Project</h1>
                     <form id="new-project-form">
-                        <input type="text" placeholder="Project Name"><br>
+                        <input type="text" placeholder="Project Name"><br><br>
                         <button type="submit">Create Project</button>
                     </form>
                 </div>    

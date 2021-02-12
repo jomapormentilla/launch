@@ -41,6 +41,12 @@ button {
     border: solid 1px #777;
     border-radius: 0px;
     height: 30px;
+    transition: 0.5s;
+}
+
+button:hover {
+    background-color: #3b5ab1;
+    color: #fff;
 }
 
 #container {
@@ -58,7 +64,7 @@ button {
 }
 
     #header > div {
-        padding: 10px;
+        padding: 10px 20px;
     }
 
     #header > div:last-child > i {
@@ -151,4 +157,15 @@ button {
 #new-project-form input {
     height: 30px;
     width: 300px;
+}
+
+.box {
+    padding: 10px;
+    border: solid 1px #ddd;
+    margin-right: 15px;
+    margin-bottom: 15px;
+    flex: 1;
+    flex-basis: 250px;
+    height: 150px;
+    background-color: #fff;
 }
