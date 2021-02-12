@@ -9,7 +9,6 @@ class Project {
 
     card() {
         let card = document.createElement("div")
-        card.classList.add("flex")
         card.classList.add("card")
         card.innerHTML = `
             <h3>${ this.name }</h3>

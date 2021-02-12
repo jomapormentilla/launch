@@ -26,10 +26,11 @@ class Nav {
     render() {
         this.div = document.createElement("div")
         this.div.classList.add("flex")
+        this.title === "Dashboard" ? this.div.classList.add("active") : null
         this.div.style.cursor = "pointer"
         this.div.innerText = this.title
         this.div.addEventListener("click", this.handleClick)
-        
+        Dashboard.render()
         return this.div
     }
 
@@ -42,7 +43,6 @@ class Nav {
             i.classList.remove("active")
         }
         this.div.classList.add("active")
-
         this.render_content(this.src)
     }
 

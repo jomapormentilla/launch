@@ -12,7 +12,28 @@ class User {
     }
 
     static render() {
-        content.innerHTML = this.list()
+        content.innerHTML = ``
+        for (let u of User.all) {
+            content.append(u.card())
+        }
+    }
+
+    get tasks() {
+        return Task.all.filter((t) => t.userId == this.id)
+    }
+
+    get department() {
+        return Department.all.filter((d) => d.id == this.department_id)[0].name
+    }
+
+    card() {
+        let card = document.createElement("div")
+        card.classList.add("card")
+        card.innerHTML = `
+            <h3>${ this.firstName }</h3>
+            <p>${ this.department }</p>
+        `
+        return card
     }
 
     static list() {
@@ -20,13 +41,5 @@ class User {
             return `<li>${ u.firstName } ${ u.lastName }</li>`
         })
         return list
-    }
-
-    tasks() {
-        return Task.all.filter((t) => t.userId == this.id)
-    }
-
-    department() {
-        return Department.all.filter((d) => d.id == this.department_id)
     }
 }
