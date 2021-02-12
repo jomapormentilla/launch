@@ -4,11 +4,19 @@ body, html {
     font-family: 'Noto Sans', sans-serif;
     padding: 0;
     margin: 0;
+    height: 100vh;
 }
 
 .flex {
     display: flex;
     border: solid 1px #ddd;
+}
+
+#login {
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    background-color: #ddd;
 }
 
 #container {
