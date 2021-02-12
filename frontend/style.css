@@ -1,4 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
+
 body, html {
+    font-family: 'Noto Sans', sans-serif;
     padding: 0;
     margin: 0;
 }
@@ -6,4 +9,25 @@ body, html {
 .flex {
     display: flex;
     border: solid 1px #ddd;
+}
+
+#container {
+    flex-direction: column;
+}
+
+#header {
+    justify-content: space-between;
+}
+
+    #header > div {
+        padding: 10px;
+    }
+
+#navigation {
+    padding: 10px;
+}
+
+#dynamic-content {
+    padding: 10px;
+    min-height: 90vh;
 }
