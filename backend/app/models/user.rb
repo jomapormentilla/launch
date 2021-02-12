@@ -3,4 +3,6 @@ class User < ApplicationRecord
     
     has_many :tasks
     has_many :projects, through: :tasks
+
+    has_one :project, foreign_key: 'creator_id'
 end
