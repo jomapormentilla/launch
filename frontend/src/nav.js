@@ -13,7 +13,8 @@ class Nav {
         let navItems = [
             { title: "Dashboard", src: "dashboard" },
             { title: "Users", src: "users" },
-            { title: "Projects", src: "projects" }
+            { title: "Projects", src: "projects" },
+            { title: "Your Tasks", src: "tasks" }
         ]
 
         for (let item of navItems) {
@@ -58,6 +59,9 @@ class Nav {
                     break
                 case 'projects':
                     Project.render()
+                    break
+                case 'tasks':
+                    Task.render()
                     break
             }
         }, 250)

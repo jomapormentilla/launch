@@ -29,8 +29,9 @@ class Project {
         newProject.classList.add("card")
         newProject.style.justifyContent = "center"
         newProject.style.alignItems = "center"
-        newProject.style.fontSize = "150px"
-        newProject.innerHTML = "+"
+        newProject.style.flexDirection = "column"
+        newProject.innerHTML = `New Project`
+        newProject.innerHTML += `<span style="font-size: 150px;">+</span>`
         newProject.addEventListener("click", this.handleNewProject)
         
         content.innerHTML = ``
@@ -60,6 +61,10 @@ class Project {
     static handleSubmitNewProject = e => {
         e.preventDefault()
         ProjectApi.createProject(e.target)
-        setTimeout(()=>{ document.querySelector(".backdrop").remove() }, 250)
+        
+        debugger
+        // Modal.hideModal(e)
+        document.querySelector(".backdrop").style.opacity = 0
+        setTimeout(()=>{ document.querySelector(".backdrop").remove() }, 1000)
     }
 }

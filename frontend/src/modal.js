@@ -15,8 +15,9 @@ class Modal {
     }
 
     static hideModal = e => {
-        if (e.target.classList.contains("backdrop")) {
-            e.target.remove()
+        if (e.target.classList.contains("backdrop") || e.type === "submit") {
+            e.target.style.opacity = 0
+            setTimeout(()=>{ e.target.remove() }, 500)
         }
     }
 

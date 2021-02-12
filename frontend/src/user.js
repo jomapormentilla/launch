@@ -20,4 +20,8 @@ class User {
         })
         return list
     }
+
+    tasks() {
+        return Task.all.filter((t) => t.userId == this.id)
+    }
 }

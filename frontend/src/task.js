@@ -11,4 +11,8 @@ class Task {
 
         Task.all.push(this)
     }
+
+    static render() {
+        content.innerHTML = `TASKS!`
+    }
 }
