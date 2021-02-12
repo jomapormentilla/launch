@@ -1,5 +1,6 @@
 class Nav {
     navigation = document.getElementById("navigation")
+
     static all = []
 
     constructor({title, src}) {
@@ -41,6 +42,28 @@ class Nav {
         }
         this.div.classList.add("active")
 
-        Content.render(this.src)
+        this.render_content(this.src)
+    }
+
+    render_content(data) {
+        content.style.opacity = 0
+        setTimeout(()=>{ 
+            switch (data) {
+                case 'dashboard':
+                    Dashboard.render()
+                    break
+                case 'users':
+                    this.users()
+                    break
+                case 'projects':
+                    Project.render()
+                    break
+            }
+        }, 500)
+    }
+    
+    users() {
+            content.style.opacity = 1 
+            content.innerHTML = 'USERS!'
     }
 }

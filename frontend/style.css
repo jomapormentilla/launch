@@ -16,6 +16,7 @@ body, html {
 #login {
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     height: 100%;
     background-color: #ddd;
 }
@@ -30,7 +31,7 @@ button {
     width: 100%;
     border: solid 1px #777;
     border-radius: 0px;
-    height: 35px;
+    height: 30px;
 }
 
 #container {
