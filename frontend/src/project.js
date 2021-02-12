@@ -1,12 +1,47 @@
 class Project {
     static all = []
 
-    constructor({name}) {
+    constructor({id, name}) {
+        this.id = id
         this.name = name
         Project.all.push(this)
     }
 
+    card() {
+        let card = document.createElement("div")
+        card.classList.add("flex")
+        card.classList.add("card")
+        card.innerHTML = `
+            <h3>${ this.name }</h3>
+            <p>${ this.users() }</p>
+        `
+
+        return card
+    }
+
+    users() {
+        return User.all.filter((u) => u.id == this.id)
+    }
+
     static render() {
-        content.innerHTML = 'PROJECTS!'
+        let newProject = document.createElement("div")
+        newProject.classList.add("flex")
+        newProject.classList.add("card")
+        newProject.style.justifyContent = "center"
+        newProject.style.alignItems = "center"
+        newProject.style.fontSize = "150px"
+        newProject.innerHTML = "+"
+        newProject.addEventListener("click", this.handleNewProject)
+        
+        content.innerHTML = ``
+        content.append(newProject)
+        
+        for (let p of Project.all) {
+            content.append(p.card())
+        }
+    }
+
+    static handleNewProject = e => {
+        alert("New Project!")
     }
 }

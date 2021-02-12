@@ -1,7 +1,8 @@
 class User {
     static all = []
 
-    constructor({first_name, last_name, email}) {
+    constructor({id, first_name, last_name, email}) {
+        this.id = id
         this.firstName = first_name
         this.lastName = last_name
         this.email = email
