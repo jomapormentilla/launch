@@ -2,7 +2,7 @@ class Dashboard {
     static render() {
         document.getElementById("header").querySelector(".bi-person-circle").addEventListener("click", this.handleProfileClick)
         content.innerHTML = `
-            <h1>Welcome Back!</h1>    
+            <h1>Welcome Back, ${ current_user.firstName }!</h1>    
         `
     }
 

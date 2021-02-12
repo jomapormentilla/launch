@@ -5,7 +5,7 @@ class Login {
         this.login.innerHTML = `
             <h1 style="font-family: 'Amatic SC', cursive; font-size: 100px;">LAUNCH</h1>
             <form id="login-form">
-                <input type="text" placeholder="Username"><br>
+                <input type="email" placeholder="Email" value="jomapormentilla@gmail.com"><br>
                 <input type="password" placeholder="Password"><br>
                 <button type="submit">Login</button>
             </form>
@@ -16,9 +16,11 @@ class Login {
 
     static handleLogin = e => {
         e.preventDefault()
+        current_user = User.all.find((u) => u.email === e.target.children[0].value)
         this.hide()
         container.style.display = "flex"
         setTimeout(()=>{ container.style.opacity = 1 }, 250)
+        Dashboard.render()
     }
 
     static hide() {

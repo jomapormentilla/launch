@@ -1,9 +1,10 @@
 class Project {
     static all = []
 
-    constructor({id, name}) {
+    constructor({id, name, creator_id}) {
         this.id = id
         this.name = name
+        this.creatorId = creator_id
         Project.all.push(this)
     }
 
@@ -29,13 +30,21 @@ class Project {
         if (e.target.classList.contains("card")) {
             let data = {
                 innerHTML: `
-                    <div class="flex" style="align-items: center; cursor: pointer; font-size: 15px; color: #777;"><i class="bi-arrow-bar-left" style="font-size: 18px; color: #777;"></i> Back to Projects</div>
+                    <div class="flex" style="align-items: center; justify-content: space-between; font-size: 15px; color: #777; flex: 1; padding: 0px 15px;">
+                        <div><i class="bi-arrow-bar-left"></i> Back to Projects</div>
+                        <div><i class="bi-gear-fill"></i></div>
+                    </div>
                     <div class="flex" style="width: 100%; flex-direction: column;">
                         <h1>${ this.name }</h1>
                         <div class="flex" style="width: 100%; flex-direction: row; flex-wrap: wrap;">
                             <div class="flex box"><h3>Team Members</h3></div>
                             <div class="flex box"><h3>Progress</h3></div>
                             <div class="flex box"><h3>Messages</h3></div>
+                        </div>
+
+                        <h2>Build Your Team</h2>
+                        <div class="flex" style="width: 100%; flex-direction: row; flex-wrap: wrap;">
+                            <div class="flex box"><h3>Search Departments</h3></div>
                         </div>
                     </div>
                 `,

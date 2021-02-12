@@ -12,8 +12,10 @@ class ProjectApi {
     }
 
     static createProject(data) {
+        debugger
         let projectInfo = {
-            name: data[0].value
+            name: data[0].value,
+            creator_id: User.all[0].id
         }
 
         let configObj = {

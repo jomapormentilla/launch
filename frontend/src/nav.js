@@ -30,7 +30,6 @@ class Nav {
         this.div.style.cursor = "pointer"
         this.div.innerText = this.title
         this.div.addEventListener("click", this.handleClick)
-        Dashboard.render()
         return this.div
     }
 
