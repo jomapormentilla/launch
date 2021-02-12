@@ -10,6 +10,7 @@ body, html {
 .flex {
     display: flex;
     border: solid 1px #ddd;
+    transition: 0.5s;
 }
 
 #login {
@@ -20,7 +21,9 @@ body, html {
 }
 
 #container {
+    display: none;
     flex-direction: column;
+    opacity: 0;
 }
 
 #header {
@@ -35,7 +38,7 @@ body, html {
     padding: 10px;
 }
 
-#dynamic-content {
+#content {
     padding: 10px;
     min-height: 90vh;
 }
