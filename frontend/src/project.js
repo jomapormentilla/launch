@@ -43,15 +43,23 @@ class Project {
 
     static handleNewProject = e => {
         let data = `
+            <br><br>
             <div id="new-project">
                 <h1>Create a New Project</h1>
-                <input type="text" placeholder="Project Name">
+                <form id="new-project-form">
+                    <input type="text" placeholder="Project Name">
+                    <button type="submit">Create Project</button>
+                </form>
             </div>
         `
+        
         Modal.render(data)
+        document.getElementById("new-project-form").addEventListener("submit", this.handleSubmitNewProject)
     }
 
-    static newProject() {
-
+    static handleSubmitNewProject = e => {
+        e.preventDefault()
+        ProjectApi.createProject(e.target)
+        setTimeout(()=>{ document.querySelector(".backdrop").remove() }, 250)
     }
 }

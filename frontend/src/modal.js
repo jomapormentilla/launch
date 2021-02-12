@@ -7,7 +7,7 @@ class Modal {
         this.div = document.createElement("div")
         this.div.classList.add("backdrop")
         this.div.style.zIndex = "10"
-        setTimeout(() => { this.div.style.opacity = "0.8" }, 250)
+        setTimeout(() => { this.div.style.opacity = "0.9" }, 250)
         this.div.addEventListener("click", this.hideModal)
         this.div.append(this.renderBody(data))
 
