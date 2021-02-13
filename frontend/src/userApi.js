@@ -32,14 +32,14 @@ class UserApi {
 
         fetch(this.url, configObj)
             .then(res => res.json())
-            .then(this.handleResponse)
+            .then(this.handleNewUserSignup)
             .catch(error => console.log(error))
-
     }
    
-    static handleResponse = data => {
+    static handleNewUserSignup = data => {
         if (!!data.error) {
             console.log(data.error)
+            Error.render(data.error)
         } else {
             current_user = User.all.find(u => u.email === data.email)
             Login.loadDashboard()

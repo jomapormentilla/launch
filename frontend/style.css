@@ -13,6 +13,23 @@ body, html {
     background-color: #333;
 }
 
+.error-container {
+    display: block;
+    position: fixed;
+    top: 15px;
+    right: 15px;
+}
+    
+    .error {
+        border: solid 1px #777;
+        background-color: #fabacd;
+        padding: 15px;
+        text-align: center;
+        min-width: 300px;
+        transition: 1s;
+        margin-bottom: 10px;
+    }
+
 .flex {
     display: flex;
     /* border: solid 1px #ddd; */
