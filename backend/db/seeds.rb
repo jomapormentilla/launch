@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 def start
-    # createDepartments
+    createDepartments
     createAdmin
     createUsers
     createProjects
@@ -35,7 +35,7 @@ end
 
 def createUsers
     20.times do
-        name = "#{ Faker::Name.first_name } #{ Faker::Name.last_name }"
+        name = "#{ Faker::Name.unique.first_name } #{ Faker::Name.unique.last_name }"
         email = "#{ name.gsub(" ","").downcase }@gmail.com"
         
         data = {
@@ -53,8 +53,8 @@ end
 def createProjects
     20.times do
         data = {
-            name: Faker::App.name,
-            description: Faker::Movies::VForVendetta.speech,
+            name: Faker::App.unique.name,
+            description: Faker::Quote.unique.yoda,
             creator_id: User.all.sample.id
         }
 
@@ -65,7 +65,7 @@ end
 def createTasks
     50.times do
         data = {
-            name: Faker::TvShows::SiliconValley.app,
+            name: Faker::Game.unique.title,
             description: Faker::TvShows::SiliconValley.quote,
             deadline: Faker::Date.between(from: '2021-01-01', to: '2021-12-31'),
             user_id: User.all.sample.id,
