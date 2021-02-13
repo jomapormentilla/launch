@@ -1,5 +1,6 @@
 class Login {
     static login = document.getElementById("login")
+    static nav = document.getElementById("nav-container")
 
     static render() {
         this.login.innerHTML = `
@@ -17,10 +18,17 @@ class Login {
     static handleLogin = e => {
         e.preventDefault()
         current_user = User.all.find(u => u.email === e.target.children[0].value)
+        this.greeting()
         this.hide()
         container.style.display = "flex"
         setTimeout(()=>{ container.style.opacity = 1 }, 250)
         Dashboard.render()
+    }
+
+    static greeting() {
+        let div = document.createElement("div")
+        div.innerHTML = `Hello, ${ current_user.firstName }!`
+        this.nav.append(div)
     }
 
     static hide() {

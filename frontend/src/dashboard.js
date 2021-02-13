@@ -29,19 +29,32 @@ class Dashboard {
         return html
     }
 
+    static addToProgressLog(data) {
+        let div = document.createElement("div")
+        div.innerHTML = data
+        div.classList.add("progress-log-item")
+        document.getElementById("prog-log").prepend(div)
+    }
+
     static render() {
         document.getElementById("header").addEventListener("click", this.handleHeaderClick)
         content.innerHTML = `
-            <div class="flex" style="flex-direction: column;">
-                <h1>Welcome Back, ${ current_user.firstName }!</h1>
-                <h3>Projects You Created:</h3>
-                <div class="flex" style="flex-direction: row;">
+            <div class="flex" style="flex-direction: column; flex: 3;">
+                <h2>Your Projects:</h2>
+                <div class="flex" style="flex-direction: row; flex-wrap: wrap;">
                     ${ this.render_projects() }
                 </div>
-                
-                <h3>Projects You Created:</h3>
-                <div class="flex" style="flex-direction: row;">
-                    ${ this.render_projects() }
+
+                <h2>Assigned Tasks:</h2>
+                <div class="flex" style="flex-direction: row; flex-wrap: wrap;">
+                    <p>Render Current User's Tasks Here...</p>
+                </div>
+            </div>
+
+            <div class="flex" id="progress-log">
+                <h2>Progress Log</h2>
+                <div id="prog-log">
+                    <div class="progress-log-item">Nothing in the log...</div>
                 </div>
             </div>
         `

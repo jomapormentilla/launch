@@ -26,6 +26,7 @@ class Task {
             html += `
                 <div class="task-item" id="task-${ task.id }">
                     ${ task.name }
+                    <i class="bi-arrow-right-square-fill" style="font-size: 2rem; color: #fff;"></i>
                 </div>
             `
         }
@@ -51,16 +52,16 @@ class Task {
         div.id = "task-content"
         div.innerHTML = `
             <div class="flex" id="backlog">
-                <div class="task-header">Backlog</div>
+                <div class="task-header">BACKLOG</div>
                 ${ this.render_tasks() }
             </div>
 
             <div class="flex" id="inProgress">
-                <div class="task-header">In Progress</div>
+                <div class="task-header">IN PROGRESS</div>
             </div>
 
             <div class="flex" id="completed">
-                <div class="task-header">Completed</div>
+                <div class="task-header">COMPLETED</div>
             </div>
         `
         div.addEventListener("click", this.handleTaskClick)
