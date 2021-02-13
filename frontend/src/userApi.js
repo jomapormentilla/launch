@@ -97,8 +97,7 @@ class UserApi {
                     current_user = User.all.find(u => u.id == session.getItem("userId"))
                     Login.loadDashboard()
                 } else {
-                    session.clear()
-                    location.reload()
+                    Login.logout()
                 }
             })
     }

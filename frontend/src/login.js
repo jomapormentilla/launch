@@ -110,7 +110,7 @@ class Login {
     }
 
     static logout() {
-        session.removeItem("userId")
+        session.clear()
         location.reload()
     }
 }

@@ -6,7 +6,7 @@ class DepartmentSerializer
     def to_serialized_json
         @department.to_json(
             :include => [
-                :users => {except: [:password, :department_id]}
+                :users => {except: [:password, :department_id, :token]}
             ]
         )
     end
