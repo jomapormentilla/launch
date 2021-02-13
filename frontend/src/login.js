@@ -3,9 +3,8 @@ class Login {
     static nav = document.getElementById("nav-container")
 
     static render() {
-        if (!!session.getItem("userId")) {
-            current_user = User.all.find(u => u.id == session.getItem("userId"))
-            this.loadDashboard()
+        if (!!session.getItem("userId") && !!session.getItem("userToken")) {
+            UserApi.authenticateToken(session)
         } else {
             this.renderLoginForm()
             this.login.addEventListener("submit", this.handleLogin)
@@ -22,7 +21,7 @@ class Login {
 
     static renderLoginForm() {
         this.login.innerHTML = `
-            <h1 style="font-family: 'Amatic SC', cursive; font-size: 100px;">LAUNCH</h1>
+            <h1 style="font-family: 'Amatic SC', cursive; font-size: 100px; color: #3b5ab1;">LAUNCH</h1>
             <form id="login-form">
                 <input type="email" placeholder="Email" value="jomapormentilla@gmail.com"><br>
                 <input type="password" placeholder="Password"><br>

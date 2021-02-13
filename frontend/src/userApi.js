@@ -39,7 +39,6 @@ class UserApi {
    
     static handleNewUserSignup = data => {
         if (!!data.error) {
-            console.log(data.error)
             Error.render(data.error)
         } else {
             current_user = User.all.find(u => u.email === data.email)
@@ -71,7 +70,36 @@ class UserApi {
         } else {
             current_user = User.all.find(u => u.id === data.id)
             session.setItem('userId', current_user.id)
+            session.setItem('userToken', data.token)
             Login.loadDashboard()
         }
+    }
+
+    static authenticateToken = data => {
+        let tokenInfo = {
+            id: parseInt(data.userId, 10),
+            token: data.userToken
+        }
+
+        let configObj = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify(tokenInfo)
+        }
+
+        fetch(baseUrl + `/authenticateToken`, configObj)
+            .then(res => res.json())
+            .then(data => {
+                if (!!data.data) {
+                    current_user = User.all.find(u => u.id == session.getItem("userId"))
+                    Login.loadDashboard()
+                } else {
+                    session.clear()
+                    location.reload()
+                }
+            })
     }
 }

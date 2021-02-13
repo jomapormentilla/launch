@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   post '/authenticate' => "users#authenticate"
+  post '/authenticateToken' => "users#authenticateToken"
 
   resources :departments
   resources :tasks

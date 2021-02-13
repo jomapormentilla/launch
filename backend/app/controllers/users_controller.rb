@@ -42,11 +42,22 @@ class UsersController < ApplicationController
 
     def authenticate
         user = User.find_by(email: params[:email])
+        user.update(token: SecureRandom.hex)
 
         if !!user && user.password == params[:password]
-            render json: UserSerializer.new(user).to_serialized_json
+            render json: { id: user.id, token: user.token }
         else
             render json: { error: 'Authentication Failed' }
+        end
+    end
+
+    def authenticateToken
+        user = User.find_by_id(params[:id])
+
+        if !!user && user.token == params[:token]
+            render json: { data: true }
+        else
+            render json: { data: false }
         end
     end
 
