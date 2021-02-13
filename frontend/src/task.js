@@ -35,7 +35,13 @@ class Task {
     static handleTaskClick = e => {
         if (e.target.classList.contains("task-item")) {
             let task = Task.all.find(t => t.id == e.target.id.split("-")[1])
-            document.getElementById("inProgress").append(e.target)
+            if (e.target.parentElement.id === "backlog") {
+                document.getElementById("inProgress").append(e.target)
+            } else if (e.target.parentElement.id === "inProgress") {
+                document.getElementById("completed").append(e.target)
+            } else if (e.target.parentElement.id === "completed") {
+                document.getElementById("inProgress").append(e.target)
+            }
         }
     }
 

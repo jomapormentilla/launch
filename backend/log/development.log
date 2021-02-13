@@ -41971,3 +41971,606 @@ Processing by TasksController#index as */*
 Completed 200 OK in 53ms (Views: 0.1ms | ActiveRecord: 3.3ms | Allocations: 18765)
 
 
+Started GET "/users" for ::1 at 2021-02-12 19:55:34 -0500
+Started GET "/tasks" for ::1 at 2021-02-12 19:55:34 -0500
+Started GET "/projects" for ::1 at 2021-02-12 19:55:34 -0500
+Processing by ProjectsController#index as */*
+  [1m[36mProject Load (0.4ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+Started GET "/departments" for ::1 at 2021-02-12 19:55:34 -0500
+  [1m[36mTask Load (24.0ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" IN (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [[nil, 1], [nil, 2], [nil, 3], [nil, 4], [nil, 5], [nil, 6], [nil, 7], [nil, 8], [nil, 9], [nil, 10], [nil, 11], [nil, 12], [nil, 13], [nil, 14], [nil, 15], [nil, 16], [nil, 17], [nil, 18], [nil, 19], [nil, 20], [nil, 21]]
+Processing by UsersController#index as */*
+Processing by TasksController#index as */*
+  [1m[36mTask Load (1.4ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IN (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [[nil, 10], [nil, 12], [nil, 5], [nil, 19], [nil, 1], [nil, 11], [nil, 9], [nil, 21], [nil, 15], [nil, 2], [nil, 13], [nil, 4], [nil, 18], [nil, 3], [nil, 17], [nil, 16], [nil, 14], [nil, 8], [nil, 20]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Processing by DepartmentsController#index as */*
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mProject Load (0.6ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" IN (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [[nil, 5], [nil, 6], [nil, 14], [nil, 11], [nil, 12], [nil, 10], [nil, 13], [nil, 15], [nil, 19], [nil, 1], [nil, 7], [nil, 3], [nil, 9], [nil, 17], [nil, 18], [nil, 20], [nil, 16], [nil, 8], [nil, 4]]
+  [1m[36mDepartment Load (0.3ms)[0m  [1m[34mSELECT "departments".* FROM "departments"[0m
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 81ms (Views: 0.1ms | ActiveRecord: 2.6ms | Allocations: 20778)
+
+
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IN (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [[nil, 11], [nil, 8], [nil, 2], [nil, 1], [nil, 15], [nil, 18], [nil, 10], [nil, 4], [nil, 12], [nil, 16], [nil, 5], [nil, 13], [nil, 3], [nil, 14], [nil, 19], [nil, 9], [nil, 21], [nil, 17], [nil, 20]]
+  ↳ app/services/department_serializer.rb:7:in `to_serialized_json'
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."department_id" = ?[0m  [["department_id", 1]]
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IN (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [[nil, 19], [nil, 8], [nil, 5], [nil, 15], [nil, 4], [nil, 6], [nil, 9], [nil, 1], [nil, 11], [nil, 21], [nil, 13], [nil, 18], [nil, 3]]
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (1.0ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" IN (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [[nil, 1], [nil, 2], [nil, 3], [nil, 4], [nil, 5], [nil, 6], [nil, 7], [nil, 8], [nil, 9], [nil, 10], [nil, 11], [nil, 12], [nil, 13], [nil, 14], [nil, 15], [nil, 16], [nil, 17], [nil, 18], [nil, 19], [nil, 20], [nil, 21]]
+  ↳ app/services/department_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 239ms (Views: 0.6ms | ActiveRecord: 27.1ms | Allocations: 39280)
+
+
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+  [1m[36mProject Load (0.6ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" IN (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [[nil, 12], [nil, 3], [nil, 11], [nil, 5], [nil, 10], [nil, 18], [nil, 4], [nil, 13], [nil, 9], [nil, 15], [nil, 14], [nil, 7], [nil, 1], [nil, 6], [nil, 19], [nil, 17], [nil, 16], [nil, 8], [nil, 20]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."department_id" = ?[0m  [["department_id", 2]]
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+  ↳ app/services/department_serializer.rb:7:in `to_serialized_json'
+  [1m[36mDepartment Load (0.5ms)[0m  [1m[34mSELECT "departments".* FROM "departments" WHERE "departments"."id" IN (?, ?, ?, ?, ?, ?)[0m  [[nil, 1], [nil, 5], [nil, 6], [nil, 3], [nil, 4], [nil, 2]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."department_id" = ?[0m  [["department_id", 3]]
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+  ↳ app/services/department_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."department_id" = ?[0m  [["department_id", 4]]
+  ↳ app/services/department_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 200ms (Views: 0.2ms | ActiveRecord: 2.4ms | Allocations: 52464)
+
+
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."department_id" = ?[0m  [["department_id", 5]]
+  ↳ app/services/department_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."department_id" = ?[0m  [["department_id", 6]]
+  ↳ app/services/department_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 204ms (Views: 0.2ms | ActiveRecord: 3.2ms | Allocations: 53767)
+
+
+Started GET "/tasks" for ::1 at 2021-02-12 19:55:36 -0500
+Processing by TasksController#index as */*
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IN (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [[nil, 10], [nil, 12], [nil, 5], [nil, 19], [nil, 1], [nil, 11], [nil, 9], [nil, 21], [nil, 15], [nil, 2], [nil, 13], [nil, 4], [nil, 18], [nil, 3], [nil, 17], [nil, 16], [nil, 14], [nil, 8], [nil, 20]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mProject Load (2.0ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" IN (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [[nil, 5], [nil, 6], [nil, 14], [nil, 11], [nil, 12], [nil, 10], [nil, 13], [nil, 15], [nil, 19], [nil, 1], [nil, 7], [nil, 3], [nil, 9], [nil, 17], [nil, 18], [nil, 20], [nil, 16], [nil, 8], [nil, 4]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 68ms (Views: 0.2ms | ActiveRecord: 4.2ms | Allocations: 18745)
+
+
+Started GET "/departments" for ::1 at 2021-02-12 19:56:08 -0500
+Started GET "/projects" for ::1 at 2021-02-12 19:56:08 -0500
+Processing by ProjectsController#index as */*
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+Processing by DepartmentsController#index as */*
+  [1m[36mDepartment Load (0.2ms)[0m  [1m[34mSELECT "departments".* FROM "departments"[0m
+  ↳ app/services/department_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."department_id" = ?[0m  [["department_id", 1]]
+  ↳ app/services/department_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."department_id" = ?[0m  [["department_id", 2]]
+  [1m[36mTask Load (0.8ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" IN (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [[nil, 1], [nil, 2], [nil, 3], [nil, 4], [nil, 5], [nil, 6], [nil, 7], [nil, 8], [nil, 9], [nil, 10], [nil, 11], [nil, 12], [nil, 13], [nil, 14], [nil, 15], [nil, 16], [nil, 17], [nil, 18], [nil, 19], [nil, 20], [nil, 21]]
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  ↳ app/services/department_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."department_id" = ?[0m  [["department_id", 3]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IN (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [[nil, 11], [nil, 8], [nil, 2], [nil, 1], [nil, 15], [nil, 18], [nil, 10], [nil, 4], [nil, 12], [nil, 16], [nil, 5], [nil, 13], [nil, 3], [nil, 14], [nil, 19], [nil, 9], [nil, 21], [nil, 17], [nil, 20]]
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IN (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [[nil, 19], [nil, 8], [nil, 5], [nil, 15], [nil, 4], [nil, 6], [nil, 9], [nil, 1], [nil, 11], [nil, 21], [nil, 13], [nil, 18], [nil, 3]]
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 121ms (Views: 0.9ms | ActiveRecord: 2.1ms | Allocations: 19528)
+
+
+  ↳ app/services/department_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."department_id" = ?[0m  [["department_id", 4]]
+Started GET "/tasks" for ::1 at 2021-02-12 19:56:09 -0500
+  ↳ app/services/department_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."department_id" = ?[0m  [["department_id", 5]]
+  ↳ app/services/department_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."department_id" = ?[0m  [["department_id", 6]]
+  ↳ app/services/department_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 156ms (Views: 0.5ms | ActiveRecord: 2.2ms | Allocations: 22608)
+
+
+Processing by TasksController#index as */*
+Started GET "/users" for ::1 at 2021-02-12 19:56:09 -0500
+  [1m[36mTask Load (0.7ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+Processing by UsersController#index as */*
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IN (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [[nil, 10], [nil, 12], [nil, 5], [nil, 19], [nil, 1], [nil, 11], [nil, 9], [nil, 21], [nil, 15], [nil, 2], [nil, 13], [nil, 4], [nil, 18], [nil, 3], [nil, 17], [nil, 16], [nil, 14], [nil, 8], [nil, 20]]
+  [1m[36mTask Load (2.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" IN (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [[nil, 1], [nil, 2], [nil, 3], [nil, 4], [nil, 5], [nil, 6], [nil, 7], [nil, 8], [nil, 9], [nil, 10], [nil, 11], [nil, 12], [nil, 13], [nil, 14], [nil, 15], [nil, 16], [nil, 17], [nil, 18], [nil, 19], [nil, 20], [nil, 21]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+  [1m[36mProject Load (0.6ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" IN (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [[nil, 5], [nil, 6], [nil, 14], [nil, 11], [nil, 12], [nil, 10], [nil, 13], [nil, 15], [nil, 19], [nil, 1], [nil, 7], [nil, 3], [nil, 9], [nil, 17], [nil, 18], [nil, 20], [nil, 16], [nil, 8], [nil, 4]]
+  [1m[36mProject Load (0.4ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" IN (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [[nil, 12], [nil, 3], [nil, 11], [nil, 5], [nil, 10], [nil, 18], [nil, 4], [nil, 13], [nil, 9], [nil, 15], [nil, 14], [nil, 7], [nil, 1], [nil, 6], [nil, 19], [nil, 17], [nil, 16], [nil, 8], [nil, 20]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+  [1m[36mDepartment Load (0.8ms)[0m  [1m[34mSELECT "departments".* FROM "departments" WHERE "departments"."id" IN (?, ?, ?, ?, ?, ?)[0m  [[nil, 1], [nil, 5], [nil, 6], [nil, 3], [nil, 4], [nil, 2]]
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 96ms (Views: 0.2ms | ActiveRecord: 2.3ms | Allocations: 23463)
+
+
+Completed 200 OK in 132ms (Views: 0.2ms | ActiveRecord: 3.6ms | Allocations: 34712)
+
+
+Started GET "/tasks" for ::1 at 2021-02-12 19:56:11 -0500
+Processing by TasksController#index as */*
+  [1m[36mTask Load (0.6ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IN (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [[nil, 10], [nil, 12], [nil, 5], [nil, 19], [nil, 1], [nil, 11], [nil, 9], [nil, 21], [nil, 15], [nil, 2], [nil, 13], [nil, 4], [nil, 18], [nil, 3], [nil, 17], [nil, 16], [nil, 14], [nil, 8], [nil, 20]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mProject Load (0.9ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" IN (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [[nil, 5], [nil, 6], [nil, 14], [nil, 11], [nil, 12], [nil, 10], [nil, 13], [nil, 15], [nil, 19], [nil, 1], [nil, 7], [nil, 3], [nil, 9], [nil, 17], [nil, 18], [nil, 20], [nil, 16], [nil, 8], [nil, 4]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 54ms (Views: 0.3ms | ActiveRecord: 2.1ms | Allocations: 18745)
+
+
+Started GET "/departments" for ::1 at 2021-02-12 19:56:26 -0500
+Processing by DepartmentsController#index as */*
+  [1m[36mDepartment Load (0.7ms)[0m  [1m[34mSELECT "departments".* FROM "departments"[0m
+Started GET "/tasks" for ::1 at 2021-02-12 19:56:26 -0500
+Started GET "/projects" for ::1 at 2021-02-12 19:56:26 -0500
+Started GET "/users" for ::1 at 2021-02-12 19:56:26 -0500
+  ↳ app/services/department_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."department_id" = ?[0m  [["department_id", 1]]
+  ↳ app/services/department_serializer.rb:7:in `to_serialized_json'
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (0.9ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" IN (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [[nil, 1], [nil, 2], [nil, 3], [nil, 4], [nil, 5], [nil, 6], [nil, 7], [nil, 8], [nil, 9], [nil, 10], [nil, 11], [nil, 12], [nil, 13], [nil, 14], [nil, 15], [nil, 16], [nil, 17], [nil, 18], [nil, 19], [nil, 20], [nil, 21]]
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+Processing by ProjectsController#index as */*
+  [1m[36mProject Load (0.5ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" IN (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [[nil, 12], [nil, 3], [nil, 11], [nil, 5], [nil, 10], [nil, 18], [nil, 4], [nil, 13], [nil, 9], [nil, 15], [nil, 14], [nil, 7], [nil, 1], [nil, 6], [nil, 19], [nil, 17], [nil, 16], [nil, 8], [nil, 20]]
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+  [1m[36mProject Load (0.4ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  [1m[36mDepartment Load (0.4ms)[0m  [1m[34mSELECT "departments".* FROM "departments" WHERE "departments"."id" IN (?, ?, ?, ?, ?, ?)[0m  [[nil, 1], [nil, 5], [nil, 6], [nil, 3], [nil, 4], [nil, 2]]
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."department_id" = ?[0m  [["department_id", 2]]
+Completed 200 OK in 160ms (Views: 0.1ms | ActiveRecord: 2.1ms | Allocations: 17498)
+
+
+Processing by TasksController#index as */*
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  ↳ app/services/department_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."department_id" = ?[0m  [["department_id", 3]]
+  ↳ app/services/department_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (1.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" IN (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [[nil, 1], [nil, 2], [nil, 3], [nil, 4], [nil, 5], [nil, 6], [nil, 7], [nil, 8], [nil, 9], [nil, 10], [nil, 11], [nil, 12], [nil, 13], [nil, 14], [nil, 15], [nil, 16], [nil, 17], [nil, 18], [nil, 19], [nil, 20], [nil, 21]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."department_id" = ?[0m  [["department_id", 4]]
+  [1m[36mTask Load (18.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  ↳ app/services/department_serializer.rb:7:in `to_serialized_json'
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."department_id" = ?[0m  [["department_id", 5]]
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IN (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [[nil, 11], [nil, 8], [nil, 2], [nil, 1], [nil, 15], [nil, 18], [nil, 10], [nil, 4], [nil, 12], [nil, 16], [nil, 5], [nil, 13], [nil, 3], [nil, 14], [nil, 19], [nil, 9], [nil, 21], [nil, 17], [nil, 20]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IN (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [[nil, 10], [nil, 12], [nil, 5], [nil, 19], [nil, 1], [nil, 11], [nil, 9], [nil, 21], [nil, 15], [nil, 2], [nil, 13], [nil, 4], [nil, 18], [nil, 3], [nil, 17], [nil, 16], [nil, 14], [nil, 8], [nil, 20]]
+  ↳ app/services/department_serializer.rb:7:in `to_serialized_json'
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."department_id" = ?[0m  [["department_id", 6]]
+  ↳ app/services/department_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IN (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [[nil, 19], [nil, 8], [nil, 5], [nil, 15], [nil, 4], [nil, 6], [nil, 9], [nil, 1], [nil, 11], [nil, 21], [nil, 13], [nil, 18], [nil, 3]]
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 251ms (Views: 0.1ms | ActiveRecord: 3.9ms | Allocations: 37553)
+
+
+Completed 200 OK in 268ms (Views: 0.6ms | ActiveRecord: 3.0ms | Allocations: 33216)
+
+
+  [1m[36mProject Load (0.6ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" IN (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [[nil, 5], [nil, 6], [nil, 14], [nil, 11], [nil, 12], [nil, 10], [nil, 13], [nil, 15], [nil, 19], [nil, 1], [nil, 7], [nil, 3], [nil, 9], [nil, 17], [nil, 18], [nil, 20], [nil, 16], [nil, 8], [nil, 4]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 155ms (Views: 0.2ms | ActiveRecord: 19.6ms | Allocations: 40449)
+
+
+Started GET "/tasks" for ::1 at 2021-02-12 19:56:29 -0500
+Processing by TasksController#index as */*
+  [1m[36mTask Load (0.7ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IN (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [[nil, 10], [nil, 12], [nil, 5], [nil, 19], [nil, 1], [nil, 11], [nil, 9], [nil, 21], [nil, 15], [nil, 2], [nil, 13], [nil, 4], [nil, 18], [nil, 3], [nil, 17], [nil, 16], [nil, 14], [nil, 8], [nil, 20]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mProject Load (0.4ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" IN (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [[nil, 5], [nil, 6], [nil, 14], [nil, 11], [nil, 12], [nil, 10], [nil, 13], [nil, 15], [nil, 19], [nil, 1], [nil, 7], [nil, 3], [nil, 9], [nil, 17], [nil, 18], [nil, 20], [nil, 16], [nil, 8], [nil, 4]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 52ms (Views: 0.2ms | ActiveRecord: 2.5ms | Allocations: 18745)
+
+
+Started GET "/departments" for ::1 at 2021-02-12 19:57:04 -0500
+Processing by DepartmentsController#index as */*
+  [1m[36mDepartment Load (1.6ms)[0m  [1m[34mSELECT "departments".* FROM "departments"[0m
+  ↳ app/services/department_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."department_id" = ?[0m  [["department_id", 1]]
+  ↳ app/services/department_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."department_id" = ?[0m  [["department_id", 2]]
+  ↳ app/services/department_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (21.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."department_id" = ?[0m  [["department_id", 3]]
+Started GET "/projects" for ::1 at 2021-02-12 19:57:04 -0500
+Started GET "/users" for ::1 at 2021-02-12 19:57:04 -0500
+Started GET "/tasks" for ::1 at 2021-02-12 19:57:04 -0500
+  ↳ app/services/department_serializer.rb:7:in `to_serialized_json'
+Processing by ProjectsController#index as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."department_id" = ?[0m  [["department_id", 4]]
+Processing by UsersController#index as */*
+  ↳ app/services/department_serializer.rb:7:in `to_serialized_json'
+  [1m[36mProject Load (0.5ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+Processing by TasksController#index as */*
+  [1m[36mTask Load (0.7ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (1.1ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" IN (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [[nil, 1], [nil, 2], [nil, 3], [nil, 4], [nil, 5], [nil, 6], [nil, 7], [nil, 8], [nil, 9], [nil, 10], [nil, 11], [nil, 12], [nil, 13], [nil, 14], [nil, 15], [nil, 16], [nil, 17], [nil, 18], [nil, 19], [nil, 20], [nil, 21]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (2.4ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" IN (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [[nil, 1], [nil, 2], [nil, 3], [nil, 4], [nil, 5], [nil, 6], [nil, 7], [nil, 8], [nil, 9], [nil, 10], [nil, 11], [nil, 12], [nil, 13], [nil, 14], [nil, 15], [nil, 16], [nil, 17], [nil, 18], [nil, 19], [nil, 20], [nil, 21]]
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."department_id" = ?[0m  [["department_id", 5]]
+  ↳ app/services/department_serializer.rb:7:in `to_serialized_json'
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IN (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [[nil, 11], [nil, 8], [nil, 2], [nil, 1], [nil, 15], [nil, 18], [nil, 10], [nil, 4], [nil, 12], [nil, 16], [nil, 5], [nil, 13], [nil, 3], [nil, 14], [nil, 19], [nil, 9], [nil, 21], [nil, 17], [nil, 20]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IN (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [[nil, 10], [nil, 12], [nil, 5], [nil, 19], [nil, 1], [nil, 11], [nil, 9], [nil, 21], [nil, 15], [nil, 2], [nil, 13], [nil, 4], [nil, 18], [nil, 3], [nil, 17], [nil, 16], [nil, 14], [nil, 8], [nil, 20]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."department_id" = ?[0m  [["department_id", 6]]
+  [1m[36mProject Load (0.3ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" IN (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [[nil, 5], [nil, 6], [nil, 14], [nil, 11], [nil, 12], [nil, 10], [nil, 13], [nil, 15], [nil, 19], [nil, 1], [nil, 7], [nil, 3], [nil, 9], [nil, 17], [nil, 18], [nil, 20], [nil, 16], [nil, 8], [nil, 4]]
+  [1m[36mProject Load (0.9ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" IN (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [[nil, 12], [nil, 3], [nil, 11], [nil, 5], [nil, 10], [nil, 18], [nil, 4], [nil, 13], [nil, 9], [nil, 15], [nil, 14], [nil, 7], [nil, 1], [nil, 6], [nil, 19], [nil, 17], [nil, 16], [nil, 8], [nil, 20]]
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  ↳ app/services/department_serializer.rb:7:in `to_serialized_json'
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 179ms (Views: 0.5ms | ActiveRecord: 24.5ms | Allocations: 22315)
+
+
+Completed 200 OK in 115ms (Views: 0.4ms | ActiveRecord: 1.4ms | Allocations: 30840)
+
+
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+  [1m[36mDepartment Load (0.6ms)[0m  [1m[34mSELECT "departments".* FROM "departments" WHERE "departments"."id" IN (?, ?, ?, ?, ?, ?)[0m  [[nil, 1], [nil, 5], [nil, 6], [nil, 3], [nil, 4], [nil, 2]]
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IN (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [[nil, 19], [nil, 8], [nil, 5], [nil, 15], [nil, 4], [nil, 6], [nil, 9], [nil, 1], [nil, 11], [nil, 21], [nil, 13], [nil, 18], [nil, 3]]
+Completed 200 OK in 156ms (Views: 0.1ms | ActiveRecord: 2.9ms | Allocations: 44603)
+
+
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 218ms (Views: 0.1ms | ActiveRecord: 4.3ms | Allocations: 56567)
+
+
+Started GET "/tasks" for ::1 at 2021-02-12 19:57:06 -0500
+Processing by TasksController#index as */*
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IN (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [[nil, 10], [nil, 12], [nil, 5], [nil, 19], [nil, 1], [nil, 11], [nil, 9], [nil, 21], [nil, 15], [nil, 2], [nil, 13], [nil, 4], [nil, 18], [nil, 3], [nil, 17], [nil, 16], [nil, 14], [nil, 8], [nil, 20]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mProject Load (0.5ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" IN (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [[nil, 5], [nil, 6], [nil, 14], [nil, 11], [nil, 12], [nil, 10], [nil, 13], [nil, 15], [nil, 19], [nil, 1], [nil, 7], [nil, 3], [nil, 9], [nil, 17], [nil, 18], [nil, 20], [nil, 16], [nil, 8], [nil, 4]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 53ms (Views: 0.2ms | ActiveRecord: 1.6ms | Allocations: 18745)
+
+
+Started GET "/departments" for ::1 at 2021-02-12 19:57:15 -0500
+Started GET "/users" for ::1 at 2021-02-12 19:57:15 -0500
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (0.9ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" IN (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [[nil, 1], [nil, 2], [nil, 3], [nil, 4], [nil, 5], [nil, 6], [nil, 7], [nil, 8], [nil, 9], [nil, 10], [nil, 11], [nil, 12], [nil, 13], [nil, 14], [nil, 15], [nil, 16], [nil, 17], [nil, 18], [nil, 19], [nil, 20], [nil, 21]]
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+Started GET "/projects" for ::1 at 2021-02-12 19:57:15 -0500
+Started GET "/tasks" for ::1 at 2021-02-12 19:57:15 -0500
+Processing by DepartmentsController#index as */*
+  [1m[36mProject Load (0.4ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" IN (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [[nil, 12], [nil, 3], [nil, 11], [nil, 5], [nil, 10], [nil, 18], [nil, 4], [nil, 13], [nil, 9], [nil, 15], [nil, 14], [nil, 7], [nil, 1], [nil, 6], [nil, 19], [nil, 17], [nil, 16], [nil, 8], [nil, 20]]
+  [1m[36mDepartment Load (0.2ms)[0m  [1m[34mSELECT "departments".* FROM "departments"[0m
+Processing by ProjectsController#index as */*
+Processing by TasksController#index as */*
+  [1m[36mTask Load (0.9ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IN (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [[nil, 10], [nil, 12], [nil, 5], [nil, 19], [nil, 1], [nil, 11], [nil, 9], [nil, 21], [nil, 15], [nil, 2], [nil, 13], [nil, 4], [nil, 18], [nil, 3], [nil, 17], [nil, 16], [nil, 14], [nil, 8], [nil, 20]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+  [1m[36mProject Load (0.3ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (1.4ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" IN (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [[nil, 1], [nil, 2], [nil, 3], [nil, 4], [nil, 5], [nil, 6], [nil, 7], [nil, 8], [nil, 9], [nil, 10], [nil, 11], [nil, 12], [nil, 13], [nil, 14], [nil, 15], [nil, 16], [nil, 17], [nil, 18], [nil, 19], [nil, 20], [nil, 21]]
+  ↳ app/services/department_serializer.rb:7:in `to_serialized_json'
+  [1m[36mProject Load (0.6ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" IN (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [[nil, 5], [nil, 6], [nil, 14], [nil, 11], [nil, 12], [nil, 10], [nil, 13], [nil, 15], [nil, 19], [nil, 1], [nil, 7], [nil, 3], [nil, 9], [nil, 17], [nil, 18], [nil, 20], [nil, 16], [nil, 8], [nil, 4]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mDepartment Load (0.8ms)[0m  [1m[34mSELECT "departments".* FROM "departments" WHERE "departments"."id" IN (?, ?, ?, ?, ?, ?)[0m  [[nil, 1], [nil, 5], [nil, 6], [nil, 3], [nil, 4], [nil, 2]]
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."department_id" = ?[0m  [["department_id", 1]]
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 105ms (Views: 0.1ms | ActiveRecord: 3.1ms | Allocations: 22312)
+
+
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 193ms (Views: 0.1ms | ActiveRecord: 2.5ms | Allocations: 41457)
+
+
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IN (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [[nil, 11], [nil, 8], [nil, 2], [nil, 1], [nil, 15], [nil, 18], [nil, 10], [nil, 4], [nil, 12], [nil, 16], [nil, 5], [nil, 13], [nil, 3], [nil, 14], [nil, 19], [nil, 9], [nil, 21], [nil, 17], [nil, 20]]
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  ↳ app/services/department_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."department_id" = ?[0m  [["department_id", 2]]
+  ↳ app/services/department_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IN (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [[nil, 19], [nil, 8], [nil, 5], [nil, 15], [nil, 4], [nil, 6], [nil, 9], [nil, 1], [nil, 11], [nil, 21], [nil, 13], [nil, 18], [nil, 3]]
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."department_id" = ?[0m  [["department_id", 3]]
+Completed 200 OK in 180ms (Views: 0.9ms | ActiveRecord: 2.5ms | Allocations: 49834)
+
+
+  ↳ app/services/department_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."department_id" = ?[0m  [["department_id", 4]]
+  ↳ app/services/department_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."department_id" = ?[0m  [["department_id", 5]]
+  ↳ app/services/department_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."department_id" = ?[0m  [["department_id", 6]]
+  ↳ app/services/department_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 225ms (Views: 0.2ms | ActiveRecord: 2.5ms | Allocations: 56444)
+
+
+Started GET "/tasks" for ::1 at 2021-02-12 19:57:17 -0500
+Processing by TasksController#index as */*
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IN (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [[nil, 10], [nil, 12], [nil, 5], [nil, 19], [nil, 1], [nil, 11], [nil, 9], [nil, 21], [nil, 15], [nil, 2], [nil, 13], [nil, 4], [nil, 18], [nil, 3], [nil, 17], [nil, 16], [nil, 14], [nil, 8], [nil, 20]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mProject Load (1.0ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" IN (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [[nil, 5], [nil, 6], [nil, 14], [nil, 11], [nil, 12], [nil, 10], [nil, 13], [nil, 15], [nil, 19], [nil, 1], [nil, 7], [nil, 3], [nil, 9], [nil, 17], [nil, 18], [nil, 20], [nil, 16], [nil, 8], [nil, 4]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 61ms (Views: 2.1ms | ActiveRecord: 2.4ms | Allocations: 18745)
+
+
+Started GET "/departments" for ::1 at 2021-02-12 19:57:44 -0500
+Started GET "/projects" for ::1 at 2021-02-12 19:57:44 -0500
+Started GET "/tasks" for ::1 at 2021-02-12 19:57:44 -0500
+Processing by TasksController#index as */*
+  [1m[36mTask Load (0.7ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IN (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [[nil, 10], [nil, 12], [nil, 5], [nil, 19], [nil, 1], [nil, 11], [nil, 9], [nil, 21], [nil, 15], [nil, 2], [nil, 13], [nil, 4], [nil, 18], [nil, 3], [nil, 17], [nil, 16], [nil, 14], [nil, 8], [nil, 20]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mProject Load (1.1ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" IN (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [[nil, 5], [nil, 6], [nil, 14], [nil, 11], [nil, 12], [nil, 10], [nil, 13], [nil, 15], [nil, 19], [nil, 1], [nil, 7], [nil, 3], [nil, 9], [nil, 17], [nil, 18], [nil, 20], [nil, 16], [nil, 8], [nil, 4]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+Started GET "/users" for ::1 at 2021-02-12 19:57:44 -0500
+Processing by DepartmentsController#index as */*
+Processing by UsersController#index as */*
+Processing by ProjectsController#index as */*
+  [1m[36mDepartment Load (0.2ms)[0m  [1m[34mSELECT "departments".* FROM "departments"[0m
+  ↳ app/services/department_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 100ms (Views: 0.1ms | ActiveRecord: 2.4ms | Allocations: 19430)
+
+
+  [1m[36mProject Load (0.5ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."department_id" = ?[0m  [["department_id", 1]]
+  [1m[36mTask Load (0.7ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" IN (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [[nil, 1], [nil, 2], [nil, 3], [nil, 4], [nil, 5], [nil, 6], [nil, 7], [nil, 8], [nil, 9], [nil, 10], [nil, 11], [nil, 12], [nil, 13], [nil, 14], [nil, 15], [nil, 16], [nil, 17], [nil, 18], [nil, 19], [nil, 20], [nil, 21]]
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (1.9ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" IN (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [[nil, 1], [nil, 2], [nil, 3], [nil, 4], [nil, 5], [nil, 6], [nil, 7], [nil, 8], [nil, 9], [nil, 10], [nil, 11], [nil, 12], [nil, 13], [nil, 14], [nil, 15], [nil, 16], [nil, 17], [nil, 18], [nil, 19], [nil, 20], [nil, 21]]
+  ↳ app/services/department_serializer.rb:7:in `to_serialized_json'
+  [1m[36mProject Load (0.4ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" IN (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [[nil, 12], [nil, 3], [nil, 11], [nil, 5], [nil, 10], [nil, 18], [nil, 4], [nil, 13], [nil, 9], [nil, 15], [nil, 14], [nil, 7], [nil, 1], [nil, 6], [nil, 19], [nil, 17], [nil, 16], [nil, 8], [nil, 20]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."department_id" = ?[0m  [["department_id", 2]]
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+  ↳ app/services/department_serializer.rb:7:in `to_serialized_json'
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mDepartment Load (0.4ms)[0m  [1m[34mSELECT "departments".* FROM "departments" WHERE "departments"."id" IN (?, ?, ?, ?, ?, ?)[0m  [[nil, 1], [nil, 5], [nil, 6], [nil, 3], [nil, 4], [nil, 2]]
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."department_id" = ?[0m  [["department_id", 3]]
+  ↳ app/services/department_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 76ms (Views: 0.8ms | ActiveRecord: 1.7ms | Allocations: 23662)
+
+
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IN (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [[nil, 11], [nil, 8], [nil, 2], [nil, 1], [nil, 15], [nil, 18], [nil, 10], [nil, 4], [nil, 12], [nil, 16], [nil, 5], [nil, 13], [nil, 3], [nil, 14], [nil, 19], [nil, 9], [nil, 21], [nil, 17], [nil, 20]]
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."department_id" = ?[0m  [["department_id", 4]]
+  ↳ app/services/department_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IN (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [[nil, 19], [nil, 8], [nil, 5], [nil, 15], [nil, 4], [nil, 6], [nil, 9], [nil, 1], [nil, 11], [nil, 21], [nil, 13], [nil, 18], [nil, 3]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."department_id" = ?[0m  [["department_id", 5]]
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  ↳ app/services/department_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 125ms (Views: 0.1ms | ActiveRecord: 3.4ms | Allocations: 37830)
+
+
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."department_id" = ?[0m  [["department_id", 6]]
+  ↳ app/services/department_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 132ms (Views: 0.1ms | ActiveRecord: 1.6ms | Allocations: 41281)
+
+
+Started GET "/tasks" for ::1 at 2021-02-12 19:57:47 -0500
+Processing by TasksController#index as */*
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IN (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [[nil, 10], [nil, 12], [nil, 5], [nil, 19], [nil, 1], [nil, 11], [nil, 9], [nil, 21], [nil, 15], [nil, 2], [nil, 13], [nil, 4], [nil, 18], [nil, 3], [nil, 17], [nil, 16], [nil, 14], [nil, 8], [nil, 20]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mProject Load (0.5ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" IN (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [[nil, 5], [nil, 6], [nil, 14], [nil, 11], [nil, 12], [nil, 10], [nil, 13], [nil, 15], [nil, 19], [nil, 1], [nil, 7], [nil, 3], [nil, 9], [nil, 17], [nil, 18], [nil, 20], [nil, 16], [nil, 8], [nil, 4]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 53ms (Views: 0.1ms | ActiveRecord: 1.6ms | Allocations: 18745)
+
+
+Started GET "/departments" for ::1 at 2021-02-12 19:58:03 -0500
+Started GET "/projects" for ::1 at 2021-02-12 19:58:03 -0500
+Started GET "/users" for ::1 at 2021-02-12 19:58:03 -0500
+Started GET "/tasks" for ::1 at 2021-02-12 19:58:03 -0500
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (0.6ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" IN (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [[nil, 1], [nil, 2], [nil, 3], [nil, 4], [nil, 5], [nil, 6], [nil, 7], [nil, 8], [nil, 9], [nil, 10], [nil, 11], [nil, 12], [nil, 13], [nil, 14], [nil, 15], [nil, 16], [nil, 17], [nil, 18], [nil, 19], [nil, 20], [nil, 21]]
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+Processing by DepartmentsController#index as */*
+Processing by ProjectsController#index as */*
+  [1m[36mDepartment Load (0.2ms)[0m  [1m[34mSELECT "departments".* FROM "departments"[0m
+  ↳ app/services/department_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."department_id" = ?[0m  [["department_id", 1]]
+  ↳ app/services/department_serializer.rb:7:in `to_serialized_json'
+  [1m[36mProject Load (0.3ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  [1m[36mProject Load (0.3ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" IN (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [[nil, 12], [nil, 3], [nil, 11], [nil, 5], [nil, 10], [nil, 18], [nil, 4], [nil, 13], [nil, 9], [nil, 15], [nil, 14], [nil, 7], [nil, 1], [nil, 6], [nil, 19], [nil, 17], [nil, 16], [nil, 8], [nil, 20]]
+Processing by TasksController#index as */*
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."department_id" = ?[0m  [["department_id", 2]]
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+  [1m[36mDepartment Load (0.8ms)[0m  [1m[34mSELECT "departments".* FROM "departments" WHERE "departments"."id" IN (?, ?, ?, ?, ?, ?)[0m  [[nil, 1], [nil, 5], [nil, 6], [nil, 3], [nil, 4], [nil, 2]]
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 91ms (Views: 1.3ms | ActiveRecord: 2.5ms | Allocations: 21186)
+
+
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IN (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [[nil, 10], [nil, 12], [nil, 5], [nil, 19], [nil, 1], [nil, 11], [nil, 9], [nil, 21], [nil, 15], [nil, 2], [nil, 13], [nil, 4], [nil, 18], [nil, 3], [nil, 17], [nil, 16], [nil, 14], [nil, 8], [nil, 20]]
+  ↳ app/services/department_serializer.rb:7:in `to_serialized_json'
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."department_id" = ?[0m  [["department_id", 3]]
+  ↳ app/services/department_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."department_id" = ?[0m  [["department_id", 4]]
+  ↳ app/services/department_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."department_id" = ?[0m  [["department_id", 5]]
+  ↳ app/services/department_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."department_id" = ?[0m  [["department_id", 6]]
+  ↳ app/services/department_serializer.rb:7:in `to_serialized_json'
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mProject Load (0.5ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" IN (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [[nil, 5], [nil, 6], [nil, 14], [nil, 11], [nil, 12], [nil, 10], [nil, 13], [nil, 15], [nil, 19], [nil, 1], [nil, 7], [nil, 3], [nil, 9], [nil, 17], [nil, 18], [nil, 20], [nil, 16], [nil, 8], [nil, 4]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (2.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" IN (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [[nil, 1], [nil, 2], [nil, 3], [nil, 4], [nil, 5], [nil, 6], [nil, 7], [nil, 8], [nil, 9], [nil, 10], [nil, 11], [nil, 12], [nil, 13], [nil, 14], [nil, 15], [nil, 16], [nil, 17], [nil, 18], [nil, 19], [nil, 20], [nil, 21]]
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 171ms (Views: 0.2ms | ActiveRecord: 1.9ms | Allocations: 38502)
+
+
+Completed 200 OK in 192ms (Views: 1.0ms | ActiveRecord: 1.8ms | Allocations: 41666)
+
+
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IN (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [[nil, 11], [nil, 8], [nil, 2], [nil, 1], [nil, 15], [nil, 18], [nil, 10], [nil, 4], [nil, 12], [nil, 16], [nil, 5], [nil, 13], [nil, 3], [nil, 14], [nil, 19], [nil, 9], [nil, 21], [nil, 17], [nil, 20]]
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IN (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [[nil, 19], [nil, 8], [nil, 5], [nil, 15], [nil, 4], [nil, 6], [nil, 9], [nil, 1], [nil, 11], [nil, 21], [nil, 13], [nil, 18], [nil, 3]]
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 242ms (Views: 0.1ms | ActiveRecord: 3.5ms | Allocations: 55927)
+
+
+Started GET "/tasks" for ::1 at 2021-02-12 19:58:06 -0500
+Processing by TasksController#index as */*
+  [1m[36mTask Load (1.4ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IN (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [[nil, 10], [nil, 12], [nil, 5], [nil, 19], [nil, 1], [nil, 11], [nil, 9], [nil, 21], [nil, 15], [nil, 2], [nil, 13], [nil, 4], [nil, 18], [nil, 3], [nil, 17], [nil, 16], [nil, 14], [nil, 8], [nil, 20]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mProject Load (1.0ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" IN (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [[nil, 5], [nil, 6], [nil, 14], [nil, 11], [nil, 12], [nil, 10], [nil, 13], [nil, 15], [nil, 19], [nil, 1], [nil, 7], [nil, 3], [nil, 9], [nil, 17], [nil, 18], [nil, 20], [nil, 16], [nil, 8], [nil, 4]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 59ms (Views: 0.1ms | ActiveRecord: 2.8ms | Allocations: 18745)
+
+
+Started GET "/projects" for ::1 at 2021-02-12 19:58:55 -0500
+Processing by ProjectsController#index as */*
+  [1m[36mProject Load (0.4ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+Started GET "/departments" for ::1 at 2021-02-12 19:58:55 -0500
+Processing by DepartmentsController#index as */*
+  [1m[36mDepartment Load (0.3ms)[0m  [1m[34mSELECT "departments".* FROM "departments"[0m
+  ↳ app/services/department_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."department_id" = ?[0m  [["department_id", 1]]
+  ↳ app/services/department_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."department_id" = ?[0m  [["department_id", 2]]
+  ↳ app/services/department_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."department_id" = ?[0m  [["department_id", 3]]
+  ↳ app/services/department_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."department_id" = ?[0m  [["department_id", 4]]
+  ↳ app/services/department_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."department_id" = ?[0m  [["department_id", 5]]
+  ↳ app/services/department_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."department_id" = ?[0m  [["department_id", 6]]
+  ↳ app/services/department_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 38ms (Views: 3.4ms | ActiveRecord: 2.5ms | Allocations: 7654)
+
+
+Started GET "/tasks" for ::1 at 2021-02-12 19:58:55 -0500
+  [1m[36mTask Load (0.8ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" IN (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [[nil, 1], [nil, 2], [nil, 3], [nil, 4], [nil, 5], [nil, 6], [nil, 7], [nil, 8], [nil, 9], [nil, 10], [nil, 11], [nil, 12], [nil, 13], [nil, 14], [nil, 15], [nil, 16], [nil, 17], [nil, 18], [nil, 19], [nil, 20], [nil, 21]]
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (6.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IN (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [[nil, 11], [nil, 8], [nil, 2], [nil, 1], [nil, 15], [nil, 18], [nil, 10], [nil, 4], [nil, 12], [nil, 16], [nil, 5], [nil, 13], [nil, 3], [nil, 14], [nil, 19], [nil, 9], [nil, 21], [nil, 17], [nil, 20]]
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+Processing by TasksController#index as */*
+Started GET "/users" for ::1 at 2021-02-12 19:58:55 -0500
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IN (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [[nil, 19], [nil, 8], [nil, 5], [nil, 15], [nil, 4], [nil, 6], [nil, 9], [nil, 1], [nil, 11], [nil, 21], [nil, 13], [nil, 18], [nil, 3]]
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (6.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" IN (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [[nil, 1], [nil, 2], [nil, 3], [nil, 4], [nil, 5], [nil, 6], [nil, 7], [nil, 8], [nil, 9], [nil, 10], [nil, 11], [nil, 12], [nil, 13], [nil, 14], [nil, 15], [nil, 16], [nil, 17], [nil, 18], [nil, 19], [nil, 20], [nil, 21]]
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+  [1m[36mProject Load (0.5ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" IN (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [[nil, 12], [nil, 3], [nil, 11], [nil, 5], [nil, 10], [nil, 18], [nil, 4], [nil, 13], [nil, 9], [nil, 15], [nil, 14], [nil, 7], [nil, 1], [nil, 6], [nil, 19], [nil, 17], [nil, 16], [nil, 8], [nil, 20]]
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+  [1m[36mDepartment Load (0.8ms)[0m  [1m[34mSELECT "departments".* FROM "departments" WHERE "departments"."id" IN (?, ?, ?, ?, ?, ?)[0m  [[nil, 1], [nil, 5], [nil, 6], [nil, 3], [nil, 4], [nil, 2]]
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 86ms (Views: 0.8ms | ActiveRecord: 7.9ms | Allocations: 16525)
+
+
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 226ms (Views: 0.4ms | ActiveRecord: 8.3ms | Allocations: 43029)
+
+
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IN (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [[nil, 10], [nil, 12], [nil, 5], [nil, 19], [nil, 1], [nil, 11], [nil, 9], [nil, 21], [nil, 15], [nil, 2], [nil, 13], [nil, 4], [nil, 18], [nil, 3], [nil, 17], [nil, 16], [nil, 14], [nil, 8], [nil, 20]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mProject Load (0.3ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" IN (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [[nil, 5], [nil, 6], [nil, 14], [nil, 11], [nil, 12], [nil, 10], [nil, 13], [nil, 15], [nil, 19], [nil, 1], [nil, 7], [nil, 3], [nil, 9], [nil, 17], [nil, 18], [nil, 20], [nil, 16], [nil, 8], [nil, 4]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 210ms (Views: 0.2ms | ActiveRecord: 1.3ms | Allocations: 47494)
+
+
+Started GET "/tasks" for ::1 at 2021-02-12 19:58:58 -0500
+Processing by TasksController#index as */*
+  [1m[36mTask Load (0.9ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IN (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [[nil, 10], [nil, 12], [nil, 5], [nil, 19], [nil, 1], [nil, 11], [nil, 9], [nil, 21], [nil, 15], [nil, 2], [nil, 13], [nil, 4], [nil, 18], [nil, 3], [nil, 17], [nil, 16], [nil, 14], [nil, 8], [nil, 20]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mProject Load (0.6ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" IN (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [[nil, 5], [nil, 6], [nil, 14], [nil, 11], [nil, 12], [nil, 10], [nil, 13], [nil, 15], [nil, 19], [nil, 1], [nil, 7], [nil, 3], [nil, 9], [nil, 17], [nil, 18], [nil, 20], [nil, 16], [nil, 8], [nil, 4]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 52ms (Views: 0.1ms | ActiveRecord: 2.1ms | Allocations: 18745)
+
+
+Started GET "/tasks" for ::1 at 2021-02-12 20:00:13 -0500
+Started GET "/projects" for ::1 at 2021-02-12 20:00:13 -0500
+Started GET "/departments" for ::1 at 2021-02-12 20:00:13 -0500
+Processing by DepartmentsController#index as */*
+  [1m[36mDepartment Load (0.2ms)[0m  [1m[34mSELECT "departments".* FROM "departments"[0m
+  ↳ app/services/department_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."department_id" = ?[0m  [["department_id", 1]]
+  ↳ app/services/department_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."department_id" = ?[0m  [["department_id", 2]]
+  ↳ app/services/department_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."department_id" = ?[0m  [["department_id", 3]]
+  ↳ app/services/department_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."department_id" = ?[0m  [["department_id", 4]]
+Processing by TasksController#index as */*
+  [1m[36mTask Load (1.4ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+Started GET "/users" for ::1 at 2021-02-12 20:00:13 -0500
+Processing by UsersController#index as */*
+Processing by ProjectsController#index as */*
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IN (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [[nil, 10], [nil, 12], [nil, 5], [nil, 19], [nil, 1], [nil, 11], [nil, 9], [nil, 21], [nil, 15], [nil, 2], [nil, 13], [nil, 4], [nil, 18], [nil, 3], [nil, 17], [nil, 16], [nil, 14], [nil, 8], [nil, 20]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mProject Load (1.0ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" IN (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [[nil, 5], [nil, 6], [nil, 14], [nil, 11], [nil, 12], [nil, 10], [nil, 13], [nil, 15], [nil, 19], [nil, 1], [nil, 7], [nil, 3], [nil, 9], [nil, 17], [nil, 18], [nil, 20], [nil, 16], [nil, 8], [nil, 4]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (0.8ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" IN (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [[nil, 1], [nil, 2], [nil, 3], [nil, 4], [nil, 5], [nil, 6], [nil, 7], [nil, 8], [nil, 9], [nil, 10], [nil, 11], [nil, 12], [nil, 13], [nil, 14], [nil, 15], [nil, 16], [nil, 17], [nil, 18], [nil, 19], [nil, 20], [nil, 21]]
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+  [1m[36mProject Load (1.0ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" IN (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [[nil, 12], [nil, 3], [nil, 11], [nil, 5], [nil, 10], [nil, 18], [nil, 4], [nil, 13], [nil, 9], [nil, 15], [nil, 14], [nil, 7], [nil, 1], [nil, 6], [nil, 19], [nil, 17], [nil, 16], [nil, 8], [nil, 20]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 196ms (Views: 0.3ms | ActiveRecord: 3.1ms | Allocations: 23651)
+
+
+  ↳ app/services/department_serializer.rb:7:in `to_serialized_json'
+  [1m[36mProject Load (0.4ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mTask Load (0.7ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."project_id" IN (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [[nil, 1], [nil, 2], [nil, 3], [nil, 4], [nil, 5], [nil, 6], [nil, 7], [nil, 8], [nil, 9], [nil, 10], [nil, 11], [nil, 12], [nil, 13], [nil, 14], [nil, 15], [nil, 16], [nil, 17], [nil, 18], [nil, 19], [nil, 20], [nil, 21]]
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IN (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [[nil, 11], [nil, 8], [nil, 2], [nil, 1], [nil, 15], [nil, 18], [nil, 10], [nil, 4], [nil, 12], [nil, 16], [nil, 5], [nil, 13], [nil, 3], [nil, 14], [nil, 19], [nil, 9], [nil, 21], [nil, 17], [nil, 20]]
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IN (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [[nil, 19], [nil, 8], [nil, 5], [nil, 15], [nil, 4], [nil, 6], [nil, 9], [nil, 1], [nil, 11], [nil, 21], [nil, 13], [nil, 18], [nil, 3]]
+  ↳ app/services/project_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."department_id" = ?[0m  [["department_id", 5]]
+  ↳ app/services/department_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."department_id" = ?[0m  [["department_id", 6]]
+  ↳ app/services/department_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 325ms (Views: 0.2ms | ActiveRecord: 1.7ms | Allocations: 48441)
+
+
+Completed 200 OK in 237ms (Views: 0.2ms | ActiveRecord: 2.2ms | Allocations: 38448)
+
+
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+  [1m[36mDepartment Load (0.5ms)[0m  [1m[34mSELECT "departments".* FROM "departments" WHERE "departments"."id" IN (?, ?, ?, ?, ?, ?)[0m  [[nil, 1], [nil, 5], [nil, 6], [nil, 3], [nil, 4], [nil, 2]]
+  ↳ app/services/user_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 317ms (Views: 0.2ms | ActiveRecord: 2.9ms | Allocations: 54209)
+
+
+Started GET "/tasks" for ::1 at 2021-02-12 20:00:16 -0500
+Processing by TasksController#index as */*
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IN (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [[nil, 10], [nil, 12], [nil, 5], [nil, 19], [nil, 1], [nil, 11], [nil, 9], [nil, 21], [nil, 15], [nil, 2], [nil, 13], [nil, 4], [nil, 18], [nil, 3], [nil, 17], [nil, 16], [nil, 14], [nil, 8], [nil, 20]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+  [1m[36mProject Load (0.5ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" IN (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [[nil, 5], [nil, 6], [nil, 14], [nil, 11], [nil, 12], [nil, 10], [nil, 13], [nil, 15], [nil, 19], [nil, 1], [nil, 7], [nil, 3], [nil, 9], [nil, 17], [nil, 18], [nil, 20], [nil, 16], [nil, 8], [nil, 4]]
+  ↳ app/services/task_serializer.rb:7:in `to_serialized_json'
+Completed 200 OK in 45ms (Views: 0.6ms | ActiveRecord: 1.6ms | Allocations: 18745)
+
+

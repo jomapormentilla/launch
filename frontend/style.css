@@ -194,9 +194,21 @@ button:hover {
         border-bottom: solid 1px #333;
     }
 
+    
 .task-item {
     display: flex;
     background-color: #eee;
-    border: solid 1px #bbb;
+    border-top: solid 1px #ddd;
+    margin-top: 5px;
     padding: 10px;
 }
+
+    #inProgress .task-item {
+        background-color: orange;
+        color: #fff;
+    }
+
+    #completed .task-item {
+        background-color: green;
+        color: #fff;
+    }
