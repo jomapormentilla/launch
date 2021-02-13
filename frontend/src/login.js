@@ -109,4 +109,9 @@ class Login {
         }
         return html
     }
+
+    static logout() {
+        session.removeItem("userId")
+        location.reload()
+    }
 }

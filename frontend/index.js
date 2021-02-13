@@ -9,5 +9,6 @@ document.addEventListener("DOMContentLoaded", (e) => {
     ProjectApi.getProjects()
     TaskApi.getTasks()
     UserApi.getUsers()
+    setTimeout(()=>{ Login.render() }, 1000)
     Nav.seed()
 })

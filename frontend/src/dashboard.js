@@ -13,12 +13,13 @@ class Dashboard {
                 <h1>Profile Settings</h1>
                 <ul>Feature List
                     <li>Your Projects</li>
-                    <li></li>
+                    <li><button id="logout">Logout</div></li>
                 </ul>
             `,
             justifyContent: `flex-end`
         }
         Modal.render(data)
+        document.getElementById("logout").addEventListener("click", (e) => { Login.logout() })
     }
 
     static render_projects(data) {

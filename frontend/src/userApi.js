@@ -11,7 +11,6 @@ class UserApi {
               }
               return data
           })
-          .then(data => Login.render())
     }
 
     static createUser(data) {
