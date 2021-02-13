@@ -3,7 +3,7 @@ class About {
         let data = `
             <div class="flex" style="justify-content: center; width: 100%;">
                 <div style="max-width: 500px;">
-                    <h1>Thanks for Using Launch</h1>
+                    <h1>Thanks for using Launch</h1>
                     <p>Launch is a project management productivity tool with features that include:</p>
                     <ul>
                         <li>create new Projects</li>

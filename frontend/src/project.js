@@ -58,7 +58,7 @@ class Project {
         this.projectClick(e)
     }
 
-    projectClick = (e) => {
+    projectClick = e => {
         if (e.target.classList.contains("card")) {
             let data = {
                 innerHTML: `
@@ -95,7 +95,7 @@ class Project {
         }
     }
 
-    starToggle = (e) => {
+    starToggle = e => {
         if (e.target.classList.contains("bi-star")) {
             e.target.classList.remove("bi-star")
             e.target.classList.add("bi-star-fill")
@@ -150,7 +150,7 @@ class Project {
         content.innerHTML = ``
         content.append(newProject)
         
-        for (let p of Project.all) {
+        for (let p of current_user.created_projects) {
             content.append(p.card())
         }
     }

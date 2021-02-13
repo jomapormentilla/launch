@@ -21,9 +21,9 @@ class Dashboard {
         Modal.render(data)
     }
 
-    static render_projects() {
+    static render_projects(data) {
         let html = ``
-        for (let p of current_user.projects) {
+        for (let p of data) {
             html += `<div class="card">${ p.name }</div>`
         }
         return html
@@ -40,9 +40,14 @@ class Dashboard {
         document.getElementById("header").addEventListener("click", this.handleHeaderClick)
         content.innerHTML = `
             <div class="flex" style="flex-direction: column; flex: 3;">
-                <h2>Your Projects:</h2>
+                <h2>Created Projects:</h2>
                 <div class="flex" style="flex-direction: row; flex-wrap: wrap;">
-                    ${ this.render_projects() }
+                    ${ this.render_projects(current_user.created_projects) }
+                </div>
+
+                <h2>Assigned Projects:</h2>
+                <div class="flex" style="flex-direction: row; flex-wrap: wrap;">
+                    ${ this.render_projects(current_user.assigned_projects) }
                 </div>
 
                 <h2>Assigned Tasks:</h2>

@@ -1,13 +1,14 @@
 class Task {
     static all = []
 
-    constructor({id, name, description, deadline, user_id, project_id}) {
+    constructor({id, name, description, deadline, user_id, project_id, status}) {
         this.id = id
         this.name = name
         this.description = description
         this.deadline = deadline
         this.userId = user_id
         this.projectId = project_id
+        this.status = status
 
         Task.all.push(this)
     }
@@ -20,9 +21,10 @@ class Task {
         return Project.all.find(p => p.id == this.projectId)
     }
 
-    static render_tasks(array=current_user.tasks) {
+    static render_tasks(array) {
+        let tasks = array.filter(t => t.user.id == current_user.id)
         let html = ``
-        for (let task of array) {
+        for (let task of tasks) {
             html += `
                 <div class="task-item" id="task-${ task.id }">
                     ${ task.name }
@@ -49,7 +51,7 @@ class Task {
     static selectProject() {
         let div = document.createElement("select")
         div.innerHTML = `<option selected>Select a Project</option>`
-        for (let proj of current_user.projects) {
+        for (let proj of current_user.assigned_projects) {
             let option = document.createElement("option")
             option.value = proj.id
             option.innerText = proj.name
@@ -60,11 +62,13 @@ class Task {
     }
 
     static handleSelectChange = e => {
-        let project = Project.all.find(p => p.id == e.target.value)
-        document.getElementById("backlog").innerHTML = `
-            <div class="task-header">BACKLOG</div>
-            ${ this.render_tasks(project.tasks) }
-        `
+        if (e.target.value !== "Select a Project") {
+            let project = Project.all.find(p => p.id == e.target.value)
+            document.getElementById("backlog").innerHTML = `
+                <div class="task-header">BACKLOG</div>
+                ${ this.render_tasks(project.tasks) }
+            `
+        }
     }
 
     static render() {
@@ -75,7 +79,6 @@ class Task {
             <div id="progress-tracker">
                 <div class="flex" id="backlog">
                     <div class="task-header">BACKLOG</div>
-                    ${ this.render_tasks() }
                 </div>
 
                 <div class="flex" id="inProgress">

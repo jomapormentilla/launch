@@ -1,5 +1,5 @@
 class UserApi {
-    static url = `http://localhost:3000/users`
+    static url = baseUrl + `/users`
     
     static getUsers() {
         fetch(this.url)

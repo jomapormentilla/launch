@@ -15,6 +15,7 @@ class ProjectApi {
     static createProject(data) {
         let projectInfo = {
             name: data[0].value,
+            description: data[1].value,
             creator_id: current_user.id
         }
 

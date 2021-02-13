@@ -15,8 +15,12 @@ class User {
         return Task.all.filter(t => t.userId == this.id)
     }
 
-    get projects() {
+    get assigned_projects() {
         return Project.all.filter(p => p.users.includes(current_user))
+    }
+
+    get created_projects() {
+        return Project.all.filter(p => p.creatorId == current_user.id)
     }
 
     get department() {

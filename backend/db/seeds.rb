@@ -69,7 +69,8 @@ def createTasks
             description: Faker::TvShows::SiliconValley.quote,
             deadline: Faker::Date.between(from: '2021-01-01', to: '2021-12-31'),
             user_id: User.all.sample.id,
-            project_id: Project.all.sample.id
+            project_id: Project.all.sample.id,
+            status: 'backlog'
         }
 
         Task.create(data)
