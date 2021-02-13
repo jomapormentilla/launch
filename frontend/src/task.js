@@ -1,4 +1,8 @@
 class Task {
+    static backlog = document.getElementById("backlog")
+    static inProgress = document.getElementById("inProgress")
+    static completed = document.getElementById("completed")
+
     static all = []
 
     constructor({id, name, description, deadline, user_id, project_id, status}) {
@@ -19,20 +23,6 @@ class Task {
 
     get project() {
         return Project.all.find(p => p.id == this.projectId)
-    }
-
-    static render_tasks(array) {
-        let tasks = array.filter(t => t.user.id == current_user.id)
-        let html = ``
-        for (let task of tasks) {
-            html += `
-                <div class="task-item" id="task-${ task.id }">
-                    ${ task.name }
-                    <i class="bi-arrow-right-square-fill" style="font-size: 2rem; color: #fff;"></i>
-                </div>
-            `
-        }
-        return html
     }
 
     static handleTaskClick = e => {
@@ -61,14 +51,39 @@ class Task {
         return div
     }
 
+    static render_tasks(array) {
+        let tasks = array.filter(t => t.user.id == current_user.id)
+        let html = ``
+        for (let task of tasks) {
+            html += `
+                <div class="task-item" id="task-${ task.id }">
+                    ${ task.name }
+                    <i class="bi-arrow-right-square-fill" style="font-size: 2rem; color: #fff;"></i>
+                </div>
+            `
+            if (task.status === "backlog") {
+                backlog.innerHTML += html
+            } else if (task.status === "inprogress") {
+                inProgress.innerHTML += html
+            } else if (task.status === "completed") {
+                completed.innerHTML += html
+            }
+        }
+        return html
+    }
+
     static handleSelectChange = e => {
         if (e.target.value !== "Select a Project") {
             let project = Project.all.find(p => p.id == e.target.value)
-            document.getElementById("backlog").innerHTML = `
-                <div class="task-header">BACKLOG</div>
-                ${ this.render_tasks(project.tasks) }
-            `
+            this.resetContainers()
+            this.render_tasks(project.tasks)
         }
+    }
+
+    static resetContainers() {
+        backlog.innerHTML = `<div class="task-header">BACKLOG</div>`
+        inProgress.innerHTML = `<div class="task-header">IN PROGRESS</div>`
+        completed.innerHTML = `<div class="task-header">COMPLETED</div>`
     }
 
     static render() {
