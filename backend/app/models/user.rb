@@ -5,4 +5,6 @@ class User < ApplicationRecord
     has_many :projects, through: :tasks
 
     has_one :project, foreign_key: 'creator_id'
+
+    validates :first_name, presence: true
 end

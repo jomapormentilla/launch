@@ -67,7 +67,15 @@ class Login {
             
             Dashboard.render()
         } else if (e.target.lastElementChild.innerText === "Sign Up") {
-            console.log("Sign Up")
+            let data = {
+                first_name: e.target.children[0].value,
+                last_name: e.target.children[2].value,
+                email: e.target.children[4].value,
+                password: e.target.children[6].value,
+                department_id: parseInt(e.target.children[8].value, 10)
+            }
+
+            UserApi.createUser(data)
         }
     }
 
