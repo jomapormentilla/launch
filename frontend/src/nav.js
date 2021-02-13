@@ -52,12 +52,15 @@ class Nav {
             content.style.opacity = 1 
             switch (data) {
                 case 'dashboard':
+                    DepartmentApi.getDepartments()
                     Dashboard.render()
                     break
                 case 'users':
+                    UserApi.getUsers()
                     User.render()
                     break
                 case 'projects':
+                    ProjectApi.getProjects()
                     Project.render()
                     break
                 case 'tasks':

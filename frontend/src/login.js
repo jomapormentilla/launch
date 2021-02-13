@@ -16,7 +16,7 @@ class Login {
 
     static handleLogin = e => {
         e.preventDefault()
-        current_user = User.all.find((u) => u.email === e.target.children[0].value)
+        current_user = User.all.find(u => u.email === e.target.children[0].value)
         this.hide()
         container.style.display = "flex"
         setTimeout(()=>{ container.style.opacity = 1 }, 250)

@@ -7,9 +7,7 @@ class TaskApi {
           .then(data => {
               for (let task of data) {
                 let _task = Task.all.find(t => t.id === task.id)
-                if (!_task) {
-                    new Task(task)
-                }
+                if (!_task) { new Task(task) }
               }
           })
     }

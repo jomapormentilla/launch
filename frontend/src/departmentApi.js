@@ -4,7 +4,8 @@ class DepartmentApi {
             .then(res => res.json())
             .then(data => {
                 for (let dept of data) {
-                    let d = new Department(dept)
+                    let _dept = Department.all.find(d => d.id === dept.id)
+                    if (!_dept) { new Department(dept) }
                 }
             })
     }

@@ -6,7 +6,8 @@ class ProjectApi {
           .then(res => res.json())
           .then(data => {
             for (let project of data) {
-                let p = new Project(project)
+                let _project = Project.all.find(p => p.id === project.id)
+                if(!_project){ new Project(project) }
             }
           })
     }
