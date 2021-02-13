@@ -20,9 +20,9 @@ class Task {
         return Project.all.find(p => p.id == this.projectId)
     }
 
-    static render_tasks() {
+    static render_tasks(array=current_user.tasks) {
         let html = ``
-        for (let task of current_user.tasks) {
+        for (let task of array) {
             html += `
                 <div class="task-item" id="task-${ task.id }">
                     ${ task.name }
@@ -46,24 +46,48 @@ class Task {
         }
     }
 
+    static selectProject() {
+        let div = document.createElement("select")
+        div.innerHTML = `<option selected>Select a Project</option>`
+        for (let proj of current_user.projects) {
+            let option = document.createElement("option")
+            option.value = proj.id
+            option.innerText = proj.name
+            div.append(option)
+        }
+        div.addEventListener("change", this.handleSelectChange)
+        return div
+    }
+
+    static handleSelectChange = e => {
+        let project = Project.all.find(p => p.id == e.target.value)
+        document.getElementById("backlog").innerHTML = `
+            <div class="task-header">BACKLOG</div>
+            ${ this.render_tasks(project.tasks) }
+        `
+    }
+
     static render() {
         content.innerHTML = ``
         let div = document.createElement("div")
         div.id = "task-content"
         div.innerHTML = `
-            <div class="flex" id="backlog">
-                <div class="task-header">BACKLOG</div>
-                ${ this.render_tasks() }
-            </div>
+            <div id="progress-tracker">
+                <div class="flex" id="backlog">
+                    <div class="task-header">BACKLOG</div>
+                    ${ this.render_tasks() }
+                </div>
 
-            <div class="flex" id="inProgress">
-                <div class="task-header">IN PROGRESS</div>
-            </div>
+                <div class="flex" id="inProgress">
+                    <div class="task-header">IN PROGRESS</div>
+                </div>
 
-            <div class="flex" id="completed">
-                <div class="task-header">COMPLETED</div>
+                <div class="flex" id="completed">
+                    <div class="task-header">COMPLETED</div>
+                </div>
             </div>
         `
+        div.prepend(this.selectProject())
         div.addEventListener("click", this.handleTaskClick)
         content.append(div)
     }

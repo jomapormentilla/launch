@@ -34,12 +34,20 @@ class Project {
         return projectTasks
     }
 
+    get completedTasks() {
+        // Need to implement
+    }
+
+    get inProgressTasks() {
+        // Need to implement
+    }
+
     card() {
         let card = document.createElement("div")
         card.classList.add("card")
         card.innerHTML = `
             <i class="bi-star" style="font-size: 2rem; color: gold; align-self: flex-end; justify-self: flex-end;"></i>
-            <h3>${ this.name }</h3>   
+            <h3 style="text-align: center;">${ this.name }</h3>
         `
         card.addEventListener("click", this.handleCardClick)
         return card
@@ -113,10 +121,11 @@ class Project {
     static newProjectForm = e => {
         let data = {
             innerHTML: `
-                <div id="new-project">
+                <div class="flex" id="new-project">
                     <h1>Create a New Project</h1>
                     <form id="new-project-form">
-                        <input type="text" placeholder="Project Name"><br><br>
+                        <input type="text" name="name" placeholder="Project Name"><br>
+                        <textarea name="description" placeholder="Describe your project..."></textarea><br>
                         <button type="submit">Create Project</button>
                     </form>
                 </div>    
