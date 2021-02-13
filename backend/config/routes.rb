@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  post '/authenticate' => "users#authenticate"
+
   resources :departments
   resources :tasks
   resources :projects

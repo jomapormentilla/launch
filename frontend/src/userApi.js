@@ -45,4 +45,31 @@ class UserApi {
             Login.loadDashboard()
         }
     }
+
+    static authenticate(data) {
+        let url = baseUrl + `/authenticate`
+        let info = data
+        let configObj = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify(info)
+        }
+
+        fetch(url, configObj)
+            .then(res => res.json())
+            .then(this.handleAuthenticate)
+
+    }
+
+    static handleAuthenticate = data => {
+        if (!!data.error) {
+            Error.render(data.error)
+        } else {
+            current_user = User.all.find(u => u.id === data.id)
+            Login.loadDashboard()
+        }
+    }
 }

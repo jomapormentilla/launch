@@ -40,6 +40,16 @@ class UsersController < ApplicationController
         end
     end
 
+    def authenticate
+        user = User.find_by(email: params[:email])
+
+        if !!user && user.password == params[:password]
+            render json: UserSerializer.new(user).to_serialized_json
+        else
+            render json: { error: 'Authentication Failed' }
+        end
+    end
+
     private
 
     def user_params

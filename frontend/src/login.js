@@ -57,8 +57,12 @@ class Login {
         e.preventDefault(e)
         
         if (e.target.lastElementChild.innerText === "Login") {
-            current_user = User.all.find(u => u.email === e.target.children[0].value)
-            this.loadDashboard()
+            let loginInfo = {
+                email: e.target.children[0].value,
+                password: e.target.children[2].value
+            }
+
+            UserApi.authenticate(loginInfo)
         } else if (e.target.lastElementChild.innerText === "Sign Up") {
             let data = {
                 first_name: e.target.children[0].value,
