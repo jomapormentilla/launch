@@ -9,7 +9,9 @@ class UserApi {
                   let _user = User.all.find(u => u.id === user.id)
                   if (!_user) { new User(user) }
               }
+              return data
           })
+          .then(data => Login.render())
     }
 
     static createUser(data) {
@@ -69,6 +71,7 @@ class UserApi {
             Error.render(data.error)
         } else {
             current_user = User.all.find(u => u.id === data.id)
+            session.setItem('userId', current_user.id)
             Login.loadDashboard()
         }
     }

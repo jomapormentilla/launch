@@ -3,8 +3,13 @@ class Login {
     static nav = document.getElementById("nav-container")
 
     static render() {
-        this.renderLoginForm()
-        this.login.addEventListener("submit", this.handleLogin)
+        if (!!session.getItem("userId")) {
+            current_user = User.all.find(u => u.id == session.getItem("userId"))
+            this.loadDashboard()
+        } else {
+            this.renderLoginForm()
+            this.login.addEventListener("submit", this.handleLogin)
+        }
     }
 
     static handleSignupClick = e => {
