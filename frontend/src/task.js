@@ -23,7 +23,11 @@ class Task {
     static render_tasks() {
         let html = ``
         for (let task of current_user.tasks) {
-            html += `<div class="task-item" id="task-${ task.id }">${ task.name }</div>`
+            html += `
+                <div class="task-item" id="task-${ task.id }">
+                    ${ task.name }
+                </div>
+            `
         }
         return html
     }

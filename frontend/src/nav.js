@@ -61,6 +61,7 @@ class Nav {
                     Project.render()
                     break
                 case 'tasks':
+                    TaskApi.getTasks()
                     Task.render()
                     break
                 case 'about':

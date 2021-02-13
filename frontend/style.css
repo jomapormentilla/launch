@@ -182,6 +182,7 @@ button:hover {
         flex: 1;
         flex-basis: 200px;
         flex-direction: column;
+        background-color: #fff;
         border: solid 1px #333;
         margin-right: 10px;
         padding: 0px 10px 15px 10px;
@@ -193,6 +194,9 @@ button:hover {
         border-bottom: solid 1px #333;
     }
 
-    #backlog {
-        
-    }
+.task-item {
+    display: flex;
+    background-color: #eee;
+    border: solid 1px #bbb;
+    padding: 10px;
+}

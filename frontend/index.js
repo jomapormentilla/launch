@@ -6,7 +6,6 @@ const content = document.getElementById("content")
 document.addEventListener("DOMContentLoaded", (e) => {
     DepartmentApi.getDepartments()
     ProjectApi.getProjects()
-    TaskApi.getTasks()
     UserApi.getUsers()
     Login.render()
     Nav.seed()

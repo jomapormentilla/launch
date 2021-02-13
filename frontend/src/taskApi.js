@@ -6,7 +6,10 @@ class TaskApi {
           .then(res => res.json())    
           .then(data => {
               for (let task of data) {
-                  let newTask = new Task(task)
+                let _task = Task.all.find(t => t.id === task.id)
+                if (!_task) {
+                    new Task(task)
+                }
               }
           })
     }
