@@ -169,3 +169,30 @@ button:hover {
     height: 150px;
     background-color: #fff;
 }
+
+#task-content {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+    #task-content > div {
+        flex: 1;
+        flex-basis: 200px;
+        flex-direction: column;
+        border: solid 1px #333;
+        margin-right: 10px;
+        padding: 0px 10px 15px 10px;
+    }
+
+    #task-content div .task-header {
+        text-align: center;
+        font-size: 25px;
+        border-bottom: solid 1px #333;
+    }
+
+    #backlog {
+        
+    }

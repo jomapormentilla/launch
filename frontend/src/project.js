@@ -12,6 +12,28 @@ class Project {
         Project.all.push(this)
     }
 
+    get creator() {
+        return User.all.find(u => u.id == this.creatorId)
+    }
+
+    get users() {
+        let projectUsers = []
+        for (let user of this.userIds) {
+            let find = User.all.find(u => u.id == user.id)
+            projectUsers.push(find)
+        }
+        return projectUsers
+    }
+
+    get tasks() {
+        let projectTasks = []
+        for (let task of this.taskIds) {
+            let find = Task.all.find(t => t.id == task.id)
+            projectTasks.push(find)
+        }
+        return projectTasks
+    }
+
     card() {
         let card = document.createElement("div")
         card.classList.add("card")
@@ -73,28 +95,6 @@ class Project {
             e.target.classList.remove("bi-star-fill")
             e.target.classList.add("bi-star")
         }
-    }
-
-    get creator() {
-        return User.all.find(u => u.id == this.creatorId)
-    }
-
-    get users() {
-        let projectUsers = []
-        for (let user of this.userIds) {
-            let find = User.all.find(u => u.id == user.id)
-            projectUsers.push(find)
-        }
-        return projectUsers
-    }
-
-    get tasks() {
-        let projectTasks = []
-        for (let task of this.taskIds) {
-            let find = Task.all.find(t => t.id == task.id)
-            projectTasks.push(find)
-        }
-        return projectTasks
     }
 
     static newProjectCard = () => {
