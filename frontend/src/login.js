@@ -54,18 +54,11 @@ class Login {
     }
 
     static handleLogin = e => {
-        e.preventDefault()
+        e.preventDefault(e)
         
         if (e.target.lastElementChild.innerText === "Login") {
             current_user = User.all.find(u => u.email === e.target.children[0].value)
-            
-            this.greeting()
-            this.hide()
-            
-            container.style.display = "flex"
-            setTimeout(()=>{ container.style.opacity = 1 }, 250)
-            
-            Dashboard.render()
+            this.loadDashboard()
         } else if (e.target.lastElementChild.innerText === "Sign Up") {
             let data = {
                 first_name: e.target.children[0].value,
@@ -77,6 +70,16 @@ class Login {
 
             UserApi.createUser(data)
         }
+    }
+
+    static loadDashboard() {
+        this.greeting()
+        this.hide()
+        
+        container.style.display = "flex"
+        setTimeout(()=>{ container.style.opacity = 1 }, 250)
+        
+        Dashboard.render()
     }
 
     static greeting() {

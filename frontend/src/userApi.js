@@ -38,11 +38,11 @@ class UserApi {
     }
    
     static handleResponse = data => {
-        debugger
         if (!!data.error) {
             console.log(data.error)
         } else {
-            console.log("YAY")
+            current_user = User.all.find(u => u.email === data.email)
+            Login.loadDashboard()
         }
     }
 }
