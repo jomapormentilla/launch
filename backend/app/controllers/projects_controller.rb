@@ -14,6 +14,37 @@ class ProjectsController < ApplicationController
         end
     end
 
+    def show
+        project = Project.find_by_id(params[:id])
+
+        if project
+            render json: ProjectSerializer(project).to_serialized_json
+        else
+            render json: { error: 'Unable to find Project' }
+        end
+    end
+
+    def update
+        project = Project.find_by_id(params[:id])
+
+        if project.update(project_params)
+            render json: ProjectSerializer.new(project).to_serialized_json
+        else
+            render json: { error: 'Unable to update Project' }
+        end
+    end
+
+    def destroy
+        project = Project.find_by_id(params[:id])
+
+        if project
+            project.destroy
+            render json: { message: 'Project successfully deleted.' }
+        else
+            render json: { error: 'Unable to delete Project' }
+        end
+    end
+
     private
 
     def project_params
