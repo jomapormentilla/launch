@@ -88,6 +88,7 @@ class Task {
 
     static render() {
         content.innerHTML = ``
+
         let div = document.createElement("div")
         div.id = "task-content"
         div.innerHTML = `
@@ -106,7 +107,9 @@ class Task {
             </div>
         `
         div.prepend(this.selectProject())
+        div.prepend(`Select a Project:`)
         div.addEventListener("click", this.handleTaskClick)
+
         content.append(div)
     }
 }

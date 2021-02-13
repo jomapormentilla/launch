@@ -38,6 +38,22 @@ body, html {
         text-align: center;
     }
 
+    #login select {
+        width: 100%;
+        height: 35px;
+        margin-bottom: 10px;
+    }
+
+    #signup-btn {
+        color: #3b5ab1;
+        text-decoration: underline;
+        cursor: pointer;
+    }
+
+        #signup-btn option {
+            text-align: center;
+        }
+
 button {
     width: 100%;
     border: solid 1px #777;
