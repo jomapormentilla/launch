@@ -2,15 +2,6 @@ class Login {
     static login = document.getElementById("login")
     static nav = document.getElementById("nav-container")
 
-    static render() {
-        if (!!session.getItem("userId") && !!session.getItem("userToken")) {
-            UserApi.authenticateToken(session)
-        } else {
-            this.renderLoginForm()
-            this.login.addEventListener("submit", this.handleLogin)
-        }
-    }
-
     static handleSignupClick = e => {
         if (e.target.innerText === "Sign Up") {
             this.renderSignupForm()
@@ -87,6 +78,7 @@ class Login {
         container.style.display = "flex"
         setTimeout(()=>{ container.style.opacity = 1 }, 250)
         
+        Dashboard.removeErrors()
         Dashboard.render()
     }
 
@@ -112,5 +104,14 @@ class Login {
     static logout() {
         session.clear()
         location.reload()
+    }
+
+    static render() {
+        if (!!session.getItem("userId") && !!session.getItem("userToken")) {
+            UserApi.authenticateToken(session)
+        } else {
+            this.renderLoginForm()
+            this.login.addEventListener("submit", this.handleLogin)
+        }
     }
 }

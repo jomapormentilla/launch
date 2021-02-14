@@ -45,6 +45,7 @@ class Project {
     card() {
         let card = document.createElement("div")
         card.classList.add("card")
+        card.dataset.id = this.id
         card.innerHTML = `
             <i class="bi-star" style="font-size: 2rem; color: gold; align-self: flex-end; justify-self: flex-end;"></i>
             <h3 style="text-align: center;">${ this.name }</h3>
@@ -67,32 +68,42 @@ class Project {
                         <div><i class="bi-gear-fill"></i></div>
                     </div>
                     <div class="flex" style="width: 100%; flex-direction: column;">
-                        <h1 style="text-align: center;">${ this.name }</h1>
-                        <p style="text-align: justify; padding: 0px 15px;">${ this.description }</p>
+                        <h1 style="text-align: center; color: #3b5ab1;">${ this.name }</h1>
+                        <div style="text-align: justify; padding: 15px; background-color: #fff; border: solid 1px #ddd;">${ this.description }</div>
                         <hr />
-                        <div class="flex" style="width: 100%; flex-direction: row; flex-wrap: wrap;">
-                            <div class="flex box"><h3>Team Members</h3></div>
-                            <div class="flex box"><h3>Progress</h3></div>
-                            <div class="flex box"><h3>Messages</h3></div>
-                        </div>
 
                         <h2>Build Your Team</h2>
-                        <div class="flex" style="width: 100%; flex-direction: row; flex-wrap: wrap;">
-                            <div class="flex box"><h3>Search Departments</h3></div>
-                        </div>
+                        <div id="build-team">${ User.list() }</div>
                     </div>
                 `,
                 justifyContent: `center`
             }
             content.innerHTML = data.innerHTML
+
+            let projectId = parseInt(e.target.dataset.id, 10)
+            document.getElementById("build-team").addEventListener("click", (e) => {this.handleBuildTeamClick(e, projectId)})
+
             content.querySelector("div").addEventListener("click", (e) => { 
                 if (e.target.innerText.includes("Back to Projects")) {
                     Project.render() 
                 } else if (e.target.classList.contains("bi-gear-fill")) {
-                    alert("Settings!")
+                    this.projectSettings()
                 }
             })
         }
+    }
+
+    handleBuildTeamClick = (e, projectId) => {
+        let user = User.all.find(u => u.id == e.target.id)
+        user.addToProject(projectId)
+    }
+
+    projectSettings() {
+        alert("Settings!")
+    }
+
+    renderProject() {
+
     }
 
     starToggle = e => {
@@ -133,7 +144,8 @@ class Project {
             justifyContent: 'flex-start'
         }
         
-        Modal.render(data)
+        content.innerHTML = data.innerHTML
+        // Modal.render(data)
         document.getElementById("new-project-form").addEventListener("submit", this.handleSubmitNewProject)
     }
 

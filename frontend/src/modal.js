@@ -1,8 +1,4 @@
 class Modal {
-    static render(data) {
-        document.body.append(this.renderBackdrop(data))
-    }
-    
     static renderBackdrop(data) {
         this.div = document.createElement("div")
         this.div.classList.add("backdrop")
@@ -30,5 +26,9 @@ class Modal {
         body.innerHTML = data.innerHTML
 
         return body
+    }
+
+    static render(data) {
+        document.body.append(this.renderBackdrop(data))
     }
 }

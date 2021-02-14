@@ -36,6 +36,10 @@ class UserApi {
             .then(this.handleNewUserSignup)
             .catch(error => console.log(error))
     }
+
+    static updateUser(data) {
+        
+    }
    
     static handleNewUserSignup = data => {
         if (!!data.error) {

@@ -76,6 +76,7 @@ button {
     border: solid 1px #777;
     border-radius: 0px;
     height: 30px;
+    cursor: pointer;
     transition: 0.5s;
 }
 
@@ -223,14 +224,36 @@ button:hover {
     width: 100%;
 }
 
+#new-project-form {
+    width: 100%;
+}
+
     #new-project-form input {
+        flex: 1;
         height: 30px;
-        width: 500px;
     }
 
     #new-project-form textarea {
-        height: 500px;
-        width: 500px;
+        flex: 1;
+        height: 300px;
+    }
+
+#build-team {
+    border: solid 1px #ddd;
+    background-color: #fff;
+    width: fit-content;
+    height: 500px;
+    overflow-y: scroll;
+}
+
+    #build-team > li {
+        list-style: none;
+        padding: 10px;
+        cursor: pointer;
+    }
+
+    #build-team > li:hover {
+        background-color:  #dce9ff;
     }
 
 .box {

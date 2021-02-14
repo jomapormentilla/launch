@@ -43,10 +43,19 @@ class User {
         return card
     }
 
+    addToProject(projectId) {
+        let project = Project.all.find(p => p.id == projectId)
+        
+        // data = {
+            
+        // }
+    }
+
     static list() {
-        let list = User.all.map((u) => {
-            return `<li>${ u.firstName } ${ u.lastName }</li>`
-        })
+        let list = ``
+        for (let user of User.all) {
+            list += `<li id="${ user.id }">${ user.firstName } ${ user.lastName } - ${ user.department }</li>`
+        }
         return list
     }
 
