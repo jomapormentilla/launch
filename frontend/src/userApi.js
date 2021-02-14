@@ -38,7 +38,24 @@ class UserApi {
     }
 
     static updateUser(data) {
-        
+        let configObj = {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify(data)
+        }
+
+        fetch(this.url + `/${ data.id }`, configObj)
+            .then(res => res.json())
+            .then(this.handleUpdate)
+    }
+
+    static handleUpdate = data => {
+        if (!!data.error) {
+            Error.render(data.error)
+        }
     }
    
     static handleNewUserSignup = data => {

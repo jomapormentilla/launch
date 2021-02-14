@@ -61,41 +61,63 @@ class Project {
 
     projectClick = e => {
         if (e.target.classList.contains("card")) {
-            let data = {
-                innerHTML: `
-                    <div class="flex" style="align-items: center; justify-content: space-between; font-size: 15px; color: #777; flex: 1; padding-right: 15px;">
-                        <div><i class="bi-arrow-bar-left"></i> Back to Projects</div>
-                        <div><i class="bi-gear-fill"></i></div>
-                    </div>
-                    <div class="flex" style="width: 100%; flex-direction: column;">
-                        <h1 style="text-align: center; color: #3b5ab1;">${ this.name }</h1>
-                        <div style="text-align: justify; padding: 15px; background-color: #fff; border: solid 1px #ddd;">${ this.description }</div>
-                        <hr />
-
-                        <h2>Build Your Team</h2>
-                        <div id="build-team">${ User.list() }</div>
-                    </div>
-                `,
-                justifyContent: `center`
-            }
-            content.innerHTML = data.innerHTML
-
-            let projectId = parseInt(e.target.dataset.id, 10)
-            document.getElementById("build-team").addEventListener("click", (e) => {this.handleBuildTeamClick(e, projectId)})
-
-            content.querySelector("div").addEventListener("click", (e) => { 
-                if (e.target.innerText.includes("Back to Projects")) {
-                    Project.render() 
-                } else if (e.target.classList.contains("bi-gear-fill")) {
-                    this.projectSettings()
-                }
-            })
+            this.renderBuildTeam()
         }
     }
 
-    handleBuildTeamClick = (e, projectId) => {
+    renderBuildTeam() {
+        let data = {
+            innerHTML: `
+                <div class="flex" style="align-items: center; justify-content: space-between; font-size: 15px; color: #777; flex: 1; padding-right: 15px;">
+                    <div><i class="bi-arrow-bar-left"></i> Back to Projects</div>
+                    <div><i class="bi-gear-fill"></i></div>
+                </div>
+                <div class="flex" style="width: 100%; flex-direction: column;">
+                    <h1 style="text-align: center; color: #3b5ab1;">${ this.name }</h1>
+                    <div style="text-align: justify; padding: 15px; background-color: #fff; border: solid 1px #ddd;">${ this.description }</div>
+                    <hr />
+
+                    <h2>Build Your Team</h2>
+                    <div id="build-team-container" class="flex" style="flex-direction: row; justify-content: center;">
+                        <div id="build-team"><h2>All Users</h2>${ User.list() }</div>
+                        <div class="flex" style="align-items: center; padding: 0px 15px;"><i class="bi bi-arrow-left-right" style="font-size: 30px;"></i></div>
+                        ${ this.renderCurrentTeam }
+                    </div>
+                </div>
+            `,
+            justifyContent: `center`
+        }
+        content.innerHTML = data.innerHTML
+
+        document.getElementById("build-team").addEventListener("click", (e) => {this.handleBuildTeamClick(e, this)})
+
+        content.querySelector("div").addEventListener("click", (e) => { 
+            if (e.target.innerText.includes("Back to Projects")) {
+                Project.render() 
+            } else if (e.target.classList.contains("bi-gear-fill")) {
+                this.projectSettings()
+            }
+        })
+    }
+
+    get renderCurrentTeam() {
+        let projectUsers = ``
+        for (let user of this.users) {
+            projectUsers += `<li>${ user.firstName } ${ user.lastName } - ${ user.department }</li>`
+        }
+        return `<div id="current-team"><h2>Current Team</h2>${ projectUsers }</div>`
+    }
+
+    handleBuildTeamClick = (e, project) => {
         let user = User.all.find(u => u.id == e.target.id)
-        user.addToProject(projectId)
+        user.addToProject(project.id)
+        if (!!project.userIds.find(p => p.id == user.id)) {
+            Error.render("User is already assigned to this project.")
+        } else {
+            project.userIds.push({id: user.id})
+        }
+
+        project.renderBuildTeam()
     }
 
     projectSettings() {

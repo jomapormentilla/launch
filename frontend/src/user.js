@@ -44,11 +44,12 @@ class User {
     }
 
     addToProject(projectId) {
-        let project = Project.all.find(p => p.id == projectId)
-        
-        // data = {
-            
-        // }
+        let data = {
+            id: this.id,
+            project_id: projectId
+        }
+
+        UserApi.updateUser(data)
     }
 
     static list() {

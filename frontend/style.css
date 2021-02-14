@@ -238,21 +238,28 @@ button:hover {
         height: 300px;
     }
 
-#build-team {
+#build-team, #current-team {
     border: solid 1px #ddd;
     background-color: #fff;
+    min-width: 300px;
     width: fit-content;
     height: 500px;
     overflow-y: scroll;
 }
 
-    #build-team > li {
+    #build-team > h2, #current-team > h2 {
+        text-align: center;
+        border-bottom: solid 1px #eee;
+        padding-bottom: 10px;
+    }
+
+    #build-team > li, #current-team > li {
         list-style: none;
         padding: 10px;
         cursor: pointer;
     }
 
-    #build-team > li:hover {
+    #build-team > li:hover, #current-team > li:hover {
         background-color:  #dce9ff;
     }
 

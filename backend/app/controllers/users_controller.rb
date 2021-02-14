@@ -23,6 +23,7 @@ class UsersController < ApplicationController
         user = User.find_by(id: params[:id])
 
         if user.update(user_params)
+            UserProject.find_or_create_by(user_id: user.id, project_id: params[:project_id]) if !!params[:project_id]
             render json: UserSerializer.new(user).to_serialized_json
         else
             render json: { error: 'Something went wrong: User could not be updated.' }
@@ -64,6 +65,6 @@ class UsersController < ApplicationController
     private
 
     def user_params
-        params.require(:user).permit(:first_name, :last_name, :email, :department_id, :password)
+        params.require(:user).permit(:first_name, :last_name, :email, :department_id, :password, :project_id)
     end
 end
