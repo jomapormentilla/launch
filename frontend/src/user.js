@@ -49,7 +49,7 @@ class User {
             project_id: projectId
         }
 
-        UserApi.updateUser(data)
+        UserProjectApi.addUserToProject(data)
     }
 
     static list() {

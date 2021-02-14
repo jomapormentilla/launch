@@ -109,15 +109,17 @@ class Project {
     }
 
     handleBuildTeamClick = (e, project) => {
-        let user = User.all.find(u => u.id == e.target.id)
-        user.addToProject(project.id)
-        if (!!project.userIds.find(p => p.id == user.id)) {
-            Error.render("User is already assigned to this project.")
-        } else {
-            project.userIds.push({id: user.id})
+        if (e.target.nodeName === "LI") {
+            let user = User.all.find(u => u.id == e.target.id)
+            user.addToProject(project.id)
+            if (!!project.userIds.find(p => p.id == user.id)) {
+                Error.render("User is already assigned to this project.")
+            } else {
+                project.userIds.push({id: user.id})
+            }
+    
+            project.renderBuildTeam()
         }
-
-        project.renderBuildTeam()
     }
 
     projectSettings() {
