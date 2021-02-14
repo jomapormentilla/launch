@@ -44,12 +44,13 @@ class User {
     }
 
     addToProject(projectId) {
-        let data = {
-            id: this.id,
-            project_id: projectId
-        }
-
+        let data = { id: this.id, project_id: projectId }
         UserProjectApi.addUserToProject(data)
+    }
+    
+    removeFromProject(projectId) {
+        let data = { id: this.id, project_id: projectId }
+        UserProjectApi.removeUserFromProject(data)
     }
 
     static list() {

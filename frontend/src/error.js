@@ -12,4 +12,18 @@ class Error {
             setTimeout(()=>{ div.remove() }, 1000)
         }, 7000)
     }
+
+    static alert(data) {
+        let div = document.createElement("div")
+        div.classList.add("alert")
+        div.innerHTML = data
+
+        document.querySelector(".error-container").append(div)
+        div.addEventListener("click", this.handleErrorClick)
+        
+        setTimeout(()=>{ 
+            div.style.opacity = 0 
+            setTimeout(()=>{ div.remove() }, 1000)
+        }, 7000)
+    }
 }

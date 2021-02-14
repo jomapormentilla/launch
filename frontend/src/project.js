@@ -90,6 +90,7 @@ class Project {
         content.innerHTML = data.innerHTML
 
         document.getElementById("build-team").addEventListener("click", (e) => {this.handleBuildTeamClick(e, this)})
+        document.getElementById("current-team").addEventListener("click", (e) => {this.handleCurrentTeamClick(e, this)})
 
         content.querySelector("div").addEventListener("click", (e) => { 
             if (e.target.innerText.includes("Back to Projects")) {
@@ -103,7 +104,7 @@ class Project {
     get renderCurrentTeam() {
         let projectUsers = ``
         for (let user of this.users) {
-            projectUsers += `<li>${ user.firstName } ${ user.lastName } - ${ user.department }</li>`
+            projectUsers += `<li id="${ user.id }">${ user.firstName } ${ user.lastName } - ${ user.department }</li>`
         }
         return `<div id="current-team"><h2>Current Team</h2>${ projectUsers }</div>`
     }
@@ -113,9 +114,25 @@ class Project {
             let user = User.all.find(u => u.id == e.target.id)
             user.addToProject(project.id)
             if (!!project.userIds.find(p => p.id == user.id)) {
-                Error.render("User is already assigned to this project.")
+                console.log("User is already assigned to this project.")
             } else {
                 project.userIds.push({id: user.id})
+            }
+    
+            project.renderBuildTeam()
+        }
+    }
+    
+    handleCurrentTeamClick = (e, project) => {
+        if (e.target.nodeName === "LI") {
+            let user = User.all.find(u => u.id == e.target.id)
+            user.removeFromProject(project.id)
+
+            if (!!project.userIds.find(p => p.id == user.id)) {
+                let index = project.userIds.findIndex(p => p.id == user.id)
+                project.userIds.splice(index, 1)
+            } else {
+                console.log("User is not assigned to this project.")
             }
     
             project.renderBuildTeam()
