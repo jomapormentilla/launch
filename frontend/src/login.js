@@ -85,6 +85,7 @@ class Login {
                 setTimeout(()=>{ container.style.opacity = 1 }, 250)
                 
                 Error.removeAll()
+                Dashboard.header.greeting()
                 Dashboard.render()
             },
 

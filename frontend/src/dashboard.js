@@ -79,7 +79,6 @@ class Dashboard {
         // Initial
         content.innerHTML = ``
         Error.removeAll()
-        this.header.greeting()
         
         // Main Renders
         this.renderDiv(this.progressLog.div, "progress-log")
