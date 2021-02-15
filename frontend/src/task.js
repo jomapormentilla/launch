@@ -17,6 +17,7 @@ class Task {
         Task.all.push(this)
     }
 
+    // Associations
     get user() {
         return User.all.find(u => u.id == this.userId)
     }
@@ -25,7 +26,82 @@ class Task {
         return Project.all.find(p => p.id == this.projectId)
     }
 
-    static handleTaskClick = e => {
+    // HTML Div Elements
+    get html() {
+        let data = {
+            item: `
+                <div class="task-item" id="task-${ this.id }">
+                    ${ this.name }
+                    <i class="bi-arrow-right-square-fill" style="font-size: 2rem; color: #fff;"></i>
+                </div>
+            `
+        }
+        return data
+    }
+
+    static get backlogContainer() {
+        let data = {
+            html: `
+                <div id="progress-tracker">
+                    <div class="flex" id="backlog">
+                        <div class="task-header">BACKLOG</div>
+                    </div>
+
+                    <div class="flex" id="inProgress">
+                        <div class="task-header">IN PROGRESS</div>
+                    </div>
+
+                    <div class="flex" id="completed">
+                        <div class="task-header">COMPLETED</div>
+                    </div>
+                </div>
+            `,
+
+            select: () => {
+                let data = `<select id="task-select"><option selected>Select a Project</option>`
+                for (let project of current_user.created_projects) {
+                    data += `<option value="${ project.id }">${ project.name }</option>`
+                }
+                data += `</select>`
+                return data
+            },
+
+            sort: (array) => {
+                let tasks = array.filter(t => t.user.id == current_user.id)
+                let html = ``
+                for (let task of tasks) {
+                    html += task.html.item
+
+                    if (task.status === "backlog") {
+                        backlog.innerHTML += html
+                    } else if (task.status === "inprogress") {
+                        inProgress.innerHTML += html
+                    } else if (task.status === "completed") {
+                        completed.innerHTML += html
+                    }
+                }
+            },
+
+            selectChange: (e) => {
+                if (e.target.value !== "Select a Project") {
+                    let project = Project.all.find(p => p.id == e.target.value)
+                    this.backlogContainer.reset()
+                    this.backlogContainer.sort(project.tasks)
+                }
+            },
+
+            reset: () => {
+                backlog.innerHTML = `<div class="task-header">BACKLOG</div>`
+                inProgress.innerHTML = `<div class="task-header">IN PROGRESS</div>`
+                completed.innerHTML = `<div class="task-header">COMPLETED</div>`
+            }
+        }
+        return data
+    }
+
+    // Click Handling
+    static handleDivClick = e => {
+        // debugger
         if (e.target.classList.contains("task-item")) {
             let task = Task.all.find(t => t.id == e.target.id.split("-")[1])
             if (e.target.parentElement.id === "backlog") {
@@ -38,78 +114,24 @@ class Task {
         }
     }
 
-    static selectProject() {
-        let div = document.createElement("select")
-        div.innerHTML = `<option selected>Select a Project</option>`
-        for (let proj of current_user.assigned_projects) {
-            let option = document.createElement("option")
-            option.value = proj.id
-            option.innerText = proj.name
-            div.append(option)
-        }
-        div.addEventListener("change", this.handleSelectChange)
-        return div
-    }
+    // Rendering Functions
+    static renderDiv(html, id) {
+        let div = document.createElement("div")
+        div.dataset.id = id
+        div.classList.add("flex")
+        div.style.minWidth = "100%"
+        div.innerHTML += html
 
-    static render_tasks(array) {
-        let tasks = array.filter(t => t.user.id == current_user.id)
-        let html = ``
-        for (let task of tasks) {
-            html += `
-                <div class="task-item" id="task-${ task.id }">
-                    ${ task.name }
-                    <i class="bi-arrow-right-square-fill" style="font-size: 2rem; color: #fff;"></i>
-                </div>
-            `
-            if (task.status === "backlog") {
-                backlog.innerHTML += html
-            } else if (task.status === "inprogress") {
-                inProgress.innerHTML += html
-            } else if (task.status === "completed") {
-                completed.innerHTML += html
-            }
-        }
-        return html
-    }
-
-    static handleSelectChange = e => {
-        if (e.target.value !== "Select a Project") {
-            let project = Project.all.find(p => p.id == e.target.value)
-            this.resetContainers()
-            this.render_tasks(project.tasks)
-        }
-    }
-
-    static resetContainers() {
-        backlog.innerHTML = `<div class="task-header">BACKLOG</div>`
-        inProgress.innerHTML = `<div class="task-header">IN PROGRESS</div>`
-        completed.innerHTML = `<div class="task-header">COMPLETED</div>`
+        content.append(div)
+        div.addEventListener("click", this.handleDivClick)
     }
 
     static render() {
         content.innerHTML = ``
+        
+        this.renderDiv(this.backlogContainer.select())
+        document.querySelector("select").addEventListener("change", (e)=>{ this.backlogContainer.selectChange(e) })
 
-        let div = document.createElement("div")
-        div.id = "task-content"
-        div.innerHTML = `
-            <div id="progress-tracker">
-                <div class="flex" id="backlog">
-                    <div class="task-header">BACKLOG</div>
-                </div>
-
-                <div class="flex" id="inProgress">
-                    <div class="task-header">IN PROGRESS</div>
-                </div>
-
-                <div class="flex" id="completed">
-                    <div class="task-header">COMPLETED</div>
-                </div>
-            </div>
-        `
-        div.prepend(this.selectProject())
-        div.prepend(`Select a Project:`)
-        div.addEventListener("click", this.handleTaskClick)
-
-        content.append(div)
+        this.renderDiv(this.backlogContainer.html)
     }
 }

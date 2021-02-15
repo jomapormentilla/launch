@@ -289,7 +289,7 @@ button:hover {
     width: 100%;
 }
 
-    #task-content select {
+    #task-select {
         width: 100%;
         height: 50px; 
         margin-bottom: 10px;
