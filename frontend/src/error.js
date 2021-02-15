@@ -26,4 +26,12 @@ class Error {
             setTimeout(()=>{ div.remove() }, 1000)
         }, 7000)
     }
+
+    static removeAll() {
+        if (document.querySelectorAll(".error")) {
+            for (let err of document.querySelectorAll(".error")) {
+                err.remove()
+            }
+        }
+    }
 }

@@ -41,18 +41,10 @@ class Dashboard {
         return html
     }
 
-    static removeErrors() {
-        if (document.querySelectorAll(".error")) {
-            for (let err of document.querySelectorAll(".error")) {
-                err.remove()
-            }
-        }
-    }
-
     // Click Handling
     static handleDivClick = e => {
         // debugger
-        
+
     }
 
     // Rendering Functions
@@ -69,7 +61,7 @@ class Dashboard {
 
     static render() {
         content.innerHTML = ``
-        this.removeErrors()
+        Error.removeAll()
         
         this.renderDiv(this.progressLog.div, "progress-log")
 

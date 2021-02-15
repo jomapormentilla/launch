@@ -51,6 +51,7 @@ class Project {
         return `${ projectUsers }`
     }
 
+    // HTML Div Elements
     static get new() {
         let data = {
             card: `
@@ -114,7 +115,10 @@ class Project {
             buildTeamClick: (e, project) => {
                 if (e.target.nodeName === "LI") {
                     let user = User.all.find(u => u.id == e.target.id.split("-")[e.target.id.split("-").length-1])
-                    user.addToProject(project.id)
+                    let data = { id: user.id, project_id: project.id }
+                    
+                    UserProjectApi.addUserToProject(data)
+                    
                     if (!!project.userIds.find(p => p.id == user.id)) {
                         console.log("User is already assigned to this project.")
                     } else {
@@ -127,7 +131,9 @@ class Project {
             currentTeamClick: (e, project) => {
                 if (e.target.nodeName === "LI") {
                     let user = User.all.find(u => u.id == e.target.id.split("-")[e.target.id.split("-").length-1])
-                    user.removeFromProject(project.id)
+                    
+                    let data = { id: user.id, project_id: project.id }
+                    UserProjectApi.removeUserFromProject(data)
             
                     if (!!project.userIds.find(p => p.id == user.id)) {
                         let index = project.userIds.findIndex(p => p.id == user.id)

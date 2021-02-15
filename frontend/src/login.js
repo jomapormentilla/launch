@@ -78,7 +78,7 @@ class Login {
         container.style.display = "flex"
         setTimeout(()=>{ container.style.opacity = 1 }, 250)
         
-        Dashboard.removeErrors()
+        Error.removeAll()
         Dashboard.render()
     }
 

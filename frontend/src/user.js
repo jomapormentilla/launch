@@ -11,6 +11,7 @@ class User {
         User.all.push(this)
     }
 
+    // Associations
     get tasks() {
         return Task.all.filter(t => t.userId == this.id)
     }
@@ -31,36 +32,35 @@ class User {
         return Project.all.find(p => p.creatorId == this.id)
     }
 
-    // HTML renders
-    card() {
-        let html = `
-            <div class="card" id="user-card-${ this.id }">
-                <i class="bi-person-plus" style="font-size: 2rem; color: #3b5ab1; align-self: flex-end; justify-self: flex-end;"></i>
-                <h3>${ this.firstName } ${ this.lastName }</h3>
-                <p>${ this.department }</p>
-                <p>Tasks: ${ this.tasks.length }</p>
-            </div>
-        `
-        return html
-    }
-
-    static list() {
-        let list = ``
-        for (let user of User.all) {
-            list += `<li id="user-list-${ user.id }">${ user.firstName } ${ user.lastName } - ${ user.department }</li>`
+    // HTML Div Elements
+    get html() {
+        let data = {
+            card: `
+                <div class="card" id="user-card-${ this.id }">
+                    <i class="bi-person-plus" style="font-size: 2rem; color: #3b5ab1; align-self: flex-end; justify-self: flex-end;"></i>
+                    <h3>${ this.firstName } ${ this.lastName }</h3>
+                    <p>${ this.department }</p>
+                    <p>Tasks: ${ this.tasks.length }</p>
+                </div>
+            `,
+            list: `<li id="user-list-${ this.id }">${ this.firstName } ${ this.lastName } - ${ this.department }</li>`,
+            option: `<option value="${ this.id }">${ this.firstName } ${ this.lastName }</option>`
         }
-
-        return list
+        return data
     }
 
+    // Click Handling
     static handleDivClick = e => {
-        let div = document.getElementById(e.target.id)
-        debugger
+        // debugger
+        
     }
 
-    static renderDiv(html) {
+    // Rendering Functions
+    static renderDiv(html, id) {
         let div = document.createElement("div")
+        div.dataset.id = id
         div.classList.add("flex")
+        div.style.minWidth = "100%"
         div.innerHTML += html
 
         content.append(div)
@@ -69,24 +69,13 @@ class User {
 
     static render() {
         content.innerHTML = ``
-
-        let userList = ``
-        for (let u of User.all) {
-            userList += u.card()
+        
+        let cards = ``
+        for (let user of User.all) {
+            cards += user.html.card
         }
 
         content.innerHTML += `<h2>Users</h2>`
-        this.renderDiv(userList)
-    }
-
-    // Sent to API
-    addToProject(projectId) {
-        let data = { id: this.id, project_id: projectId }
-        UserProjectApi.addUserToProject(data)
-    }
-    
-    removeFromProject(projectId) {
-        let data = { id: this.id, project_id: projectId }
-        UserProjectApi.removeUserFromProject(data)
+        this.renderDiv(cards, "user-cards")
     }
 }
