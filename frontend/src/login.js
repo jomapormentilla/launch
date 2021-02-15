@@ -80,6 +80,7 @@ class Login {
         
         Error.removeAll()
         Dashboard.render()
+        content.innerHTML += current_user.html.profile
     }
 
     static greeting() {

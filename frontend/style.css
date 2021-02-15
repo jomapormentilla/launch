@@ -93,6 +93,14 @@ button:hover {
     color: #fff;
 }
 
+#profile {
+    display: none;
+    position: absolute;
+    padding: 15px;
+    background-color: #fff;
+    border: solid 1px #777;
+}
+
 #container {
     display: none;
     flex-direction: column;

@@ -10,7 +10,11 @@ class Dashboard {
             `,
 
             renderProfile: (e) => {
-                alert("Profile - Inside Header Hash!")
+                document.getElementById("profile").style.display = "block"
+                document.getElementById("profile").style.top = e.pageY + "px"
+                document.getElementById("profile").style.right = e.offsetX + "px"
+                document.getElementById("logout").addEventListener("click", (e)=>{ Login.logout() })
+                document.querySelector(".bi-x-circle").addEventListener("click", (e)=>{ document.getElementById("profile").style.display = "none" })
             },
 
             messages: `
@@ -70,7 +74,7 @@ class Dashboard {
         this.renderDiv(this.progressLog.div, "progress-log")
 
         // Header Event Listeners
-        document.querySelector(".bi-person-circle").addEventListener("click", (e)=>{ this.header.renderProfile() })
-        document.querySelector(".bi-envelope").addEventListener("click", (e)=>{ this.header.renderMessages() })
+        document.querySelector(".bi-person-circle").addEventListener("click", (e)=>{ this.header.renderProfile(e) })
+        document.querySelector(".bi-envelope").addEventListener("click", (e)=>{ this.header.renderMessages(e) })
     }
 }

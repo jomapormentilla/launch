@@ -43,9 +43,19 @@ class User {
                     <p>Tasks: ${ this.tasks.length }</p>
                 </div>
             `,
-
-            list: `<li id="user-list-${ this.id }">${ this.firstName } ${ this.lastName } - ${ this.department }</li>`,
-            option: `<option value="${ this.id }">${ this.firstName } ${ this.lastName }</option>`
+            list: `
+                <li id="user-list-${ this.id }">${ this.firstName } ${ this.lastName } - ${ this.department }</li>
+            `,
+            option: `
+                <option value="${ this.id }">${ this.firstName } ${ this.lastName }</option>
+            `,
+            profile: `
+                <div id="profile">
+                    <i class="bi bi-x-circle"></i>
+                    <h3>${ this.email }</h3>
+                    <button id="logout">Logout</button>
+                </div>
+            `
         }
         return data
     }
@@ -59,7 +69,7 @@ class User {
                 }
                 return cards
             },
-            
+
             list: () => {
                 let data = ``
                 for (let user of User.all) {
@@ -81,7 +91,7 @@ class User {
     // Rendering Functions
     static renderDiv(html, id) {
         let div = document.createElement("div")
-        div.dataset.id = id
+        div.id = id
         div.classList.add("flex")
         div.style.minWidth = "100%"
         div.innerHTML += html
