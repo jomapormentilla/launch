@@ -32,6 +32,7 @@ class TaskApi {
             let project = task.project
             project.taskIds.push({id: task.id})
             Error.alert("Success")
+            document.getElementById("new-task-form").reset()
           }
         })
     }

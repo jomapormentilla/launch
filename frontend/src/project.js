@@ -153,7 +153,7 @@ class Project {
                     }
                     
                     document.getElementById("current-team").innerHTML = `<h2>Current Team</h2>${ this.currentTeam.list() }`
-                    document.getElementById("new-task-select").innerHTML = `<option>Assign to a User</option>${ this.currentTeam.option() }`
+                    document.getElementById("new-task-select").innerHTML = `<option>Assign to a Team Member</option>${ this.currentTeam.option() }`
                 }
             },
             
@@ -172,7 +172,7 @@ class Project {
                     }
                     
                     document.getElementById("current-team").innerHTML = `<h2>Current Team</h2>${ this.currentTeam.list() }`
-                    document.getElementById("new-task-select").innerHTML = `<option>Assign to a User</option>${ this.currentTeam.option() }`
+                    document.getElementById("new-task-select").innerHTML = `<option>Assign to a Team Member</option>${ this.currentTeam.option() }`
                 }
             }
         }
@@ -187,7 +187,7 @@ class Project {
                     <form id="new-task-form">
                         <input type="text" placeholder="Task Name"><br>
                         <input type="text" placeholder="Task Description"><br>
-                        <select id="new-task-select" name="userId"><option>Assign to a User</option>${ this.currentTeam.option() }</select>
+                        <select id="new-task-select" name="userId"><option>Assign to a Team Member</option>${ this.currentTeam.option() }</select>
                         <button type="submit">Create Task</button>
                     </form>
                 </div>

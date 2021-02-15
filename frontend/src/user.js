@@ -51,7 +51,8 @@ class User {
             `,
             profile: `
                 <div id="profile">
-                    <i class="bi bi-x-circle"></i>
+                    <i class="bi bi-x-circle" style="float: right;"></i>
+                    <br>
                     <h3>${ this.email }</h3>
                     <button id="logout">Logout</button>
                 </div>
