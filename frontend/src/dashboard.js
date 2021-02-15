@@ -49,11 +49,6 @@ class Dashboard {
         document.getElementById("header").addEventListener("click", this.handleHeaderClick)
         content.innerHTML = `
             <div class="flex" style="flex-direction: column; flex: 3;">
-                <h2>Created Projects:</h2>
-                <div class="flex" style="flex-direction: row; flex-wrap: wrap;">
-                    ${ this.renderProjects(current_user.created_projects) }
-                </div>
-
                 <h2>Assigned Projects:</h2>
                 <div class="flex" style="flex-direction: row; flex-wrap: wrap;">
                     ${ this.renderProjects(current_user.assigned_projects) }

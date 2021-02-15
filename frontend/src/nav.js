@@ -1,11 +1,11 @@
 class Nav {
-    navigation = document.getElementById("navigation")
-
     static all = []
 
     constructor({title, src}) {
         this.title = title
         this.src = src
+        this.navigation = document.getElementById("navigation")
+        
         Nav.all.push(this)
     }
 
