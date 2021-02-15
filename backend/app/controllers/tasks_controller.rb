@@ -8,7 +8,7 @@ class TasksController < ApplicationController
         task = Task.new(task_params)
 
         if task.save
-            render json: TaskSerializer(task).to_serialized_json
+            render json: TaskSerializer.new(task).to_serialized_json
         else
             render json: { error: 'Something went wrong! Unable to create Task' }
         end

@@ -47,7 +47,7 @@ class Dashboard {
                 </div>
             `,
             
-            add: () => {
+            add: (data) => {
                 let div = document.createElement("div")
                 div.innerHTML = data
                 div.classList.add("progress-log-item")
@@ -84,7 +84,7 @@ class Dashboard {
         this.renderDiv(this.progressLog.div, "progress-log")
         
         // Additional Renders
-        document.getElementById("profile-container").innerHTML += current_user.html.profile
+        document.getElementById("profile-container").innerHTML = current_user.html.profile
 
         // Event Listeners
         document.querySelector(".bi-person-circle").addEventListener("click", (e)=>{ this.header.renderProfile(e) })

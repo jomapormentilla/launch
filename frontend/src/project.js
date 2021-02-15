@@ -44,11 +44,23 @@ class Project {
     }
 
     get currentTeam() {
-        let projectUsers = ``
-        for (let user of this.users) {
-            projectUsers += `<li id="${ user.id }">${ user.firstName } ${ user.lastName } - ${ user.department }</li>`
+        let data = {
+            list: () => {
+                let html = ``
+                for (let user of this.users) {
+                    html += `<li id="${ user.id }">${ user.firstName } ${ user.lastName } - ${ user.department }</li>`
+                }
+                return html
+            },
+            option: () => {
+                let html = ``
+                for (let user of this.users) {
+                    html += `<option value="${ user.id }">${ user.firstName } ${ user.lastName } - ${ user.department }</option>`
+                }
+                return html
+            }
         }
-        return `${ projectUsers }`
+        return data
     }
 
     // HTML Div Elements
@@ -59,6 +71,7 @@ class Project {
                     <span style="font-size: 150px; color: #777;">+</span>
                 </div>
             `,
+
             form: `
                 <h1>Create a New Project</h1>
                 <form id="new-project-form">
@@ -67,10 +80,12 @@ class Project {
                     <button type="submit">Create Project</button>
                 </form>
             `,
+
             create: (e) => {
                 ProjectApi.createProject(e.target)
                 Project.render()
             },
+
             cards: () => {
                 let projectCards = ``
                 for (let project of current_user.created_projects) {
@@ -108,14 +123,18 @@ class Project {
                     <h1 style="text-align: center; color: #3b5ab1; font-size: 50px;">${ this.name }</h1>
 
                     <h2>Project Description</h2>
-                    <div style="text-align: justify; padding: 15px; background-color: #fff; border: solid 1px #ddd;">${ this.description }</div>
+                    <div style="text-align: justify; padding: 15px; background-color: #fff; border: solid 1px #ddd;">
+                        <i class="bi bi-pencil-square" style="float: right;"></i>
+                        ${ this.description }
+                    </div>
+                    
                     <hr />
 
                     <h2>Build Your Team</h2>
-                    <div id="build-team-container" class="flex" style="flex-direction: row; justify-content: flex-start;">
+                    <div id="build-team-container" class="flex" style="flex-direction: row; justify-content: space-around;">
                         <div id="build-team"><h2>All Users</h2>${ User.create.list() }</div>
                         <div class="flex" style="align-items: center; padding: 0px 15px;"><i class="bi bi-arrow-left-right" style="font-size: 30px;"></i></div>
-                        <div id="current-team"><h2>Current Team</h2>${ this.currentTeam }</div>
+                        <div id="current-team"><h2>Current Team</h2>${ this.currentTeam.list() }</div>
                     </div>
                 </div>
             `,
@@ -133,7 +152,8 @@ class Project {
                         project.userIds.push({id: user.id})
                     }
                     
-                    document.getElementById("current-team").innerHTML = `<h2>Current Team</h2>${ this.currentTeam }`
+                    document.getElementById("current-team").innerHTML = `<h2>Current Team</h2>${ this.currentTeam.list() }`
+                    document.getElementById("new-task-select").innerHTML = `<option>Assign to a User</option>${ this.currentTeam.option() }`
                 }
             },
             
@@ -151,8 +171,38 @@ class Project {
                         console.log("User is not assigned to this project.")
                     }
                     
-                    document.getElementById("current-team").innerHTML = `<h2>Current Team</h2>${ this.currentTeam }`
+                    document.getElementById("current-team").innerHTML = `<h2>Current Team</h2>${ this.currentTeam.list() }`
+                    document.getElementById("new-task-select").innerHTML = `<option>Assign to a User</option>${ this.currentTeam.option() }`
                 }
+            }
+        }
+        return data
+    }
+
+    get buildTask() {
+        let data = {
+            form: `
+                <div class="flex" style="flex-direction: column; width: 100%;">
+                    <h2>Create a Task</h2>
+                    <form id="new-task-form">
+                        <input type="text" placeholder="Task Name"><br>
+                        <input type="text" placeholder="Task Description"><br>
+                        <select id="new-task-select" name="userId"><option>Assign to a User</option>${ this.currentTeam.option() }</select>
+                        <button type="submit">Create Task</button>
+                    </form>
+                </div>
+            `,
+            create: (e) => {
+                e.preventDefault()
+
+                let data = {
+                    name: e.target.children[0].value,
+                    description: e.target.children[2].value,
+                    user_id: parseInt(e.target.children[4].value, 10),
+                    project_id: this.id,
+                    status: "backlog"
+                }
+                TaskApi.createTask(data)
             }
         }
         return data
@@ -172,11 +222,17 @@ class Project {
         } else if (e.target.classList.contains("card")) {
             content.innerHTML = ``
             let project = Project.all.find(p => p.id == e.target.dataset.id)
+
+            // Render Project Details
             this.renderDiv(project.html.back)
             this.renderDiv(project.buildTeam.container)
+            this.renderDiv(project.buildTask.form)
+
             // Event Listeners
-            document.getElementById("build-team").addEventListener("click", (e) => {project.buildTeam.buildTeamClick(e, project)})
-            document.getElementById("current-team").addEventListener("click", (e) => {project.buildTeam.currentTeamClick(e, project)})
+            document.getElementById("new-task-select").addEventListener("change", (e) => {})
+            document.getElementById("new-task-form").addEventListener("submit", (e) => { project.buildTask.create(e) })
+            document.getElementById("build-team").addEventListener("click", (e) => { project.buildTeam.buildTeamClick(e, project) })
+            document.getElementById("current-team").addEventListener("click", (e) => { project.buildTeam.currentTeamClick(e, project) })
 
         // Star Toggle
         } else if (e.target.classList.contains("bi-star")) {
@@ -192,8 +248,10 @@ class Project {
 
         // Settings Icon
         } else if (e.target.classList.contains("bi-gear-fill")) {
-            alert("Settings!")
+            alert("Project Settings")
 
+        } else if (e.target.classList.contains("bi-pencil-square")) {
+            alert("Edit Project Description")
         }
     }
 
