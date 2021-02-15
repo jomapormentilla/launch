@@ -130,8 +130,8 @@ class Task {
         content.innerHTML = ``
         
         this.renderDiv(this.backlogContainer.select())
-        document.querySelector("select").addEventListener("change", (e)=>{ this.backlogContainer.selectChange(e) })
-
         this.renderDiv(this.backlogContainer.html)
+        
+        document.querySelector("select").addEventListener("change", (e)=>{ this.backlogContainer.selectChange(e) })
     }
 }

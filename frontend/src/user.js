@@ -43,8 +43,31 @@ class User {
                     <p>Tasks: ${ this.tasks.length }</p>
                 </div>
             `,
+
             list: `<li id="user-list-${ this.id }">${ this.firstName } ${ this.lastName } - ${ this.department }</li>`,
             option: `<option value="${ this.id }">${ this.firstName } ${ this.lastName }</option>`
+        }
+        return data
+    }
+
+    static get create() {
+        let data = {
+            cards: () => {
+                let cards = ``
+                for (let user of User.all) {
+                    cards += user.html.card
+                }
+                return cards
+            },
+            
+            list: () => {
+                let data = ``
+                for (let user of User.all) {
+                    data += `<li id="user-list-${ user.id }">${ user.firstName } ${ user.lastName } - ${ user.department }</li>`
+                }
+                return data
+
+            }
         }
         return data
     }
@@ -69,13 +92,8 @@ class User {
 
     static render() {
         content.innerHTML = ``
-        
-        let cards = ``
-        for (let user of User.all) {
-            cards += user.html.card
-        }
 
         content.innerHTML += `<h2>Users</h2>`
-        this.renderDiv(cards, "user-cards")
+        this.renderDiv(this.create.cards(), "user-cards")
     }
 }

@@ -34,4 +34,8 @@ class Error {
             }
         }
     }
+
+    static handleErrorClick = e => {
+        e.target.remove()
+    }
 }

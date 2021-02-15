@@ -70,6 +70,13 @@ class Project {
             create: (e) => {
                 ProjectApi.createProject(e.target)
                 Project.render()
+            },
+            cards: () => {
+                let projectCards = ``
+                for (let project of current_user.created_projects) {
+                    projectCards += project.html.card
+                }
+                return projectCards
             }
         }
         return data
@@ -95,7 +102,7 @@ class Project {
     }
 
     get buildTeam() {
-        let html = {
+        let data = {
             container: `
                 <div class="flex" style="width: 100%; flex-direction: column;">
                     <h1 style="text-align: center; color: #3b5ab1; font-size: 50px;">${ this.name }</h1>
@@ -106,12 +113,13 @@ class Project {
 
                     <h2>Build Your Team</h2>
                     <div id="build-team-container" class="flex" style="flex-direction: row; justify-content: flex-start;">
-                        <div id="build-team"><h2>All Users</h2>${ User.list() }</div>
+                        <div id="build-team"><h2>All Users</h2>${ User.create.list() }</div>
                         <div class="flex" style="align-items: center; padding: 0px 15px;"><i class="bi bi-arrow-left-right" style="font-size: 30px;"></i></div>
                         <div id="current-team"><h2>Current Team</h2>${ this.currentTeam }</div>
                     </div>
                 </div>
             `,
+
             buildTeamClick: (e, project) => {
                 if (e.target.nodeName === "LI") {
                     let user = User.all.find(u => u.id == e.target.id.split("-")[e.target.id.split("-").length-1])
@@ -128,6 +136,7 @@ class Project {
                     document.getElementById("current-team").innerHTML = `<h2>Current Team</h2>${ this.currentTeam }`
                 }
             },
+            
             currentTeamClick: (e, project) => {
                 if (e.target.nodeName === "LI") {
                     let user = User.all.find(u => u.id == e.target.id.split("-")[e.target.id.split("-").length-1])
@@ -146,7 +155,7 @@ class Project {
                 }
             }
         }
-        return html
+        return data
     }
 
     // Click Handling
@@ -202,13 +211,8 @@ class Project {
 
     static render() {
         content.innerHTML = ``
-        
-        let projectCards = ``
-        for (let project of current_user.created_projects) {
-            projectCards += project.html.card
-        }
 
         this.renderDiv(this.new.card, "new-project")
-        this.renderDiv(projectCards, "project-cards")
+        this.renderDiv(this.new.cards(), "project-cards")
     }
 }
