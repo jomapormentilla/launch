@@ -210,8 +210,10 @@ class Project {
     }
 
     static render() {
+        // Initial
         content.innerHTML = ``
 
+        // Main Renders
         this.renderDiv(this.new.card, "new-project")
         this.renderDiv(this.new.cards(), "project-cards")
     }

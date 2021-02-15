@@ -46,7 +46,7 @@ class UserApi {
             Error.render(data.error)
         } else {
             current_user = User.all.find(u => u.email === data.email)
-            Login.loadDashboard()
+            Login.actions.loadDashboard()
         }
     }
 
@@ -75,7 +75,7 @@ class UserApi {
             current_user = User.all.find(u => u.id === data.id)
             session.setItem('userId', current_user.id)
             session.setItem('userToken', data.token)
-            Login.loadDashboard()
+            Login.actions.loadDashboard()
         }
     }
 
@@ -99,9 +99,9 @@ class UserApi {
             .then(data => {
                 if (!!data.data) {
                     current_user = User.all.find(u => u.id == session.getItem("userId"))
-                    Login.loadDashboard()
+                    Login.actions.loadDashboard()
                 } else {
-                    Login.logout()
+                    Login.actions.logout()
                 }
             })
     }

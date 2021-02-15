@@ -101,8 +101,10 @@ class User {
     }
 
     static render() {
+        // Initial
         content.innerHTML = ``
 
+        // Main Renders
         content.innerHTML += `<h2>Users</h2>`
         this.renderDiv(this.create.cards(), "user-cards")
     }

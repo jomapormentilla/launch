@@ -127,11 +127,14 @@ class Task {
     }
 
     static render() {
+        // Initial
         content.innerHTML = ``
         
+        // Main Renders
         this.renderDiv(this.backlogContainer.select())
         this.renderDiv(this.backlogContainer.html)
         
+        // Event Listeners
         document.querySelector("select").addEventListener("change", (e)=>{ this.backlogContainer.selectChange(e) })
     }
 }

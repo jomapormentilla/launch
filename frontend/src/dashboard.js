@@ -10,11 +10,13 @@ class Dashboard {
             `,
 
             renderProfile: (e) => {
-                document.getElementById("profile").style.display = "block"
-                document.getElementById("profile").style.top = e.pageY + "px"
-                document.getElementById("profile").style.right = e.offsetX + "px"
-                document.getElementById("logout").addEventListener("click", (e)=>{ Login.logout() })
-                document.querySelector(".bi-x-circle").addEventListener("click", (e)=>{ document.getElementById("profile").style.display = "none" })
+                let profile = document.getElementById("profile")
+                profile.style.display = "block"
+                profile.style.top = e.pageY + "px"
+                profile.style.right = e.offsetX + "px"
+
+                document.getElementById("logout").addEventListener("click", (e)=>{ Login.actions.logout() })
+                document.querySelector(".bi-x-circle").addEventListener("click", (e)=>{ profile.style.display = "none" })
             },
 
             messages: `
@@ -23,6 +25,12 @@ class Dashboard {
 
             renderMessages: (e) => {
                 alert("Messages - Inside Header Hash!")
+            },
+
+            greeting: () => {
+                let div = document.createElement("div")
+                div.innerHTML = `Hello, ${ current_user.firstName }!`
+                document.getElementById("nav-container").append(div)
             }
         }
         return data
@@ -68,12 +76,18 @@ class Dashboard {
     }
 
     static render() {
+        // Initial
         content.innerHTML = ``
         Error.removeAll()
+        this.header.greeting()
         
+        // Main Renders
         this.renderDiv(this.progressLog.div, "progress-log")
+        
+        // Additional Renders
+        document.getElementById("profile-container").innerHTML += current_user.html.profile
 
-        // Header Event Listeners
+        // Event Listeners
         document.querySelector(".bi-person-circle").addEventListener("click", (e)=>{ this.header.renderProfile(e) })
         document.querySelector(".bi-envelope").addEventListener("click", (e)=>{ this.header.renderMessages(e) })
     }
