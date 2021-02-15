@@ -27,7 +27,7 @@ class TasksController < ApplicationController
     def update
         task = Task.find_by_id(params[:id])
 
-        if task.update
+        if task.update(task_params)
             render json: TaskSerializer.new(task).to_serialized_json
         else
             render json: { error: 'Unable to update Task' }

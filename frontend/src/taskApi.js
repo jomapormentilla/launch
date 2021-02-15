@@ -35,4 +35,25 @@ class TaskApi {
           }
         })
     }
+
+    static updateTask(data) {
+      let configObj = {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(data)
+      }
+
+      fetch(this.url + `/${ data.id }`, configObj)
+        .then(res => res.json())
+        .then(data => {
+          if (!!data.error) {
+            Error.render(data.error)
+          } else {
+            Error.alert(`Moved to '${ data.status }'`)
+          }
+        })
+    }
 }

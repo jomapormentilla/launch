@@ -59,7 +59,7 @@ class Task {
 
             select: () => {
                 let data = `<select id="task-select"><option selected>Select a Project</option>`
-                for (let project of current_user.created_projects) {
+                for (let project of current_user.assigned_projects) {
                     data += `<option value="${ project.id }">${ project.name }</option>`
                 }
                 data += `</select>`
@@ -106,11 +106,15 @@ class Task {
             let task = Task.all.find(t => t.id == e.target.id.split("-")[1])
             if (e.target.parentElement.id === "backlog") {
                 document.getElementById("inProgress").append(e.target)
+                task.status = "inprogress"
             } else if (e.target.parentElement.id === "inProgress") {
                 document.getElementById("completed").append(e.target)
+                task.status = "completed"
             } else if (e.target.parentElement.id === "completed") {
                 document.getElementById("inProgress").append(e.target)
+                task.status = "inprogress"
             }
+            TaskApi.updateTask(task)
         }
     }
 

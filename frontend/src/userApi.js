@@ -45,7 +45,8 @@ class UserApi {
         if (!!data.error) {
             Error.render(data.error)
         } else {
-            current_user = User.all.find(u => u.email === data.email)
+            let user = new User(data)
+            current_user = user
             Login.actions.loadDashboard()
         }
     }
