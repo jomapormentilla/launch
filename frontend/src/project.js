@@ -65,7 +65,11 @@ class Project {
                     <textarea name="description" placeholder="Describe your project..."></textarea><br>
                     <button type="submit">Create Project</button>
                 </form>
-            `
+            `,
+            create: (e) => {
+                ProjectApi.createProject(e.target)
+                Project.render()
+            }
         }
         return data
     }
@@ -141,15 +145,13 @@ class Project {
 
     // Click Handling
     static handleDivClick = e => {
+        // debugger
         // Create New Project
         if (e.target.id === "new-project-card") {
             content.innerHTML = ``
             this.renderDiv(this.new.form, "new-project")
             // Event Listeners
-            document.getElementById("new-project-form").addEventListener("submit", (e)=>{
-                ProjectApi.createProject(e.target)
-                Project.render()
-            })
+            document.getElementById("new-project-form").addEventListener("submit", (e)=>{ this.new.create(e) })
         
         // Click on Project Card
         } else if (e.target.classList.contains("card")) {
@@ -172,6 +174,10 @@ class Project {
         // Back to Projects
         } else if (e.target.id === "back-btn") {
             Project.render()
+
+        // Settings Icon
+        } else if (e.target.classList.contains("bi-gear-fill")) {
+            alert("Settings!")
 
         }
     }
