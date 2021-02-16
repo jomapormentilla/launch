@@ -17,7 +17,7 @@ class User {
     }
 
     get assigned_projects() {
-        return Project.all.filter(p => p.users.includes(current_user))
+        return Project.all.filter(p => { return p.users.includes(current_user) && p.creator !== current_user })
     }
 
     get created_projects() {

@@ -33,7 +33,7 @@ class TaskApi {
             project.taskIds.push({id: task.id})
             Error.alert("Success")
             document.getElementById("new-task-form").reset()
-            project.buildTask.list()
+            document.querySelector(".task-list").innerHTML = project.buildTask.list()
           }
         })
     }

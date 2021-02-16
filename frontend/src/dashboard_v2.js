@@ -24,7 +24,7 @@ class Dashboard {
             `,
 
             renderMessages: (e) => {
-                alert("Messages - Inside Header Hash!")
+                Inbox.render()
             },
 
             renderNotifications: (e) => {
@@ -135,9 +135,9 @@ class Dashboard {
         } else if(e.target.classList.contains("bi-person-circle")) {
             this.header.renderProfile(e)
         } else if(e.target.classList.contains("bi-envelope")) {
-            this.header.renderMessages(e)
+            this.header.renderMessages()
         } else if(e.target.classList.contains("bi-bell")) {
-            this.header.renderNotifications(e)
+            this.header.renderNotifications()
         }
     }
 

@@ -44,6 +44,10 @@ body, html {
     transition: 0.25s;
 }
 
+.flex.col {
+    flex-direction: column;
+}
+
 #login {
     justify-content: center;
     align-items: center;
@@ -355,16 +359,17 @@ button:hover {
     margin-bottom: 15px;
 }
 
-#task-list-items {
+.task-list {
+    list-style: none;
     width: 100%;
     background-color: #fff;
 }
 
-    #task-list-items > li {
+    .task-list > li {
         padding: 10px;
     }
 
-    #task-list-items > li:nth-child(even) {
+    .task-list > li:nth-child(even) {
         background-color: #fafafa;
     }
 
