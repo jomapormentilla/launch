@@ -87,6 +87,7 @@ class Project {
 
             form: `
                 <div class="flex" style="flex-direction: column; min-width: 300px;">
+                    <div class="flex back-to-projects"></div>
                     <h1>Create a New Project</h1>
                     <form id="new-project-form">
                         <input type="text" name="name" placeholder="Project Name"><br>
@@ -112,7 +113,13 @@ class Project {
                 } else {
                     return projectCards
                 }
-            }
+            },
+
+            back: `
+                <div class="flex" style="align-items: center; justify-content: space-between; font-size: 15px; color: #777; flex: 1; padding-right: 15px;">
+                    <div id="back-btn"><i class="bi-arrow-bar-left"></i> Back to Projects</div>
+                </div>
+            `
         }
         return data
     }
@@ -125,12 +132,6 @@ class Project {
                     <h3>${ this.name }</h3>
                     <p>Team Size: ${ this.users.length }</p>
                 <p>Created By:<br>${ this.creator.firstName } ${ this.creator.lastName }</p>
-                </div>
-            `,
-
-            back: `
-                <div class="flex" style="align-items: center; justify-content: space-between; font-size: 15px; color: #777; flex: 1; padding-right: 15px;">
-                    <div id="back-btn"><i class="bi-arrow-bar-left"></i> Back to Projects</div>
                 </div>
             `
         }
@@ -217,11 +218,11 @@ class Project {
             list: () => {
                 let html = ``
                 for (let task of this.tasks) {
-                    html += `<li id="task-${ task.id }">${ task.name } - ${ task.user.firstName } ${ task.user.lastName }</li>`
+                    html += `<tr><td>${ task.name }</td><td>${ task.user.firstName } ${ task.user.lastName }</td></tr>`
                 }
 
                 if (this.tasks.length === 0) {
-                    return `<li class="flex" style="justify-content: center; background-color: #fff; width: 100%: padding: 10px;">This project does not have any tasks yet.</li>`
+                    return `<tr><td style="text-align: center;">This project does not have any tasks yet.</td></tr>`
                 } else {
                     return html
                 }
@@ -238,6 +239,7 @@ class Project {
             content.innerHTML = this.new.form
 
             // Event Listeners
+            document.querySelector(".back-to-projects").innerHTML = this.new.back
             document.getElementById("new-project-form").addEventListener("submit", (e)=>{ this.new.create(e) })
         
         // Click on Project Card
@@ -266,7 +268,7 @@ class Project {
 
                         <div class="flex col" style="flex: 1; margin-left: 10px;">
                             <h2>Current Tasks</h2>
-                            <div class="flex task-list"></div>
+                            <table class="task-list"></table>
                         </div>
                     </div>
 
@@ -274,7 +276,7 @@ class Project {
             `
 
             // New Manipulations
-            document.querySelector(".back-to-projects").innerHTML = project.html.back
+            document.querySelector(".back-to-projects").innerHTML = this.new.back
             document.querySelector(".build-team").innerHTML = project.buildTeam.div
             document.querySelector(".build-task").innerHTML = project.buildTask.form
             document.querySelector(".task-list").innerHTML = project.buildTask.list()

@@ -107,7 +107,10 @@ class Task {
         // Initial
         content.innerHTML = `
             <div class="flex col" style="width: 100%;">
+                <h2>Select a Project</h2>
                 <div class="flex select-project"></div>
+
+                <h2>Progress Tracker</h2>
                 <div class="flex backlog-container">
                     <div class="flex" id="backlog">
                         <div class="task-header">BACKLOG</div>
