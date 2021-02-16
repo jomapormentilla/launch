@@ -24,12 +24,12 @@ class User {
         return Project.all.filter(p => p.creatorId == current_user.id)
     }
 
-    get department() {
-        return Department.all.find(d => d.id == this.department_id).name
+    get projects() {
+        return Project.all.filter(p => { return p.users.includes(current_user) || p.creatorId == current_user.id })
     }
 
-    get project() {
-        return Project.all.find(p => p.creatorId == this.id)
+    get department() {
+        return Department.all.find(d => d.id == this.department_id).name
     }
 
     // HTML Div Elements

@@ -63,6 +63,15 @@ class Project {
         return data
     }
 
+    // Calculations
+    get taskPercentage() {
+        let total = this.tasks.length
+        let completed = this.tasks.filter(t => t.status === "completed").length
+        let result = (completed/total) * 100
+
+        return result.toFixed(2) + `%`
+    }
+
     // HTML Div Elements
     static get new() {
         let data = {
@@ -298,10 +307,6 @@ class Project {
         // Main Renders
         this.renderDiv(this.new.card, "new-project")
 
-        content.append(`YOUR PROJECTS:`)
-        this.renderDiv(this.new.cards(current_user.created_projects), "project-cards")
-
-        content.append(`ASSIGNED PROJECTS:`)
-        this.renderDiv(this.new.cards(current_user.assigned_projects),)
+        this.renderDiv(this.new.cards(current_user.projects), "project-cards")
     }
 }

@@ -72,16 +72,17 @@ class Dashboard {
         let data = {
             div: `
                 <div class="flex" id="project-div">
-                    <h2>Projects Overview</h2>
-                    <li>Projects</li>
-                    <li>Users Assigned to this project</li>
-                    <li>Expected completion date</li>
-                    <li>Priority Tasks</li>
-                    <li>Team Messages</li>
+                    <h2>Overview</h2>
                 </div>
                 
                 ${ this.progressLog.div }
-            `
+            `,
+
+            list: () => {
+                for (let project of current_user.projects) {
+                    document.getElementById("project-div").innerHTML += `<li>${ project.name } - ${ project.taskPercentage }</li>`
+                }
+            }
         }
         return data
     }
@@ -111,6 +112,7 @@ class Dashboard {
         
         // Main Renders
         this.renderDiv(this.projects.div)
+        this.projects.list()
         
         // Additional Renders
         document.getElementById("profile-container").innerHTML = current_user.html.profile
