@@ -165,10 +165,20 @@ button:hover {
     background-color: #eee;
 }
 
+#project-div {
+    flex-direction: column;
+    flex: 5;
+    background-color: #fff;
+    padding: 15px;
+    margin-right: 15px;
+}
+
 #progress-log {
-    flex: 1; 
+    flex: 2; 
     flex-direction: column;
     width: 500px;
+    background-color: #fff;
+    padding: 15px;
 }
 
     #progress-log > div {
@@ -179,7 +189,7 @@ button:hover {
     .progress-log-item {
         border-bottom: solid 1px #ddd;
         background-color: #eee;
-        padding: 10px 0px;
+        padding: 10px;
     }
 
 #footer {

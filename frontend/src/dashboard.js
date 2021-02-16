@@ -27,11 +27,22 @@ class Dashboard {
                 alert("Messages - Inside Header Hash!")
             },
 
+            renderNotifications: (e) => {
+                alert("Notifications - Inside Header Hash")
+            },
+
             greeting: () => {
                 let div = document.createElement("div")
                 div.innerHTML = `Hello, ${ current_user.firstName }!`
                 document.getElementById("nav-container").append(div)
             }
+        }
+        return data
+    }
+
+    static get html() {
+        let data = {
+
         }
         return data
     }
@@ -53,6 +64,24 @@ class Dashboard {
                 div.classList.add("progress-log-item")
                 document.getElementById("prog-log").prepend(div)
             }
+        }
+        return data
+    }
+
+    static get projects() {
+        let data = {
+            div: `
+                <div class="flex" id="project-div">
+                    <h2>Projects Overview</h2>
+                    <li>Projects</li>
+                    <li>Users Assigned to this project</li>
+                    <li>Expected completion date</li>
+                    <li>Priority Tasks</li>
+                    <li>Team Messages</li>
+                </div>
+                
+                ${ this.progressLog.div }
+            `
         }
         return data
     }
@@ -81,7 +110,7 @@ class Dashboard {
         Error.removeAll()
         
         // Main Renders
-        this.renderDiv(this.progressLog.div, "progress-log")
+        this.renderDiv(this.projects.div)
         
         // Additional Renders
         document.getElementById("profile-container").innerHTML = current_user.html.profile
@@ -89,5 +118,6 @@ class Dashboard {
         // Event Listeners
         document.querySelector(".bi-person-circle").addEventListener("click", (e)=>{ this.header.renderProfile(e) })
         document.querySelector(".bi-envelope").addEventListener("click", (e)=>{ this.header.renderMessages(e) })
+        document.querySelector(".bi-bell").addEventListener("click", (e)=>{ this.header.renderNotifications(e) })
     }
 }
