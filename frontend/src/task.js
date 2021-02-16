@@ -68,16 +68,14 @@ class Task {
 
             sort: (array) => {
                 let tasks = array.filter(t => t.user.id == current_user.id)
-                let html = ``
-                for (let task of tasks) {
-                    html += task.html.item
 
+                for (let task of tasks) {
                     if (task.status === "backlog") {
-                        backlog.innerHTML += html
+                        backlog.innerHTML += task.html.item
                     } else if (task.status === "inprogress") {
-                        inProgress.innerHTML += html
+                        inProgress.innerHTML += task.html.item
                     } else if (task.status === "completed") {
-                        completed.innerHTML += html
+                        completed.innerHTML += task.html.item
                     }
                 }
             },

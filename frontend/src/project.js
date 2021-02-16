@@ -73,12 +73,14 @@ class Project {
             `,
 
             form: `
-                <h1>Create a New Project</h1>
-                <form id="new-project-form">
-                    <input type="text" name="name" placeholder="Project Name"><br>
-                    <textarea name="description" placeholder="Describe your project..."></textarea><br>
-                    <button type="submit">Create Project</button>
-                </form>
+                <div class="flex" style="flex-direction: column; min-width: 300px;">
+                    <h1>Create a New Project</h1>
+                    <form id="new-project-form">
+                        <input type="text" name="name" placeholder="Project Name"><br>
+                        <textarea name="description" placeholder="Describe your project..."></textarea><br>
+                        <button type="submit">Create Project</button>
+                    </form>
+                </div>
             `,
 
             create: (e) => {
@@ -86,9 +88,9 @@ class Project {
                 Project.render()
             },
 
-            cards: () => {
+            cards: (projects) => {
                 let projectCards = ``
-                for (let project of current_user.created_projects) {
+                for (let project of projects) {
                     projectCards += project.html.card
                 }
                 return projectCards
@@ -103,9 +105,11 @@ class Project {
                 <div class="card" id="project-card-${ this.id }" data-id="${ this.id }">
                     <i class="bi-star" style="font-size: 2rem; color: gold; align-self: flex-end; justify-self: flex-end;"></i>
                     <h3>${ this.name }</h3>
-                    <p>Users: ${ this.users.length }</p>
+                    <p>Team Size: ${ this.users.length }</p>
+                <p>Created By:<br>${ this.creator.firstName } ${ this.creator.lastName }</p>
                 </div>
             `,
+
             back: `
                 <div class="flex" style="align-items: center; justify-content: space-between; font-size: 15px; color: #777; flex: 1; padding-right: 15px;">
                     <div id="back-btn"><i class="bi-arrow-bar-left"></i> Back to Projects</div>
@@ -182,27 +186,45 @@ class Project {
     get buildTask() {
         let data = {
             form: `
-                <div class="flex" style="flex-direction: column; width: 100%;">
+                <div class="flex" style="flex: 1; flex-direction: column; padding-right: 30px;">
+                    <br>
                     <h2>Create a Task</h2>
                     <form id="new-task-form">
                         <input type="text" placeholder="Task Name"><br>
                         <input type="text" placeholder="Task Description"><br>
+                        <h3>Deadline</h3>
+                        <input type="date">
+                        <input type="time">
+                        <h3>Assign To</h3>
                         <select id="new-task-select" name="userId"><option>Assign to a Team Member</option>${ this.currentTeam.option() }</select>
                         <button type="submit">Create Task</button>
                     </form>
                 </div>
+
+                <div class="flex" id="task-list" style="flex: 1; flex-direction: column;">
+                    <br>
+                    <h2>Task List</h2>
+                </div>
             `,
+
             create: (e) => {
                 e.preventDefault()
 
                 let data = {
                     name: e.target.children[0].value,
                     description: e.target.children[2].value,
-                    user_id: parseInt(e.target.children[4].value, 10),
+                    deadline: e.target.children[5].value + ' ' + e.target.children[6].value,
+                    user_id: parseInt(e.target.children[8].value, 10),
                     project_id: this.id,
                     status: "backlog"
                 }
                 TaskApi.createTask(data)
+            },
+
+            list: () => {
+                for (let task of this.tasks) {
+                    document.getElementById("task-list").innerHTML += `<li id="task-${ task.id }">${ task.name } - ${ task.user.firstName } ${ task.user.lastName }</li>`
+                }
             }
         }
         return data
@@ -227,9 +249,9 @@ class Project {
             this.renderDiv(project.html.back)
             this.renderDiv(project.buildTeam.container)
             this.renderDiv(project.buildTask.form)
+            this.renderDiv(project.buildTask.list())
 
             // Event Listeners
-            document.getElementById("new-task-select").addEventListener("change", (e) => {})
             document.getElementById("new-task-form").addEventListener("submit", (e) => { project.buildTask.create(e) })
             document.getElementById("build-team").addEventListener("click", (e) => { project.buildTeam.buildTeamClick(e, project) })
             document.getElementById("current-team").addEventListener("click", (e) => { project.buildTeam.currentTeamClick(e, project) })
@@ -273,6 +295,11 @@ class Project {
 
         // Main Renders
         this.renderDiv(this.new.card, "new-project")
-        this.renderDiv(this.new.cards(), "project-cards")
+
+        content.append(`YOUR PROJECTS:`)
+        this.renderDiv(this.new.cards(current_user.created_projects), "project-cards")
+
+        content.append(`ASSIGNED PROJECTS:`)
+        this.renderDiv(this.new.cards(current_user.assigned_projects),)
     }
 }
