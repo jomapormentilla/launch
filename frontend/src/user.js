@@ -40,6 +40,13 @@ class User {
     // HTML Div Elements
     get html() {
         let data = {
+            row: `
+                <div id="user-row-${ this.id }">
+                    <i class="bi-person-plus" style="font-size: 2rem; color: #3b5ab1;"></i> &nbsp; - &nbsp;
+                    ${ this.name }
+                    <div class="more-info"></div>
+                </div>
+            `,
             card: `
                 <div class="card" id="user-card-${ this.id }">
                     <i class="bi-person-plus" style="font-size: 2rem; color: #3b5ab1; align-self: flex-end; justify-self: flex-end;"></i>
@@ -68,6 +75,12 @@ class User {
 
     static get create() {
         let data = {
+            table: () => {
+                for (let user of User.all) {
+                    document.getElementById("users-table").innerHTML += user.html.row
+                }
+            },
+
             cards: () => {
                 let cards = ``
                 for (let user of User.all) {
@@ -83,6 +96,18 @@ class User {
                 }
                 return data
 
+            }
+        }
+        return data
+    }
+
+    static get actions() {
+        let data = {
+            moreInfo: () => {
+                let html = `
+                    <h3>More Info!</h3>                
+                `
+                return html
             }
         }
         return data
@@ -111,7 +136,10 @@ class User {
         content.innerHTML = ``
 
         // Main Renders
-        content.innerHTML += `<h2>Users</h2>`
-        this.renderDiv(this.create.cards(), "user-cards")
+        content.innerHTML += `
+            <h2>Users</h2>
+            <div id="users-table"></div>
+        `
+        this.create.table()
     }
 }

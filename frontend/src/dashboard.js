@@ -40,7 +40,7 @@ class Dashboard {
         return data
     }
 
-    get html() {
+    static get html() {
         let data = {
 
         }
@@ -72,21 +72,24 @@ class Dashboard {
         let data = {
             div: `
                 <div class="flex" id="project-div">
-                    <h2>Overview</h2>
+                    <h2>Projects Overview</h2>
                 </div>
                 
                 ${ this.progressLog.div }
             `,
 
             list: () => {
-                let projects = current_user.projects.sort()
-                for (let project of current_user.projects) {
-                    document.getElementById("project-div").innerHTML += `
-                        <div id="project-${ project.id }">
-                            <i class="bi bi-caret-down"></i> &nbsp; ${ project.name } <span style="float: right;">${ project.taskPercentage }</span>
-                            <div class="more-info">${ this.projects.moreInfo(project) }</div>
-                        </div>
-                    `
+                if (current_user.projects.length === 0) {
+                    document.getElementById("project-div").innerHTML += `<p style="text-align: center;">You have no projects yet.</p>`
+                } else {
+                    for (let project of current_user.projects) {
+                        document.getElementById("project-div").innerHTML += `
+                            <div id="project-${ project.id }">
+                                <i class="bi bi-caret-down"></i> &nbsp; <span>${ project.name }</span> <span style="float: right;">${ project.taskPercentage }</span>
+                                <div class="more-info">${ this.projects.moreInfo(project) }</div>
+                            </div>
+                        `
+                    }
                 }
             },
 
@@ -98,6 +101,8 @@ class Dashboard {
                     <table class="project-more-info">
                         <tr><td>Creator</td>
                             <td>${ project.creator.name }</td></tr>
+                        <tr><td>Team Size</td>
+                            <td>${ project.users.length }</td></tr>
                         <tr><td>Total Tasks Remaining</td>
                             <td>${ remainingTasks.length }</td></tr>
                         <tr><td>Tasks In Progress</td>
@@ -106,6 +111,17 @@ class Dashboard {
                 `
                 return html
             }
+        }
+        return data
+    }
+
+    static get greeting() {
+        let data = {
+            div: `
+                <div class="flex" id="greeting">
+                    <h1>Hello, ${ current_user.firstName }!</h1>
+                </div>
+            `
         }
         return data
     }
@@ -146,6 +162,7 @@ class Dashboard {
         Error.removeAll()
         
         // Main Renders
+        this.renderDiv(this.greeting.div)
         this.renderDiv(this.projects.div)
         this.projects.list()
         
