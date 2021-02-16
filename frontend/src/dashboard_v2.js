@@ -97,7 +97,6 @@ class Dashboard {
 
             moreInfo: (project) => {
                 let remainingTasks = project.tasks.filter(t => t.status !== "complete")
-                let inProgressTasks = project.tasks.filter(t => t.status === "inprogress")
                 
                 let html = `
                     <table class="project-more-info">
@@ -107,9 +106,10 @@ class Dashboard {
                             <td>${ project.users.length }</td></tr>
                         <tr><td>Total Tasks Remaining</td>
                             <td>${ remainingTasks.length }</td></tr>
-                        <tr><td>Tasks In Progress</td>
-                            <td>${ inProgressTasks.length }</td></tr>
                     </table>
+
+                    <h3>Task List</h3>
+                    <table class="task-list" style="border: solid 1px #aaa;">${ project.buildTask.list() }</table>
                 `
                 return html
             }
@@ -146,7 +146,7 @@ class Dashboard {
         // Template
         content.innerHTML = `
             <div class="flex" style="flex-direction: column; width: 100%;">
-                <div class="flex greeting-container" style="width: 100%; background-color: #fff; margin-bottom: 15px;">Hello</div>
+                <div class="flex greeting-container" style="width: 100%; background-color: #fff; margin-bottom: 15px;"></div>
                 <div class="flex">
                     <div class="flex projects-overview" style="flex: 1; height: fit-content;">Overview</div>
                     <div class="flex progress-log" style="width: 300px; height: fit-content;">Progress Log</div>

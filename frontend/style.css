@@ -353,8 +353,6 @@ button:hover {
     }
 
 #new-task-form input, #new-task-form select {
-    min-width: 300px;
-    width: 100%;
     height: 30px;
     margin-bottom: 15px;
 }

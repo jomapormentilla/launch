@@ -190,8 +190,10 @@ class Project {
         let data = {
             form: `
                 <form id="new-task-form">
-                    <input type="text" placeholder="Task Name"><br>
-                    <input type="text" placeholder="Task Description"><br>
+                    <div class="flex" style="width: 100%;">
+                        <input type="text" placeholder="Task Name" style="flex: 1;">
+                        <input type="text" placeholder="Task Description" style="flex: 1;">
+                    </div>
                     <h3>Deadline</h3>
                     <input type="date">
                     <input type="time">
@@ -218,7 +220,16 @@ class Project {
             list: () => {
                 let html = ``
                 for (let task of this.tasks) {
-                    html += `<tr><td>${ task.name }</td><td>${ task.user.firstName } ${ task.user.lastName }</td></tr>`
+                    let color
+                    if (task.status === "backlog") {
+                        color = "#aaa";
+                    } else if (task.status === "inprogress") {
+                        color = "orange"
+                    } else if (task.status === "completed") {
+                        color = "green"
+                    }
+
+                    html += `<tr><td>${ task.name }</td><td>${ task.user.firstName } ${ task.user.lastName }</td><td style="background-color: ${ color }; width: 20px;"></td></tr>`
                 }
 
                 if (this.tasks.length === 0) {
@@ -253,7 +264,9 @@ class Project {
                     <div class="flex project-title" style="justify-content: center; color: #3b5ab1; font-size: 50px;">${ project.name }</div>
 
                     <h2>Project Description</h2>
-                    <div class="flex project-description" style="width: 100%; background-color: #fff; padding: 15px;">${ project.description }</div>
+                    <div class="flex project-description" style="width: 100%; background-color: #fff;">
+                        <div style="padding: 15px;">${ project.description }</div>
+                    </div>
                     
                     <hr>
                     <h2>Build Your Team</h2>
@@ -263,7 +276,7 @@ class Project {
                     <div class="flex" style="width: 100%;">
                         <div class="flex col" style="flex: 1; margin-right: 10px;">
                             <h2>Create Tasks</h2>
-                            <div class="flex build-task"></div>
+                            <div class="flex build-task" style="background-color: #fff; padding: 10px;"></div>
                         </div>
 
                         <div class="flex col" style="flex: 1; margin-left: 10px;">
