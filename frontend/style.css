@@ -202,14 +202,15 @@ button:hover {
 
     .project-more-info {
         width: 100%;
+        border: solid 1px #aaa;
     }
 
-        .project-more-info > tr {
-            border: solid 1px #eee;
+        .project-more-info > tbody > tr > td {
+            padding: 5px;
         }
 
-        .project-more-info > tr:nth-child(even) {
-            background-color: #ddd;
+        .project-more-info > tbody > tr:nth-child(odd) > td {
+            background-color: #fafafa;
         }
 
 #progress-log {

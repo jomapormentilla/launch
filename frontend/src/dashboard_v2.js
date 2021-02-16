@@ -99,6 +99,7 @@ class Dashboard {
                 let remainingTasks = project.tasks.filter(t => t.status !== "complete")
                 
                 let html = `
+                    <h3>Details</h3>
                     <table class="project-more-info">
                         <tr><td>Creator</td>
                             <td>${ project.creator.name }</td></tr>
