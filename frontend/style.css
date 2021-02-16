@@ -459,6 +459,12 @@ button:hover {
         background-color: #fafafa;
     }
 
+#inbox-container {
+    min-height: 300px;
+    width: 100%;
+    border: solid 1px #aaa;
+}
+
 .message-container {
     flex: 5; 
     flex-direction: column;
