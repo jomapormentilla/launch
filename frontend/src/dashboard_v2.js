@@ -164,7 +164,8 @@ class Dashboard {
         this.projects.list()
 
         // Event Listener
-        content.addEventListener("click", (e) => { this.handleDivClick(e) })
+        content.removeEventListener("click", this.handleDivClick, true)
+        content.addEventListener("click", this.handleDivClick)
         document.getElementById("header").addEventListener("click", (e) => { this.handleDivClick(e) })
     }
 }

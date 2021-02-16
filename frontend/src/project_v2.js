@@ -322,6 +322,7 @@ class Project {
         document.querySelector(".assigned-projects").innerHTML = this.new.cards(current_user.assigned_projects)
 
         // Event Listeners
-        content.addEventListener("click", (e) => { this.handleDivClick(e) })
+        content.removeEventListener("click", this.handleDivClick, true)
+        content.addEventListener("click", this.handleDivClick)
     }
 }
