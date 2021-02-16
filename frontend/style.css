@@ -173,6 +173,29 @@ button:hover {
     margin-right: 15px;
 }
 
+    #project-div > div {
+        padding: 10px;
+        border: solid 1px #ddd;
+    }
+
+    #project-div .more-info {
+        overflow-y: hidden;
+        height: 0px;
+        transition: 0.5s;
+    }
+
+    .project-more-info {
+        width: 100%;
+    }
+
+        .project-more-info > tr {
+            border: solid 1px #eee;
+        }
+
+        .project-more-info > tr:nth-child(even) {
+            background-color: #ddd;
+        }
+
 #progress-log {
     flex: 2; 
     flex-direction: column;

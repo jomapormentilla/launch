@@ -32,6 +32,11 @@ class User {
         return Department.all.find(d => d.id == this.department_id).name
     }
 
+    // Etc
+    get name() {
+        return `${ this.firstName } ${ this.lastName }`
+    }
+
     // HTML Div Elements
     get html() {
         let data = {

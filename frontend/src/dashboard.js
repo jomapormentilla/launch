@@ -40,7 +40,7 @@ class Dashboard {
         return data
     }
 
-    static get html() {
+    get html() {
         let data = {
 
         }
@@ -79,9 +79,32 @@ class Dashboard {
             `,
 
             list: () => {
+                let projects = current_user.projects.sort()
                 for (let project of current_user.projects) {
-                    document.getElementById("project-div").innerHTML += `<li>${ project.name } - ${ project.taskPercentage }</li>`
+                    document.getElementById("project-div").innerHTML += `
+                        <div id="project-${ project.id }">
+                            <i class="bi bi-caret-down"></i> &nbsp; ${ project.name } <span style="float: right;">${ project.taskPercentage }</span>
+                            <div class="more-info">${ this.projects.moreInfo(project) }</div>
+                        </div>
+                    `
                 }
+            },
+
+            moreInfo: (project) => {
+                let remainingTasks = project.tasks.filter(t => t.status !== "complete")
+                let inProgressTasks = project.tasks.filter(t => t.status === "inprogress")
+                
+                let html = `
+                    <table class="project-more-info">
+                        <tr><td>Creator</td>
+                            <td>${ project.creator.name }</td></tr>
+                        <tr><td>Total Tasks Remaining</td>
+                            <td>${ remainingTasks.length }</td></tr>
+                        <tr><td>Tasks In Progress</td>
+                            <td>${ inProgressTasks.length }</td></tr>
+                    </table>
+                `
+                return html
             }
         }
         return data
@@ -91,6 +114,18 @@ class Dashboard {
     static handleDivClick = e => {
         // debugger
 
+        // Toggle More Info Button
+        if (e.target.classList.contains("bi-caret-down")) {
+            e.target.classList.remove("bi-caret-down")
+            e.target.classList.add("bi-caret-up")
+            e.target.parentElement.querySelector(".more-info").style.height = "auto"
+            e.target.parentElement.querySelector(".more-info").style.padding = "10px"
+        } else if (e.target.classList.contains("bi-caret-up")) {
+            e.target.classList.remove("bi-caret-up")
+            e.target.classList.add("bi-caret-down")
+            e.target.parentElement.querySelector(".more-info").style.height = "0px"
+            e.target.parentElement.querySelector(".more-info").style.padding = "0px"
+        }
     }
 
     // Rendering Functions
