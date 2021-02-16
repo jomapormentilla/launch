@@ -13,7 +13,6 @@ class TaskApi {
     }
 
     static createTask(data) {
-      debugger
       let configObj = {
         method: 'POST',
         headers: {
@@ -34,6 +33,7 @@ class TaskApi {
             project.taskIds.push({id: task.id})
             Error.alert("Success")
             document.getElementById("new-task-form").reset()
+            project.buildTask.list()
           }
         })
     }

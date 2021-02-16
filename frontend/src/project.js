@@ -204,6 +204,7 @@ class Project {
                 <div class="flex" id="task-list" style="flex: 1; flex-direction: column;">
                     <br>
                     <h2>Task List</h2>
+                    <div id="task-list-items"></div>
                 </div>
             `,
 
@@ -222,8 +223,9 @@ class Project {
             },
 
             list: () => {
+                document.getElementById("task-list-items").innerHTML = ``
                 for (let task of this.tasks) {
-                    document.getElementById("task-list").innerHTML += `<li id="task-${ task.id }">${ task.name } - ${ task.user.firstName } ${ task.user.lastName }</li>`
+                    document.getElementById("task-list-items").innerHTML += `<li id="task-${ task.id }">${ task.name } - ${ task.user.firstName } ${ task.user.lastName }</li>`
                 }
             }
         }
