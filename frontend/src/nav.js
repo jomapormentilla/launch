@@ -15,6 +15,7 @@ class Nav {
             { title: "Users", src: "users" },
             { title: "Projects", src: "projects" },
             { title: "Your Tasks", src: "tasks" },
+            { title: "Inbox", src: "inbox" },
             { title: "About", src: "about" },
         ]
 
@@ -66,6 +67,9 @@ class Nav {
                 case 'tasks':
                     TaskApi.getTasks()
                     Task.render()
+                    break
+                case 'inbox':
+                    Inbox.render()
                     break
                 case 'about':
                     About.render()

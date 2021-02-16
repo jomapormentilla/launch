@@ -76,7 +76,7 @@ class User {
     static get create() {
         let data = {
             table: () => {
-                for (let user of User.all) {
+                for (let user of User.all.sort((a,b) => a - b)) {
                     document.getElementById("users-table").innerHTML += user.html.row
                 }
             },

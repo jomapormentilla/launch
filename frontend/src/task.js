@@ -83,8 +83,13 @@ class Task {
             selectChange: (e) => {
                 if (e.target.value !== "Select a Project") {
                     let project = Project.all.find(p => p.id == e.target.value)
-                    this.backlogContainer.reset()
-                    this.backlogContainer.sort(project.tasks)
+
+                    if (project.tasks.length === 0) {
+                        document.getElementById("progress-tracker").innerHTML = `<h1 style="text-align: center;">This project does not have any tasks.</h1>`
+                    } else {
+                        this.backlogContainer.reset()
+                        this.backlogContainer.sort(project.tasks)
+                    }
                 }
             },
 

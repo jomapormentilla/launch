@@ -355,6 +355,19 @@ button:hover {
     margin-bottom: 15px;
 }
 
+#task-list-items {
+    width: 100%;
+    background-color: #fff;
+}
+
+    #task-list-items > li {
+        padding: 10px;
+    }
+
+    #task-list-items > li:nth-child(even) {
+        background-color: #fafafa;
+    }
+
 .box {
     padding: 10px;
     border: solid 1px #ddd;
@@ -426,3 +439,54 @@ button:hover {
         background-color: green;
         color: #fff;
     }
+
+.user-list {
+    border-right: solid 1px #aaa;
+}
+
+    .user-list > li {
+        list-style: none;
+        width: 100%;
+        padding: 5px;
+        cursor: pointer;
+    }
+
+    .user-list li:hover, .user-list > li:nth-child(even):hover {
+        background-color: #8ec1fb;
+    }
+
+    .user-list > li:nth-child(even) {
+        background-color: #fafafa;
+    }
+
+.message-container {
+    flex: 5; 
+    flex-direction: column;
+    background-color: #fff; 
+    align-items: flex-end;
+}
+
+    .message-content {
+        flex: 1;
+        width: 100%;
+        background-color: #f7f7f7;
+        border-bottom: solid 1px #aaa;
+    }
+
+    .message-textarea {
+        align-self: flex-end;
+        width: 100%;
+    }
+
+        .message-textarea textarea {
+            flex: 1;
+            width: 100%;
+            height: 75px;
+            border: none;
+            resize: none;
+        }
+
+        .message-textarea button {
+            width: fit-content;
+            height: 100%;
+        }
