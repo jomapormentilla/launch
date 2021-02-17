@@ -1,7 +1,7 @@
 class About {
     static render() {
         let data = `
-            <div class="flex" style="justify-content: center; width: 100%;">
+            <div class="flex" style="justify-content: center; width: 100%; color: #fff;">
                 <div style="max-width: 500px;">
                     <h1>Thanks for using Launch</h1>
                     <p>Launch is a project management productivity tool with features that include:</p>

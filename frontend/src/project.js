@@ -338,7 +338,7 @@ class Project {
         // Initial
         content.innerHTML = `
             <div class="flex" style="flex-direction: column;">
-                <h2>Your Projects</h2>
+                <h2 style="color: #fff;">Your Projects</h2>
                 <div class="flex projects-container">
                     <div class="flex new-project-card"></div>
                     <div class="flex owned-projects"></div>

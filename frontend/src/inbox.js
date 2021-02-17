@@ -13,7 +13,7 @@ class Inbox {
     static render() {
         content.innerHTML = `
             <div class="flex col">
-                <h2>${ current_user.name }'s Inbox</h2>
+                <h2 style="color: #fff;">${ current_user.name }'s Inbox</h2>
                 <div class="flex" id="inbox-container">
                     <div class="flex user-list"></div>
                     <div class="flex message-container">

@@ -195,7 +195,7 @@ class User {
         // Initial
         content.innerHTML = `
             <div class="flex col" style="width: 100%;">
-                <h1 style="text-align: center;">Users</h1>
+                <h1 style="color: #fff; text-align: center; font-size: 35px;">Users</h1>
                 <div id="users-table"></div>
             </div>
         `

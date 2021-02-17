@@ -167,14 +167,17 @@ button:hover {
     padding: 15px 15px 150px 15px;
     min-height: 90vh;
     background-color: #eee;
+    background-image: url('images/launch-bg.png');
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: 100% auto;
 }
 
-#greeting {
-    flex-direction: column;
-    background-color: #fff;
-    padding: 15px;
+.greeting-container {
+    color: #fff;
+    justify-content: center;
+    padding: 15px 0px;
     width: 100%;
-    margin-bottom: 15px;
 }
 
 #project-div {

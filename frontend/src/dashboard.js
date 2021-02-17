@@ -35,11 +35,7 @@ class Dashboard {
 
     static get greeting() {
         let data = {
-            div: `
-                <div class="flex" id="greeting">
-                    <h1>Hello, ${ current_user.firstName }!</h1>
-                </div>
-            `
+            div: `<h1 style="font-size: 35px;">Hello, ${ current_user.firstName }!</h1>`
         }
         return data
     }
@@ -143,7 +139,7 @@ class Dashboard {
         // Template
         content.innerHTML = `
             <div class="flex" style="flex-direction: column; width: 100%;">
-                <div class="flex greeting-container" style="width: 100%; background-color: #fff; margin-bottom: 15px;"></div>
+                <div class="flex greeting-container"></div>
                 <div class="flex">
                     <div class="flex projects-overview" style="flex: 1; height: fit-content;">Overview</div>
                     <div class="flex progress-log" style="width: 300px; height: fit-content; max-height: 1000px; overflow-y: scroll;">Progress Log</div>
