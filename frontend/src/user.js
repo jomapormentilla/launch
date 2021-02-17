@@ -84,7 +84,7 @@ class User {
                     </div>
                 `
 
-                document.getElementById("back-btn").addEventListener("click", this.profile.goBack)
+                document.getElementById("back-to-users").addEventListener("click", this.profile.goBack)
             },
 
             goBack: (e) => {
@@ -171,7 +171,7 @@ class User {
 
             back: `
                 <div class="flex" style="align-items: center; justify-content: space-between; font-size: 15px; color: #777; flex: 1; padding-right: 15px;">
-                    <div id="back-btn"><i class="bi-arrow-bar-left"></i> Back to Users</div>
+                    <div id="back-to-users"><i class="bi-arrow-bar-left"></i> Back to Users</div>
                 </div>
             `
         }
