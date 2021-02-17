@@ -352,6 +352,9 @@ class Project {
 
                 <h2>Projects Assigned to You</h2>
                 <div class="flex assigned-projects"></div>
+                
+                <h2>Projects By Other Users</h2>
+                <div class="flex other-projects"></div>
             </div>
         `
 
@@ -359,6 +362,7 @@ class Project {
         document.querySelector(".new-project-card").innerHTML = this.new.card
         document.querySelector(".owned-projects").innerHTML = this.new.cards(current_user.projects)
         document.querySelector(".assigned-projects").innerHTML = this.new.cards(current_user.assigned_projects)
+        document.querySelector(".other-projects").innerHTML = this.new.cards(current_user.projects_by_others)
 
         // Event Listeners
         content.removeEventListener("click", this.handleDivClick, true)

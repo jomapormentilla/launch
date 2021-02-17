@@ -146,7 +146,7 @@ class Dashboard {
                 <div class="flex greeting-container" style="width: 100%; background-color: #fff; margin-bottom: 15px;"></div>
                 <div class="flex">
                     <div class="flex projects-overview" style="flex: 1; height: fit-content;">Overview</div>
-                    <div class="flex progress-log" style="width: 300px; height: fit-content;">Progress Log</div>
+                    <div class="flex progress-log" style="width: 300px; height: fit-content; max-height: 1000px; overflow-y: scroll;">Progress Log</div>
                 </div>
             </div>
         `

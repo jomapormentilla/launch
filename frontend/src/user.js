@@ -28,6 +28,10 @@ class User {
         return Project.sort.alphabetical().filter(p => { return p.users.includes(current_user) || p.creatorId == current_user.id })
     }
 
+    get projects_by_others() {
+        return Project.sort.alphabetical().filter(p => { return p.creator.id !== this.id && !p.users.includes(this) })
+    }
+
     get department() {
         return Department.all.find(d => d.id == this.department_id).name
     }
