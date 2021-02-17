@@ -89,7 +89,8 @@ class Dashboard {
             },
 
             moreInfo: (project) => {
-                let remainingTasks = project.tasks.filter(t => t.status !== "complete")
+                let remainingTasks = project.tasks.filter(t => t.status !== "completed")
+                let completedTasks = project.tasks.filter(t => t.status === "completed")
                 
                 let html = `
                     <h3>Details</h3>
@@ -98,8 +99,10 @@ class Dashboard {
                             <td>${ project.creator.name }</td></tr>
                         <tr><td>Team Size</td>
                             <td>${ project.users.length }</td></tr>
-                        <tr><td>Total Tasks Remaining</td>
+                        <tr><td>Tasks Remaining</td>
                             <td>${ remainingTasks.length }</td></tr>
+                        <tr><td>Tasks Completed</td>
+                            <td>${ completedTasks.length }</td></tr>
                     </table>
 
                     <h3>Task List</h3>

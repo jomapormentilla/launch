@@ -35,14 +35,6 @@ class Project {
         return projectTasks
     }
 
-    get completedTasks() {
-        // Need to implement
-    }
-
-    get inProgressTasks() {
-        // Need to implement
-    }
-
     get currentTeam() {
         let data = {
             list: () => {
@@ -294,7 +286,10 @@ class Project {
 
                     <h2>Project Description</h2>
                     <div class="flex project-description" style="width: 100%; background-color: #fff;">
-                        <div style="padding: 15px;">${ project.description }</div>
+                        <div style="padding: 15px;">
+                            <p><u>Created By</u>:<br>${ project.creator.name }</p>
+                            <p><u>Description</u>:<br>${ project.description }</p>
+                        </div>
                     </div>
                     
                     <hr>
