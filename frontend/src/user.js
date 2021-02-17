@@ -17,15 +17,15 @@ class User {
     }
 
     get assigned_projects() {
-        return Project.all.filter(p => { return p.users.includes(current_user) && p.creator !== current_user })
+        return Project.sort.alphabetical().filter(p => { return p.users.includes(current_user) && p.creator !== current_user })
     }
 
     get created_projects() {
-        return Project.all.filter(p => p.creatorId == current_user.id)
+        return Project.sort.alphabetical().filter(p => p.creatorId == current_user.id)
     }
 
     get projects() {
-        return Project.all.filter(p => { return p.users.includes(current_user) || p.creatorId == current_user.id })
+        return Project.sort.alphabetical().filter(p => { return p.users.includes(current_user) || p.creatorId == current_user.id })
     }
 
     get department() {

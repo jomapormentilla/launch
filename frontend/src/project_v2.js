@@ -63,6 +63,37 @@ class Project {
         return data
     }
 
+    static get sort() {
+        let data = {
+            alphabetical: () => {
+                let data = []
+                for (let project of Project.all) {
+                    data.push(project.name)
+                }
+                data.sort()
+                let sorted = []
+                for (let i=0; i<data.length; i++) {
+                    sorted[i] = Project.all.find(p => p.name === data[i])
+                }
+                return sorted
+            },
+
+            reverse: () => {
+                let data = []
+                for (let project of Project.all) {
+                    data.push(project.name)
+                }
+                data.sort().reverse()
+                let sorted = []
+                for (let i=0; i<data.length; i++) {
+                    sorted[i] = Project.all.find(p => p.name === data[i])
+                }
+                return sorted
+            }
+        }
+        return data
+    }
+
     // Calculations
     get taskPercentage() {
         let total = this.tasks.length
