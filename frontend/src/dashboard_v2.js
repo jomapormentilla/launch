@@ -1,14 +1,6 @@
 class Dashboard {
     static get header() {
         let data = {
-            profile: `
-                <h1>Profile Settings</h1>
-                <ul>Feature List
-                    <li>Your Projects</li>
-                    <li><button id="logout">Logout</div></li>
-                </ul>
-            `,
-
             renderProfile: (e) => {
                 let profile = document.getElementById("profile")
                 profile.style.display = "block"
@@ -19,11 +11,12 @@ class Dashboard {
                 document.querySelector(".bi-x-circle").addEventListener("click", (e)=>{ profile.style.display = "none" })
             },
 
-            messages: `
-                <h1>Your Messages</h1>
-            `,
-
             renderMessages: (e) => {
+                let nav = Nav.all.find(n => n.title === "Inbox")
+                for (let i of document.getElementById("navigation").querySelectorAll("div")) {
+                    i.classList.remove("active")
+                }
+                nav.div.classList.add("active")
                 Inbox.render()
             },
 

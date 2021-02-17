@@ -32,9 +32,54 @@ class User {
         return Department.all.find(d => d.id == this.department_id).name
     }
 
+    static get sort() {
+        let data = {
+            alphabetical: () => {
+                let data = []
+                for (let user of User.all) {
+                    data.push(user.email)
+                }
+                data.sort()
+                let sorted = []
+                for (let i=0; i<data.length; i++) {
+                    sorted[i] = User.all.find(u => u.email === data[i])
+                }
+                return sorted
+            },
+
+            reverse: () => {
+                let data = []
+                for (let user of User.all) {
+                    data.push(user.email)
+                }
+                data.sort().reverse()
+                let sorted = []
+                for (let i=0; i<data.length; i++) {
+                    sorted[i] = User.all.find(u => u.email === data[i])
+                }
+                return sorted
+            }
+        }
+        return data
+    }
+
     // Etc
     get name() {
         return `${ this.firstName } ${ this.lastName }`
+    }
+
+    get profile() {
+        let data = {
+            render: () => {
+                content.innerHTML = `
+                    <div class="flex col user-profile">
+                        <h1>${ this.name }</h1>
+                        <p>Email: ${ this.email }</p>
+                    </div>
+                `
+            }
+        }
+        return data
     }
 
     // HTML Div Elements
@@ -76,14 +121,16 @@ class User {
     static get create() {
         let data = {
             table: () => {
-                for (let user of User.all.sort((a,b) => a - b)) {
-                    document.getElementById("users-table").innerHTML += user.html.row
+                let html = ``
+                for (let user of User.sort.alphabetical()) {
+                    html += user.html.row
                 }
+                return html
             },
 
             cards: () => {
                 let cards = ``
-                for (let user of User.all) {
+                for (let user of User.sort.alphabetical()) {
                     cards += user.html.card
                 }
                 return cards
@@ -91,7 +138,7 @@ class User {
 
             list: () => {
                 let data = ``
-                for (let user of User.all) {
+                for (let user of User.sort.alphabetical()) {
                     data += `<li id="user-list-${ user.id }">${ user.firstName } ${ user.lastName } - ${ user.department }</li>`
                 }
                 return data
@@ -116,30 +163,26 @@ class User {
     // Click Handling
     static handleDivClick = e => {
         // debugger
-        
-    }
-
-    // Rendering Functions
-    static renderDiv(html, id) {
-        let div = document.createElement("div")
-        div.id = id
-        div.classList.add("flex")
-        div.style.minWidth = "100%"
-        div.innerHTML += html
-
-        content.append(div)
-        div.addEventListener("click", this.handleDivClick)
+        if (e.target.id.includes("user-row")) {
+            let user = User.all.find(u => u.id == e.target.id.split("-")[2])
+            user.profile.render()
+        }
     }
 
     static render() {
         // Initial
-        content.innerHTML = ``
-
-        // Main Renders
-        content.innerHTML += `
-            <h2>Users</h2>
-            <div id="users-table"></div>
+        content.innerHTML = `
+            <div class="flex col" style="width: 100%;">
+                <h1 style="text-align: center;">Users</h1>
+                <div id="users-table"></div>
+            </div>
         `
-        this.create.table()
+
+        // Manipulators
+        document.getElementById("users-table").innerHTML = this.create.table()
+
+        // Event Listeners
+        content.removeEventListener("click", this.handleDivClick, true)
+        content.addEventListener("click", this.handleDivClick)
     }
 }

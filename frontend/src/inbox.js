@@ -2,7 +2,7 @@ class Inbox {
     static get html() {
         let data = {
             users: () => {
-                for (let user of User.all) {
+                for (let user of User.sort.alphabetical()) {
                     document.querySelector(".user-list").innerHTML += `<li>${ user.name }</li>`
                 }
             }
