@@ -221,10 +221,8 @@ class Project {
         let data = {
             form: `
                 <form id="new-task-form">
-                    <div class="flex" style="width: 100%;">
-                        <input type="text" placeholder="Task Name" style="flex: 1;">
-                        <input type="text" placeholder="Task Description" style="flex: 1;">
-                    </div>
+                    <input type="text" placeholder="Task Name">
+                    <input type="text" placeholder="Task Description">
                     <h3>Deadline</h3>
                     <input type="date">
                     <input type="time">
@@ -239,9 +237,9 @@ class Project {
 
                 let data = {
                     name: e.target.children[0].value,
-                    description: e.target.children[2].value,
-                    deadline: e.target.children[5].value + ' ' + e.target.children[6].value,
-                    user_id: parseInt(e.target.children[8].value, 10),
+                    description: e.target.children[1].value,
+                    deadline: e.target.children[3].value + ' ' + e.target.children[4].value,
+                    user_id: parseInt(e.target.children[6].value, 10),
                     project_id: this.id,
                     status: "backlog"
                 }
