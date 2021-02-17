@@ -7,5 +7,7 @@ Rails.application.routes.draw do
   resources :projects
   resources :users
   resources :user_projects, only: [:create, :destroy]
+
+  mount ActionCable.server => '/cable'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

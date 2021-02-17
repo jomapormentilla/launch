@@ -292,23 +292,17 @@ class Project {
                         </div>
                     </div>
                     
-                    <hr>
+                    <br>
                     <h2>Build Your Team</h2>
                     <div class="flex build-team" style="width: 100%; flex-direction: row; justify-content: space-around;"></div>
                     
-                    <hr>
-                    <div class="flex" style="width: 100%;">
-                        <div class="flex col" style="flex: 1; margin-right: 10px;">
-                            <h2>Create Tasks</h2>
-                            <div class="flex build-task" style="background-color: #fff; padding: 10px;"></div>
-                        </div>
+                    <br>
+                    <h2>Create Tasks</h2>
+                    <div class="flex build-task" style="background-color: #fff; padding: 10px;"></div>
 
-                        <div class="flex col" style="flex: 1; margin-left: 10px;">
-                            <h2>Current Tasks</h2>
-                            <table class="task-list"></table>
-                        </div>
-                    </div>
-
+                    <br>
+                    <h2>Current Tasks</h2>
+                    <table class="task-list"></table>
                 </div>
             `
 
