@@ -67,6 +67,10 @@ class User {
         return data
     }
 
+    static search(term) {
+        return User.sort.alphabetical().filter(u => { return u.firstName.includes(term) || u.lastName.includes(term) || u.email.includes(term) })
+    }
+
     // Etc
     get name() {
         return `${ this.firstName } ${ this.lastName }`
@@ -136,9 +140,9 @@ class User {
 
     static get create() {
         let data = {
-            table: () => {
+            table: (arr) => {
                 let html = ``
-                for (let user of User.sort.alphabetical()) {
+                for (let user of arr) {
                     html += user.html.row
                 }
                 return html
@@ -177,7 +181,15 @@ class User {
                 <div class="flex" style="align-items: center; justify-content: space-between; font-size: 15px; color: #777; flex: 1; padding-right: 15px;">
                     <div id="back-to-users"><i class="bi-arrow-bar-left"></i> Back to Users</div>
                 </div>
-            `
+            `,
+
+            filter: (e) => {
+                document.getElementById("users-table").innerHTML = ``
+                let term = e.target.value
+                let arr = this.search(term)
+                
+                document.getElementById("users-table").innerHTML = this.create.table(arr)
+            }
         }
         return data
     }
@@ -196,15 +208,17 @@ class User {
         content.innerHTML = `
             <div class="flex col" style="width: 100%;">
                 <h1 style="color: #fff; text-align: center; font-size: 35px;">Users</h1>
+                <input type="search" class="user-search" placeholder="Search for a user...">
                 <div id="users-table"></div>
             </div>
         `
 
         // Manipulators
-        document.getElementById("users-table").innerHTML = this.create.table()
+        document.getElementById("users-table").innerHTML = this.create.table(User.sort.alphabetical())
 
         // Event Listeners
         content.removeEventListener("click", this.handleDivClick, true)
         content.addEventListener("click", this.handleDivClick)
+        document.querySelector(".user-search").addEventListener("keyup", this.actions.filter)
     }
 }

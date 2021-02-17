@@ -18,18 +18,18 @@ document.addEventListener("DOMContentLoaded", (e) => {
     Nav.seed()
 })
 
-socket.onopen = (e) => {
-    console.log(e)
-    const data = {
-        command: `subscribe`,
-        identifier: JSON.stringify({
-            channel: `MessageChannel`
-        })
-    }
-    socket.send(JSON.stringify(data))
-}
+// socket.onopen = (e) => {
+//     console.log(e)
+//     const data = {
+//         command: `subscribe`,
+//         identifier: JSON.stringify({
+//             channel: `MessageChannel`
+//         })
+//     }
+//     socket.send(JSON.stringify(data))
+// }
 
-socket.onmessage = (e) => {
-    let message = JSON.parse(e.data) 
-    if (message.type === "ping") return
-}
+// socket.onmessage = (e) => {
+//     let message = JSON.parse(e.data) 
+//     if (message.type === "ping") return
+// }

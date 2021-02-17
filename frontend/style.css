@@ -451,8 +451,24 @@ button:hover {
         color: #fff;
     }
 
+.user-search {
+    padding: 10px;
+}
+
+#inbox-container {
+    min-height: 70vh;
+    width: 100%;
+    border: solid 1px #aaa;
+    background-color: red;
+}
+
 .user-list {
+    flex: 1;
+    background-color: #fff;
     border-right: solid 1px #aaa;
+    width: fit-content;
+    align-items: flex-start;
+    align-content: flex-start;
 }
 
     .user-list > li {
@@ -470,21 +486,8 @@ button:hover {
         background-color: #fafafa;
     }
 
-#inbox-container {
-    min-height: 70vh;
-    width: 100%;
-    border: solid 1px #aaa;
-}
-
-.user-list {
-    flex: 1;
-    background-color: #fff;
-    min-height: fit-content;
-    overflow-y: scroll;
-}
-
 .message-container {
-    flex: 5; 
+    flex-grow: 3; 
     flex-direction: column;
     background-color: #fff; 
     align-items: flex-end;
@@ -494,6 +497,9 @@ button:hover {
         flex: 1;
         width: 100%;
         background-color: #f7f7f7;
+        background-image: url("images/launch-logo-lg.png");
+        background-size: auto 100%;
+        background-position: center;
         border-bottom: solid 1px #aaa;
     }
 

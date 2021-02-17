@@ -1,10 +1,17 @@
 class Inbox {
     static get html() {
         let data = {
-            users: () => {
-                for (let user of User.sort.alphabetical()) {
+            users: (array) => {
+                document.querySelector(".user-list").innerHTML = ``
+                for (let user of array) {
                     document.querySelector(".user-list").innerHTML += `<li>${ user.name }</li>`
                 }
+            },
+
+            filter: (e) => {
+                let term = e.target.value
+                let arr = User.search(term)
+                this.html.users(arr)
             }
         }
         return data
@@ -12,8 +19,9 @@ class Inbox {
 
     static render() {
         content.innerHTML = `
-            <div class="flex col">
+            <div class="flex col" style="width: 100%;">
                 <h2 style="color: #fff;">${ current_user.name }'s Inbox</h2>
+                <input type="search" class="user-search" placeholder="Search for a user...">
                 <div class="flex" id="inbox-container">
                     <div class="flex user-list"></div>
                     <div class="flex message-container">
@@ -27,6 +35,10 @@ class Inbox {
             </div>
         `
 
-        this.html.users()
+        // Manipulations
+        this.html.users(User.sort.alphabetical().filter(u => u.id !== current_user.id))
+
+        // Event Listeners
+        document.querySelector(".user-search").addEventListener("keyup", this.html.filter)
     }
 }
