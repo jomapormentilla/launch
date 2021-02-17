@@ -63,13 +63,48 @@ class Project {
         return data
     }
 
+    static get sort() {
+        let data = {
+            alphabetical: () => {
+                let data = []
+                for (let project of Project.all) {
+                    data.push(project.name)
+                }
+                data.sort()
+                let sorted = []
+                for (let i=0; i<data.length; i++) {
+                    sorted[i] = Project.all.find(p => p.name === data[i])
+                }
+                return sorted
+            },
+
+            reverse: () => {
+                let data = []
+                for (let project of Project.all) {
+                    data.push(project.name)
+                }
+                data.sort().reverse()
+                let sorted = []
+                for (let i=0; i<data.length; i++) {
+                    sorted[i] = Project.all.find(p => p.name === data[i])
+                }
+                return sorted
+            }
+        }
+        return data
+    }
+
     // Calculations
     get taskPercentage() {
         let total = this.tasks.length
         let completed = this.tasks.filter(t => t.status === "completed").length
         let result = (completed/total) * 100
 
-        return result.toFixed(2) + `%`
+        if (total === 0) {
+            return `0.00%`
+        } else {
+            return result.toFixed(2) + `%`
+        }
     }
 
     // HTML Div Elements
@@ -83,6 +118,7 @@ class Project {
 
             form: `
                 <div class="flex" style="flex-direction: column; min-width: 300px;">
+                    <div class="flex back-to-projects"></div>
                     <h1>Create a New Project</h1>
                     <form id="new-project-form">
                         <input type="text" name="name" placeholder="Project Name"><br>
@@ -102,8 +138,19 @@ class Project {
                 for (let project of projects) {
                     projectCards += project.html.card
                 }
-                return projectCards
-            }
+
+                if (projects.length === 0) {
+                    return `<div class="flex" style="background-color: #fff; padding: 10px; width: 100%; justify-content: center;">No Projects Found</div>`
+                } else {
+                    return projectCards
+                }
+            },
+
+            back: `
+                <div class="flex" style="align-items: center; justify-content: space-between; font-size: 15px; color: #777; flex: 1; padding-right: 15px;">
+                    <div id="back-btn"><i class="bi-arrow-bar-left"></i> Back to Projects</div>
+                </div>
+            `
         }
         return data
     }
@@ -117,13 +164,6 @@ class Project {
                     <p>Team Size: ${ this.users.length }</p>
                 <p>Created By:<br>${ this.creator.firstName } ${ this.creator.lastName }</p>
                 </div>
-            `,
-
-            back: `
-                <div class="flex" style="align-items: center; justify-content: space-between; font-size: 15px; color: #777; flex: 1; padding-right: 15px;">
-                    <div id="back-btn"><i class="bi-arrow-bar-left"></i> Back to Projects</div>
-                    <div><i class="bi-gear-fill"></i></div>
-                </div>
             `
         }
         return data
@@ -131,25 +171,10 @@ class Project {
 
     get buildTeam() {
         let data = {
-            container: `
-                <div class="flex" style="width: 100%; flex-direction: column;">
-                    <h1 style="text-align: center; color: #3b5ab1; font-size: 50px;">${ this.name }</h1>
-
-                    <h2>Project Description</h2>
-                    <div style="text-align: justify; padding: 15px; background-color: #fff; border: solid 1px #ddd;">
-                        <i class="bi bi-pencil-square" style="float: right;"></i>
-                        ${ this.description }
-                    </div>
-                    
-                    <hr />
-
-                    <h2>Build Your Team</h2>
-                    <div id="build-team-container" class="flex" style="flex-direction: row; justify-content: space-around;">
-                        <div id="build-team"><h2>All Users</h2>${ User.create.list() }</div>
-                        <div class="flex" style="align-items: center; padding: 0px 15px;"><i class="bi bi-arrow-left-right" style="font-size: 30px;"></i></div>
-                        <div id="current-team"><h2>Current Team</h2>${ this.currentTeam.list() }</div>
-                    </div>
-                </div>
+            div: `
+                <div id="build-team"><h2>All Users</h2>${ User.create.list() }</div>
+                <div class="flex" style="align-items: center; padding: 0px 15px;"><i class="bi bi-arrow-left-right" style="font-size: 30px;"></i></div>
+                <div id="current-team"><h2>Current Team</h2>${ this.currentTeam.list() }</div>
             `,
 
             buildTeamClick: (e, project) => {
@@ -195,26 +220,18 @@ class Project {
     get buildTask() {
         let data = {
             form: `
-                <div class="flex" style="flex: 1; flex-direction: column; padding-right: 30px;">
-                    <br>
-                    <h2>Create a Task</h2>
-                    <form id="new-task-form">
-                        <input type="text" placeholder="Task Name"><br>
-                        <input type="text" placeholder="Task Description"><br>
-                        <h3>Deadline</h3>
-                        <input type="date">
-                        <input type="time">
-                        <h3>Assign To</h3>
-                        <select id="new-task-select" name="userId"><option>Assign to a Team Member</option>${ this.currentTeam.option() }</select>
-                        <button type="submit">Create Task</button>
-                    </form>
-                </div>
-
-                <div class="flex" id="task-list" style="flex: 1; flex-direction: column;">
-                    <br>
-                    <h2>Task List</h2>
-                    <div id="task-list-items"></div>
-                </div>
+                <form id="new-task-form">
+                    <div class="flex" style="width: 100%;">
+                        <input type="text" placeholder="Task Name" style="flex: 1;">
+                        <input type="text" placeholder="Task Description" style="flex: 1;">
+                    </div>
+                    <h3>Deadline</h3>
+                    <input type="date">
+                    <input type="time">
+                    <h3>Assign To</h3>
+                    <select id="new-task-select" name="userId"><option>Assign to a Team Member</option>${ this.currentTeam.option() }</select>
+                    <button type="submit">Create Task</button>
+                </form>
             `,
 
             create: (e) => {
@@ -232,9 +249,24 @@ class Project {
             },
 
             list: () => {
-                document.getElementById("task-list-items").innerHTML = ``
+                let html = ``
                 for (let task of this.tasks) {
-                    document.getElementById("task-list-items").innerHTML += `<li id="task-${ task.id }">${ task.name } - ${ task.user.firstName } ${ task.user.lastName }</li>`
+                    let color
+                    if (task.status === "backlog") {
+                        color = "#aaa";
+                    } else if (task.status === "inprogress") {
+                        color = "orange"
+                    } else if (task.status === "completed") {
+                        color = "green"
+                    }
+
+                    html += `<tr><td>${ task.name }</td><td>${ task.user.firstName } ${ task.user.lastName }</td><td style="background-color: ${ color }; width: 20px;"></td></tr>`
+                }
+
+                if (this.tasks.length === 0) {
+                    return `<tr><td style="text-align: center;">This project does not have any tasks yet.</td></tr>`
+                } else {
+                    return html
                 }
             }
         }
@@ -246,23 +278,54 @@ class Project {
         // debugger
         // Create New Project
         if (e.target.id === "new-project-card") {
-            content.innerHTML = ``
-            this.renderDiv(this.new.form, "new-project")
+            content.innerHTML = this.new.form
+
             // Event Listeners
+            document.querySelector(".back-to-projects").innerHTML = this.new.back
             document.getElementById("new-project-form").addEventListener("submit", (e)=>{ this.new.create(e) })
         
         // Click on Project Card
         } else if (e.target.classList.contains("card")) {
-            content.innerHTML = ``
             let project = Project.all.find(p => p.id == e.target.dataset.id)
 
             // Render Project Details
-            this.renderDiv(project.html.back)
-            this.renderDiv(project.buildTeam.container)
-            this.renderDiv(project.buildTask.form)
-            this.renderDiv(project.buildTask.list())
+            content.innerHTML = `
+                <div class="flex" style="flex-direction: column; width: 100%;">
+                    <div class="flex back-to-projects"></div>
+                    <div class="flex project-title" style="justify-content: center; color: #3b5ab1; font-size: 50px;">${ project.name }</div>
 
-            // Event Listeners
+                    <h2>Project Description</h2>
+                    <div class="flex project-description" style="width: 100%; background-color: #fff;">
+                        <div style="padding: 15px;">${ project.description }</div>
+                    </div>
+                    
+                    <hr>
+                    <h2>Build Your Team</h2>
+                    <div class="flex build-team" style="width: 100%; flex-direction: row; justify-content: space-around;"></div>
+                    
+                    <hr>
+                    <div class="flex" style="width: 100%;">
+                        <div class="flex col" style="flex: 1; margin-right: 10px;">
+                            <h2>Create Tasks</h2>
+                            <div class="flex build-task" style="background-color: #fff; padding: 10px;"></div>
+                        </div>
+
+                        <div class="flex col" style="flex: 1; margin-left: 10px;">
+                            <h2>Current Tasks</h2>
+                            <table class="task-list"></table>
+                        </div>
+                    </div>
+
+                </div>
+            `
+
+            // New Manipulations
+            document.querySelector(".back-to-projects").innerHTML = this.new.back
+            document.querySelector(".build-team").innerHTML = project.buildTeam.div
+            document.querySelector(".build-task").innerHTML = project.buildTask.form
+            document.querySelector(".task-list").innerHTML = project.buildTask.list()
+
+            // New Event Listeners
             document.getElementById("new-task-form").addEventListener("submit", (e) => { project.buildTask.create(e) })
             document.getElementById("build-team").addEventListener("click", (e) => { project.buildTeam.buildTeamClick(e, project) })
             document.getElementById("current-team").addEventListener("click", (e) => { project.buildTeam.currentTeamClick(e, project) })
@@ -279,34 +342,33 @@ class Project {
         } else if (e.target.id === "back-btn") {
             Project.render()
 
-        // Settings Icon
-        } else if (e.target.classList.contains("bi-gear-fill")) {
-            alert("Project Settings")
-
         } else if (e.target.classList.contains("bi-pencil-square")) {
             alert("Edit Project Description")
         }
     }
 
-    // Rendering Functions
-    static renderDiv(html, id) {
-        let div = document.createElement("div")
-        div.dataset.id = id
-        div.classList.add("flex")
-        div.style.minWidth = "100%"
-        div.innerHTML += html
-
-        content.append(div)
-        div.addEventListener("click", this.handleDivClick)
-    }
-
     static render() {
         // Initial
-        content.innerHTML = ``
+        content.innerHTML = `
+            <div class="flex" style="flex-direction: column;">
+                <h2>Your Projects</h2>
+                <div class="flex projects-container">
+                    <div class="flex new-project-card"></div>
+                    <div class="flex owned-projects"></div>
+                </div>
 
-        // Main Renders
-        this.renderDiv(this.new.card, "new-project")
+                <h2>Projects Assigned to You</h2>
+                <div class="flex assigned-projects"></div>
+            </div>
+        `
 
-        this.renderDiv(this.new.cards(current_user.projects), "project-cards")
+        // Manipulations
+        document.querySelector(".new-project-card").innerHTML = this.new.card
+        document.querySelector(".owned-projects").innerHTML = this.new.cards(current_user.projects)
+        document.querySelector(".assigned-projects").innerHTML = this.new.cards(current_user.assigned_projects)
+
+        // Event Listeners
+        content.removeEventListener("click", this.handleDivClick, true)
+        content.addEventListener("click", this.handleDivClick)
     }
 }

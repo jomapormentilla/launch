@@ -41,25 +41,11 @@ class Task {
 
     static get backlogContainer() {
         let data = {
-            html: `
-                <div id="progress-tracker">
-                    <div class="flex" id="backlog">
-                        <div class="task-header">BACKLOG</div>
-                    </div>
-
-                    <div class="flex" id="inProgress">
-                        <div class="task-header">IN PROGRESS</div>
-                    </div>
-
-                    <div class="flex" id="completed">
-                        <div class="task-header">COMPLETED</div>
-                    </div>
-                </div>
-            `,
+            html: ``,
 
             select: () => {
                 let data = `<select id="task-select"><option selected>Select a Project</option>`
-                for (let project of current_user.assigned_projects) {
+                for (let project of current_user.projects) {
                     data += `<option value="${ project.id }">${ project.name }</option>`
                 }
                 data += `</select>`
@@ -83,13 +69,9 @@ class Task {
             selectChange: (e) => {
                 if (e.target.value !== "Select a Project") {
                     let project = Project.all.find(p => p.id == e.target.value)
-
-                    if (project.tasks.length === 0) {
-                        document.getElementById("progress-tracker").innerHTML = `<h1 style="text-align: center;">This project does not have any tasks.</h1>`
-                    } else {
-                        this.backlogContainer.reset()
-                        this.backlogContainer.sort(project.tasks)
-                    }
+                    
+                    this.backlogContainer.reset()
+                    this.backlogContainer.sort(project.tasks)
                 }
             },
 
@@ -121,27 +103,36 @@ class Task {
         }
     }
 
-    // Rendering Functions
-    static renderDiv(html, id) {
-        let div = document.createElement("div")
-        div.dataset.id = id
-        div.classList.add("flex")
-        div.style.minWidth = "100%"
-        div.innerHTML += html
-
-        content.append(div)
-        div.addEventListener("click", this.handleDivClick)
-    }
-
     static render() {
         // Initial
-        content.innerHTML = ``
+        content.innerHTML = `
+            <div class="flex col" style="width: 100%;">
+                <h2>Select a Project</h2>
+                <div class="flex select-project"></div>
+
+                <h2>Progress Tracker</h2>
+                <div class="flex backlog-container">
+                    <div class="flex" id="backlog">
+                        <div class="task-header">BACKLOG</div>
+                    </div>
+
+                    <div class="flex" id="inProgress">
+                        <div class="task-header">IN PROGRESS</div>
+                    </div>
+
+                    <div class="flex" id="completed">
+                        <div class="task-header">COMPLETED</div>
+                    </div>
+                </div>
+            </div>
+        `
         
         // Main Renders
-        this.renderDiv(this.backlogContainer.select())
-        this.renderDiv(this.backlogContainer.html)
+        document.querySelector(".select-project").innerHTML = this.backlogContainer.select()
         
         // Event Listeners
+        content.removeEventListener("click", this.handleDivClick, true)
+        content.addEventListener("click", this.handleDivClick)
         document.querySelector("select").addEventListener("change", (e)=>{ this.backlogContainer.selectChange(e) })
     }
 }

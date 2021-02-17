@@ -72,11 +72,23 @@ class User {
         let data = {
             render: () => {
                 content.innerHTML = `
-                    <div class="flex col user-profile">
+                    <div class="flex col user-profile" style="background-color: #fff; padding: 15px; width: 100%;">
+                        ${ User.actions.back }
                         <h1>${ this.name }</h1>
-                        <p>Email: ${ this.email }</p>
+                        <div>
+                            <table class="user-profile">
+                                <tr><td>Email: </td><td> ${ this.email }</td><tr>
+                                <tr><td>Tasks: </td><td> ${ this.tasks.length }</td><tr>
+                            </table>
+                        </div>
                     </div>
                 `
+
+                document.getElementById("back-btn").addEventListener("click", this.profile.goBack)
+            },
+
+            goBack: (e) => {
+                User.render()
             }
         }
         return data
@@ -155,7 +167,13 @@ class User {
                     <h3>More Info!</h3>                
                 `
                 return html
-            }
+            },
+
+            back: `
+                <div class="flex" style="align-items: center; justify-content: space-between; font-size: 15px; color: #777; flex: 1; padding-right: 15px;">
+                    <div id="back-btn"><i class="bi-arrow-bar-left"></i> Back to Users</div>
+                </div>
+            `
         }
         return data
     }
