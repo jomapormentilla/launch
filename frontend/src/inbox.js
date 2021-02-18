@@ -36,7 +36,7 @@ class Inbox {
         `
 
         // Manipulations
-        this.html.users(User.sort.alphabetical().filter(u => u.id !== current_user.id))
+        this.html.users(User.sortby("firstName").filter(u => u.id !== current_user.id))
 
         // Event Listeners
         document.querySelector(".user-search").addEventListener("keyup", this.html.filter)

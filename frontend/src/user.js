@@ -17,19 +17,19 @@ class User {
     }
 
     get assigned_projects() {
-        return Project.sort.alphabetical().filter(p => { return p.users.includes(current_user) && p.creator !== current_user })
+        return Project.sortby("name").filter(p => { return p.users.includes(current_user) && p.creator !== current_user })
     }
 
     get created_projects() {
-        return Project.sort.alphabetical().filter(p => p.creatorId == current_user.id)
+        return Project.sortby("name").filter(p => p.creatorId == current_user.id)
     }
 
     get projects() {
-        return Project.sort.alphabetical().filter(p => { return p.users.includes(current_user) || p.creatorId == current_user.id })
+        return Project.sortby("name").filter(p => { return p.users.includes(current_user) || p.creatorId == current_user.id })
     }
 
     get projects_by_others() {
-        return Project.sort.alphabetical().filter(p => { return p.creator.id !== this.id && !p.users.includes(this) })
+        return Project.sortby("name").filter(p => { return p.creator.id !== this.id && !p.users.includes(this) })
     }
 
     get department() {
@@ -37,7 +37,6 @@ class User {
     }
 
     static sortby(key) {
-        debugger
         if (typeof(User.all[0][key]) === "number") {
             return User.all.sort((u1, u2) => {
                 return u1[key] - u2[key]
@@ -59,7 +58,7 @@ class User {
     }
 
     static search(term) {
-        return User.sort.alphabetical().filter(u => { return u.firstName.includes(term) || u.lastName.includes(term) || u.email.includes(term) })
+        return User.sortby("firstName").filter(u => { return u.firstName.includes(term) || u.lastName.includes(term) || u.email.includes(term) })
     }
 
     // Etc
@@ -141,7 +140,7 @@ class User {
 
             cards: () => {
                 let cards = ``
-                for (let user of User.sort.alphabetical()) {
+                for (let user of User.sortby("firstName")) {
                     cards += user.html.card
                 }
                 return cards
@@ -149,11 +148,10 @@ class User {
 
             list: () => {
                 let data = ``
-                for (let user of User.sort.alphabetical()) {
+                for (let user of User.sortby("firstName")) {
                     data += `<li id="user-list-${ user.id }">${ user.firstName } ${ user.lastName } - ${ user.department }</li>`
                 }
                 return data
-
             }
         }
         return data
@@ -205,7 +203,7 @@ class User {
         `
 
         // Manipulators
-        document.getElementById("users-table").innerHTML = this.create.table(User.sort.alphabetical())
+        document.getElementById("users-table").innerHTML = this.create.table(User.sortby("firstName"))
 
         // Event Listeners
         content.removeEventListener("click", this.handleDivClick, true)
