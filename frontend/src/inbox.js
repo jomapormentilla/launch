@@ -4,7 +4,7 @@ class Inbox {
             users: (array) => {
                 document.querySelector(".user-list").innerHTML = ``
                 for (let user of array) {
-                    document.querySelector(".user-list").innerHTML += `<li data-id="${ user.id }">${ user.name }</li>`
+                    document.querySelector(".user-list").innerHTML += `<li data-id="${ user.id }">${ user.name } ${ this.html.seen(user) }</li>`
                 }
             },
 
@@ -12,6 +12,15 @@ class Inbox {
                 let term = e.target.value
                 let arr = User.search(term)
                 this.html.users(arr)
+            },
+
+            seen: (user) => {
+                let count = Message.unseen(user).length
+                if (count > 0) {
+                    return `<span id="message-unseen">${ count }</span>`
+                } else {
+                    return ``
+                }
             }
         }
         return data
@@ -26,10 +35,14 @@ class Inbox {
             let user = User.all.find(u => u.id == e.target.dataset.id)
             
             this.renderMessages(user)
+            if (e.target.childElementCount > 0) {
+                e.target.children[0].remove()
+                Message.markAsSeen(user)
+            }
         }
     }
 
-    static renderMessages = (user, e) => {
+    static renderMessages = (user) => {
         let messages = Message.with(user)
 
         let html = ``

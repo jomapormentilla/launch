@@ -528,8 +528,8 @@ button:hover {
         flex: 1;
         width: 100%;
         max-height: 65vh;
-        flex-wrap: nowrap;
         overflow-y: scroll;
+        flex-wrap: nowrap;
         background-color: #f7f7f7;
         background-image: url("images/launch-logo-lg.png");
         background-size: auto 100%;

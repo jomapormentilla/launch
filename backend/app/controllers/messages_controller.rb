@@ -1,6 +1,6 @@
 class MessagesController < ApplicationController
     def index
-        messages = Message.all
+        messages = Message.all.includes(:sender, :receiver)
         render json: messages
     end
 
@@ -17,7 +17,7 @@ class MessagesController < ApplicationController
     def update
         message = Message.find_by_id(params[:id])
 
-        if message.update(message_params)
+        if message.update({seen: true})
             render json: message
         else
             render json: { error: 'Something went wrong! Unable to update message.' }

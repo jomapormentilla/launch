@@ -19,6 +19,17 @@ class Message {
         return Message.all.filter(m => (m.senderId === current_user.id || m.receiverId === current_user.id) && (m.senderId === receiver.id || m.receiverId === receiver.id))
     }
 
+    static unseen(user) {
+        return this.with(user).filter(m => m.seen === false && m.senderId !== current_user.id)
+    }
+
+    static markAsSeen(user) {
+        for (let message of Message.unseen(user)) {
+            message.seen = true
+            MessageApi.updateMessage(message)
+        }
+    }
+
     get sender() {
         return User.all.find(u => u.id === this.senderId)
     }
@@ -52,9 +63,5 @@ class Message {
         }
 
         return `${ month } ${ date }, ${ year } - ${ hour }:${ min }:${ sec }${ ampm }`
-    }
-
-    static unseen(user) {
-        return this.with(user).filter(m => m.seen === false)
     }
 }
