@@ -58,6 +58,10 @@ body, html {
     flex-direction: column;
     height: 100%;
     background-color: #ddd;
+    /* background-image: url("images/launch-logo-lg.png");
+    background-size: auto 50vh;
+    background-position: center;
+    border-bottom: solid 1px #aaa; */
 }
 
     #login h1 {
@@ -439,7 +443,7 @@ button:hover {
     flex-wrap: wrap;
 }
 
-    .task-details > div {
+    .task-details > div, .task-details > p {
         padding: 10px;
     }
 

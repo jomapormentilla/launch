@@ -101,7 +101,7 @@ class Project {
             form: `
                 <div class="flex" style="flex-direction: column; min-width: 300px;">
                     <div class="flex back-to-projects"></div>
-                    <h1>Create a New Project</h1>
+                    <h1 style="color: #fff;">Create a New Project</h1>
                     <form id="new-project-form">
                         <input type="text" name="name" placeholder="Project Name"><br>
                         <textarea name="description" placeholder="Describe your project..."></textarea><br>
@@ -202,14 +202,23 @@ class Project {
     get buildTask() {
         let data = {
             form: `
-                <form id="new-task-form">
-                    <input type="text" placeholder="Task Name">
-                    <input type="text" placeholder="Task Description">
+                <form id="new-task-form" class="flex">
+                    <div class="flex">
+                        <input type="text" placeholder="Task Name">
+                        <input type="text" placeholder="Task Description">
+                    </div>
+
                     <h3>Deadline</h3>
-                    <input type="date">
-                    <input type="time">
-                    <h3>Assign To</h3>
-                    <select id="new-task-select" name="userId"><option>Assign to a Team Member</option>${ this.currentTeam.option() }</select>
+                    <div class="flex">
+                        <input type="date">
+                        <input type="time">
+                    </div>
+
+                    <div class="flex">
+                        <h3>Assign To</h3>
+                        <select id="new-task-select" name="userId"><option>Assign to a Team Member</option>${ this.currentTeam.option() }</select>
+                    </div>
+
                     <button type="submit">Create Task</button>
                 </form>
             `,

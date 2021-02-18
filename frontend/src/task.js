@@ -26,13 +26,34 @@ class Task {
         return Project.all.find(p => p.id == this.projectId)
     }
 
+    static sortby(key) {
+        if (typeof(Task.all[0][key]) === "number") {
+            return Task.all.sort((u1, u2) => {
+                return u1[key] - u2[key]
+            })
+
+        } else if (typeof(Task.all[0][key]) === "string") {
+            return Task.all.sort((u1, u2) => {
+                let n1 = u1[key].toUpperCase()
+                let n2 = u2[key].toUpperCase()
+
+                if (n1 < n2) {
+                    return -1
+                } else if (n1 > n2) {
+                    return 1
+                }
+                return 0
+            })
+        }
+    }
+
     // HTML Div Elements
     get html() {
         let data = {
             item: `
-                <div class="task-item" id="task-${ this.id }">
+                <div class="task-item" id="task-${ this.id }" style="cursor: pointer;">
                     ${ this.name }
-                    <i class="bi-arrow-right-square-fill" style="font-size: 2rem; color: #fff;"></i>
+                    <i class="bi-info-circle" style="font-size: 2rem; color: #fff;"></i>
                 </div>
             `
         }
@@ -89,17 +110,26 @@ class Task {
         // debugger
         if (e.target.classList.contains("task-item")) {
             let task = Task.all.find(t => t.id == e.target.id.split("-")[1])
-            if (e.target.parentElement.id === "backlog") {
-                document.getElementById("inProgress").append(e.target)
-                task.status = "inprogress"
-            } else if (e.target.parentElement.id === "inProgress") {
-                document.getElementById("completed").append(e.target)
-                task.status = "completed"
-            } else if (e.target.parentElement.id === "completed") {
-                document.getElementById("inProgress").append(e.target)
-                task.status = "inprogress"
-            }
-            TaskApi.updateTask(task)
+
+            document.querySelector(".task-details").innerHTML = `
+                <div class="flex col">
+                    <h1>${ task.name }</h1>
+                    <p>${ task.description }</p>
+                    <p>Assigned to: ${ task.user.name }</p>
+                </div>
+            `
+
+            // if (e.target.parentElement.id === "backlog") {
+            //     document.getElementById("inProgress").append(e.target)
+            //     task.status = "inprogress"
+            // } else if (e.target.parentElement.id === "inProgress") {
+            //     document.getElementById("completed").append(e.target)
+            //     task.status = "completed"
+            // } else if (e.target.parentElement.id === "completed") {
+            //     document.getElementById("inProgress").append(e.target)
+            //     task.status = "inprogress"
+            // }
+            // TaskApi.updateTask(task)
         }
     }
 
