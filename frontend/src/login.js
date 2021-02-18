@@ -87,6 +87,7 @@ class Login {
                 Error.removeAll()
                 Dashboard.header.greeting()
                 Dashboard.render()
+                document.getElementById("inbox-count").innerHTML = Message.unseen_total()
             },
 
             hide: () => {

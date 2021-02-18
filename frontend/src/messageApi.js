@@ -46,6 +46,7 @@ class MessageApi {
             .then(res => res.json())
             .then(data => {
                 console.log(data)
+                document.getElementById("inbox-count").innerHTML = Message.unseen_total()
             })
     }
 }

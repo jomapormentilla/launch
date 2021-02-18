@@ -52,6 +52,10 @@ body, html {
     color: #fff;
 }
 
+#inbox-count {
+    
+}
+
 #login {
     justify-content: center;
     align-items: center;

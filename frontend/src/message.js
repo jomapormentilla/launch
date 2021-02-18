@@ -23,6 +23,14 @@ class Message {
         return this.with(user).filter(m => m.seen === false && m.senderId !== current_user.id)
     }
 
+    static unseen_total() {
+        let count = 0
+        for (let user of User.all.filter(u => u !== current_user)) {
+            count += this.unseen(user).length
+        }
+        return count
+    }
+
     static markAsSeen(user) {
         for (let message of Message.unseen(user)) {
             message.seen = true
