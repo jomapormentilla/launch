@@ -45,7 +45,7 @@ class Task {
 
             select: () => {
                 let data = `<select id="task-select"><option selected>Select a Project</option>`
-                for (let project of current_user.projects) {
+                for (let project of current_user.projects.filter(p => p.tasks.length !== 0 && p.tasks.filter(t => t.user === current_user).length !== 0)) {
                     data += `<option value="${ project.id }">${ project.name }</option>`
                 }
                 data += `</select>`
@@ -123,6 +123,11 @@ class Task {
                     <div class="flex" id="completed">
                         <div class="task-header">COMPLETED</div>
                     </div>
+                </div>
+
+                <h2 style="color: #aaa;">Task Details</h2>
+                <div class="flex task-details">
+                    <div>Details</div>
                 </div>
             </div>
         `

@@ -140,7 +140,7 @@ class Project {
 
             back: `
                 <div class="flex" style="align-items: center; justify-content: space-between; font-size: 15px; color: #777; flex: 1; padding-right: 15px;">
-                    <div id="back-btn"><i class="bi-arrow-bar-left"></i> Back to Projects</div>
+                    <div class="back-btn"><i class="bi-arrow-bar-left"></i> Back to Projects</div>
                 </div>
             `
         }
@@ -282,18 +282,14 @@ class Project {
             content.innerHTML = `
                 <div class="flex" style="flex-direction: column; width: 100%;">
                     <div class="flex back-to-projects"></div>
-                    <div class="flex project-title" style="justify-content: center; color: #3b5ab1; font-size: 50px;">${ project.name }</div>
+                    <div class="flex project-title" style="justify-content: center; color: #fff; font-size: 50px;">${ project.name }</div>
 
-                    <h2>Project Description</h2>
-                    <div class="flex project-description" style="width: 100%; background-color: #fff;">
-                        <div style="padding: 15px;">
-                            <p><u>Created By</u>:<br>${ project.creator.name }</p>
-                            <p><u>Description</u>:<br>${ project.description }</p>
-                        </div>
-                    </div>
+                    <br>
+                    <p style="color: #fff; text-align: center;">Creator: <u>${ project.creator.name }</u></p>
+                    <p style="color: #fff; text-align: center;">${ project.description }</p>
                     
                     <br>
-                    <h2>Build Your Team</h2>
+                    <h2 style="color: #ddd;">Build Your Team</h2>
                     <div class="flex build-team" style="width: 100%; flex-direction: row; justify-content: space-around;"></div>
                     
                     <br>
@@ -344,10 +340,10 @@ class Project {
                     <div class="flex owned-projects"></div>
                 </div>
 
-                <h2>Projects Assigned to You</h2>
+                <h2 style="color: #aaa;">Projects Assigned to You</h2>
                 <div class="flex assigned-projects"></div>
                 
-                <h2>Projects By Other Users</h2>
+                <h2 style="color: #333;">Projects By Other Users</h2>
                 <div class="flex other-projects"></div>
             </div>
         `

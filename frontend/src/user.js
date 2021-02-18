@@ -36,35 +36,26 @@ class User {
         return Department.all.find(d => d.id == this.department_id).name
     }
 
-    static get sort() {
-        let data = {
-            alphabetical: () => {
-                let data = []
-                for (let user of User.all) {
-                    data.push(user.email)
-                }
-                data.sort()
-                let sorted = []
-                for (let i=0; i<data.length; i++) {
-                    sorted[i] = User.all.find(u => u.email === data[i])
-                }
-                return sorted
-            },
+    static sortby(key) {
+        debugger
+        if (typeof(User.all[0][key]) === "number") {
+            return User.all.sort((u1, u2) => {
+                return u1[key] - u2[key]
+            })
 
-            reverse: () => {
-                let data = []
-                for (let user of User.all) {
-                    data.push(user.email)
+        } else if (typeof(User.all[0][key]) === "string") {
+            return User.all.sort((u1, u2) => {
+                let n1 = u1[key].toUpperCase()
+                let n2 = u2[key].toUpperCase()
+
+                if (n1 < n2) {
+                    return -1
+                } else if (n1 > n2) {
+                    return 1
                 }
-                data.sort().reverse()
-                let sorted = []
-                for (let i=0; i<data.length; i++) {
-                    sorted[i] = User.all.find(u => u.email === data[i])
-                }
-                return sorted
-            }
+                return 0
+            })
         }
-        return data
     }
 
     static search(term) {

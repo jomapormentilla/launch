@@ -20,7 +20,7 @@ class Inbox {
     static render() {
         content.innerHTML = `
             <div class="flex col" style="width: 100%;">
-                <h2 style="color: #fff;">${ current_user.name }'s Inbox</h2>
+                <h1 style="color: #fff; text-align: center;">${ current_user.name }'s Inbox</h1>
                 <input type="search" class="user-search" placeholder="Search for a user...">
                 <div class="flex" id="inbox-container">
                     <div class="flex user-list"></div>
