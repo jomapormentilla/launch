@@ -521,10 +521,25 @@ button:hover {
         background-size: auto 100%;
         background-position: center;
         border-bottom: solid 1px #aaa;
+        align-items: center;
+        overflow-y: scroll;
     }
 
         .message-content > div {
             padding: 10px;
+            width: 500px;
+            border-radius: 10px;
+            margin-top: 10px;
+        }
+
+        .message-sender {
+            background-color: #dbf0fb;
+            justify-content: flex-end;
+        }
+        
+        .message-receiver {
+            background-color: #ffd7da;
+            justify-content: flex-start;
         }
 
     .message-textarea {
@@ -545,16 +560,4 @@ button:hover {
             min-width: fit-content;
             width: 100px;
             height: 100%;
-        }
-
-        .message-sender {
-            background-color: blue;
-            color: #fff;
-            width: fit-content;
-        }
-        
-        .message-receiver {
-            background-color: red;
-            color: #fff;
-            width: fit-content;
         }

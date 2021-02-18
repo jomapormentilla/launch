@@ -41,9 +41,9 @@ class Inbox {
 
         for (let message of messages) {
             if (message.sender === current_user) {
-                html += `<div class="message-sender">${ message.content }</div>`
+                html += `<div class="flex message-sender">${ message.content }</div>`
             } else {
-                html += `<div class="message-receiver">${ message.content }</div>`
+                html += `<div class="flex message-receiver">${ message.content }</div>`
             }
         }
 
@@ -58,7 +58,7 @@ class Inbox {
                 <div class="flex" id="inbox-container">
                     <div class="flex user-list"></div>
                     <div class="flex message-container">
-                        <div class="message-content"><div>test test</div></div>
+                        <div class="flex col message-content"><div>test test</div></div>
                         <div class="flex message-textarea">
                             <textarea placeholder="Select a user to start a conversation"></textarea>
                             <button><i class="bi bi-cursor-fill" style="font-size: 25px;"></i></button>
