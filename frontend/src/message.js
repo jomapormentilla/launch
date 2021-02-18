@@ -1,4 +1,6 @@
 class Message {
+    static months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+    
     static all = []
 
     constructor({id, content, sender_id, receiver_id, created_at, updated_at}) {
@@ -6,8 +8,8 @@ class Message {
         this.content = content
         this.senderId = sender_id
         this.receiverId = receiver_id
-        this.created = created_at
-        this.updated = updated_at
+        this.created = new Date(created_at)
+        this.updated = new Date(updated_at)
 
         Message.all.push(this)
     }
@@ -22,5 +24,24 @@ class Message {
 
     get receiver() {
         return User.all.find(u => u.id === this.receiverId)
+    }
+
+    get sent_date() {
+        let year, month, date, hour, min, sec, ampm
+
+        year = this.created.getFullYear()
+        month = Message.months[this.created.getMonth()]
+        date = this.created.getDate()
+        hour = this.created.getHours()
+        min = this.created.getMinutes()
+        sec = this.created.getSeconds()
+        ampm = "am"
+
+        if (hour > 12) {
+            hour = hour - 12
+            ampm = "pm"
+        }
+
+        return `${ month } ${ date }, ${ year } - ${ hour }:${ min }:${ sec }${ ampm }`
     }
 }

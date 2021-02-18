@@ -35,19 +35,63 @@ class Inbox {
     }
 
     static handleListClick = e => {
-        let user = User.all.find(u => u.name === e.target.innerText)
+        if (e.target.nodeName === "LI") {
+            for (let item of document.querySelectorAll("li")) {
+                item.classList.remove("message-active")
+            }
+            e.target.classList.add("message-active")
+            let user = User.all.find(u => u.name === e.target.innerText)
+            
+            this.renderMessages(user)
+        }
+    }
+
+    static renderMessages = user => {
         let messages = Message.with(user)
         let html = ``
 
         for (let message of messages) {
             if (message.sender === current_user) {
-                html += `<div class="flex message-sender">${ message.content }</div>`
+                html += `
+                    <div class="flex message-sender">
+                        <div style="text-align: right;">
+                        <p style="color: #aaa;">${ message.sent_date }</p>
+                        ${ message.content }
+                        </div>
+                    </div>
+                `
             } else {
-                html += `<div class="flex message-receiver">${ message.content }</div>`
+                html += `
+                    <div class="flex message-receiver">
+                        <div>
+                        <p style="color: #aaa;">${ message.sent_date }</p>
+                        ${ message.content }
+                        </div>
+                    </div>
+                `
             }
         }
 
-        document.querySelector(".message-content").innerHTML = html
+        if (messages.length === 0) {
+            document.querySelector(".message-content").innerHTML = `<div class="flex">You have not started a conversation with this ${ user.name }.</div>`
+        } else {
+            document.querySelector(".message-content").innerHTML = html
+        }
+    }
+
+    static handleNewMessage = e => {
+        e.preventDefault()
+
+        let user = User.all.find(u => u.name === document.querySelector(".message-active").innerText)
+
+        let data = {
+            content: e.target.children[0].value,
+            sender_id: current_user.id,
+            receiver_id: user.id
+        }
+
+        MessageApi.createMessage(data)
+        e.target.reset()
     }
 
     static render() {
@@ -58,11 +102,11 @@ class Inbox {
                 <div class="flex" id="inbox-container">
                     <div class="flex user-list"></div>
                     <div class="flex message-container">
-                        <div class="flex col message-content"><div>test test</div></div>
-                        <div class="flex message-textarea">
-                            <textarea placeholder="Select a user to start a conversation"></textarea>
-                            <button><i class="bi bi-cursor-fill" style="font-size: 25px;"></i></button>
-                        </div>
+                        <div class="flex col message-content"><div>Select a user to start a conversation</div></div>
+                        <form class="flex message-textarea" id="new-message-form">
+                            <textarea></textarea>
+                            <button type="submit"><i class="bi bi-cursor-fill" style="font-size: 25px;"></i></button>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -74,5 +118,6 @@ class Inbox {
         // Event Listeners
         document.querySelector(".user-search").addEventListener("keyup", this.html.filter)
         document.querySelector(".user-list").addEventListener("click", this.handleListClick)
+        document.getElementById("new-message-form").addEventListener("submit", this.handleNewMessage)
     }
 }

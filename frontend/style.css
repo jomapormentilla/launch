@@ -497,13 +497,18 @@ button:hover {
         cursor: pointer;
     }
 
-    .user-list li:hover, .user-list > li:nth-child(even):hover {
+    .user-list li:hover {
         background-color: #8ec1fb;
     }
 
-    .user-list > li:nth-child(even) {
+    /* .user-list > li:nth-child(even) {
         background-color: #fafafa;
-    }
+    } */
+
+.message-active {
+    background-color: #3b5ab1;
+    color: #fff;
+}
 
 .message-container {
     flex-grow: 3; 
@@ -526,7 +531,7 @@ button:hover {
     }
 
         .message-content > div {
-            padding: 10px;
+            padding: 0px 10px 10px 10px;
             width: 500px;
             border-radius: 10px;
             margin-top: 10px;

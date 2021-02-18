@@ -11,4 +11,24 @@ class MessageApi {
                 }
             })
     }
+
+    static createMessage = data => {
+        let configObj = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify(data)
+        }
+
+        fetch(this.url, configObj)
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                let user = User.all.find(u => u.id === data.receiver_id)
+                this.getMessages()
+                setTimeout(()=>{Inbox.renderMessages(user)}, 500)
+            })
+    }
 }
