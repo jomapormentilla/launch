@@ -31,4 +31,21 @@ class MessageApi {
                 setTimeout(()=>{Inbox.renderMessages(user)}, 500)
             })
     }
+
+    static updateMessage = data => {
+        let configObj = {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify(data)
+        }
+
+        fetch(this.url + `/${ data.id }`, configObj)
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+            })
+    }
 }

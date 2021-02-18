@@ -3,13 +3,14 @@ class Message {
     
     static all = []
 
-    constructor({id, content, sender_id, receiver_id, created_at, updated_at}) {
+    constructor({id, content, sender_id, receiver_id, created_at, updated_at, seen}) {
         this.id = id
         this.content = content
         this.senderId = sender_id
         this.receiverId = receiver_id
         this.created = new Date(created_at)
         this.updated = new Date(updated_at)
+        this.seen = seen
 
         Message.all.push(this)
     }
@@ -42,6 +43,18 @@ class Message {
             ampm = "pm"
         }
 
+        if (min < 10) {
+            min = "0" + min
+        }
+
+        if (sec < 10) {
+            sec = "0" + sec
+        }
+
         return `${ month } ${ date }, ${ year } - ${ hour }:${ min }:${ sec }${ ampm }`
+    }
+
+    static unseen(user) {
+        return this.with(user).filter(m => m.seen === false)
     }
 }

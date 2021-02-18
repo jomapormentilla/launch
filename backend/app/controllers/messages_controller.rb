@@ -14,6 +14,16 @@ class MessagesController < ApplicationController
         end
     end
 
+    def update
+        message = Message.find_by_id(params[:id])
+
+        if message.update(message_params)
+            render json: message
+        else
+            render json: { error: 'Something went wrong! Unable to update message.' }
+        end
+    end
+
     private
 
     def message_params

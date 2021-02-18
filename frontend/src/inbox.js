@@ -4,7 +4,7 @@ class Inbox {
             users: (array) => {
                 document.querySelector(".user-list").innerHTML = ``
                 for (let user of array) {
-                    document.querySelector(".user-list").innerHTML += `<li>${ user.name }</li>`
+                    document.querySelector(".user-list").innerHTML += `<li data-id="${ user.id }">${ user.name }</li>`
                 }
             },
 
@@ -17,37 +17,21 @@ class Inbox {
         return data
     }
 
-    static get messages() {
-        let data = {
-            sender: () => {
-
-            },
-
-            receiver: () => {
-                
-            },
-
-            render: () => {
-                document.querySelector(".message-content").innerHTML = `AYO`
-            }
-        }
-        return data
-    }
-
     static handleListClick = e => {
         if (e.target.nodeName === "LI") {
             for (let item of document.querySelectorAll("li")) {
                 item.classList.remove("message-active")
             }
             e.target.classList.add("message-active")
-            let user = User.all.find(u => u.name === e.target.innerText)
+            let user = User.all.find(u => u.id == e.target.dataset.id)
             
             this.renderMessages(user)
         }
     }
 
-    static renderMessages = user => {
+    static renderMessages = (user, e) => {
         let messages = Message.with(user)
+
         let html = ``
 
         for (let message of messages) {
@@ -55,7 +39,7 @@ class Inbox {
                 html += `
                     <div class="flex message-sender">
                         <div style="text-align: right;">
-                        <p style="color: #aaa;">${ message.sent_date }</p>
+                        <p style="color: #aaa; text-align: center;">${ message.sent_date }</p>
                         ${ message.content }
                         </div>
                     </div>
@@ -64,7 +48,7 @@ class Inbox {
                 html += `
                     <div class="flex message-receiver">
                         <div>
-                        <p style="color: #aaa;">${ message.sent_date }</p>
+                        <p style="color: #aaa; text-align: center;">${ message.sent_date }</p>
                         ${ message.content }
                         </div>
                     </div>
@@ -76,13 +60,14 @@ class Inbox {
             document.querySelector(".message-content").innerHTML = `<div class="flex">You have not started a conversation with this ${ user.name }.</div>`
         } else {
             document.querySelector(".message-content").innerHTML = html
+            document.querySelector(".message-content").scrollTop = document.querySelector(".message-content").scrollHeight;
         }
     }
 
     static handleNewMessage = e => {
         e.preventDefault()
 
-        let user = User.all.find(u => u.name === document.querySelector(".message-active").innerText)
+        let user = User.all.find(u => u.id == document.querySelector(".message-active").dataset.id)
 
         let data = {
             content: e.target.children[0].value,
