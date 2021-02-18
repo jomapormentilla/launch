@@ -546,3 +546,15 @@ button:hover {
             width: 100px;
             height: 100%;
         }
+
+        .message-sender {
+            background-color: blue;
+            color: #fff;
+            width: fit-content;
+        }
+        
+        .message-receiver {
+            background-color: red;
+            color: #fff;
+            width: fit-content;
+        }

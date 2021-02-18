@@ -13,6 +13,14 @@ class Message {
     }
 
     static with(receiver) {
-        return Message.all.filter(m => m.senderId === current_user.id && m.receiverId === receiver.id)
+        return Message.all.filter(m => (m.senderId === current_user.id || m.receiverId === current_user.id) && (m.senderId === receiver.id || m.receiverId === receiver.id))
+    }
+
+    get sender() {
+        return User.all.find(u => u.id === this.senderId)
+    }
+
+    get receiver() {
+        return User.all.find(u => u.id === this.receiverId)
     }
 }
