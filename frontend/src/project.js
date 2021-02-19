@@ -305,6 +305,7 @@ class Project {
         
         // Click on Project Card
         } else if (e.target.classList.contains("card")) {
+            window.scrollTo(0,0)
             let project = Project.all.find(p => p.id == e.target.dataset.id)
 
             // Render Project Details
@@ -342,7 +343,7 @@ class Project {
             // New Manipulations
             document.querySelector(".back-to-projects").innerHTML = this.new.back
             document.querySelector(".build-team").innerHTML = project.buildTeam.div
-            document.querySelector(".build-task").innerHTML = project.buildTask.form
+            if (project.creator === current_user) { document.querySelector(".build-task").innerHTML = project.buildTask.form } else { document.querySelector(".build-task").innerHTML = `You do not have permission to create tasks for this project.` }
             document.querySelector(".task-list").innerHTML = project.buildTask.list()
             this.createComment(project)
 
