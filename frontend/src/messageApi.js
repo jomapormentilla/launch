@@ -23,13 +23,13 @@ class MessageApi {
         }
 
         fetch(this.url, configObj)
-            .then(res => res.json())
-            .then(data => {
-                console.log(data)
-                let user = User.all.find(u => u.id === data.receiver_id)
-                this.getMessages()
-                setTimeout(()=>{Inbox.renderMessages(user)}, 500)
-            })
+            // .then(res => res.json())
+            // .then(data => {
+            //     console.log(data)
+            //     let user = User.all.find(u => u.id === data.receiver_id)
+            //     this.getMessages()
+            //     setTimeout(()=>{Inbox.renderMessages(user)}, 500)
+            // })
     }
 
     static updateMessage = data => {

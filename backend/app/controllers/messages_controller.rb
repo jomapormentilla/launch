@@ -5,10 +5,11 @@ class MessagesController < ApplicationController
     end
 
     def create
-        message = Message.new(message_params)
+        @message = Message.new(message_params)
 
-        if message.save
-            render json: message
+        if @message.save
+            # render json: @message
+            ActionCable.server.broadcast("messages", { type: "create", data: @message })
         else
             render json: { error: 'Something went wrong! Unable to save message.' }
         end
