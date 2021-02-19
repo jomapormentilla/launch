@@ -27,12 +27,7 @@ class Project {
     }
 
     get tasks() {
-        let data = []
-        for (let task of this.taskIds) {
-            let find = Task.all.find(t => t.id == task.id)
-            data.push(find)
-        }
-        return data
+        return Task.sortby("status").filter(t => t.projectId === this.id)
     }
 
     get currentTeam() {
@@ -297,7 +292,7 @@ class Project {
                     <div class="flex build-task" style="background-color: #fff; padding: 10px;"></div>
 
                     <br>
-                    <h2>Current Tasks</h2>
+                    <h2>Current Tasks <small>(${ project.tasks.length })</small></h2>
                     <table class="task-list"></table>
                 </div>
             `

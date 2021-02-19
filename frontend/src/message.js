@@ -55,11 +55,13 @@ class Message {
         hour = this.created.getHours()
         min = this.created.getMinutes()
         sec = this.created.getSeconds()
-        ampm = "am"
+        ampm = "AM"
 
         if (hour > 12) {
             hour = hour - 12
-            ampm = "pm"
+            ampm = "PM"
+        } else if (hour === 0) {
+            hour = 12
         }
 
         if (min < 10) {
@@ -70,6 +72,6 @@ class Message {
             sec = "0" + sec
         }
 
-        return `${ month } ${ date }, ${ year } - ${ hour }:${ min }:${ sec }${ ampm }`
+        return `${ month } ${ date }, ${ year } - ${ hour }:${ min }:${ sec } ${ ampm }`
     }
 }

@@ -1,4 +1,5 @@
 class Task {
+    static months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
     static backlog = document.getElementById("backlog")
     static inProgress = document.getElementById("inProgress")
     static completed = document.getElementById("completed")
@@ -9,7 +10,7 @@ class Task {
         this.id = id
         this.name = name
         this.description = description
-        this.deadline = deadline
+        this.deadline = new Date(deadline)
         this.userId = user_id
         this.projectId = project_id
         this.status = status
@@ -24,6 +25,35 @@ class Task {
 
     get project() {
         return Project.all.find(p => p.id == this.projectId)
+    }
+
+    get due_date() {
+        let year, month, date, hour, min, sec, ampm
+
+        year = this.deadline.getFullYear()
+        month = Task.months[this.deadline.getMonth()]
+        date = this.deadline.getDate()
+        hour = this.deadline.getHours()
+        min = this.deadline.getMinutes()
+        sec = this.deadline.getSeconds()
+        ampm = "AM"
+
+        if (hour > 12) {
+            hour = hour - 12
+            ampm = "PM"
+        } else if (hour === 0) {
+            hour = 12
+        }
+
+        if (min < 10) {
+            min = "0" + min
+        }
+
+        if (sec < 10) {
+            sec = "0" + sec
+        }
+
+        return `${ month } ${ date }, ${ year } - ${ hour }:${ min }:${ sec } ${ ampm }`
     }
 
     static sortby(key) {
@@ -114,6 +144,7 @@ class Task {
             document.querySelector(".task-details").innerHTML = `
                 <div class="flex col">
                     <h1>${ task.name }</h1>
+                    <p>Due: ${ task.due_date }</p>
                     <p>${ task.description }</p>
                     <p>Assigned to: ${ task.user.name }</p>
                 </div>
@@ -156,9 +187,7 @@ class Task {
                 </div>
 
                 <h2 style="color: #aaa;">Task Details</h2>
-                <div class="flex task-details">
-                    <div>Details</div>
-                </div>
+                <div class="flex task-details"></div>
             </div>
         `
         
