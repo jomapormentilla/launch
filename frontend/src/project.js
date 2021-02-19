@@ -362,7 +362,7 @@ class Project {
             e.target.classList.add("bi-star")
 
         // Back to Projects
-        } else if (e.target.id === "back-btn") {
+        } else if (e.target.classList.contains("back-btn")) {
             Project.render()
 
         } else if (e.target.classList.contains("bi-pencil-square")) {

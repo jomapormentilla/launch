@@ -101,7 +101,7 @@ class Task {
 
             select: () => {
                 let data = `<select id="task-select"><option selected>Select a Project</option>`
-                for (let project of current_user.projects.filter(p => p.tasks.length !== 0 && p.tasks.filter(t => t.user === current_user).length !== 0)) {
+                for (let project of current_user.projects.filter(p => p.tasks.length !== 0)) {
                     data += `<option value="${ project.id }">${ project.name }</option>`
                 }
                 data += `</select>`
@@ -111,7 +111,7 @@ class Task {
             sort: (array) => {
                 let tasks = array.filter(t => t.user.id == current_user.id)
 
-                for (let task of tasks) {
+                for (let task of array) {
                     if (task.status === "backlog") {
                         backlog.innerHTML += task.html.item
                     } else if (task.status === "inprogress") {
@@ -178,7 +178,6 @@ class Task {
 
             document.querySelector(".task-details").innerHTML = `
                 <div class="flex col" style="width: 100%;">
-                    <button>Move to In Progress</button>
                     <h1>${ task.name }</h1>
                     <p>
                         Deadline: ${ task.due_date }<br>

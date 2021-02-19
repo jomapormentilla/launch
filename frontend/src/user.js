@@ -190,6 +190,7 @@ class User {
     static handleDivClick = e => {
         // debugger
         if (e.target.id.includes("user-row")) {
+            window.scrollTo(0,0)
             let user = User.all.find(u => u.id == e.target.id.split("-")[2])
             user.profile.render()
         }

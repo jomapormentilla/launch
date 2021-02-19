@@ -16,8 +16,8 @@ class Inbox {
 
             seen: (user) => {
                 let count = Message.unseen(user).length
-                if (count > 0) {
-                    return `<span id="message-unseen">${ count }</span> &nbsp;`
+                if (count > 0 && user !== current_user) {
+                    return `<span class="message-unseen">${ count }</span> &nbsp;`
                 } else {
                     return ``
                 }
