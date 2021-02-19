@@ -58,7 +58,8 @@ class User {
     }
 
     static search(term) {
-        return User.sortby("firstName").filter(u => { return u.firstName.includes(term) || u.lastName.includes(term) || u.email.includes(term) })
+        let _term = term.toUpperCase()
+        return User.sortby("firstName").filter(u => { return u.firstName.toUpperCase().includes(_term) || u.lastName.toUpperCase().includes(_term) || u.email.toUpperCase().includes(_term) || u.department.toUpperCase().includes(_term) })
     }
 
     // Etc
@@ -70,14 +71,16 @@ class User {
         let data = {
             render: () => {
                 content.innerHTML = `
-                    <div class="flex col user-profile" style="background-color: #fff; padding: 15px; width: 100%;">
-                        ${ User.actions.back }
-                        <h1>${ this.name }</h1>
-                        <div>
-                            <table class="user-profile">
-                                <tr><td>Email: </td><td> ${ this.email }</td><tr>
-                                <tr><td>Tasks: </td><td> ${ this.tasks.length }</td><tr>
-                            </table>
+                    <div class="flex" style="width: 100%;">
+                        <div class="flex col user-profile" style="background-color: #fff; width: 100%; padding: 10px;">
+                            ${ User.actions.back }
+                            <h1>${ this.name }<br><small style="color: #777;">${ this.department }</small></h1>
+                            <div>
+                                <table class="user-profile">
+                                    <tr><td>Email: </td><td> ${ this.email }</td><tr>
+                                    <tr><td>Tasks: </td><td> ${ this.tasks.length }</td><tr>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 `
@@ -111,10 +114,10 @@ class User {
                 </div>
             `,
             list: `
-                <li id="user-list-${ this.id }">${ this.firstName } ${ this.lastName } - ${ this.department }</li>
+                <li id="user-list-${ this.id }">${ this.name } - ${ this.department }</li>
             `,
             option: `
-                <option value="${ this.id }">${ this.firstName } ${ this.lastName }</option>
+                <option value="${ this.id }">${ this.name }</option>
             `,
             profile: `
                 <div id="profile">
@@ -149,7 +152,7 @@ class User {
             list: () => {
                 let data = ``
                 for (let user of User.sortby("firstName")) {
-                    data += `<li id="user-list-${ user.id }">${ user.firstName } ${ user.lastName } - ${ user.department }</li>`
+                    data += `<li id="user-list-${ user.id }">${ user.name } - ${ user.department }</li>`
                 }
                 return data
             }
@@ -197,7 +200,7 @@ class User {
         content.innerHTML = `
             <div class="flex col" style="width: 100%;">
                 <h1 style="color: #fff; text-align: center; font-size: 35px;">Users</h1>
-                <input type="search" class="user-search" placeholder="Search for a user...">
+                <input type="search" class="user-search" placeholder="Search for a User by Name, Email, or Department">
                 <div id="users-table"></div>
             </div>
         `

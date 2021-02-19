@@ -4,7 +4,7 @@ class Inbox {
             users: (array) => {
                 document.querySelector(".user-list").innerHTML = ``
                 for (let user of array) {
-                    document.querySelector(".user-list").innerHTML += `<li data-id="${ user.id }">${ user.name } ${ this.html.seen(user) }</li>`
+                    document.querySelector(".user-list").innerHTML += `<li data-id="${ user.id }">${ this.html.seen(user) }${ user.name }</li>`
                 }
             },
 
@@ -17,7 +17,7 @@ class Inbox {
             seen: (user) => {
                 let count = Message.unseen(user).length
                 if (count > 0) {
-                    return `<span id="message-unseen">${ count }</span>`
+                    return `<span id="message-unseen">${ count }</span> &nbsp;`
                 } else {
                     return ``
                 }

@@ -27,12 +27,12 @@ class Project {
     }
 
     get tasks() {
-        let projectTasks = []
+        let data = []
         for (let task of this.taskIds) {
             let find = Task.all.find(t => t.id == task.id)
-            projectTasks.push(find)
+            data.push(find)
         }
-        return projectTasks
+        return data
     }
 
     get currentTeam() {
@@ -44,6 +44,7 @@ class Project {
                 }
                 return html
             },
+            
             option: () => {
                 let html = ``
                 for (let user of this.users) {
@@ -202,35 +203,35 @@ class Project {
     get buildTask() {
         let data = {
             form: `
-                <form id="new-task-form" class="flex">
-                    <div class="flex">
-                        <input type="text" placeholder="Task Name">
-                        <input type="text" placeholder="Task Description">
+                <form id="new-task-form" class="flex" style="width: 100%;">
+                    <div class="flex col" style="flex: 1; margin-right: 10px;">
+                        <h3>Name</h3>
+                        <input type="text" name="name" placeholder="Task Name">
+                        <h3>Description</h3>
+                        <textarea type="text" name="description" placeholder="Task Description" style="height: 150px;"></textarea>
                     </div>
 
-                    <h3>Deadline</h3>
-                    <div class="flex">
-                        <input type="date">
-                        <input type="time">
-                    </div>
+                    <div class="flex col" style="flex: 1; margin-left: 10px;">
+                        <h3>Deadline</h3>
+                        <input name="date" type="date">
+                        <input name="time" type="time">
 
-                    <div class="flex">
                         <h3>Assign To</h3>
                         <select id="new-task-select" name="userId"><option>Assign to a Team Member</option>${ this.currentTeam.option() }</select>
                     </div>
 
-                    <button type="submit">Create Task</button>
+                    <button type="submit" style="margin-top: 10px;">Create Task</button>
                 </form>
             `,
 
             create: (e) => {
                 e.preventDefault()
-
+                
                 let data = {
-                    name: e.target.children[0].value,
-                    description: e.target.children[1].value,
-                    deadline: e.target.children[3].value + ' ' + e.target.children[4].value,
-                    user_id: parseInt(e.target.children[6].value, 10),
+                    name: e.target.name.value,
+                    description: e.target.description.value,
+                    deadline: e.target.date.value + ' ' + e.target.time.value,
+                    user_id: parseInt(e.target.userId.value, 10),
                     project_id: this.id,
                     status: "backlog"
                 }

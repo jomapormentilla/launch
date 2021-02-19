@@ -52,10 +52,6 @@ body, html {
     color: #fff;
 }
 
-#inbox-count {
-    
-}
-
 #login {
     justify-content: center;
     align-items: center;
@@ -489,6 +485,7 @@ button:hover {
     background-color: #fff;
     border-right: solid 1px #aaa;
     width: fit-content;
+    min-width: 150px;
     /* height: 100%; */
     align-items: flex-start;
     align-content: flex-start;
