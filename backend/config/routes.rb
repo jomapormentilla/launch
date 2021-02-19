@@ -1,13 +1,13 @@
 Rails.application.routes.draw do
-  resources :comments
-  resources :messages
   post '/authenticate' => "users#authenticate"
   post '/authenticateToken' => "users#authenticateToken"
-
-  resources :departments
+  
+  resources :messages, only: [:index, :create, :update]
+  resources :comments, only: [:index, :create, :update]
   resources :tasks
   resources :projects
   resources :users
+  resources :departments
   resources :user_projects, only: [:create, :destroy]
 
   mount ActionCable.server => '/cable'

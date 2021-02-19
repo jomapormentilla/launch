@@ -30,6 +30,10 @@ class Project {
         return Task.sortby("status").filter(t => t.projectId === this.id)
     }
 
+    get comments() {
+        return Comment.all.filter(c => c.type === "Project" && c.typeId === this.id)
+    }
+
     get currentTeam() {
         let data = {
             list: () => {
@@ -209,7 +213,7 @@ class Project {
                     <div class="flex col" style="flex: 1; margin-left: 10px;">
                         <h3>Deadline</h3>
                         <input name="date" type="date">
-                        <input name="time" type="time">
+                        <input name="time" type="time" value="10:00:00">
 
                         <h3>Assign To</h3>
                         <select id="new-task-select" name="userId"><option>Assign to a Team Member</option>${ this.currentTeam.option() }</select>
@@ -292,7 +296,7 @@ class Project {
                     <div class="flex build-task" style="background-color: #fff; padding: 10px;"></div>
 
                     <br>
-                    <h2>Current Tasks <small>(${ project.tasks.length })</small></h2>
+                    <h2>Current Tasks <small class="task-count">(${ project.tasks.length })</small></h2>
                     <table class="task-list"></table>
                 </div>
             `

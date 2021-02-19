@@ -7,7 +7,8 @@ class TaskSerializer
         @task.to_json(
             :include => [
                 :project => {only: [:name]},
-                :user => {except: [:password, :token]}
+                :user => {except: [:password, :token]},
+                :comments => {only: [:id]}
             ]
         )
     end

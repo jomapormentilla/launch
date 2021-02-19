@@ -34,6 +34,7 @@ class TaskApi {
             Error.alert("Success")
             document.getElementById("new-task-form").reset()
             document.querySelector(".task-list").innerHTML = project.buildTask.list()
+            document.querySelector(".task-count").innerHTML = `(${ project.tasks.length })`
           }
         })
     }

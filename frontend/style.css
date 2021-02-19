@@ -459,6 +459,7 @@ button:hover {
     padding: 10px;
 }
 
+
     #inProgress .task-item {
         background-color: orange;
         color: #fff;
@@ -467,6 +468,14 @@ button:hover {
     #completed .task-item {
         background-color: green;
         color: #fff;
+    }
+
+.task-comments {
+    width: 100%;
+}
+
+    .task-comments > div {
+        padding: 10px;
     }
 
 .user-search {

@@ -15,6 +15,7 @@ document.addEventListener("DOMContentLoaded", (e) => {
     TaskApi.getTasks()
     UserApi.getUsers()
     MessageApi.getMessages()
+    CommentApi.getComments()
     setTimeout(()=>{ Login.render() }, 1000)
     Nav.seed()
 })

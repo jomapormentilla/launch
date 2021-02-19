@@ -27,6 +27,10 @@ class Task {
         return Project.all.find(p => p.id == this.projectId)
     }
 
+    get comments() {
+        return Comment.all.filter(c => c.type === "Task" && c.typeId === this.id)
+    }
+
     get due_date() {
         let year, month, date, hour, min, sec, ampm
 
@@ -130,6 +134,14 @@ class Task {
                 backlog.innerHTML = `<div class="task-header">BACKLOG</div>`
                 inProgress.innerHTML = `<div class="task-header">IN PROGRESS</div>`
                 completed.innerHTML = `<div class="task-header">COMPLETED</div>`
+            },
+
+            comments: (task) => {
+                let html = ``
+                for (let comment of task.comments) {
+                    html += `<div class="task-comment">${ comment.content }</div>`
+                }
+                document.querySelector(".task-comments").innerHTML = html
             }
         }
         return data
@@ -147,9 +159,14 @@ class Task {
                     <p>Due: ${ task.due_date }</p>
                     <p>${ task.description }</p>
                     <p>Assigned to: ${ task.user.name }</p>
+                    
+                    <h2>Comments:</h2>
+                    <div class="flex task-comments"></div>
                 </div>
             `
 
+            this.backlogContainer.comments(task)
+            
             // if (e.target.parentElement.id === "backlog") {
             //     document.getElementById("inProgress").append(e.target)
             //     task.status = "inprogress"
