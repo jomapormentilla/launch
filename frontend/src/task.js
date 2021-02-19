@@ -1,5 +1,6 @@
 class Task {
     static months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+
     static backlog = document.getElementById("backlog")
     static inProgress = document.getElementById("inProgress")
     static completed = document.getElementById("completed")
@@ -139,12 +140,34 @@ class Task {
             comments: (task) => {
                 let html = ``
                 for (let comment of task.comments) {
-                    html += `<div class="task-comment">${ comment.content }</div>`
+                    html += `
+                        <div class="task-comment">
+                            <p><strong>${ comment.user.name }</strong><br><span style="color: #777;">${ comment.date }</span></p>
+                            <p>${ comment.content }</p>
+                        </div>
+                    `
                 }
-                document.querySelector(".task-comments").innerHTML = html
+
+                if (task.comments.length === 0) {
+                    document.querySelector(".task-comments").innerHTML = `<div style="text-align: center;">This task does not have any comments.</div>`    
+                } else {
+                    document.querySelector(".task-comments").innerHTML = html
+                }
             }
         }
         return data
+    }
+
+    static handleTaskComment = e => {
+        e.preventDefault()
+
+        let data = {
+            content: e.target.content.value,
+            type: "Task",
+            id: e.target.taskId.value
+        }
+
+        CommentApi.createComment(data)
     }
 
     // Click Handling
@@ -154,19 +177,27 @@ class Task {
             let task = Task.all.find(t => t.id == e.target.id.split("-")[1])
 
             document.querySelector(".task-details").innerHTML = `
-                <div class="flex col">
+                <div class="flex col" style="width: 100%;">
                     <h1>${ task.name }</h1>
-                    <p>Due: ${ task.due_date }</p>
+                    <p>
+                        Deadline: ${ task.due_date }<br>
+                        Assigned To: ${ task.user.name }
+                    </p>
                     <p>${ task.description }</p>
-                    <p>Assigned to: ${ task.user.name }</p>
                     
                     <h2>Comments:</h2>
-                    <div class="flex task-comments"></div>
+                    <form id="task-comment-form">
+                        <input type="hidden" name="taskId" value="${ task.id }">
+                        <textarea name="content" placeholder="${ current_user.firstName } says..."></textarea>
+                        <button type="submit">Submit</button>
+                    </form>
+                    <div class="flex col task-comments"></div>
                 </div>
             `
 
             this.backlogContainer.comments(task)
-            
+            document.getElementById("task-comment-form").addEventListener("submit", this.handleTaskComment)
+
             // if (e.target.parentElement.id === "backlog") {
             //     document.getElementById("inProgress").append(e.target)
             //     task.status = "inprogress"
