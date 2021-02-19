@@ -348,7 +348,7 @@ class Project {
             this.createComment(project)
 
             // New Event Listeners
-            document.getElementById("new-task-form").addEventListener("submit", (e) => { project.buildTask.create(e) })
+            if (project.creator === current_user) { document.getElementById("new-task-form").addEventListener("submit", (e) => { project.buildTask.create(e) }) }
             document.getElementById("build-team").addEventListener("click", (e) => { project.buildTeam.buildTeamClick(e, project) })
             document.getElementById("current-team").addEventListener("click", (e) => { project.buildTeam.currentTeamClick(e, project) })
             document.getElementById("project-comment-form").addEventListener("submit", this.handleProjectComment)
