@@ -470,11 +470,11 @@ button:hover {
         color: #fff;
     }
 
-.task-comments {
+.task-comments, .project-comments {
     width: 100%;
 }
 
-    .task-comments > div {
+    .task-comments > div, .project-comments > div {
         flex: 1;
         width: 100%;
         padding: 5px 10px;
@@ -483,11 +483,11 @@ button:hover {
         margin-bottom: 10px;
     }
 
-#task-comment-form {
+#task-comment-form, #project-comment-form {
     margin-bottom: 15px;
 }
 
-    #task-comment-form > textarea {
+    #task-comment-form > textarea, #project-comment-form > textarea {
         width: 99%;
         height: 100px;
     }

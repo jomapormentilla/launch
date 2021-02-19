@@ -262,6 +262,36 @@ class Project {
         return data
     }
 
+    static createComment(project) {
+        let html = ``
+        for (let comment of project.comments.reverse()) {
+            html += `
+                <div class="task-comment">
+                    <p><strong>${ comment.user.name }</strong><br><span style="color: #777;">${ comment.date }</span></p>
+                    <p>${ comment.content }</p>
+                </div>
+            `
+        }
+
+        if (project.comments.length === 0) {
+            document.querySelector(".project-comments").innerHTML = `<div style="text-align: center;">This project does not have any comments.</div>`    
+        } else {
+            document.querySelector(".project-comments").innerHTML = html
+        }
+    }
+
+    static handleProjectComment = e => {
+        e.preventDefault()
+
+        let data = {
+            content: e.target.content.value,
+            type: "Project",
+            id: e.target.projectId.value
+        }
+
+        CommentApi.createComment(data)
+    }
+
     // Click Handling
     static handleDivClick = e => {
         // debugger
@@ -298,6 +328,14 @@ class Project {
                     <br>
                     <h2>Current Tasks <small class="task-count">(${ project.tasks.length })</small></h2>
                     <table class="task-list"></table>
+
+                    <h2>Comments:</h2>
+                    <form id="project-comment-form">
+                        <input type="hidden" name="projectId" value="${ project.id }">
+                        <textarea name="content" placeholder="${ current_user.firstName } says..."></textarea>
+                        <button type="submit">Submit</button>
+                    </form>
+                    <div class="flex col project-comments"></div>
                 </div>
             `
 
@@ -306,11 +344,13 @@ class Project {
             document.querySelector(".build-team").innerHTML = project.buildTeam.div
             document.querySelector(".build-task").innerHTML = project.buildTask.form
             document.querySelector(".task-list").innerHTML = project.buildTask.list()
+            this.createComment(project)
 
             // New Event Listeners
             document.getElementById("new-task-form").addEventListener("submit", (e) => { project.buildTask.create(e) })
             document.getElementById("build-team").addEventListener("click", (e) => { project.buildTeam.buildTeamClick(e, project) })
             document.getElementById("current-team").addEventListener("click", (e) => { project.buildTeam.currentTeamClick(e, project) })
+            document.getElementById("project-comment-form").addEventListener("submit", this.handleProjectComment)
 
         // Star Toggle
         } else if (e.target.classList.contains("bi-star")) {

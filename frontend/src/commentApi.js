@@ -35,10 +35,17 @@ class CommentApi {
                 if(!!data.error) {
                     Error.render(data.error)
                 } else {
-                    let task = Task.all.find(t => t.id === data.commentable_id)
-                    new Comment(data)
-                    Task.backlogContainer.comments(task)
-                    document.getElementById("task-comment-form").reset()
+                    if (data.commentable_type === "Task") {
+                        let task = Task.all.find(t => t.id === data.commentable_id)
+                        new Comment(data)
+                        Task.backlogContainer.comments(task)
+                        document.getElementById("task-comment-form").reset()
+                    } else if (data.commentable_type === "Project") {
+                        let project = Project.all.find(t => t.id === data.commentable_id)
+                        new Comment(data)
+                        Project.createComment(project)
+                        document.getElementById("project-comment-form").reset()
+                    }
                 }
             })
     }

@@ -139,7 +139,7 @@ class Task {
 
             comments: (task) => {
                 let html = ``
-                for (let comment of task.comments) {
+                for (let comment of task.comments.reverse()) {
                     html += `
                         <div class="task-comment">
                             <p><strong>${ comment.user.name }</strong><br><span style="color: #777;">${ comment.date }</span></p>
@@ -178,6 +178,7 @@ class Task {
 
             document.querySelector(".task-details").innerHTML = `
                 <div class="flex col" style="width: 100%;">
+                    <button>Move to In Progress</button>
                     <h1>${ task.name }</h1>
                     <p>
                         Deadline: ${ task.due_date }<br>
