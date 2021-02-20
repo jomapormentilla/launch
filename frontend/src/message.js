@@ -32,10 +32,13 @@ class Message {
     }
 
     static markAsSeen(user) {
-        for (let message of Message.unseen(user)) {
-            message.seen = true
-            MessageApi.updateMessage(message)
+        if (Message.unseen(user).length !== 0){
+            MessageApi.updateMessage(Message.unseen(user)[0])
         }
+        // for (let message of Message.unseen(user)) {
+        //     message.seen = true
+        //     MessageApi.updateMessage(message)
+        // }
     }
 
     get sender() {

@@ -46,7 +46,11 @@ class MessageApi {
             .then(res => res.json())
             .then(data => {
                 console.log(data)
-                document.getElementById("inbox-count").innerHTML = Message.unseen_total()
+                let messages = Message.all.filter(m => m.receiverId === current_user.id && m.seen === false)
+                for (let message of messages) {
+                    message.seen = true
+                }
+                setTimeout(()=>{ document.getElementById("inbox-count").innerHTML = Message.unseen_total() },500)
             })
     }
 }

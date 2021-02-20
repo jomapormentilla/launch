@@ -17,8 +17,10 @@ class MessagesController < ApplicationController
 
     def update
         message = Message.find_by_id(params[:id])
-
+        messages = Message.all.where(receiver_id: message.receiver.id, sender_id: message.sender.id, seen: false)
+        
         if message.update({seen: true})
+            messages.each{|m| m.update(seen: true)}
             render json: message
         else
             render json: { error: 'Something went wrong! Unable to update message.' }
@@ -28,6 +30,6 @@ class MessagesController < ApplicationController
     private
 
     def message_params
-        params.require(:message).permit(:content, :sender_id, :receiver_id)
+        params.require(:message).permit(:content, :sender_id, :receiver_id, :seen)
     end
 end

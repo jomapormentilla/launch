@@ -37,13 +37,16 @@ class Inbox {
             this.renderMessages(user)
             if (e.target.childElementCount > 0) {
                 e.target.children[0].remove()
-                setTimeout(()=>{ Message.markAsSeen(user) },1000)
+                Message.markAsSeen(user)
             }
+
+            setTimeout(()=>{ document.getElementById("inbox-count").innerHTML = Message.unseen_total() },1000)
         }
     }
 
     static renderMessages = (user) => {
         let messages = Message.with(user)
+        Message.markAsSeen(user)
 
         let html = ``
 
