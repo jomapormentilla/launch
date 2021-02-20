@@ -122,7 +122,7 @@ class Project {
                 }
 
                 if (projects.length === 0) {
-                    return `<div class="flex" style="background-color: #fff; padding: 10px; width: 100%; justify-content: center;">No Projects Found</div>`
+                    return `<div class="flex" style="background-color: #fff; padding: 10px; width: 100%; justify-content: center; align-items: center; height: 30px;">No Projects Found</div>`
                 } else {
                     return projectCards
                 }
@@ -274,7 +274,7 @@ class Project {
         }
 
         if (project.comments.length === 0) {
-            document.querySelector(".project-comments").innerHTML = `<div style="text-align: center;">This project does not have any comments.</div>`    
+            document.querySelector(".project-comments").innerHTML = `<div style="text-align: center;">This project does not have any notes.</div>`    
         } else {
             document.querySelector(".project-comments").innerHTML = html
         }
@@ -316,7 +316,7 @@ class Project {
 
                     <br>
                     <p style="color: #fff; text-align: center;">Creator: <u>${ project.creator.name }</u></p>
-                    <p style="color: #fff; text-align: center;">${ project.description }</p>
+                    <h3 style="color: #fff; text-align: center; min-width: 400px; width: 50%; align-self: center;">${ project.description }</h3>
                     
                     <br>
                     <h2 style="color: #ddd;">Build Your Team</h2>
@@ -330,7 +330,7 @@ class Project {
                     <h2>Current Tasks <small class="task-count">(${ project.tasks.length })</small></h2>
                     <table class="task-list"></table>
 
-                    <h2>Comments:</h2>
+                    <h2>Notes:</h2>
                     <form id="project-comment-form">
                         <input type="hidden" name="projectId" value="${ project.id }">
                         <textarea name="content" placeholder="${ current_user.firstName } says..."></textarea>
@@ -343,7 +343,7 @@ class Project {
             // New Manipulations
             document.querySelector(".back-to-projects").innerHTML = this.new.back
             document.querySelector(".build-team").innerHTML = project.buildTeam.div
-            if (project.creator === current_user) { document.querySelector(".build-task").innerHTML = project.buildTask.form } else { document.querySelector(".build-task").innerHTML = `You do not have permission to create tasks for this project.` }
+            if (project.creator === current_user) { document.querySelector(".build-task").innerHTML = project.buildTask.form } else { document.querySelector(".build-task").innerHTML = `You do not have permission to create/assign tasks for this project.` }
             document.querySelector(".task-list").innerHTML = project.buildTask.list()
             this.createComment(project)
 
@@ -390,7 +390,7 @@ class Project {
 
         // Manipulations
         document.querySelector(".new-project-card").innerHTML = this.new.card
-        document.querySelector(".owned-projects").innerHTML = this.new.cards(current_user.projects)
+        document.querySelector(".owned-projects").innerHTML = this.new.cards(current_user.created_projects)
         document.querySelector(".assigned-projects").innerHTML = this.new.cards(current_user.assigned_projects)
         document.querySelector(".other-projects").innerHTML = this.new.cards(current_user.projects_by_others)
 

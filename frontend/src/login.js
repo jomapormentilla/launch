@@ -4,7 +4,7 @@ class Login {
             login: `
                 <h1 style="font-family: 'Amatic SC', cursive; font-size: 100px; color: #3b5ab1;">LAUNCH</h1>
                 <form id="login-form">
-                    <input type="email" placeholder="Email" value="jomapormentilla@gmail.com"><br>
+                    <input type="email" placeholder="Email"><br>
                     <input type="password" placeholder="Password"><br>
                     <button type="submit">Login</button>
                 </form>
@@ -129,6 +129,7 @@ class Login {
         } else {
             // Initial
             document.getElementById("login").innerHTML += this.forms.login
+            document.querySelector("#login-form input").focus()
 
             // Event Listeners
             document.getElementById("login-form").addEventListener("submit", (e)=>{ this.forms.loginSubmit(e) })

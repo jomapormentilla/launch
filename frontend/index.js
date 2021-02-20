@@ -46,8 +46,9 @@ socket.onmessage = (e) => {
                     if (current_user === sender) {
                         Inbox.renderMessages(receiver)
                         Inbox.html.seen(receiver)
-                    } else if (current_user === receiver) {
 
+                    } else if (current_user === receiver) {
+                        // Need to fix this - ".message-receiver" does not exist when it's the start of the conversation
                         if (!!document.querySelector(".message-receiver") && document.querySelector(".message-receiver").dataset.id == sender.id) {
                             Inbox.renderMessages(receiver)
                         } else {

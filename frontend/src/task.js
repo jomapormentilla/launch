@@ -154,7 +154,7 @@ class Task {
                 }
 
                 if (task.comments.length === 0) {
-                    document.querySelector(".task-comments").innerHTML = `<div style="text-align: center;">This task does not have any comments.</div>`    
+                    document.querySelector(".task-comments").innerHTML = `<div style="text-align: center;">This task does not have any notes.</div>`    
                 } else {
                     document.querySelector(".task-comments").innerHTML = html
                 }
@@ -189,12 +189,12 @@ class Task {
                 <div class="flex col" style="width: 100%;">
                     <h1>${ task.name }</h1>
                     <p>
-                        Deadline: ${ task.due_date }<br>
-                        Assigned To: ${ task.user.name }
+                        Deadline: <u>${ task.due_date }</u><br>
+                        Assigned To: <u>${ task.user.name }</u>
                     </p>
-                    <p>${ task.description }</p>
+                    <h2>${ task.description }</h2>
                     
-                    <h2>Comments:</h2>
+                    <h2>Notes:</h2>
                     <form id="task-comment-form">
                         <input type="hidden" name="taskId" value="${ task.id }">
                         <textarea name="content" placeholder="${ current_user.firstName } says..."></textarea>
@@ -284,6 +284,7 @@ class Task {
         // Event Listeners
         content.removeEventListener("click", this.handleDivClick, true)
         content.addEventListener("click", this.handleDivClick)
+        
         document.querySelector("select").addEventListener("change", (e)=>{ this.backlogContainer.selectChange(e) })
 
         document.getElementById("backlog").addEventListener("dragover", this.allowDrop, false)

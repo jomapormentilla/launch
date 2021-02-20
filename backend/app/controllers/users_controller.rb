@@ -6,6 +6,7 @@ class UsersController < ApplicationController
 
     def create
         user = User.new(user_params)
+        user.password = params[:password]
 
         if user.save
             render json: UserSerializer.new(user).to_serialized_json

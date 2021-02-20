@@ -45,7 +45,6 @@ class MessageApi {
         fetch(this.url + `/${ data.id }`, configObj)
             .then(res => res.json())
             .then(data => {
-                console.log(data)
                 let messages = Message.all.filter(m => m.receiverId === current_user.id && m.seen === false)
                 for (let message of messages) {
                     message.seen = true

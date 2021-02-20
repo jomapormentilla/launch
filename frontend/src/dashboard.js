@@ -110,6 +110,39 @@ class Dashboard {
         return data
     }
 
+    static get upcoming() {
+        let data = {
+            div: `
+                <div class="flex" id="upcoming-div">
+                    <h2>Upcoming Tasks</h2>
+                </div>
+            `,
+
+            tasks: () => {
+                let today = new Date()
+                let threeDays = new Date(today.setDate(today.getDate() + 3))
+                let tasks = Task.all.filter(t => t.user === current_user && t.deadline >= new Date() && t.deadline <= threeDays )
+
+                if (tasks.length === 0) {
+                    document.getElementById("upcoming-div").innerHTML = `You don't have any assigned tasks yet.`
+                } else {
+                    for (let task of tasks) {
+                        document.getElementById("upcoming-div").innerHTML += `
+                            <li>
+                                <u>${ task.name }</u> - ${ task.description }
+                                <p style="color: #777;">
+                                    Project: ${ task.project.name }<br>
+                                    Deadline: ${ task.due_date }
+                                </p>
+                            </li>
+                        `
+                    }
+                }
+            }
+        }
+        return data
+    }
+
     // Content Click Handling
     static handleDivClick = e => {
         // Toggle More Info Button
@@ -140,9 +173,16 @@ class Dashboard {
         content.innerHTML = `
             <div class="flex" style="flex-direction: column; width: 100%;">
                 <div class="flex greeting-container"></div>
+                
                 <div class="flex">
                     <div class="flex projects-overview" style="flex: 1; height: fit-content;"></div>
                     <div class="flex progress-log" style="width: 300px; height: fit-content; max-height: 1000px; overflow-y: scroll;">Progress Log</div>
+                </div>
+
+                <div class="flex">
+                    <div class="flex upcoming-tasks" style="flex: 1; width: 100%;">
+                        <h2>Upcoming Tasks</h2>
+                    </div>
                 </div>
             </div>
         `
@@ -150,11 +190,13 @@ class Dashboard {
         // Renders
         document.querySelector(".greeting-container").innerHTML = this.greeting.div
         document.querySelector(".projects-overview").innerHTML = this.projects.div
+        document.querySelector(".upcoming-tasks").innerHTML = this.upcoming.div
         document.querySelector(".progress-log").innerHTML = this.progressLog.div
 
         // Manipulations
         document.getElementById("profile-container").innerHTML = current_user.html.profile
         this.projects.list()
+        this.upcoming.tasks()
 
         // Event Listener
         content.removeEventListener("click", this.handleDivClick, true)

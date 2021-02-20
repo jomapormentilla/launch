@@ -15,7 +15,7 @@ def start
 end
 
 def createDepartments
-    departments = ["Software Engineering", "Design", "Marketing", "Accounting", "Human Resources", "Legal"]
+    departments = ["Software Engineering", "Design", "Marketing", "Accounting", "Human Resources", "Legal", "Public Relations"]
     departments.each do |d|
         Department.create(name: d)
     end
