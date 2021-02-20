@@ -34,7 +34,7 @@ def createAdmin
 end
 
 def createUsers
-    20.times do
+    50.times do
         name = "#{ Faker::Name.unique.first_name } #{ Faker::Name.unique.last_name }"
         email = "#{ name.gsub(" ","").downcase }@gmail.com"
         

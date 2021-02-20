@@ -45,7 +45,7 @@ class UsersController < ApplicationController
         user = User.find_by(email: params[:email])
         user.update(token: SecureRandom.hex)
 
-        if !!user && user.password == params[:password]
+        if !!user && user.authenticate(params[:password])
             render json: { id: user.id, token: user.token }
         else
             render json: { error: 'Authentication Failed' }

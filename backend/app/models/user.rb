@@ -11,4 +11,6 @@ class User < ApplicationRecord
     has_many :messages_received, class_name: "Message", foreign_key: "receiver_id"
 
     has_many :comments
+
+    has_secure_password
 end
