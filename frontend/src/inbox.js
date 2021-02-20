@@ -37,7 +37,7 @@ class Inbox {
             this.renderMessages(user)
             if (e.target.childElementCount > 0) {
                 e.target.children[0].remove()
-                Message.markAsSeen(user)
+                setTimeout(()=>{ Message.markAsSeen(user) },1000)
             }
         }
     }
@@ -59,7 +59,7 @@ class Inbox {
                 `
             } else {
                 html += `
-                    <div class="flex message-receiver">
+                    <div class="flex message-receiver" data-id="${ user.id }">
                         <div>
                         <p style="color: #aaa; text-align: center;">${ message.sent_date }</p>
                         ${ message.content }
@@ -70,7 +70,7 @@ class Inbox {
         }
 
         if (messages.length === 0) {
-            document.querySelector(".message-content").innerHTML = `<div class="flex">You have not started a conversation with this ${ user.name }.</div>`
+            document.querySelector(".message-content").innerHTML = `<div class="flex message-receiver" data-id="${ user.id }"><br>You have not started a conversation with this ${ user.name }.</div>`
         } else {
             document.querySelector(".message-content").innerHTML = html
             document.querySelector(".message-content").scrollTop = document.querySelector(".message-content").scrollHeight;

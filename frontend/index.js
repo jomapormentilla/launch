@@ -38,12 +38,26 @@ socket.onmessage = (e) => {
     if (!!message.message) {
         if (message.message.type === "create") {
             let m = new Message(message.message.data)
-            let user = User.all.find(u => u.id === m.receiverId)
-    
+            let receiver = User.all.find(u => u.id === m.receiverId)
+            let sender = User.all.find(u => u.id === m.senderId)
+
             MessageApi.getMessages()
             setTimeout(()=>{
-                Inbox.renderMessages(user)
-                Inbox.html.seen(user)
+                if (document.querySelector(".active").innerText === "Inbox") {
+                    if (current_user === sender) {
+                        Inbox.renderMessages(receiver)
+                        Inbox.html.seen(receiver)
+                    } else if (current_user === receiver) {
+                        if (!!document.querySelector(".message-receiver") && document.querySelector(".message-receiver").dataset.id == sender.id) {
+                            Inbox.renderMessages(receiver)
+                        } else {
+                            Inbox.html.users(User.sortby("firstName").filter(u => u.id !== current_user.id))
+                            document.getElementById("inbox-count").innerHTML = Message.unseen_total()
+                        }
+                    }
+                } else {
+                    document.getElementById("inbox-count").innerHTML = Message.unseen_total()
+                }
             }, 500)
         }
     }
