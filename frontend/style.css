@@ -460,13 +460,18 @@ button:hover {
 }
 
 
-    #inProgress .task-item {
-        background-color: orange;
+    #backlog .task-item {
+        background-color: #3b5ab1;
+        color: #fff;
+    }
+
+    #inprogress .task-item {
+        background-color: #e09355;
         color: #fff;
     }
 
     #completed .task-item {
-        background-color: green;
+        background-color: rgb(45, 142, 45);
         color: #fff;
     }
 

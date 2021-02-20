@@ -2,7 +2,7 @@ class Task {
     static months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 
     static backlog = document.getElementById("backlog")
-    static inProgress = document.getElementById("inProgress")
+    static inprogress = document.getElementById("inprogress")
     static completed = document.getElementById("completed")
 
     static all = []
@@ -115,7 +115,7 @@ class Task {
                     if (task.status === "backlog") {
                         backlog.innerHTML += task.html.item
                     } else if (task.status === "inprogress") {
-                        inProgress.innerHTML += task.html.item
+                        inprogress.innerHTML += task.html.item
                     } else if (task.status === "completed") {
                         completed.innerHTML += task.html.item
                     }
@@ -138,7 +138,7 @@ class Task {
 
             reset: () => {
                 backlog.innerHTML = `<div class="task-header">BACKLOG</div>`
-                inProgress.innerHTML = `<div class="task-header">IN PROGRESS</div>`
+                inprogress.innerHTML = `<div class="task-header">IN PROGRESS</div>`
                 completed.innerHTML = `<div class="task-header">COMPLETED</div>`
             },
 
@@ -202,18 +202,6 @@ class Task {
 
             this.backlogContainer.comments(task)
             document.getElementById("task-comment-form").addEventListener("submit", this.handleTaskComment)
-
-            // if (e.target.parentElement.id === "backlog") {
-            //     document.getElementById("inProgress").append(e.target)
-            //     task.status = "inprogress"
-            // } else if (e.target.parentElement.id === "inProgress") {
-            //     document.getElementById("completed").append(e.target)
-            //     task.status = "completed"
-            // } else if (e.target.parentElement.id === "completed") {
-            //     document.getElementById("inProgress").append(e.target)
-            //     task.status = "inprogress"
-            // }
-            // TaskApi.updateTask(task)
         }
     }
     
@@ -231,9 +219,29 @@ class Task {
 
     static handleDrop = e => {
         e.preventDefault()
-        debugger
-        if (!e.target.classList.contains("task-item") && !e.target.classList.contains("task-header")) {
-            e.target.appendChild(document.getElementById(e.dataTransfer.getData('item')))
+        
+        let item = document.getElementById(e.dataTransfer.getData('item'))
+        let task = Task.all.find(t => t.id == item.id.split("-")[1])
+
+        if (task.user !== current_user) {
+            Error.render("This task is not assigned to you.")
+            return
+        }
+        
+        if (!!e.target.classList.contains("task-item") || !!e.target.classList.contains("task-header")) {
+            e.target.parentElement.appendChild(item)
+            
+            if (task.status !== e.target.parentElement.id) {
+                task.status = e.target.parentElement.id
+                TaskApi.updateTask(task)
+            }
+        } else {
+            e.target.appendChild(item)
+            
+            if (task.status !== e.target.id) {
+                task.status = e.target.id
+                TaskApi.updateTask(task)
+            }
         }
     }
 
@@ -250,7 +258,7 @@ class Task {
                         <div class="task-header">BACKLOG</div>
                     </div>
 
-                    <div class="flex" id="inProgress">
+                    <div class="flex" id="inprogress">
                         <div class="task-header">IN PROGRESS</div>
                     </div>
 
@@ -272,7 +280,13 @@ class Task {
         content.addEventListener("click", this.handleDivClick)
         document.querySelector("select").addEventListener("change", (e)=>{ this.backlogContainer.selectChange(e) })
 
-        document.getElementById("inProgress").addEventListener("dragover", this.allowDrop, false)
-        document.getElementById("inProgress").addEventListener("drop", this.handleDrop, false)
+        document.getElementById("backlog").addEventListener("dragover", this.allowDrop, false)
+        document.getElementById("backlog").addEventListener("drop", this.handleDrop, false)
+
+        document.getElementById("inprogress").addEventListener("dragover", this.allowDrop, false)
+        document.getElementById("inprogress").addEventListener("drop", this.handleDrop, false)
+
+        document.getElementById("completed").addEventListener("dragover", this.allowDrop, false)
+        document.getElementById("completed").addEventListener("drop", this.handleDrop, false)
     }
 }

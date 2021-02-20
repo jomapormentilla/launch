@@ -8,7 +8,6 @@ const socket = new WebSocket(socketUrl)
 const container = document.getElementById("container")
 const content = document.getElementById("content")
 
-
 document.addEventListener("DOMContentLoaded", (e) => {
     DepartmentApi.getDepartments()
     ProjectApi.getProjects()
