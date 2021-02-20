@@ -31,6 +31,8 @@ class Inbox {
             for (let item of document.querySelectorAll("li")) {
                 item.classList.remove("message-active")
             }
+            document.getElementById("new-message-textarea").disabled = false
+            document.getElementById("new-message-textarea").focus()
             e.target.classList.add("message-active")
             let user = User.all.find(u => u.id == e.target.dataset.id)
             
@@ -103,9 +105,9 @@ class Inbox {
                 <div class="flex" id="inbox-container">
                     <div class="flex user-list"></div>
                     <div class="flex message-container">
-                        <div class="flex col message-content"><div>Select a user to start a conversation</div></div>
+                        <div class="flex col message-content"><div>Select a user to view conversation</div></div>
                         <form class="flex message-textarea" id="new-message-form">
-                            <textarea></textarea>
+                            <textarea disabled id="new-message-textarea"></textarea>
                             <button type="submit"><i class="bi bi-cursor-fill" style="font-size: 25px;"></i></button>
                         </form>
                     </div>
