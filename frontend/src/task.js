@@ -178,8 +178,12 @@ class Task {
     // Click Handling
     static handleDivClick = e => {
         // debugger
-        if (e.target.classList.contains("task-item")) {
+        if (e.target.classList.contains("task-item") || e.target.classList.contains("bi-info-circle")) {
             let task = Task.all.find(t => t.id == e.target.id.split("-")[1])
+            
+            if (e.target.classList.contains("bi-info-circle")) {
+                task = Task.all.find(t => t.id == e.target.parentElement.id.split("-")[1])
+            }
 
             document.querySelector(".task-details").innerHTML = `
                 <div class="flex col" style="width: 100%;">
@@ -202,9 +206,11 @@ class Task {
 
             this.backlogContainer.comments(task)
             document.getElementById("task-comment-form").addEventListener("submit", this.handleTaskComment)
+            document.getElementById("task-comment-form").scrollIntoView({ behavior: 'smooth' })
         }
     }
     
+    // Drag + Drop Handling
     static handleDragStart = e => {
         e.dataTransfer.setData('item', e.target.id)
     }
