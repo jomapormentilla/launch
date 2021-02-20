@@ -48,9 +48,14 @@ socket.onmessage = (e) => {
                         Inbox.renderMessages(receiver)
                         Inbox.html.seen(receiver)
                     } else if (current_user === receiver) {
+
                         if (!!document.querySelector(".message-receiver") && document.querySelector(".message-receiver").dataset.id == sender.id) {
                             Inbox.renderMessages(receiver)
                         } else {
+                            if (!!document.querySelector(".message-active")) {
+                                let current_active = document.querySelector(".message-active").dataset.id
+                                setTimeout(()=>{ document.querySelector(".user-list #user-" + current_active).classList.add("message-active") }, 500)
+                            }
                             Inbox.html.users(User.sortby("firstName").filter(u => u.id !== current_user.id))
                             document.getElementById("inbox-count").innerHTML = Message.unseen_total()
                         }

@@ -86,7 +86,7 @@ class Task {
     get html() {
         let data = {
             item: `
-                <div class="task-item" id="task-${ this.id }" style="cursor: pointer;">
+                <div class="task-item" id="task-${ this.id }" style="cursor: pointer;" draggable="true">
                     ${ this.name }
                     <i class="bi-info-circle" style="font-size: 2rem; color: #fff;"></i>
                 </div>
@@ -128,6 +128,11 @@ class Task {
                     
                     this.backlogContainer.reset()
                     this.backlogContainer.sort(project.tasks)
+
+                    for (let item of document.querySelectorAll(".task-item")) {
+                        item.addEventListener("dragstart", this.handleDragStart, false)
+                        item.addEventListener("dragend", this.handleDragEnd, false)
+                    }
                 }
             },
 
@@ -211,6 +216,26 @@ class Task {
             // TaskApi.updateTask(task)
         }
     }
+    
+    static handleDragStart = e => {
+        e.dataTransfer.setData('item', e.target.id)
+    }
+
+    static handleDragEnd = e => {
+        e.preventDefault()
+    }
+
+    static allowDrop = e => {
+        e.preventDefault()
+    }
+
+    static handleDrop = e => {
+        e.preventDefault()
+        debugger
+        if (!e.target.classList.contains("task-item") && !e.target.classList.contains("task-header")) {
+            e.target.appendChild(document.getElementById(e.dataTransfer.getData('item')))
+        }
+    }
 
     static render() {
         // Initial
@@ -234,7 +259,7 @@ class Task {
                     </div>
                 </div>
 
-                <h2 style="color: #aaa;">Task Details</h2>
+                <h2>Task Details</h2>
                 <div class="flex task-details"></div>
             </div>
         `
@@ -246,5 +271,8 @@ class Task {
         content.removeEventListener("click", this.handleDivClick, true)
         content.addEventListener("click", this.handleDivClick)
         document.querySelector("select").addEventListener("change", (e)=>{ this.backlogContainer.selectChange(e) })
+
+        document.getElementById("inProgress").addEventListener("dragover", this.allowDrop, false)
+        document.getElementById("inProgress").addEventListener("drop", this.handleDrop, false)
     }
 }

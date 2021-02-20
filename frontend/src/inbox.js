@@ -4,7 +4,7 @@ class Inbox {
             users: (array) => {
                 document.querySelector(".user-list").innerHTML = ``
                 for (let user of array) {
-                    document.querySelector(".user-list").innerHTML += `<li data-id="${ user.id }">${ this.html.seen(user) }${ user.name }</li>`
+                    document.querySelector(".user-list").innerHTML += `<li id="user-${ user.id }" data-id="${ user.id }">${ this.html.seen(user) }${ user.name }</li>`
                 }
             },
 
