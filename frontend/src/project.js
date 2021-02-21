@@ -380,10 +380,10 @@ class Project {
                     <div class="flex owned-projects"></div>
                 </div>
 
-                <h2 style="color: #aaa;">Projects Assigned to You</h2>
+                <h2 style="color: #fff;">Projects Assigned to You</h2>
                 <div class="flex assigned-projects"></div>
                 
-                <h2 style="color: #333;">Projects By Other Users</h2>
+                <h2 style="color: #fff;">Projects By Other Users</h2>
                 <div class="flex other-projects"></div>
             </div>
         `

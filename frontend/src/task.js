@@ -273,7 +273,7 @@ class Task {
                     </div>
                 </div>
 
-                <h2>Task Details</h2>
+                <h2 style="color: #fff;">Task Details</h2>
                 <div class="flex task-details"></div>
             </div>
         `
@@ -284,7 +284,7 @@ class Task {
         // Event Listeners
         content.removeEventListener("click", this.handleDivClick, true)
         content.addEventListener("click", this.handleDivClick)
-        
+
         document.querySelector("select").addEventListener("change", (e)=>{ this.backlogContainer.selectChange(e) })
 
         document.getElementById("backlog").addEventListener("dragover", this.allowDrop, false)

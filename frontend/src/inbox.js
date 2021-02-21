@@ -31,9 +31,11 @@ class Inbox {
             for (let item of document.querySelectorAll("li")) {
                 item.classList.remove("message-active")
             }
+            e.target.classList.add("message-active")
+
             document.getElementById("new-message-textarea").disabled = false
             document.getElementById("new-message-textarea").focus()
-            e.target.classList.add("message-active")
+
             let user = User.all.find(u => u.id == e.target.dataset.id)
             
             this.renderMessages(user)
@@ -75,9 +77,9 @@ class Inbox {
         }
 
         if (messages.length === 0) {
-            document.querySelector(".message-content").innerHTML = `<div class="flex message-receiver" data-id="${ user.id }"><br>You have not started a conversation with this ${ user.name }.</div>`
+            document.querySelector(".message-content").innerHTML = `<div class="flex message-receiver" data-id="${ user.id }"><br>The beginning of your conversation with ${ user.name }.</div>`
         } else {
-            document.querySelector(".message-content").innerHTML = html
+            document.querySelector(".message-content").innerHTML = `<div class="flex message-receiver" data-id="${ user.id }"><br>The beginning of your conversation with ${ user.name }.</div>${ html }`
             document.querySelector(".message-content").scrollTop = document.querySelector(".message-content").scrollHeight;
         }
     }

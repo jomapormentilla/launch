@@ -44,7 +44,6 @@ class Dashboard {
         let data = {
             div: `
                 <div class="flex" id="progress-log">
-                    <h2>Progress Log</h2>
                     <div id="prog-log">
                         <div class="progress-log-item">Nothing in the log...</div>
                     </div>
@@ -64,9 +63,7 @@ class Dashboard {
     static get projects() {
         let data = {
             div: `
-                <div class="flex" id="project-div">
-                    <h2>Projects Overview</h2>
-                </div>
+                <div class="flex" id="project-div"></div>
             `,
 
             list: () => {
@@ -113,9 +110,7 @@ class Dashboard {
     static get upcoming() {
         let data = {
             div: `
-                <div class="flex" id="upcoming-div">
-                    <h2>Upcoming Tasks</h2>
-                </div>
+                <div class="flex" id="upcoming-div"></div>
             `,
 
             tasks: () => {
@@ -141,6 +136,16 @@ class Dashboard {
             }
         }
         return data
+    }
+
+    static handleScroll = e => {
+        for (let h2 of document.querySelectorAll("h2")) {
+            if (h2.offsetTop > 500) {
+                h2.style.color = "#000"
+            } else {
+                h2.style.color = "#fff"
+            }
+        }
     }
 
     // Content Click Handling
@@ -178,7 +183,7 @@ class Dashboard {
                         <h2 style="color: #fff;">Projects Overview</h2>
                         <div class="flex projects-overview" style="flex: 1; height: fit-content;"></div>
 
-                        <h2 style="color: #777;">Upcoming Tasks</h2>
+                        <h2 style="color: #fff;">Upcoming Tasks</h2>
                         <div class="flex upcoming-tasks" style="flex: 1; width: 100%;"></div>
                     </div>
 
@@ -205,5 +210,7 @@ class Dashboard {
         content.removeEventListener("click", this.handleDivClick, true)
         content.addEventListener("click", this.handleDivClick)
         document.getElementById("header").addEventListener("click", (e) => { this.handleDivClick(e) })
+
+        document.addEventListener("scroll", this.handleScroll)
     }
 }

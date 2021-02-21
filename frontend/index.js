@@ -20,7 +20,6 @@ document.addEventListener("DOMContentLoaded", (e) => {
 })
 
 socket.onopen = (e) => {
-    console.log(e)
     const data = {
         command: `subscribe`,
         identifier: JSON.stringify({
@@ -32,7 +31,6 @@ socket.onopen = (e) => {
 
 socket.onmessage = (e) => {
     let message = JSON.parse(e.data)
-    Dashboard.progressLog.add(e.data)
     if (message.type === "ping") return
 
     if (!!message.message) {
@@ -49,8 +47,7 @@ socket.onmessage = (e) => {
                         Inbox.html.seen(receiver)
 
                     } else if (current_user === receiver) {
-                        // Need to fix this - ".message-receiver" does not exist when it's the start of the conversation
-                        if (!!document.querySelector(".message-receiver") && document.querySelector(".message-receiver").dataset.id == sender.id) {
+                        if (!!document.querySelector(".message-receiver") && document.querySelector(".message-active").dataset.id == sender.id) {
                             Inbox.renderMessages(receiver)
                         } else {
                             if (!!document.querySelector(".message-active")) {
