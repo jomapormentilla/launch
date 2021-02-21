@@ -176,7 +176,7 @@ button:hover {
     align-content: flex-start;
     flex-direction: column;
     flex-wrap: wrap;
-    padding: 15px 15px 150px 15px;
+    padding: 15px 15px 50px 15px;
     min-height: 90vh;
     background-color: #eee;
     background-image: url('images/launch-bg.png');
@@ -260,6 +260,7 @@ button:hover {
 #users-table {
     width: 100%;
     background-color: #fff;
+    border: solid 1px #777;
 }
 
     #users-table > div {
@@ -491,11 +492,12 @@ button:hover {
 
 .task-comments, .project-comments {
     width: 100%;
+    align-items: center;
 }
 
     .task-comments > div, .project-comments > div {
         flex: 1;
-        width: 100%;
+        width: 95%;
         padding: 5px 10px;
         background-color: #c1d4f8;
         border-radius: 5px;

@@ -79,7 +79,7 @@ class Inbox {
         if (messages.length === 0) {
             document.querySelector(".message-content").innerHTML = `<div class="flex message-receiver" data-id="${ user.id }"><br>The beginning of your conversation with ${ user.name }.</div>`
         } else {
-            document.querySelector(".message-content").innerHTML = `<div class="flex message-receiver" data-id="${ user.id }"><br>The beginning of your conversation with ${ user.name }.</div>${ html }`
+            document.querySelector(".message-content").innerHTML = html
             document.querySelector(".message-content").scrollTop = document.querySelector(".message-content").scrollHeight;
         }
     }

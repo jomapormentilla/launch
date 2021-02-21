@@ -51,5 +51,6 @@ class MessageApi {
                 }
                 setTimeout(()=>{ document.getElementById("inbox-count").innerHTML = Message.unseen_total() },500)
             })
+            .catch(err => console.log(err))
     }
 }

@@ -47,8 +47,8 @@ socket.onmessage = (e) => {
                         Inbox.html.seen(receiver)
 
                     } else if (current_user === receiver) {
-                        if (!!document.querySelector(".message-receiver") && document.querySelector(".message-active").dataset.id == sender.id) {
-                            Inbox.renderMessages(receiver)
+                        if (document.querySelector(".message-active").dataset.id == sender.id) {
+                            Inbox.renderMessages(sender)
                         } else {
                             if (!!document.querySelector(".message-active")) {
                                 let current_active = document.querySelector(".message-active").dataset.id

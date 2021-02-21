@@ -101,7 +101,7 @@ class User {
             row: `
                 <div id="user-row-${ this.id }">
                     <i class="bi-person-plus" style="font-size: 2rem; color: #3b5ab1;"></i> &nbsp; - &nbsp;
-                    ${ this.name }
+                    ${ this.name } - ${ this.department }
                     <div class="more-info"></div>
                 </div>
             `,
@@ -201,8 +201,12 @@ class User {
         content.innerHTML = `
             <div class="flex col" style="width: 100%;">
                 <h1 style="color: #fff; text-align: center; font-size: 35px;">Users</h1>
-                <input type="search" class="user-search" placeholder="Search for a User by Name, Email, or Department">
-                <div id="users-table"></div>
+                <div class="flex col" style="width: 100%; align-items: center;">
+                    <div style="min-width: 300px; width: 50%;">
+                        <input type="search" class="user-search" placeholder="Search for a User by Name, Email, or Department" style="width: 100%;">
+                        <div id="users-table"></div>
+                    </div>
+                </div>
             </div>
         `
 

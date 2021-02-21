@@ -73,7 +73,7 @@ class Dashboard {
                     for (let project of current_user.projects) {
                         document.getElementById("project-div").innerHTML += `
                             <div id="project-${ project.id }">
-                                <i class="bi bi-caret-down"></i> &nbsp; <span>${ project.name }</span> <span style="float: right;">${ project.taskPercentage }</span>
+                                <i class="bi bi-caret-down"></i> &nbsp; <span>${ project.name }</span> <span style="float: right;">${ project.taskPercentage } Complete</span>
                                 <div class="more-info">${ this.projects.moreInfo(project) }</div>
                             </div>
                         `
@@ -179,7 +179,7 @@ class Dashboard {
             <div class="flex col" style="width: 100%;">
                 <div class="flex greeting-container"></div>
                 <div class="flex" style="width: 100%;">
-                    <div class="flex col">
+                    <div class="flex col" style="flex: 1;">
                         <h2 style="color: #fff;">Projects Overview</h2>
                         <div class="flex projects-overview" style="flex: 1; height: fit-content;"></div>
 
