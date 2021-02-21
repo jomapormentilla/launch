@@ -359,7 +359,7 @@ button:hover {
     overflow-y: scroll;
 }
 
-    #build-team > h2, #current-team > h2 {
+    #build-team > h3, #current-team > h3 {
         text-align: center;
         border-bottom: solid 1px #eee;
         padding-bottom: 10px;

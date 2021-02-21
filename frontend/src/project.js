@@ -154,12 +154,13 @@ class Project {
     get buildTeam() {
         let data = {
             div: `
-                <div id="build-team"><h2>All Users</h2>${ User.create.list() }</div>
+                <div id="build-team"><h3>All Users</h3>${ User.create.list() }</div>
                 <div class="flex" style="align-items: center; padding: 0px 15px;"><i class="bi bi-arrow-left-right" style="font-size: 30px;"></i></div>
-                <div id="current-team"><h2>Current Team</h2>${ this.currentTeam.list() }</div>
+                <div id="current-team"><h3>Current Team</h3>${ this.currentTeam.list() }</div>
             `,
 
             buildTeamClick: (e, project) => {
+                if (project.creator !== current_user) { return Error.render("You do not have permission to edit this team.") }
                 if (e.target.nodeName === "LI") {
                     let user = User.all.find(u => u.id == e.target.id.split("-")[e.target.id.split("-").length-1])
                     let data = { id: user.id, project_id: project.id }
@@ -172,12 +173,13 @@ class Project {
                         project.userIds.push({id: user.id})
                     }
                     
-                    document.getElementById("current-team").innerHTML = `<h2>Current Team</h2>${ this.currentTeam.list() }`
-                    document.getElementById("new-task-select").innerHTML = `<option>Assign to a Team Member</option>${ this.currentTeam.option() }`
+                    document.getElementById("current-team").innerHTML = `<h3>Current Team</h3>${ this.currentTeam.list() }`
+                    if (project.creator === current_user) { document.getElementById("new-task-select").innerHTML = `<option>Assign to a Team Member</option>${ this.currentTeam.option() }` }
                 }
             },
             
             currentTeamClick: (e, project) => {
+                if (project.creator !== current_user) { return Error.render("You do not have permission to edit this team.") }
                 if (e.target.nodeName === "LI") {
                     let user = User.all.find(u => u.id == e.target.id.split("-")[e.target.id.split("-").length-1])
                     
@@ -191,8 +193,8 @@ class Project {
                         console.log("User is not assigned to this project.")
                     }
                     
-                    document.getElementById("current-team").innerHTML = `<h2>Current Team</h2>${ this.currentTeam.list() }`
-                    document.getElementById("new-task-select").innerHTML = `<option>Assign to a Team Member</option>${ this.currentTeam.option() }`
+                    document.getElementById("current-team").innerHTML = `<h3>Current Team</h3>${ this.currentTeam.list() }`
+                    if (project.creator === current_user) { document.getElementById("new-task-select").innerHTML = `<option>Assign to a Team Member</option>${ this.currentTeam.option() }` }
                 }
             }
         }
