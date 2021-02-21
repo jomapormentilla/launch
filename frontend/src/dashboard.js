@@ -171,17 +171,20 @@ class Dashboard {
     static render() {
         // Template
         content.innerHTML = `
-            <div class="flex" style="flex-direction: column; width: 100%;">
+            <div class="flex col" style="width: 100%;">
                 <div class="flex greeting-container"></div>
-                
-                <div class="flex">
-                    <div class="flex projects-overview" style="flex: 1; height: fit-content;"></div>
-                    <div class="flex progress-log" style="width: 300px; height: fit-content; max-height: 1000px; overflow-y: scroll;">Progress Log</div>
-                </div>
+                <div class="flex" style="width: 100%;">
+                    <div class="flex col">
+                        <h2 style="color: #fff;">Projects Overview</h2>
+                        <div class="flex projects-overview" style="flex: 1; height: fit-content;"></div>
 
-                <div class="flex">
-                    <div class="flex upcoming-tasks" style="flex: 1; width: 100%;">
-                        <h2>Upcoming Tasks</h2>
+                        <h2 style="color: #777;">Upcoming Tasks</h2>
+                        <div class="flex upcoming-tasks" style="flex: 1; width: 100%;"></div>
+                    </div>
+
+                    <div class="flex col">
+                        <h2 style="color: #fff; margin-left: 15px;">Progress Log</h2>
+                        <div class="flex progress-log" style="width: 300px; height: fit-content; max-height: 1000px; overflow-y: scroll;">Progress Log</div>
                     </div>
                 </div>
             </div>

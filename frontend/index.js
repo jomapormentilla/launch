@@ -32,6 +32,7 @@ socket.onopen = (e) => {
 
 socket.onmessage = (e) => {
     let message = JSON.parse(e.data)
+    Dashboard.progressLog.add(e.data)
     if (message.type === "ping") return
 
     if (!!message.message) {
