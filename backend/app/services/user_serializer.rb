@@ -9,7 +9,7 @@ class UserSerializer
                 :tasks
             ],
             :except => [
-                :password, :token
+                :password_digest, :token
             ]
         )
     end

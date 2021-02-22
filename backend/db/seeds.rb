@@ -8,7 +8,6 @@
 
 def start
     createDepartments
-    createAdmin
     createUsers
     createProjects
     createTasks
@@ -19,18 +18,6 @@ def createDepartments
     departments.each do |d|
         Department.create(name: d)
     end
-end
-
-def createAdmin
-    data = {
-        first_name: "Joma",
-        last_name: "Pormentilla",
-        email: "jomapormentilla@gmail.com",
-        password: "password",
-        department_id: Department.find_by(name:"Software Engineering").id
-    }
-
-    User.create(data)
 end
 
 def createUsers
