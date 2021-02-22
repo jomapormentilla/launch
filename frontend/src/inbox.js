@@ -33,8 +33,10 @@ class Inbox {
             }
             e.target.classList.add("message-active")
 
-            document.getElementById("new-message-textarea").disabled = false
-            document.getElementById("new-message-textarea").focus()
+            setTimeout(()=>{
+                document.getElementById("new-message-textarea").disabled = false
+                document.getElementById("new-message-textarea").focus()
+            },500)
 
             let user = User.all.find(u => u.id == e.target.dataset.id)
             

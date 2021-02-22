@@ -182,14 +182,11 @@ class Dashboard {
                     <div class="flex col" style="flex: 1;">
                         <h2 style="color: #fff;">Projects Overview</h2>
                         <div class="flex projects-overview" style="flex: 1; height: fit-content;"></div>
-
-                        <h2 style="color: #fff;">Upcoming Tasks</h2>
-                        <div class="flex upcoming-tasks" style="flex: 1; width: 100%;"></div>
                     </div>
 
                     <div class="flex col">
-                        <h2 style="color: #fff; margin-left: 15px;">Progress Log</h2>
-                        <div class="flex progress-log" style="width: 300px; height: fit-content; max-height: 1000px; overflow-y: scroll;">Progress Log</div>
+                        <h2 style="color: #fff; margin-left: 15px;">Upcoming Tasks</h2>
+                        <div class="flex upcoming-tasks" style="width: 300px; height: fit-content; max-height: 1000px; overflow-y: scroll;"></div>
                     </div>
                 </div>
             </div>
@@ -199,7 +196,7 @@ class Dashboard {
         document.querySelector(".greeting-container").innerHTML = this.greeting.div
         document.querySelector(".projects-overview").innerHTML = this.projects.div
         document.querySelector(".upcoming-tasks").innerHTML = this.upcoming.div
-        document.querySelector(".progress-log").innerHTML = this.progressLog.div
+        // document.querySelector(".progress-log").innerHTML = this.progressLog.div
 
         // Manipulations
         document.getElementById("profile-container").innerHTML = current_user.html.profile

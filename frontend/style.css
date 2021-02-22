@@ -198,6 +198,7 @@ button:hover {
     background-color: #fff;
     padding: 15px;
     margin-bottom: 15px;
+    height: fit-content;
 }
 
     #project-div > span:first-child {
@@ -228,7 +229,7 @@ button:hover {
             background-color: #fafafa;
         }
 
-#progress-log {
+#progress-log, #upcoming-div {
     flex: 2; 
     flex-direction: column;
     width: 500px;

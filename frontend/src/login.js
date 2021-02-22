@@ -41,7 +41,7 @@ class Login {
                 <form id="login-form">
                     <input type="text" name="first_name" placeholder="First Name"><br>
                     <input type="text" name="last_name" placeholder="Last Name"><br>
-                    <input type="email" placeholder="Email" value="jomapormentilla@gmail.com"><br>
+                    <input type="email" placeholder="Email"><br>
                     <input type="password" placeholder="Password"><br>
                     <select name="department_id">
                         <option selected>-- Select a Department --</option>

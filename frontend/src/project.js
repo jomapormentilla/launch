@@ -160,8 +160,8 @@ class Project {
             `,
 
             buildTeamClick: (e, project) => {
-                if (project.creator !== current_user) { return Error.render("You do not have permission to edit this team.") }
                 if (e.target.nodeName === "LI") {
+                    if (project.creator !== current_user) { return Error.render("You do not have permission to edit this team.") }
                     let user = User.all.find(u => u.id == e.target.id.split("-")[e.target.id.split("-").length-1])
                     let data = { id: user.id, project_id: project.id }
                     
@@ -179,8 +179,8 @@ class Project {
             },
             
             currentTeamClick: (e, project) => {
-                if (project.creator !== current_user) { return Error.render("You do not have permission to edit this team.") }
                 if (e.target.nodeName === "LI") {
+                    if (project.creator !== current_user) { return Error.render("You do not have permission to edit this team.") }
                     let user = User.all.find(u => u.id == e.target.id.split("-")[e.target.id.split("-").length-1])
                     
                     let data = { id: user.id, project_id: project.id }
