@@ -8,9 +8,9 @@
 
 def start
     createDepartments
-    # createUsers
-    # createProjects
-    # createTasks
+    createUsers
+    createProjects
+    createTasks
 end
 
 def createDepartments
@@ -21,7 +21,7 @@ def createDepartments
 end
 
 def createUsers
-    50.times do
+    10.times do
         name = "#{ Faker::Name.unique.first_name } #{ Faker::Name.unique.last_name }"
         email = "#{ name.gsub(" ","").downcase }@gmail.com"
         
@@ -38,7 +38,7 @@ def createUsers
 end
 
 def createProjects
-    20.times do
+    10.times do
         data = {
             name: Faker::App.unique.name,
             description: Faker::Quote.unique.yoda,
@@ -50,7 +50,7 @@ def createProjects
 end
 
 def createTasks
-    50.times do
+    10.times do
         data = {
             name: Faker::Game.unique.title,
             description: Faker::TvShows::SiliconValley.quote,

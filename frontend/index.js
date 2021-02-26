@@ -1,5 +1,6 @@
 let current_user
 const session = window.localStorage
+
 // const socketUrl = `ws://localhost:3000/cable`
 // const baseUrl = `http://localhost:3000`
 
