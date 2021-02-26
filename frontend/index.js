@@ -2,7 +2,7 @@ let current_user
 const session = window.localStorage
 const baseUrl = `https://launch-it.herokuapp.com`
 
-const socketUrl = `wss://launch-it.herokuapp.com/cable`
+const socketUrl = `ws://launch-it.herokuapp.com/cable`
 const socket = new WebSocket(socketUrl)
 
 const container = document.getElementById("container")
