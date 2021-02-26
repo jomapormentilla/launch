@@ -110,8 +110,4 @@ Rails.application.configure do
   # config.active_record.database_selector = { delay: 2.seconds }
   # config.active_record.database_resolver = ActiveRecord::Middleware::DatabaseSelector::Resolver
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
-
-  # Web Sockets on Heroku
-  config.middleware.use MessageChannel
-  config.web_socket_server_url = "ws://launch-it.herokuapp.com/"
 end
