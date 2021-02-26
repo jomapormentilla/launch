@@ -1,5 +1,5 @@
 class TaskApi {
-    static url = `http://localhost:3000/tasks`
+    static url = `${ baseUrl }/tasks`
     
     static getTasks() {
       fetch(this.url)

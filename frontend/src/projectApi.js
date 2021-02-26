@@ -1,5 +1,5 @@
 class ProjectApi {
-    static url = `http://localhost:3000/projects`
+    static url = `${baseUrl}/projects`
     
     static getProjects() {
         fetch(this.url)
