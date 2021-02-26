@@ -12,10 +12,13 @@
 
 ActiveRecord::Schema.define(version: 2021_02_19_170145) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "comments", force: :cascade do |t|
-    t.string "content"
+    t.text "content"
     t.integer "user_id"
-    t.string "commentable_type"
+    t.text "commentable_type"
     t.integer "commentable_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -24,13 +27,13 @@ ActiveRecord::Schema.define(version: 2021_02_19_170145) do
   end
 
   create_table "departments", force: :cascade do |t|
-    t.string "name"
+    t.text "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "messages", force: :cascade do |t|
-    t.string "content"
+    t.text "content"
     t.integer "sender_id"
     t.integer "receiver_id"
     t.datetime "created_at", precision: 6, null: false
@@ -41,8 +44,8 @@ ActiveRecord::Schema.define(version: 2021_02_19_170145) do
   end
 
   create_table "projects", force: :cascade do |t|
-    t.string "name"
-    t.string "description"
+    t.text "name"
+    t.text "description"
     t.integer "creator_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -50,14 +53,14 @@ ActiveRecord::Schema.define(version: 2021_02_19_170145) do
   end
 
   create_table "tasks", force: :cascade do |t|
-    t.string "name"
-    t.string "description"
+    t.text "name"
+    t.text "description"
     t.datetime "deadline"
     t.integer "user_id"
     t.integer "project_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "status"
+    t.text "status"
     t.index ["project_id"], name: "index_tasks_on_project_id"
     t.index ["user_id"], name: "index_tasks_on_user_id"
   end
@@ -72,14 +75,14 @@ ActiveRecord::Schema.define(version: 2021_02_19_170145) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "first_name"
-    t.string "last_name"
-    t.string "email"
-    t.string "password_digest"
+    t.text "first_name"
+    t.text "last_name"
+    t.text "email"
+    t.text "password_digest"
     t.integer "department_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "token"
+    t.text "token"
     t.index ["department_id"], name: "index_users_on_department_id"
   end
 
