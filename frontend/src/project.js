@@ -105,14 +105,15 @@ class Project {
                     <form id="new-project-form">
                         <input type="text" name="name" placeholder="Project Name"><br>
                         <textarea name="description" placeholder="Describe your project..."></textarea><br>
-                        <button type="submit">Create Project</button>
+                        <input type="submit" value="Create Project">
                     </form>
                 </div>
             `,
 
             create: (e) => {
+                e.preventDefault()
                 ProjectApi.createProject(e.target)
-                Project.render()
+                // Project.render()
             },
 
             cards: (projects) => {
@@ -122,7 +123,7 @@ class Project {
                 }
 
                 if (projects.length === 0) {
-                    return `<div class="flex" style="background-color: #fff; padding: 10px; width: 100%; justify-content: center; align-items: center; height: 30px;">No Projects Found</div>`
+                    return `<div class="flex" style="background-color: #777; color: #fff; padding: 10px; width: 100%; justify-content: center; align-items: center; height: 30px;">No Projects Found</div>`
                 } else {
                     return projectCards
                 }
@@ -372,6 +373,13 @@ class Project {
         }
     }
 
+    static searchProjects = e => {
+        let input = e.target.value
+        let projects = current_user.projects_by_others.filter(p => p.name.toLowerCase().includes(input.toLowerCase()))
+
+        document.querySelector(".other-projects").innerHTML = this.new.cards(projects)
+    }
+
     static render() {
         // Initial
         content.innerHTML = `
@@ -385,7 +393,7 @@ class Project {
                 <h2 style="color: #fff;">Projects Assigned to You</h2>
                 <div class="flex assigned-projects"></div>
                 
-                <h2 style="color: #fff;">Projects By Other Users</h2>
+                <h2 style="color: #fff;">Projects By Other Users &nbsp; <input type="text" id="search-projects" placeholder="Search Projects..."></h2>
                 <div class="flex other-projects"></div>
             </div>
         `
@@ -399,5 +407,7 @@ class Project {
         // Event Listeners
         content.removeEventListener("click", this.handleDivClick, true)
         content.addEventListener("click", this.handleDivClick)
+
+        document.getElementById("search-projects").addEventListener("keyup", this.searchProjects)
     }
 }

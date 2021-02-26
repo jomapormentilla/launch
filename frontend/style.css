@@ -229,6 +229,14 @@ button:hover {
             background-color: #fafafa;
         }
 
+#search-projects {
+    min-width: 500px;
+    width: 50%;
+    height: 30px;
+    margin-bottom: 15px;
+    align-self: center;
+}
+
 #progress-log, #upcoming-div {
     flex: 2; 
     flex-direction: column;

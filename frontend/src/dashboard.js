@@ -140,7 +140,7 @@ class Dashboard {
 
     static handleScroll = e => {
         for (let h2 of document.querySelectorAll("h2")) {
-            if (h2.offsetTop > 500) {
+            if (h2.offsetTop > window.innerHeight/2) {
                 h2.style.color = "#000"
             } else {
                 h2.style.color = "#fff"
