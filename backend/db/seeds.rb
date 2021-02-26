@@ -8,9 +8,9 @@
 
 def start
     createDepartments
-    createUsers
-    createProjects
-    createTasks
+    # createUsers
+    # createProjects
+    # createTasks
 end
 
 def createDepartments
