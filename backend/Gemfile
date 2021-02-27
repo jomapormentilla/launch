@@ -28,6 +28,7 @@ gem 'rack-cors'
 # Additional
 gem 'dotenv-rails'
 gem 'faker'
+gem 'foreman'
 
 # PostgreSQL
 gem 'pg'
