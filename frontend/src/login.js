@@ -52,7 +52,9 @@ class Login {
                 
                 <hr>
                 <p style="text-align: center;">Already a member? <span id="signup-btn">Login</span></p>
-                <div class="buffer" style="height: 300px;"></div>
+
+                <hr>
+                <iframe style="max-width: 500px; width: 100%; height: auto;" src="https://www.youtube.com/embed/VUdB8Hbs2UI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             `,
 
             signupClick: (e) => {
