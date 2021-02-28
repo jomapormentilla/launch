@@ -36,6 +36,9 @@ With the server running, navigate to the '/frontend' directory and open 'index.h
 
 Sign up for an account on the Sign Up page, and get ready to launch a new project!
 
+## Netlify App Demo
+Check out a demo version of this project hosted on Netlify - [Launch App](https://launch-it.netlify.app/)
+
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
