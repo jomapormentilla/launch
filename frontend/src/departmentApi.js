@@ -7,6 +7,7 @@ class DepartmentApi {
                     let _dept = Department.all.find(d => d.id === dept.id)
                     if (!_dept) { new Department(dept) }
                 }
+                document.querySelector('.loading').remove()
             })
     }
 }

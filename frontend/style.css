@@ -17,6 +17,17 @@ h2 {
     transition: 0.5s;
 }
 
+.loading {
+    position: fixed;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    height: 100vh;
+    width: 100vw;
+    background-color: #ddd;
+    z-index: 100;
+}
+
 .error-container {
     display: block;
     position: fixed;
